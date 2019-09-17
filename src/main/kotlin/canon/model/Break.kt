@@ -1,3 +1,9 @@
 package canon.model
 
-class Break(id: String, `class`: String) : AbstractRenderable(id, `class`)
+import canon.api.IVisitor
+
+class Break(id: String, `class`: String) : AbstractRenderable(id, `class`) {
+
+
+
+}

@@ -1,6 +1,7 @@
 package canon.parser.xml
 
 import canon.api.IRenderable
+import canon.model.Block
 import canon.parser.xml.strategy.*
 import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
@@ -29,11 +30,48 @@ class CanonXmlParser {
     private val parsers:HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
 
     init {
-        parsers["text"] = TextStrategy()
-        parsers["headline"] = HeadlineStrategy()
+        parsers["block"] = BlockStrategy()
         parsers["bold"] = BoldStrategy()
+        parsers["break"] = BreakStrategy()
+        parsers["button"] = ButtonStrategy()
+        parsers["calendar"] = CalendarStrategy()
+        parsers["camera"] = CameraStrategy()
+        parsers["carousel"] = CarouselStrategy()
+        parsers["choice"] = ChoiceStrategy()
+        parsers["codeReader"] = CodeReaderStrategy()
+        parsers["col"] = ColStrategy()
         parsers["email"] = EmailStrategy()
+        // TODO foreach and if
+        parsers["form"] = FormStrategy()
+        parsers["headline"] = HeadlineStrategy()
+        parsers["image"] = ImageStrategy()
+        parsers["italic"] = ItalicStrategy()
+        parsers["item"] = ItemStrategy()
+        parsers["items"] = ItemsStrategy()
         parsers["label"] = LabelStrategy()
+        parsers["link"] = LinkStrategy()
+        parsers["map"] = MapStrategy()
+        parsers["multipleChoice"] = MultipleChoiceStrategy()
+        parsers["overlay"] = OverlayStrategy()
+        parsers["overlays"] = OverlaysStrategy()
+        parsers["phone"] = PhoneStrategy()
+        parsers["reel"] = ReelStrategy()
+        parsers["reelValue"] = ReelValueStrategy()
+        parsers["row"] = RowStrategy()
+        parsers["selection"] = SelectionStrategy()
+        parsers["singleChoice"] = SingleChoiceStrategy()
+        parsers["slider"] = SliderStrategy()
+        parsers["slotMachine"] = SlotMachineStrategy()
+        parsers["smallDevice"] = SmallDeviceStrategy()
+        parsers["spinner"] = SpinnerStrategy()
+        parsers["submit"] = SubmitStrategy()
+        parsers["suggestion"] = SuggestionStrategy()
+        parsers["table"] = TableStrategy()
+        parsers["text"] = TextStrategy()
+        parsers["textarea"] = TextareaStrategy()
+        parsers["trigger"] = TriggerStrategy()
+        parsers["upload"] = UploadStrategy()
+        parsers["video"] = VideoStrategy()
     }
 
     fun parse(str: String): List<IRenderable> {
@@ -43,10 +81,14 @@ class CanonXmlParser {
             val builder = DOCUMENT_BUILDER.get()
             val document = builder.parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
-            return toRenderables(document.childNodes, ArrayList())
+            return toRenderables(document)
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
+    }
+
+    fun toRenderables(node:Node):List<IRenderable> {
+        return toRenderables(node.childNodes, ArrayList())
     }
 
     private fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
@@ -60,9 +102,9 @@ class CanonXmlParser {
         if (node.nodeName.equals("markup"))
             toRenderables(node.childNodes, renderables)
         else if (node.nodeName.equals("#text") && node.textContent.isNotBlank())
-            renderables.add(parsers.get("text")!!.parse(node))
+            renderables.add(parsers.get("text")!!.parse(node, this::toRenderables))
         else if (parsers.containsKey(node.nodeName))
-            renderables.add(parsers.get(node.nodeName)!!.parse(node))
+            renderables.add(parsers.get(node.nodeName)!!.parse(node, this::toRenderables))
         else
             throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
     }

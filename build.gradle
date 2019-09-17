@@ -57,6 +57,11 @@ task javadocJar(type: Jar, dependsOn: javadoc) {
     from javadoc.destinationDir
 }
 
+sourceSets {
+    main.java.srcDirs += 'src/main/kotlin'
+    test.kotlin.srcDirs += 'src/test/kotlin'
+}
+
 artifacts {
     archives sourcesJar
     archives javadocJar

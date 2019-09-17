@@ -1,6 +1,7 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
+import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
@@ -9,7 +10,7 @@ class EmailStrategyTest {
     @Test
     fun testParse() {
         val xml = "<email id='a' class='b' placeholder='c' required='true' name='d'>text</email>"
-        val tag = EmailStrategy().parse(xml.toNode())
+        val tag = EmailStrategy().parse(xml.toNode(), CanonXmlParser::toRenderables)
 
         Assertions.assertEquals(tag.id, "a")
         Assertions.assertEquals(tag.`class`, "b")

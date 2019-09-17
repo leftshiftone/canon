@@ -11,4 +11,5 @@ class Map(id: String,
           val centerLng: String,
           val centerLat: String,
           val exact:Boolean,
-          val centerBrowserLocation:Boolean) : AbstractRenderable(id, `class`), IRenderable
+          val centerBrowserLocation:Boolean,
+          val required : Boolean) : AbstractRenderable(id, `class`), IRenderable

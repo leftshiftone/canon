@@ -3,9 +3,6 @@ package canon.model
 import canon.api.IRenderable
 import canon.api.IStackeable
 
-class Carousel(id: String,
+class Foreach (id: String,
                `class`: String,
-               val text: String,
-               val name: String,
-               val selected: Boolean,
                override val renderables: List<IRenderable>) : AbstractRenderable(id, `class`), IStackeable

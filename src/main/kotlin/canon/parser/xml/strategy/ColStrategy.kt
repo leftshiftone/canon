@@ -2,16 +2,17 @@ package canon.parser.xml.strategy
 
 import canon.api.IRenderable
 import canon.extension.attrAsText
-import canon.model.Label
+import canon.model.Col
 import org.w3c.dom.Node
 
-class LabelStrategy : AbstractParseStrategy<Label>() {
+class ColStrategy : AbstractParseStrategy<Col>() {
 
-    override fun parse(node: Node, factory:(Node) -> List<IRenderable>): Label {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Col {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
 
-        return Label(id, `class`, node.textContent)
+        return Col(id, `class`, factory(node))
     }
+
 
 }

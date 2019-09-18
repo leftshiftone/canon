@@ -4,7 +4,6 @@ import canon.api.IRenderable
 import canon.extension.attrAsBoolean
 import canon.extension.attrAsText
 import canon.model.Email
-import canon.model.Text
 import org.w3c.dom.Node
 
 class EmailStrategy : AbstractParseStrategy<Email>() {

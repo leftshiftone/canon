@@ -13,6 +13,5 @@ class BlockStrategy : AbstractParseStrategy<Block>() {
         val name = node.attrAsText("name")
 
         return Block(id, `class`, name, factory(node))
-
     }
 }

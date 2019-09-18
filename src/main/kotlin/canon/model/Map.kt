@@ -1,7 +1,6 @@
 package canon.model
 
 import canon.api.IRenderable
-import canon.api.IStackeable
 
 class Map(id: String,
           `class`: String,

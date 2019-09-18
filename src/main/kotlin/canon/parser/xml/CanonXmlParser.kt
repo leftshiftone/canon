@@ -1,13 +1,10 @@
 package canon.parser.xml
 
 import canon.api.IRenderable
-import canon.model.Block
 import canon.parser.xml.strategy.*
-import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import java.io.ByteArrayInputStream
-import java.util.*
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.collections.ArrayList

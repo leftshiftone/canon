@@ -1,22 +1,25 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
+import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-class LabelStrategyTest {
+class CarouselStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<label id='testId' class='testClass'>text</label>"
-        val parsed = LabelStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val xml = "<carousel id='testId' class='testClass' text='testText' name='testName'></carousel>"
+        val parsed = CarouselStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
-        assertEquals("text", parsed.text)
+        assertEquals("testText", parsed.text)
+        assertEquals("testName", parsed.name)
+        assertEquals(false, parsed.selected)
     }
 
 }

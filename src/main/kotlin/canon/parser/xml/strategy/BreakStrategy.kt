@@ -13,6 +13,4 @@ class BreakStrategy : AbstractParseStrategy<Break>() {
 
         return Break(id, `class`)
     }
-
-
 }

@@ -6,17 +6,18 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-class LabelStrategyTest {
+class FormStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<label id='testId' class='testClass'>text</label>"
-        val parsed = LabelStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val xml = "<form id='testId' class='testClass' name='submitForm'><submit>test</submit></form>"
+        val parsed = FormStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
-        assertEquals("text", parsed.text)
+        assertEquals("submitForm", parsed.name)
+        assertEquals(1, parsed.renderables.size)
     }
 
 }

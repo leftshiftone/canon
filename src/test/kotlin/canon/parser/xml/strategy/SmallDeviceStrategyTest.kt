@@ -1,25 +1,26 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
+import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-class EmailStrategyTest {
+class SmallDeviceStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<email id='testId' class='testClass' placeholder='*' required='true' name='testName'>text</email>"
-        val parsed = EmailStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val xml = "<smallDevice id='testId' class='testClass' name='testName'>" +
+                "<text id='testId2' class='testClass'>test</text>" +
+                "</smallDevice>"
+        val parsed = SmallDeviceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
-        assertEquals("*", parsed.placeholder)
-        assertEquals(true, parsed.required)
         assertEquals("testName", parsed.name)
-        assertEquals("text", parsed.value)
+        assertEquals(1, parsed.renderables.size)
     }
 
 }

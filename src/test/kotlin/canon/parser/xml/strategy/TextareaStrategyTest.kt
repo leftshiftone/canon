@@ -6,20 +6,23 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-class EmailStrategyTest {
+class TextareaStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<email id='testId' class='testClass' placeholder='*' required='true' name='testName'>text</email>"
-        val parsed = EmailStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val xml = "<textarea id='testId' class='testClass' placeholder='*' " +
+                "name='testName' value='testValue' rows='5' cols='3'></textarea>"
+        val parsed = TextareaStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals("*", parsed.placeholder)
-        assertEquals(true, parsed.required)
         assertEquals("testName", parsed.name)
-        assertEquals("text", parsed.value)
+        assertEquals("testValue", parsed.value)
+        assertEquals(false, parsed.required)
+        assertEquals(5, parsed.rows)
+        assertEquals(3, parsed.cols)
     }
 
 }

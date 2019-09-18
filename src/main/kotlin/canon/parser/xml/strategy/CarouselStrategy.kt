@@ -14,7 +14,7 @@ class CarouselStrategy : AbstractParseStrategy<Carousel>() {
         val text = node.attrAsText("text")
         val name = node.attrAsText("name")
         val selected = node.attrAsBoolean("selected", false)
-        return Carousel(id, `class`, name, text, selected, factory(node))
+        return Carousel(id, `class`, text, name, selected, factory(node))
     }
 
 }

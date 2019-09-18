@@ -15,6 +15,4 @@ class ChoiceStrategy : AbstractParseStrategy<Choice>() {
 
         return Choice(id, `class`, text, selected, factory(node))
     }
-
-
 }

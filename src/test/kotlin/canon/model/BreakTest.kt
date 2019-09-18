@@ -7,7 +7,7 @@ class BreakTest {
 
     @Test
     fun testBreakMapping() {
-        val mapped = Break("testId", "testClass").toMap(HashMap<String, Any>())
+        val mapped = Break("testId", "testClass").toMap(HashMap())
 
         assertEquals(0, mapped.size)
     }

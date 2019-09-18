@@ -8,7 +8,7 @@ class VideoTest {
 
     @Test
     fun testVideoMapping() {
-        val mapped = Video("testId", "testClass", "testSrc").toMap(HashMap<String, Any>())
+        val mapped = Video("testId", "testClass", "testSrc").toMap(HashMap())
 
         assertEquals(1, mapped.size)
         assertEquals("testSrc", mapped.get("src"))

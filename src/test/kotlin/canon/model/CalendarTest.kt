@@ -8,7 +8,7 @@ class CalendarTest {
 
     @Test
     fun testCalendarMapping() {
-        val mapped = Calendar("testId", "testClass", "testName").toMap(HashMap<String, Any>())
+        val mapped = Calendar("testId", "testClass", "testName").toMap(HashMap())
 
         assertEquals(1, mapped.size)
         assertEquals("testName", mapped.get("name"))

@@ -9,7 +9,7 @@ class UploadTest {
     @Test
     fun testUploadMapping() {
         val mapped = Upload("testId", "testClass", "jpg, png","testName",
-                "testText", 5.0, 1.0).toMap(HashMap<String, Any>())
+                "testText", 5.0, 1.0).toMap(HashMap())
 
         assertEquals(5, mapped.size)
         assertEquals("jpg, png", mapped.get("accept"))

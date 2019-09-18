@@ -9,7 +9,7 @@ class SliderTest {
     @Test
     fun testSliderMapping() {
         val mapped = Slider("testId", "testClass", 1.0, 101.0, 1.0, 25.0,
-                "testName", "testValue01, testValue02").toMap(HashMap<String, Any>())
+                "testName", "testValue01, testValue02").toMap(HashMap())
 
         assertEquals(6, mapped.size)
         assertEquals(1.0, mapped.get("min"))

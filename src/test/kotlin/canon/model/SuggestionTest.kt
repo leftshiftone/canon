@@ -9,7 +9,7 @@ class SuggestionTest {
     @Test
     fun testSuggestionMapping() {
         val mapped = Suggestion("testId", "testClass", "testText", "testName",
-                "testValue").toMap(HashMap<String, Any>())
+                "testValue").toMap(HashMap())
 
         assertEquals(3, mapped.size)
         assertEquals("testText", mapped.get("text"))

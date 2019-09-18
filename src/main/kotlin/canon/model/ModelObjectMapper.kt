@@ -14,8 +14,6 @@ object ModelObjectMapper {
     }
 
     fun convertValue(obj: Any) : Map<String, Any> {
-        return objectMapper.convertValue(obj, object:TypeReference<MutableMap<String, Any>>() {});
+        return objectMapper.convertValue(obj, object:TypeReference<MutableMap<String, Any>>() {})
     }
-
-
 }

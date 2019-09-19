@@ -1,6 +1,5 @@
 package canon.model
 
-import canon.api.IRenderable
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -10,7 +9,7 @@ class EmailTest {
     @Test
     fun testEmailMapping() {
         val mapped = Email("testId", "testClass", "placeHolder", true,
-                "testName", "testValue").toMap(HashMap<String, Any>())
+                "testName", "testValue").toMap(HashMap())
 
         assertEquals(4, mapped.size)
         assertEquals("placeHolder", mapped.get("placeholder"))

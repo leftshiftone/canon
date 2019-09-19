@@ -8,7 +8,7 @@ class ReelValueTest {
 
     @Test
     fun testReelValueMapping() {
-        val mapped = ReelValue("testId", "testClass", "testValue", "valuetype").toMap(HashMap<String, Any>())
+        val mapped = ReelValue("testId", "testClass", "testValue", "valuetype").toMap(HashMap())
 
         assertEquals(2, mapped.size)
         assertEquals("testValue", mapped.get("value"))

@@ -1,6 +1,5 @@
 package canon.model
 
-import canon.api.IRenderable
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -10,7 +9,7 @@ class CameraTest {
     @Test
     fun testCameraMapping() {
         val mapped = Camera("testId", "testClass", "testName",
-                true, 1.0, ArrayList<IRenderable>()).toMap(HashMap<String, Any>())
+                true, 1.0, ArrayList()).toMap(HashMap())
 
         assertEquals(3, mapped.size)
         assertEquals(true, mapped.get("required"))

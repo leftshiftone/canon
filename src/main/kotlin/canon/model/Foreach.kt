@@ -11,7 +11,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
 
     private val target: String
     private val source: String
-    override val renderables : List<IRenderable>
+    override val renderables: List<IRenderable>
 
     init {
         this.target = getTarget(forEachStmt)
@@ -19,7 +19,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
         this.renderables = listOf(renderables)
     }
 
-    private fun getTarget(forEachStmt: String) : String {
+    private fun getTarget(forEachStmt: String): String {
         val beforeInStmt = forEachStmt.substringBefore(" in ")
 
         assert(!beforeInStmt.isNullOrEmpty()) { "the foreach target attribute must not be null" }
@@ -27,7 +27,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
         return beforeInStmt.trim().substring(1)
     }
 
-    private fun getSource(forEachStmt: String) : String {
+    private fun getSource(forEachStmt: String): String {
         val beforeInStmt = forEachStmt.substringAfter(" in ")
 
         assert(!beforeInStmt.isNullOrEmpty()) { "the foreach target attribute must not be null" }
@@ -46,5 +46,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
         renderables.forEach(visitor::visitRenderable)
     }
 
-    fun getType(): String { return "text" }
+    fun getType(): String {
+        return "text"
+    }
 }

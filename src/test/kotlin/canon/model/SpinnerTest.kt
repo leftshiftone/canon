@@ -9,7 +9,7 @@ class SpinnerTest {
     @Test
     fun testSpinnerMapping() {
         val mapped = Spinner("testId", "testClass", 1.0, 101.0, 1.0, 25.0,
-                "testName").toMap(HashMap<String, Any>())
+                "testName").toMap(HashMap())
 
         assertEquals(5, mapped.size)
         assertEquals(1.0, mapped.get("min"))

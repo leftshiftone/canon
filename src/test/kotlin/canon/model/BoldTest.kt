@@ -7,7 +7,7 @@ class BoldTest {
 
     @Test
     fun testBoldMapping() {
-        val mapped = Bold("testId", "testClass", "testText").toMap(HashMap<String, Any>())
+        val mapped = Bold("testId", "testClass", "testText").toMap(HashMap())
 
         assertEquals(1, mapped.size)
         assertEquals("testText", mapped.get("text"))

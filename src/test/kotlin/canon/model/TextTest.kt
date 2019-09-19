@@ -9,7 +9,7 @@ class TextTest {
     @Test
     fun testTextMapping() {
         val mapped = Text("testId", "testClass", "regEx", "placeHolder", false,
-                "testName","testValue").toMap(HashMap<String, Any>())
+                "testName","testValue").toMap(HashMap())
 
         assertEquals(5, mapped.size)
         assertEquals("regEx", mapped.get("regex"))

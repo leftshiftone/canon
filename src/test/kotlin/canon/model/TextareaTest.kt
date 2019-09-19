@@ -9,7 +9,7 @@ class TextareaTest {
     @Test
     fun testTextareaMapping() {
         val mapped = Textarea("testId", "testClass", "placeHolder", "testName",
-                "testValue", false, 10, 9).toMap(HashMap<String, Any>())
+                "testValue", false, 10, 9).toMap(HashMap())
 
         assertEquals(6, mapped.size)
         assertEquals("placeHolder", mapped.get("placeholder"))

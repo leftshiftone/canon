@@ -10,7 +10,7 @@ class MapTest {
     fun testMapMapping() {
         val mapped = Map("testId", "testClass", "testName", "testSrc",
                 "type", "centerlng", "centerlat", true,
-                false, true).toMap(HashMap<String, Any>())
+                false, true).toMap(HashMap())
 
         assertEquals(8, mapped.size)
         assertEquals("testName", mapped.get("name"))

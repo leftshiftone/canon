@@ -9,7 +9,7 @@ class ButtonTest {
     @Test
     fun testButtonMapping() {
         val mapped = Button("testId", "testClass", "testText",
-                "testName", "testValue").toMap(HashMap<String, Any>())
+                "testName", "testValue").toMap(HashMap())
 
         assertEquals(3, mapped.size)
         assertEquals("testText", mapped.get("text"))

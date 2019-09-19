@@ -9,7 +9,7 @@ class PhoneTest {
     @Test
     fun testPhoneMapping() {
         val mapped = Phone("testId", "testClass", "placeHolder", false,
-                "testName", "testValue").toMap(HashMap<String, Any>())
+                "testName", "testValue").toMap(HashMap())
 
         assertEquals(4, mapped.size)
         assertEquals("placeHolder", mapped.get("placeholder"))

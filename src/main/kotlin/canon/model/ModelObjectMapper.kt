@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
 import kotlin.collections.Map
 
+// TODO: review
 object ModelObjectMapper {
 
     private val objectMapper : ObjectMapper

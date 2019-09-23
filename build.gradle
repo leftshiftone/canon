@@ -39,7 +39,6 @@ apply plugin: "kotlin"
 
 dependencies {
 
-    // compileOnly "one.leftshift.atreus:atreus-engine:latest.release"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
     // https://mvnrepository.com/artifact/org.spekframework.spek2/spek-dsl-jvm
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"

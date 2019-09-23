@@ -5,11 +5,14 @@ import canon.api.IStackeable
 import canon.api.IVisitor
 import canon.support.Iterators
 import canon.support.Maps
+import com.fasterxml.jackson.annotation.JsonIgnore
 import kotlin.collections.Map
 
 class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, IStackeable {
 
+    @JsonIgnore
     private val target: String
+    @JsonIgnore
     private val source: String
     override val renderables: List<IRenderable>
 

@@ -38,11 +38,9 @@ abstract class AbstractVisitor {
             is Form -> visitForm(renderable)
             is SlotMachine -> visitSlotMachine(renderable)
             is Suggestion -> visitSuggestion(renderable)
-            is DatePicker -> visitDatePicker(renderable)
             is Selection -> visitSelection(renderable)
             is CodeReader -> visitCodeReader(renderable)
             is Textarea -> visitTextarea(renderable)
-            is DateTimePicker -> visitDateTimePicker(renderable)
             is ReelValue -> visitReelValue(renderable)
             is Camera -> visitCamera(renderable)
             is MultipleChoice -> visitMultipleChoice(renderable)
@@ -83,8 +81,6 @@ abstract class AbstractVisitor {
     fun visitMap(map: Map) {}
     fun visitSubmit(submit: Submit) {}
     fun visitSuggestion(suggestion: Suggestion) {}
-    fun visitDatePicker(datePicker: DatePicker) {}
-    fun visitDateTimePicker(dateTimePicker: DateTimePicker) {}
     fun visitCamera(camera: Camera) {}
     fun visitSingleChoice(singleChoice: SingleChoice) {}
     fun visitMultipleChoice(multipleChoice: MultipleChoice) {}

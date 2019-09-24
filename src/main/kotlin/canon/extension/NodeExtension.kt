@@ -13,16 +13,16 @@ internal fun Node.attrAsBoolean(name:String, defaultValue:Boolean):Boolean {
     return optional.map { it.textContent.equals("true", true) }.orElse(defaultValue)
 }
 internal fun Node.attrAsDouble(name:String, defaultValue:Double) : Double {
-    try {
-        return this.attributes.getNamedItem(name).textContent.toDouble()
+    return try {
+        this.attributes.getNamedItem(name).textContent.toDouble()
     } catch (ex : RuntimeException) {
-        return defaultValue
+        defaultValue
     }
 }
 internal fun Node.attrAsInt(name:String, defaultValue:Int) : Int {
-    try {
-        return this.attributes.getNamedItem(name).textContent.toInt()
+    return try {
+        this.attributes.getNamedItem(name).textContent.toInt()
     } catch (ex : RuntimeException) {
-        return defaultValue
+        defaultValue
     }
 }

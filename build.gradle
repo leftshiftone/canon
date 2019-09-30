@@ -35,10 +35,13 @@ repositories {
     mavenCentral()
 }
 
+apply plugin: "antlr"
 apply plugin: "kotlin"
 
 dependencies {
+    antlr "org.antlr:antlr4:4.7.2"
 
+    compile "org.antlr:antlr4-runtime:4.7.2"
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
     // https://mvnrepository.com/artifact/org.spekframework.spek2/spek-dsl-jvm
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
@@ -67,3 +70,10 @@ artifacts {
     archives sourcesJar
     archives javadocJar
 }
+
+generateGrammarSource {
+    outputDirectory = new File(project.buildDir, "generated-src/antlr/canon/antlr")
+    arguments += ["-visitor"]
+}
+
+sourceSets.main.kotlin.srcDirs += new File(buildDir, "generated-src/antlr")

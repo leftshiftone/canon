@@ -52,8 +52,8 @@ dependencies {
 
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
     // https://mvnrepository.com/artifact/org.spekframework.spek2/spek-dsl-jvm
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
 
     // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.1'

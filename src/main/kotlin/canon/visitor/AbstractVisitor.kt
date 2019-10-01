@@ -10,80 +10,92 @@ abstract class AbstractVisitor {
 
     fun visitRenderable(renderable: IRenderable) {
         when (renderable) {
-            is Carousel -> visitCarousel(renderable)
+
             is Block -> visitBlock(renderable)
-            is Item -> visitItem(renderable)
-            is Items -> visitItems(renderable)
-            is Text -> visitText(renderable)
-            is Button -> visitButton(renderable)
-            is Image -> visitImage(renderable)
-            is Headline -> visitHeadline(renderable)
-            is Link -> visitLink(renderable)
             is Bold -> visitBold(renderable)
             is Break -> visitBreak(renderable)
+            is Button -> visitButton(renderable)
             is Calendar -> visitCalendar(renderable)
-            is SmallDevice -> visitSmallDevice(renderable)
-            is Table -> visitTable(renderable)
-            is Row -> visitRow(renderable)
-            is Col -> visitCol(renderable)
-            is Map -> visitMap(renderable)
-            is Submit -> visitSubmit(renderable)
-            is Slider -> visitSlider(renderable)
-            is Spinner -> visitSpinner(renderable)
-            is Label -> visitLabel(renderable)
-            is Phone -> visitPhone(renderable)
-            is Upload -> visitUpload(renderable)
-            is Email -> visitEmail(renderable)
-            is Reel -> visitReel(renderable)
-            is Form -> visitForm(renderable)
-            is SlotMachine -> visitSlotMachine(renderable)
-            is Suggestion -> visitSuggestion(renderable)
-            is Selection -> visitSelection(renderable)
-            is CodeReader -> visitCodeReader(renderable)
-            is Textarea -> visitTextarea(renderable)
-            is ReelValue -> visitReelValue(renderable)
             is Camera -> visitCamera(renderable)
-            is MultipleChoice -> visitMultipleChoice(renderable)
-            is SingleChoice -> visitSingleChoice(renderable)
+            is Carousel -> visitCarousel(renderable)
             is Choice -> visitChoice(renderable)
+            is CodeReader -> visitCodeReader(renderable)
+            is Col -> visitCol(renderable)
+            is Email -> visitEmail(renderable)
+            is Form -> visitForm(renderable)
+            is Headline -> visitHeadline(renderable)
+            is Image -> visitImage(renderable)
+            is Italic -> visitItalic(renderable)
+            is Items -> visitItems(renderable)
+            is Item -> visitItem(renderable)
+            is Label -> visitLabel(renderable)
+            is Link -> visitLink(renderable)
+            is Map -> visitMap(renderable)
+            is MultipleChoice -> visitMultipleChoice(renderable)
+            is Overlay -> visitOverlay(renderable)
+            is Overlays -> visitOverlays(renderable)
+            is Phone -> visitPhone(renderable)
+            is Reel -> visitReel(renderable)
+            is ReelValue -> visitReelValue(renderable)
+            is Row -> visitRow(renderable)
+            is Selection -> visitSelection(renderable)
+            is SingleChoice -> visitSingleChoice(renderable)
+            is Slider -> visitSlider(renderable)
+            is SlotMachine -> visitSlotMachine(renderable)
+            is SmallDevice -> visitSmallDevice(renderable)
+            is Spinner -> visitSpinner(renderable)
+            is Submit -> visitSubmit(renderable)
+            is Suggestion -> visitSuggestion(renderable)
+            is Table -> visitTable(renderable)
+            is Text -> visitText(renderable)
+            is Textarea -> visitTextarea(renderable)
+            is Transition -> visitTransition(renderable)
+            is Trigger -> visitTrigger(renderable)
+            is Upload -> visitUpload(renderable)
+            is Video -> visitVideo(renderable)
         }
     }
 
-    fun visitTextarea(renderable: Textarea) {}
+    fun visitBlock(renderable: Block) {}
+    fun visitBold(renderable: Bold) {}
+    fun visitBreak(renderable: Break) {}
+    fun visitButton(renderable: Button) {}
+    fun visitCalendar(calendar: Calendar) {}
+    fun visitCamera(camera: Camera) {}
+    fun visitCarousel(renderable: Carousel) {}
+    fun visitChoice(choice: Choice) {}
     fun visitCodeReader(renderable: CodeReader) {}
-    fun visitSelection(renderable: Selection) {}
-    fun visitUpload(renderable: Upload) {}
-    fun visitLabel(renderable: Label) {}
-    fun visitPhone(renderable: Phone) {}
+    fun visitCol(renderable: Col) {}
     fun visitEmail(renderable: Email) {}
     fun visitForm(renderable: Form) {}
+    fun visitHeadline(renderable: Headline) {}
+    fun visitImage(renderable: Image) {}
+    fun visitItalic(renderable: Italic) {}
+    fun visitItems(renderable: Items) {}
+    fun visitItem(renderable: Item) {}
+    fun visitLabel(renderable: Label) {}
+    fun visitLink(renderable: Link) {}
+    fun visitMap(map: Map) {}
+    fun visitMultipleChoice(multipleChoice: MultipleChoice) {}
+    fun visitOverlay(overlay: Overlay) {}
+    fun visitOverlays(overlays: Overlays) {}
+    fun visitPhone(renderable: Phone) {}
     fun visitReel(renderable: Reel) {}
     fun visitReelValue(renderable: ReelValue) {}
-    fun visitSlotMachine(renderable: SlotMachine) {}
-    fun visitSlider(renderable: Slider) {}
-    fun visitSpinner(renderable: Spinner) {}
-    fun visitTable(renderable: Table) {}
     fun visitRow(renderable: Row) {}
-    fun visitCol(renderable: Col) {}
-    fun visitBreak(renderable: Break) {}
-    fun visitCalendar(calendar: Calendar) {}
-    fun visitBold(renderable: Bold) {}
-    fun visitLink(renderable: Link) {}
-    fun visitCarousel(renderable: Carousel) {}
-    fun visitBlock(renderable: Block) {}
-    fun visitItem(renderable: Item) {}
-    fun visitText(renderable: Text) {}
-    fun visitItems(renderable: Items) {}
-    fun visitButton(renderable: Button) {}
-    fun visitImage(renderable: Image) {}
-    fun visitHeadline(renderable: Headline) {}
+    fun visitSelection(renderable: Selection) {}
+    fun visitSingleChoice(singleChoice: SingleChoice) {}
+    fun visitSlider(renderable: Slider) {}
+    fun visitSlotMachine(renderable: SlotMachine) {}
     fun visitSmallDevice(renderable: SmallDevice) {}
-    fun visitMap(map: Map) {}
+    fun visitSpinner(renderable: Spinner) {}
     fun visitSubmit(submit: Submit) {}
     fun visitSuggestion(suggestion: Suggestion) {}
-    fun visitCamera(camera: Camera) {}
-    fun visitSingleChoice(singleChoice: SingleChoice) {}
-    fun visitMultipleChoice(multipleChoice: MultipleChoice) {}
-    fun visitChoice(choice: Choice) {}
-
+    fun visitTable(renderable: Table) {}
+    fun visitText(renderable: Text) {}
+    fun visitTextarea(renderable: Textarea) {}
+    fun visitTransition(renderable: Transition) {}
+    fun visitTrigger(renderable: Trigger) {}
+    fun visitUpload(renderable: Upload) {}
+    fun visitVideo(renderable: Video) {}
 }

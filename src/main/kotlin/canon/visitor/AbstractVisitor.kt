@@ -3,12 +3,14 @@
 package canon.visitor
 
 import canon.api.IRenderable
+import canon.api.IVisitor
 import canon.model.*
 import canon.model.Map
+import kotlin.collections.Map as KotlinMap
 
-abstract class AbstractVisitor {
+abstract class AbstractVisitor(context:KotlinMap<String, Any>) : IVisitor {
 
-    fun visitRenderable(renderable: IRenderable) {
+    override fun visitRenderable(renderable: IRenderable) {
         when (renderable) {
             is Carousel -> visitCarousel(renderable)
             is Block -> visitBlock(renderable)

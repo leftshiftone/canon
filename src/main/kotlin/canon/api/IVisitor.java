@@ -32,8 +32,4 @@ public interface IVisitor {
         return new HashMap<>();
     }
 
-    default IVisitor wrap(Map<String, Object> context) {
-        return this;
-    }
-
 }

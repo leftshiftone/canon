@@ -1,8 +1,10 @@
 package canon.model
 
 import canon.api.IRenderable
-import canon.api.IStackeable
+import com.fasterxml.jackson.annotation.JsonIgnore
 
 class Choice(id: String,
              `class`: String,
-             override val renderables: List<IRenderable>) : AbstractRenderable(id, `class`), IStackeable
+             val text : String,
+             val selected : String,
+             @JsonIgnore override val renderables: List<IRenderable>) : AbstractStackeable(id, `class`, renderables)

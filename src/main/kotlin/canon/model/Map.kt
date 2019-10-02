@@ -1,7 +1,6 @@
 package canon.model
 
 import canon.api.IRenderable
-import canon.api.IStackeable
 
 class Map(id: String,
           `class`: String,
@@ -11,4 +10,5 @@ class Map(id: String,
           val centerLng: String,
           val centerLat: String,
           val exact:Boolean,
-          val centerBrowserLocation:Boolean) : AbstractRenderable(id, `class`), IRenderable
+          val centerBrowserLocation:Boolean,
+          val required : Boolean) : AbstractRenderable(id, `class`), IRenderable

@@ -1,7 +1,6 @@
 package canon.model
 
 import canon.api.IRenderable
-import canon.api.IStackeable
 
 class Slider(id: String,
              `class`: String,

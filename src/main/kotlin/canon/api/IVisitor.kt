@@ -6,5 +6,4 @@ interface IVisitor {
 
     fun getContext() : Map<String, Any> { return HashMap<String, Any>() }
 
-    fun wrap(context: Map<String, Any>) : IVisitor { return this }
 }

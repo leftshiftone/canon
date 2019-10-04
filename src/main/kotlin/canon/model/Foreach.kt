@@ -1,12 +1,12 @@
 package canon.model
 
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IStackeable
 import canon.api.IVisitor
 import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, IStackeable {
 
@@ -38,7 +38,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
         return beforeInStmt.trim().substring(1)
     }
 
-    override fun accept(visitor: IVisitor) {
+    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         val iterator = Iterators.toIterator(Maps.getDeep(visitor.getContext(), source))
 
         while (iterator.hasNext()) {

@@ -1,5 +1,6 @@
 package canon.model
 
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -9,7 +10,7 @@ class CameraTest {
     @Test
     fun testCameraMapping() {
         val mapped = Camera("testId", "testClass", "testName",
-                true, 1.0, ArrayList()).toMap(HashMap())
+                true, 1.0, ArrayList()).toMap(HashMap(), mockk())
 
         assertEquals(3, mapped.size)
         assertEquals(true, mapped.get("required"))

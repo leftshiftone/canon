@@ -1,5 +1,6 @@
 package canon.model
 
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IStackeable
 import canon.api.IVisitor
@@ -18,7 +19,7 @@ class If (attributeValue: String, renderable: IRenderable,
         this.renderable = renderable
     }
 
-    override fun accept(visitor: IVisitor) {
+    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         if (evaluate(visitor)) visitor.visitRenderable(this.renderable)
     }
 

@@ -1,5 +1,6 @@
 package canon.model
 
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.core.type.TypeReference
@@ -17,7 +18,7 @@ abstract class AbstractRenderable(@JsonIgnore val id:String, @JsonIgnore val `cl
         }
     }
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>): Map<String, Any> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String, Any> {
         return convertValue(this);
     }
 }

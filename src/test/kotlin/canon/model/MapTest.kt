@@ -1,5 +1,6 @@
 package canon.model
 
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -10,7 +11,7 @@ class MapTest {
     fun testMapMapping() {
         val mapped = Map("testId", "testClass", "testName", "testSrc",
                 "type", "centerlng", "centerlat", true,
-                false, true).toMap(HashMap())
+                false, true).toMap(HashMap(), mockk())
 
         assertEquals(8, mapped.size)
         assertEquals("testName", mapped.get("name"))

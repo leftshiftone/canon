@@ -1,5 +1,6 @@
 package canon.model
 
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IStackeable
 import canon.api.IVisitor
@@ -9,7 +10,7 @@ abstract class AbstractStackeable(id: String,
                                   `class`: String,
                                   @JsonIgnore override val renderables: List<IRenderable>) : AbstractRenderable(id, `class`), IStackeable {
 
-    override fun accept(visitor: IVisitor) {
+    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         renderables.forEach(visitor::visitRenderable)
     }
 

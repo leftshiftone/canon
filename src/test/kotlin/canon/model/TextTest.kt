@@ -1,5 +1,6 @@
 package canon.model
 
+import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -9,7 +10,7 @@ class TextTest {
     @Test
     fun testTextMapping() {
         val mapped = Text("testId", "testClass", "regEx", "placeHolder", false,
-                "testName","testValue").toMap(HashMap())
+                "testName","testValue").toMap(HashMap(), mockk())
 
         assertEquals(5, mapped.size)
         assertEquals("regEx", mapped.get("regex"))

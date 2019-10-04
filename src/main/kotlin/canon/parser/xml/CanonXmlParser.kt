@@ -13,7 +13,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.text.Charsets.UTF_8
 
-abstract class CanonXmlParser {
+open class CanonXmlParser {
 
     companion object {
         val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()

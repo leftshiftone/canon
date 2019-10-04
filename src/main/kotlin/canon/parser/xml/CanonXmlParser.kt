@@ -1,7 +1,9 @@
 package canon.parser.xml
 
 import canon.api.IRenderable
+import canon.model.If
 import canon.parser.xml.strategy.*
+import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import java.io.ByteArrayInputStream
@@ -11,7 +13,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.text.Charsets.UTF_8
 
-class CanonXmlParser {
+abstract class CanonXmlParser {
 
     companion object {
         val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()
@@ -34,11 +36,11 @@ class CanonXmlParser {
         parsers["calendar"] = CalendarStrategy()
         parsers["camera"] = CameraStrategy()
         parsers["carousel"] = CarouselStrategy()
+        parsers["checkbox"] = CheckboxStrategy()
         parsers["choice"] = ChoiceStrategy()
         parsers["codeReader"] = CodeReaderStrategy()
         parsers["col"] = ColStrategy()
         parsers["email"] = EmailStrategy()
-        // TODO foreach and if
         parsers["form"] = FormStrategy()
         parsers["headline"] = HeadlineStrategy()
         parsers["image"] = ImageStrategy()
@@ -71,7 +73,7 @@ class CanonXmlParser {
         parsers["video"] = VideoStrategy()
     }
 
-    fun parse(str: String): List<IRenderable> {
+    open fun parse(str: String): List<IRenderable> {
         try {
             val xml = "<markup><smallDevice>$str</smallDevice></markup>"
 
@@ -84,18 +86,19 @@ class CanonXmlParser {
         }
     }
 
-    fun toRenderables(node:Node):List<IRenderable> {
+    open fun toRenderables(node:Node):List<IRenderable> {
         return toRenderables(node.childNodes, ArrayList())
     }
 
-    private fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
+    open fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
             toRenderable(nodeList.item(i), renderables)
         }
         return renderables
     }
 
-    private fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+    open fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+
         if (node.nodeName.equals("markup"))
             toRenderables(node.childNodes, renderables)
         else if (node.nodeName.equals("#text") && node.textContent.isNotBlank())

@@ -20,12 +20,15 @@ abstract class AbstractVisitor(val map:KotlinMap<String, Any>) : IVisitor {
             is Calendar -> visitCalendar(renderable)
             is Camera -> visitCamera(renderable)
             is Carousel -> visitCarousel(renderable)
+            is Checkbox -> visitCheckbox(renderable)
             is Choice -> visitChoice(renderable)
             is CodeReader -> visitCodeReader(renderable)
             is Col -> visitCol(renderable)
             is Email -> visitEmail(renderable)
+            is Foreach -> visitForeach(renderable)
             is Form -> visitForm(renderable)
             is Headline -> visitHeadline(renderable)
+            is If -> visitIf(renderable)
             is Image -> visitImage(renderable)
             is Italic -> visitItalic(renderable)
             is Items -> visitItems(renderable)
@@ -58,46 +61,49 @@ abstract class AbstractVisitor(val map:KotlinMap<String, Any>) : IVisitor {
         }
     }
 
-    fun visitBlock(renderable: Block) {}
-    fun visitBold(renderable: Bold) {}
-    fun visitBreak(renderable: Break) {}
-    fun visitButton(renderable: Button) {}
-    fun visitCalendar(calendar: Calendar) {}
-    fun visitCamera(camera: Camera) {}
-    fun visitCarousel(renderable: Carousel) {}
-    fun visitChoice(choice: Choice) {}
-    fun visitCodeReader(renderable: CodeReader) {}
-    fun visitCol(renderable: Col) {}
-    fun visitEmail(renderable: Email) {}
-    fun visitForm(renderable: Form) {}
-    fun visitHeadline(renderable: Headline) {}
-    fun visitImage(renderable: Image) {}
-    fun visitItalic(renderable: Italic) {}
-    fun visitItems(renderable: Items) {}
-    fun visitItem(renderable: Item) {}
-    fun visitLabel(renderable: Label) {}
-    fun visitLink(renderable: Link) {}
-    fun visitMap(map: Map) {}
-    fun visitMultipleChoice(multipleChoice: MultipleChoice) {}
-    fun visitOverlay(overlay: Overlay) {}
-    fun visitOverlays(overlays: Overlays) {}
-    fun visitPhone(renderable: Phone) {}
-    fun visitReel(renderable: Reel) {}
-    fun visitReelValue(renderable: ReelValue) {}
-    fun visitRow(renderable: Row) {}
-    fun visitSelection(renderable: Selection) {}
-    fun visitSingleChoice(singleChoice: SingleChoice) {}
-    fun visitSlider(renderable: Slider) {}
-    fun visitSlotMachine(renderable: SlotMachine) {}
-    fun visitSmallDevice(renderable: SmallDevice) {}
-    fun visitSpinner(renderable: Spinner) {}
-    fun visitSubmit(submit: Submit) {}
-    fun visitSuggestion(suggestion: Suggestion) {}
-    fun visitTable(renderable: Table) {}
-    fun visitText(renderable: Text) {}
-    fun visitTextarea(renderable: Textarea) {}
-    fun visitTransition(renderable: Transition) {}
-    fun visitTrigger(renderable: Trigger) {}
-    fun visitUpload(renderable: Upload) {}
-    fun visitVideo(renderable: Video) {}
+    open fun visitBlock(renderable: Block) {}
+    open fun visitBold(renderable: Bold) {}
+    open fun visitBreak(renderable: Break) {}
+    open fun visitButton(renderable: Button) {}
+    open fun visitCalendar(calendar: Calendar) {}
+    open fun visitCamera(camera: Camera) {}
+    open fun visitCarousel(renderable: Carousel) {}
+    open fun visitCheckbox(renderable: Checkbox) {}
+    open fun visitChoice(choice: Choice) {}
+    open fun visitCodeReader(renderable: CodeReader) {}
+    open fun visitCol(renderable: Col) {}
+    open fun visitEmail(renderable: Email) {}
+    open fun visitForeach(renderable: Foreach) {}
+    open fun visitForm(renderable: Form) {}
+    open fun visitHeadline(renderable: Headline) {}
+    open fun visitIf(renderable: If) {}
+    open fun visitImage(renderable: Image) {}
+    open fun visitItalic(renderable: Italic) {}
+    open fun visitItems(renderable: Items) {}
+    open fun visitItem(renderable: Item) {}
+    open fun visitLabel(renderable: Label) {}
+    open fun visitLink(renderable: Link) {}
+    open fun visitMap(map: Map) {}
+    open fun visitMultipleChoice(multipleChoice: MultipleChoice) {}
+    open fun visitOverlay(overlay: Overlay) {}
+    open fun visitOverlays(overlays: Overlays) {}
+    open fun visitPhone(renderable: Phone) {}
+    open fun visitReel(renderable: Reel) {}
+    open fun visitReelValue(renderable: ReelValue) {}
+    open fun visitRow(renderable: Row) {}
+    open fun visitSelection(renderable: Selection) {}
+    open fun visitSingleChoice(singleChoice: SingleChoice) {}
+    open fun visitSlider(renderable: Slider) {}
+    open fun visitSlotMachine(renderable: SlotMachine) {}
+    open fun visitSmallDevice(renderable: SmallDevice) {}
+    open fun visitSpinner(renderable: Spinner) {}
+    open fun visitSubmit(submit: Submit) {}
+    open fun visitSuggestion(suggestion: Suggestion) {}
+    open fun visitTable(renderable: Table) {}
+    open fun visitText(renderable: Text) {}
+    open fun visitTextarea(renderable: Textarea) {}
+    open fun visitTransition(renderable: Transition) {}
+    open fun visitTrigger(renderable: Trigger) {}
+    open fun visitUpload(renderable: Upload) {}
+    open fun visitVideo(renderable: Video) {}
 }

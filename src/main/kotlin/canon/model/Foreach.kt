@@ -49,7 +49,7 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
         renderables.forEach(visitor::visitRenderable)
     }
 
-    fun getType(): String {
+    override fun getType(): String {
         return "text"
     }
 }

@@ -1,4 +1,5 @@
 import groovy.util.Node
+import org.gradle.api.credentials.AwsCredentials
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.bundling.Jar
 
@@ -51,11 +52,10 @@ apply plugin: "com.jfrog.bintray"
 dependencies {
 
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
-    // https://mvnrepository.com/artifact/org.spekframework.spek2/spek-dsl-jvm
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+    compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
 
-    // https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-engine
     testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.5.1'
     testCompile "org.assertj:assertj-core:3.11.1"
 

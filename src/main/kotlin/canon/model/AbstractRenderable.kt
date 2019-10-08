@@ -6,6 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 import com.fasterxml.jackson.core.type.TypeReference
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.module.kotlin.KotlinModule
+import kotlin.collections.Map
 
 abstract class AbstractRenderable(@JsonIgnore val id:String, @JsonIgnore val `class`:String) : IRenderable {
 
@@ -17,7 +18,7 @@ abstract class AbstractRenderable(@JsonIgnore val id:String, @JsonIgnore val `cl
         }
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String, Any> {
         return convertValue(this);
     }
 }

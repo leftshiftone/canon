@@ -43,13 +43,13 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
 
         while (iterator.hasNext()) {
             val nested = HashMap(visitor.getContext()).put(target, iterator.next())
-            renderables.forEach(visitor.wrap(nested as Map<String, Any>)::visitRenderable)
+            renderables.forEach(visitor.wrap(nested as  kotlin.collections.Map<String, Any>)::visitRenderable)
         }
 
         renderables.forEach(visitor::visitRenderable)
     }
 
-    fun getType(): String {
+    override fun getType(): String {
         return "text"
     }
 }

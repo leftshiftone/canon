@@ -21,7 +21,7 @@ class SingleChoiceStrategyTest {
         assertEquals("testClass", parsed.`class`)
         assertEquals("testName", parsed.name)
         assertEquals(true, parsed.sieve)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
     }
 
 }

@@ -20,7 +20,7 @@ class SmallDeviceStrategyTest {
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals("testName", parsed.name)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
     }
 
 }

@@ -22,7 +22,7 @@ class TransitionStrategyTest {
         assertEquals("testName", parsed.name)
         assertEquals("right", parsed.direction)
         assertEquals("in", parsed.wrapped)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
     }
 
 }

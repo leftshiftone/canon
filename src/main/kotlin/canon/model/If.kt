@@ -7,12 +7,12 @@ import canon.api.IVisitor
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 
-class If(@JsonIgnore val expression: String,
-         @JsonIgnore val renderable: IRenderable,
-         @JsonIgnore override val renderables: List<IRenderable>) : IRenderable, IStackeable  {
+class If(@JsonIgnore val expression: String?,
+         @JsonIgnore val renderable: IRenderable?,
+         @JsonIgnore override val renderables: List<IRenderable>?) : IRenderable, IStackeable  {
 
     override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
-        if (evaluator.evaluate(expression.trim(), visitor.getContext()).toBoolean()) visitor.visitRenderable(this.renderable)
+        if (evaluator.evaluate(expression?.trim(), visitor.getContext())?.toBoolean()!!) visitor.visitRenderable(this.renderable)
     }
 
 

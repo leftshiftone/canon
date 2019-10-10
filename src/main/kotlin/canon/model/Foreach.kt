@@ -8,7 +8,7 @@ import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, IStackeable {
+class Foreach (forEachStmt: String?, renderables: IRenderable?) : IRenderable, IStackeable {
 
     @JsonIgnore
     private val target: String
@@ -17,9 +17,9 @@ class Foreach (forEachStmt: String, renderables: IRenderable) : IRenderable, ISt
     override val renderables: List<IRenderable>
 
     init {
-        this.target = getTarget(forEachStmt)
-        this.source = getSource(forEachStmt)
-        this.renderables = listOf(renderables)
+        this.target = forEachStmt?.let { getTarget(it) }.toString()
+        this.source = forEachStmt?.let { getSource(it) }.toString()
+        this.renderables = listOf(renderables) as List<IRenderable>
     }
 
     private fun getTarget(forEachStmt: String): String {

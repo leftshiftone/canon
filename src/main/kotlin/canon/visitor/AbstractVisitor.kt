@@ -10,7 +10,7 @@ import kotlin.collections.Map as KotlinMap
 
 abstract class AbstractVisitor(val map:KotlinMap<String, Any>) : IVisitor {
 
-    override fun visitRenderable(renderable: IRenderable) {
+    override fun visitRenderable(renderable: IRenderable?) {
         when (renderable) {
 
             is Block -> visitBlock(renderable)

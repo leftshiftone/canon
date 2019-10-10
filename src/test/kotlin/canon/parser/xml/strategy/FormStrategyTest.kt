@@ -17,7 +17,7 @@ class FormStrategyTest {
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals("submitForm", parsed.name)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
     }
 
 }

@@ -19,7 +19,7 @@ class RowStrategyTest {
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
     }
 
 }

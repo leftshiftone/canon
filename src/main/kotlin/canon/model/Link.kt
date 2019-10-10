@@ -3,9 +3,9 @@ package canon.model
 import canon.api.IEvaluator
 import kotlin.collections.Map
 
-class Link(id: String, `class`: String, val value: String, val text: String) : AbstractRenderable(id, `class`) {
+class Link(id: String?, `class`: String?, val value: String?, val text: String?) : AbstractRenderable(id, `class`) {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return mapOf("text" to evaluator.evaluate(text, context), "value" to evaluator.evaluate(value, context))
     }
 }

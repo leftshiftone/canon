@@ -17,7 +17,7 @@ class ItemsStrategyTest {
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals(false, parsed.ordered)
-        assertEquals(1, parsed.renderables.size)
+        assertEquals(1, parsed.renderables?.size)
 
     }
 }

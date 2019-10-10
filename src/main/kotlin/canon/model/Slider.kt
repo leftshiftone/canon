@@ -5,16 +5,16 @@ import canon.api.IRenderable
 import org.apache.commons.lang3.StringUtils
 import kotlin.collections.Map
 
-class Slider(id: String,
-             `class`: String,
-             val min: Double,
-             val max: Double,
-             val step: Double,
-             val value: Double,
-             val name:String,
-             val values:String) : AbstractRenderable(id, `class`), IRenderable {
+class Slider(id: String?,
+             `class`: String?,
+             val min: Double?,
+             val max: Double?,
+             val step: Double?,
+             val value: Double?,
+             val name:String?,
+             val values:String?) : AbstractRenderable(id, `class`), IRenderable {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
 
         var valuesArray = arrayOf<String>()
 

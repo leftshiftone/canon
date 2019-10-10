@@ -21,7 +21,7 @@ class MultipleChoiceStrategyTest {
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals("testName", parsed.name)
-        assertEquals(2, parsed.renderables.size)
+        assertEquals(2, parsed.renderables?.size)
     }
 
 }

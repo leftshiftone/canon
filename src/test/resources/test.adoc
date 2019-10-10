@@ -1,0 +1,24 @@
+// tag::on-off-switch[]
+// intent::Wie funktioniert der on/off Switch?
+// intent::Wofür ist dieser Switch auf dem on/off steht?
+
+= On/Off Switch
+
+image::https://cdn4.vectorstock.com/i/thumb-large/57/83/on-and-off-toggle-switch-button-vector-21105783.jpg[]
+
+Dieser Switch ist dazu da um Behaviours inaktiv zu schalten. Man erkennt einen inaktiven Prozess ausßerhalb des
+Bpmn-Designers daran das er in der Behaviour Übersicht einen grauen Label mit der Beschriftung "inaktiv" hat.
+
+. Öffnen eines Behaviours.
+. Beim On/Off Switch auf OFF klicken.
+. Speichern des Behaviours mit einem klick auf den SAVE Button.
+. Nun sieht man den grauen
+
+*Label*
+mit der Bezeichnung "inaktiv" bei dem Behaviour.
+
+----
+<text>abc</text>
+----
+
+// end::on-off-switch[]

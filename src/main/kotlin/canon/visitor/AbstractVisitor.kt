@@ -8,7 +8,7 @@ import canon.model.*
 import canon.model.Map
 import kotlin.collections.Map as KotlinMap
 
-abstract class AbstractVisitor(val map:KotlinMap<String, Any>) : IVisitor {
+abstract class AbstractVisitor(context:KotlinMap<String, Any>) : IVisitor {
 
     override fun visitRenderable(renderable: IRenderable?) {
         when (renderable) {

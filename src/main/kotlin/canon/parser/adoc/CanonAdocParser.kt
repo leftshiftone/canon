@@ -1,7 +1,6 @@
 package canon.parser.adoc
 
-import canon.antlr.CanonLexer
-import canon.antlr.CanonParser
+
 import canon.exception.CanonException
 import canon.parser.adoc.ast.AbstractAST
 import canon.parser.adoc.exception.CanonExceptionListener
@@ -25,7 +24,7 @@ class CanonAdocParser {
         }
 
         private fun parse(stream: CharStream): List<AbstractAST> {
-            val lexer = CanonLexer(stream)
+            /*val lexer = CanonLexer(stream)
             val commonTokenStream = CommonTokenStream(lexer)
             val parser = CanonParser(commonTokenStream)
 
@@ -37,8 +36,8 @@ class CanonAdocParser {
 
             if (errorListener.get() != null) {
                 throw CanonException(errorListener.get())
-            }
-            return astList
+            }*/
+            return ArrayList<AbstractAST>()
         }
     }
 

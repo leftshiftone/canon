@@ -1,12 +1,13 @@
 package canon.parser.adoc
 
-import canon.antlr.CanonBaseVisitor
-import canon.antlr.CanonParser
-import canon.parser.adoc.ast.*
+//import canon.antlr.CanonBaseVisitor
+//import canon.antlr.CanonParser
+//import canon.parser.adoc.ast.*
 
-class CanonVisitor : CanonBaseVisitor<List<AbstractAST>>() {
+class CanonVisitor //: CanonBaseVisitor<List<AbstractAST>>()
+{
 
-    override fun visitHeadline(ctx: CanonParser.HeadlineContext): List<AbstractAST> {
+   /* override fun visitHeadline(ctx: CanonParser.HeadlineContext): List<AbstractAST> {
         return listOf(HeadlineAST(ctx.text.substring(2)))
     }
 
@@ -47,6 +48,6 @@ class CanonVisitor : CanonBaseVisitor<List<AbstractAST>>() {
         if (aggregate != null) list.addAll(aggregate)
         if (nextResult != null) list.addAll(nextResult)
         return list
-    }
+    }*/
 
 }

@@ -149,8 +149,8 @@ generateGrammarSource {
     arguments += ["-visitor"]
 }
 
-classes.dependsOn generateGrammarSource
+compileKotlin.dependsOn generateGrammarSource
 
-testClasses.dependsOn generateTestGrammarSource
+compileTestKotlin.dependsOn generateTestGrammarSource
 
 sourceSets.main.kotlin.srcDirs += new File(buildDir, "generated-src/antlr")

@@ -1,6 +1,7 @@
 package canon.parser.xml
 
 import canon.api.IRenderable
+import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
 import org.w3c.dom.NamedNodeMap
@@ -13,7 +14,7 @@ import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser {
+class CanonXmlParser {
 
     companion object {
         val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()
@@ -75,9 +76,16 @@ open class CanonXmlParser {
 
     open fun parse(str: String): List<IRenderable> {
         try {
-            val xml = "<markup><smallDevice>$str</smallDevice></markup>"
+            var xml = "<markup><smallDevice>$str</smallDevice></markup>"
+            xml = xml.replace("&".toRegex(), "&amp;")
 
             val builder = DOCUMENT_BUILDER.get()
+
+            if (DOCUMENT_BUILDER_FACTORY.get() == null)
+                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance());
+            if (DOCUMENT_BUILDER.get() == null)
+                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder());
+
             val document = builder.parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
             return toRenderables(document)
@@ -86,27 +94,66 @@ open class CanonXmlParser {
         }
     }
 
-    open fun toRenderables(node:Node):List<IRenderable> {
+    fun toRenderables(node:Node):List<IRenderable> {
         return toRenderables(node.childNodes, ArrayList())
     }
 
-    open fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
+     fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
             toRenderable(nodeList.item(i), renderables)
         }
         return renderables
     }
 
-    open fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+
+        val attributes = getAttributes(node.attributes)
+
+        val wrap : (it: IRenderable) -> IRenderable = {
+            if (attributes.containsKey("if")) {
+                If(attributes["if"]!!.trim(), it, java.util.ArrayList())
+            } else if (attributes.containsKey("foreach")) {
+                Foreach(attributes["foreach"], it)
+            }
+            it
+        }
+
 
         if (node.nodeName.equals("markup"))
             toRenderables(node.childNodes, renderables)
-        else if (node.nodeName.equals("#text") && node.textContent.isNotBlank())
-            renderables.add(parsers.get("text")!!.parse(node, this::toRenderables))
+        else if (node.nodeName.equals("#text") && node.textContent.isNotEmpty())
+            renderables.add(wrap(parsers.get("text")!!.parse(node, this::toRenderables)))
         else if (parsers.containsKey(node.nodeName))
-            renderables.add(parsers.get(node.nodeName)!!.parse(node, this::toRenderables))
+            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, this::toRenderables)))
         else
             throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
+    }
+
+    fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {
+        if (attributes == null) {
+            return java.util.HashMap()
+        }
+        val map = java.util.HashMap<String, String>()
+
+        if (attributes.getNamedItem("foreach") != null) {
+            map["foreach"] = attributes.getNamedItem("foreach").textContent
+        }
+        if (attributes.getNamedItem("if") != null) {
+            map["if"] = attributes.getNamedItem("if").textContent
+        }
+        if (attributes.getNamedItem("value") != null) {
+            map["value"] = attributes.getNamedItem("value").textContent
+        }
+        if (attributes.getNamedItem("name") != null) {
+            map["name"] = attributes.getNamedItem("name").textContent
+        }
+
+        for (i in 0 until attributes.length) {
+            val node = attributes.item(i)
+            map[node.nodeName] = node.nodeValue
+        }
+
+        return map
     }
 
 }

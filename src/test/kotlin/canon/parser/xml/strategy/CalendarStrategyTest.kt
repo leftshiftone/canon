@@ -11,7 +11,7 @@ class CalendarStrategyTest {
     @Test
     fun testParse() {
         val xml = "<calendar id='testId' class='testClass' name='testName'></calendar>"
-        val parsed = CalendarStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = CalendarStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

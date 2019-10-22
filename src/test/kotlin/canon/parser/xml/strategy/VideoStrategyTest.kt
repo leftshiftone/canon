@@ -11,7 +11,7 @@ class VideoStrategyTest {
     @Test
     fun testParse() {
         val xml = "<video id='testId' class='testClass' src='testSrc'>test</video>"
-        val parsed = VideoStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = VideoStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

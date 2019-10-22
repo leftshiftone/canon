@@ -5,4 +5,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 
 class Col(id: String?,
           `class`: String?,
-          @JsonIgnore override val renderables:List<IRenderable>?) : AbstractStackeable(id, `class`, renderables)
+          @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(id, `class`, renderables) {
+
+    override fun toString(): String {
+        return "Col() ${super.toString()}"
+    }
+
+}

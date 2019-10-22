@@ -11,7 +11,7 @@ class ItemsStrategyTest {
     @Test
     fun testParse() {
         val xml = "<items id='testId' class='testClass' ordered='false'><item id='a' class='b'></item></items>"
-        val parsed = ItemsStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = ItemsStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

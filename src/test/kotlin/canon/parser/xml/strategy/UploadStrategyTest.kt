@@ -1,7 +1,6 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -13,7 +12,7 @@ class UploadStrategyTest {
     fun testParse() {
         val xml = "<upload id='testId' class='testClass' accept='jpeg, png' name='testName' " +
                 "maxSize='5.0' maxCompressSize='1.0'>test</upload>"
-        val parsed = UploadStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = UploadStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

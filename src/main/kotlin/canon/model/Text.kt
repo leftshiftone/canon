@@ -1,18 +1,26 @@
 package canon.model
 
-import canon.api.IEvaluator
-import kotlin.collections.Map
+class Text(id: String?, `class`: String?, val text: String?) : AbstractRenderable(id, `class`) {
 
-class Text(id: String?,
-           `class`: String?,
-           val regex: String?,
-           val placeholder: String?,
-           val required: Boolean?,
-           val name: String?,
-           val value: String?) : AbstractRenderable(id, `class`) {
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Text) return false
+        if (!super.equals(other)) return false
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return mapOf("regex" to regex, "placeholder" to evaluator.evaluate(placeholder?: "", context), "name" to name, "value" to evaluator.evaluate(value ?: "",
-        context), "required" to required)
+        if (text != other.text) return false
+
+        return true
     }
+
+    override fun hashCode(): Int {
+        var result = super.hashCode()
+        result = 31 * result + (text?.hashCode() ?: 0)
+        return result
+    }
+
+    override fun toString(): String {
+        return "Text(text=$text) ${super.toString()}"
+    }
+
+
 }

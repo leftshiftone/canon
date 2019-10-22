@@ -6,7 +6,8 @@ import canon.model.Link
 import org.w3c.dom.Node
 
 class LinkStrategy : AbstractParseStrategy<Link>() {
-    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Link {
+    
+    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Link {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val value = node.attrAsText("value")

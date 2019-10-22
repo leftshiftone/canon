@@ -8,7 +8,7 @@ import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-class Foreach (forEachStmt: String?, renderables: IRenderable?) : IRenderable, IStackeable {
+class Foreach(forEachStmt: String?, renderables: IRenderable?) : IRenderable, IStackeable {
 
     @JsonIgnore
     private val target: String
@@ -43,7 +43,7 @@ class Foreach (forEachStmt: String?, renderables: IRenderable?) : IRenderable, I
 
         while (iterator.hasNext()) {
             val nested = HashMap(visitor.getContext()).put(target, iterator.next())
-            renderables.forEach(visitor.wrap(nested as  kotlin.collections.Map<String, Any>)::visitRenderable)
+            renderables.forEach(visitor.wrap(nested as kotlin.collections.Map<String, Any>)::visitRenderable)
         }
 
         renderables.forEach(visitor::visitRenderable)
@@ -52,4 +52,25 @@ class Foreach (forEachStmt: String?, renderables: IRenderable?) : IRenderable, I
     override fun getType(): String {
         return "text"
     }
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Foreach) return false
+
+        if (target != other.target) return false
+        if (source != other.source) return false
+
+        return true
+    }
+
+    override fun hashCode(): Int {
+        var result = target.hashCode()
+        result = 31 * result + source.hashCode()
+        return result
+    }
+
+    override fun toString(): String {
+        return "Foreach(target='$target', source='$source')"
+    }
+
 }

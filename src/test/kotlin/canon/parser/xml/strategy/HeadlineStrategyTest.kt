@@ -11,7 +11,7 @@ class HeadlineStrategyTest {
     @Test
     fun testParse() {
         val xml = "<headline id='testId' class='testClass'>text</headline>"
-        val parsed = HeadlineStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = HeadlineStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

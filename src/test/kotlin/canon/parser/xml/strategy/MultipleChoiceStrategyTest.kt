@@ -1,7 +1,6 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -15,7 +14,7 @@ class MultipleChoiceStrategyTest {
                 "<choice id='testId2' class='testClass' text='testText' selected='true'></choice>" +
                 "<choice id='testId3' class='testClass' text='testText' selected='false'></choice>" +
                 "</multipleChoice>"
-        val parsed = MultipleChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = MultipleChoiceStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

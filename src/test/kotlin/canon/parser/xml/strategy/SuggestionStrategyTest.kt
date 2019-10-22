@@ -11,7 +11,7 @@ class SuggestionStrategyTest {
     @Test
     fun testParse() {
         val xml = "<suggestion id='testId' class='testClass' name='testName' value='testValue'>text</suggestion>"
-        val parsed = SuggestionStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = SuggestionStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

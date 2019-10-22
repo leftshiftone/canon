@@ -11,7 +11,7 @@ class ItalicStrategyTest {
     @Test
     fun testParse() {
         val xml = "<italic id='testId' class='testClass'>text</italic>"
-        val parsed = ItalicStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = ItalicStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

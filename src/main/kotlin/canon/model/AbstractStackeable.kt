@@ -13,5 +13,6 @@ abstract class AbstractStackeable(id: String?,
     override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         renderables?.forEach(visitor::visitRenderable)
     }
+    
 
 }

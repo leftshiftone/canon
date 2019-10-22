@@ -3,12 +3,13 @@ package canon.parser.xml.strategy
 import canon.api.IRenderable
 import canon.extension.attrAsBoolean
 import canon.extension.attrAsText
-import canon.model.NewText
+import canon.model.Text
+import canon.model.TextInput
 import org.w3c.dom.Node
 
-class TextStrategy : AbstractParseStrategy<NewText>() {
+class TextInputStrategy : AbstractParseStrategy<TextInput>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): NewText {
+    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>) : TextInput {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val regex = node.attrAsText("regex")
@@ -16,7 +17,6 @@ class TextStrategy : AbstractParseStrategy<NewText>() {
         val required = node.attrAsBoolean("required", false)
         val name = node.attrAsText("name")
 
-        return NewText(id, `class`, regex, placeholder, required, name, node.textContent)
+        return TextInput(id, `class`, regex, placeholder, required, name, node.textContent)
     }
-
 }

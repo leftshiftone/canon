@@ -10,8 +10,6 @@ import org.w3c.dom.NodeList
 import java.io.ByteArrayInputStream
 import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
-import kotlin.collections.ArrayList
-import kotlin.collections.HashMap
 import kotlin.text.Charsets.UTF_8
 
 class CanonXmlParser {
@@ -27,7 +25,7 @@ class CanonXmlParser {
         }
     }
 
-    private val parsers:HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
+    private val parsers: HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
 
     init {
         parsers["block"] = BlockStrategy()
@@ -48,7 +46,8 @@ class CanonXmlParser {
         parsers["italic"] = ItalicStrategy()
         parsers["item"] = ItemStrategy()
         parsers["items"] = ItemsStrategy()
-        parsers["label"] = LabelStrategy()
+        //parsers["label"] = LabelStrategy()
+        parsers["text"] = OldTextStrategy()
         parsers["link"] = LinkStrategy()
         parsers["map"] = MapStrategy()
         parsers["multipleChoice"] = MultipleChoiceStrategy()
@@ -67,49 +66,48 @@ class CanonXmlParser {
         parsers["submit"] = SubmitStrategy()
         parsers["suggestion"] = SuggestionStrategy()
         parsers["table"] = TableStrategy()
-        parsers["text"] = TextStrategy()
+        //parsers["text"] = TextStrategy()
+        parsers["textInput"] = TextInputStrategy()
         parsers["textarea"] = TextareaStrategy()
         parsers["trigger"] = TriggerStrategy()
         parsers["upload"] = UploadStrategy()
         parsers["video"] = VideoStrategy()
     }
 
-    open fun parse(str: String): List<IRenderable> {
+    open fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
         try {
             var xml = "<markup><smallDevice>$str</smallDevice></markup>"
-            xml = xml.replace("&".toRegex(), "&amp;")
-
-            val builder = DOCUMENT_BUILDER.get()
 
             if (DOCUMENT_BUILDER_FACTORY.get() == null)
                 DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance());
             if (DOCUMENT_BUILDER.get() == null)
                 DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder());
 
-            val document = builder.parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
+            val document = DOCUMENT_BUILDER.get().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
-            return toRenderables(document)
+            return toRenderables(document.childNodes, ArrayList<IRenderable>(), context)
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    fun toRenderables(node:Node):List<IRenderable> {
-        return toRenderables(node.childNodes, ArrayList())
-    }
-
-     fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
+    fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>, context: Map<String, Any?>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
-            toRenderable(nodeList.item(i), renderables)
+            toRenderable(nodeList.item(i), renderables, context)
         }
         return renderables
     }
 
-    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+    fun toRenderables(node: Node, context: Map<String, Any?>): List<IRenderable> {
+        return toRenderables(node.childNodes, ArrayList(), context)
+    }
+
+
+    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>, context: Map<String, Any?>) {
 
         val attributes = getAttributes(node.attributes)
 
-        val wrap : (it: IRenderable) -> IRenderable = {
+        val wrap: (it: IRenderable) -> IRenderable = {
             if (attributes.containsKey("if")) {
                 If(attributes["if"]!!.trim(), it, java.util.ArrayList())
             } else if (attributes.containsKey("foreach")) {
@@ -118,13 +116,12 @@ class CanonXmlParser {
             it
         }
 
-
         if (node.nodeName.equals("markup"))
-            toRenderables(node.childNodes, renderables)
+            toRenderables(node.childNodes, renderables, context)
         else if (node.nodeName.equals("#text") && node.textContent.isNotEmpty())
-            renderables.add(wrap(parsers.get("text")!!.parse(node, this::toRenderables)))
+            renderables.add(wrap(parsers.get("text")!!.parse(node, context, this::toRenderables)))
         else if (parsers.containsKey(node.nodeName))
-            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, this::toRenderables)))
+            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, context, this::toRenderables)))
         else
             throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
     }

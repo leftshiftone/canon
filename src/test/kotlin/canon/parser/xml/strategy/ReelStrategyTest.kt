@@ -1,7 +1,6 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -14,7 +13,7 @@ class ReelStrategyTest {
         val xml = "<reel id='testId' class='testClass' name='testName'>" +
                 "<reelValue id='testId2' class='testClass' value='testValue' valueType='string'></reelValue>" +
                 "</reel>"
-        val parsed = ReelStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = ReelStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

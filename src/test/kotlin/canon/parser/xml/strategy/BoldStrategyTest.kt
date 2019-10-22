@@ -11,7 +11,7 @@ class BoldStrategyTest {
     @Test
     fun testParse() {
         val xml = "<bold id='testId' class='testClass'>text</bold>"
-        val parsed = BoldStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = BoldStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

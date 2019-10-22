@@ -7,7 +7,8 @@ import canon.model.Phone
 import org.w3c.dom.Node
 
 class PhoneStrategy : AbstractParseStrategy<Phone>() {
-    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Phone {
+    
+    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Phone {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val placeholder = node.attrAsText("placeholder")

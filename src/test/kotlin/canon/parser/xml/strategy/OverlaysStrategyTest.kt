@@ -1,7 +1,6 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -15,7 +14,7 @@ class OverlaysStrategyTest {
                 "<overlay id='testId1' class='testClass' trigger='testTrigger'>" +
                 "<text id='testId2' class='testClass'>test</text>" +
                 "</overlay></overlays>"
-        val parsed = OverlayStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = OverlayStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

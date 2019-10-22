@@ -1,7 +1,6 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Camera
 import canon.parser.xml.CanonXmlParser
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
@@ -12,7 +11,7 @@ class CarouselStrategyTest {
     @Test
     fun testParse() {
         val xml = "<carousel id='testId' class='testClass' text='testText' name='testName'></carousel>"
-        val parsed = CarouselStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+        val parsed = CarouselStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

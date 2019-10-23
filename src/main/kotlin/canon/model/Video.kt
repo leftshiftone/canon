@@ -1,28 +1,10 @@
 package canon.model
 
-class Video(id: String?,
-            `class`: String?,
-            val src: String?) : AbstractRenderable(id, `class`) {
+import canon.api.IRenderable
+import com.fasterxml.jackson.annotation.JsonIgnore
 
-    override fun equals(other: Any?): Boolean {
-        if (this === other) return true
-        if (other !is Video) return false
-        if (!super.equals(other)) return false
-
-        if (src != other.src) return false
-
-        return true
-    }
-
-    override fun hashCode(): Int {
-        var result = super.hashCode()
-        result = 31 * result + (src?.hashCode() ?: 0)
-        return result
-    }
-
-    override fun toString(): String {
-        return "Video(src=$src) ${super.toString()}"
-    }
-
-
+data class Video(@JsonIgnore val id: String?,
+                 @JsonIgnore val `class`: String?,
+                 val src: String?) : IRenderable {
+    override fun toString() = "Video(src=$src)"
 }

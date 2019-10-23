@@ -1,14 +1,11 @@
 package canon.parser.adoc
 
 import canon.parser.adoc.ast.*
-import jdk.nashorn.internal.ir.annotations.Ignore
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
-@Ignore
 class CanonAdocParserTest {
 
-    /**
     @Test
     fun parseHeadline() {
         val tree = CanonAdocParser.parse("= text")
@@ -76,5 +73,5 @@ Text
         require(tree.size ==1)
         require(tree[0] is TagAST)
     }
-**/
+
 }

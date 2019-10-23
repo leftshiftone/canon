@@ -74,10 +74,11 @@ class CanonXmlParser {
         parsers["video"] = VideoStrategy()
     }
 
-    open fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
+    fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
         try {
-            var xml = "<markup><smallDevice>$str</smallDevice></markup>"
+            val xml = "<markup><smallDevice>$str</smallDevice></markup>"
 
+            // TODO: refactor!
             if (DOCUMENT_BUILDER_FACTORY.get() == null)
                 DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance());
             if (DOCUMENT_BUILDER.get() == null)
@@ -102,7 +103,7 @@ class CanonXmlParser {
         return toRenderables(node.childNodes, ArrayList(), context)
     }
 
-
+    // TODO: refactor!
     fun toRenderable(node: Node, renderables: ArrayList<IRenderable>, context: Map<String, Any?>) {
 
         val attributes = getAttributes(node.attributes)

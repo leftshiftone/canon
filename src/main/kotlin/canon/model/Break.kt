@@ -1,8 +1,8 @@
 package canon.model
 
-class Break(id: String?, `class`: String?) : AbstractRenderable(id, `class`) {
+import canon.api.IRenderable
+import com.fasterxml.jackson.annotation.JsonIgnore
 
-    override fun toString(): String {
-        return "Break() ${super.toString()}"
-    }
+data class Break(@JsonIgnore val id: String?, @JsonIgnore val `class`: String?) : IRenderable {
+    override fun toString() = "Break()"
 }

@@ -3,12 +3,10 @@ package canon.model
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-class Col(id: String?,
-          `class`: String?,
-          @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(id, `class`, renderables) {
+data class Col(@JsonIgnore val id: String?,
+          @JsonIgnore val `class`: String?,
+          @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(renderables) {
 
-    override fun toString(): String {
-        return "Col() ${super.toString()}"
-    }
+    override fun toString() = "Col() { ${renderables?.map { it.toString() }} }"
 
 }

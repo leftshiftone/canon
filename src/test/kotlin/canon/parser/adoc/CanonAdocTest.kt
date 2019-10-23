@@ -1,13 +1,10 @@
 package canon.parser.adoc
 
 import canon.parser.adoc.ast.*
-import jdk.nashorn.internal.ir.annotations.Ignore
 import org.junit.jupiter.api.Test
-
 
 class CanonAdocTest {
 
-    /**
     @Test
     fun test() {
         val stream = CanonAdocTest::class.java.getResourceAsStream("/test.adoc")
@@ -25,5 +22,5 @@ class CanonAdocTest {
         require((tree[0] as TagAST).list[7] is LabelAST)
         require((tree[0] as TagAST).list[8] is CodeAST)
     }
-**/
+
 }

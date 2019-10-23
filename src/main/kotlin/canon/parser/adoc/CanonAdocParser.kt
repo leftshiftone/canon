@@ -1,6 +1,5 @@
 package canon.parser.adoc
 
-
 import canon.antlr.CanonLexer
 import canon.antlr.CanonParser
 import canon.exception.CanonException
@@ -39,7 +38,7 @@ class CanonAdocParser {
             if (errorListener.get() != null) {
                 throw CanonException(errorListener.get())
             }
-            return ArrayList<AbstractAST>()
+            return astList
         }
     }
 

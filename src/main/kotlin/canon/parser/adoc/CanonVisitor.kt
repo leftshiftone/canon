@@ -4,10 +4,9 @@ import canon.antlr.CanonBaseVisitor
 import canon.antlr.CanonParser
 import canon.parser.adoc.ast.*
 
-class CanonVisitor : CanonBaseVisitor<List<AbstractAST>>()
-{
+class CanonVisitor : CanonBaseVisitor<List<AbstractAST>>() {
 
-   override fun visitHeadline(ctx: CanonParser.HeadlineContext): List<AbstractAST> {
+    override fun visitHeadline(ctx: CanonParser.HeadlineContext): List<AbstractAST> {
         return listOf(HeadlineAST(ctx.text.substring(2)))
     }
 

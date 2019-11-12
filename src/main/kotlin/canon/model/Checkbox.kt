@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 @Deprecated("Use Choice instead")
 data class Checkbox(@JsonIgnore val id: String?,

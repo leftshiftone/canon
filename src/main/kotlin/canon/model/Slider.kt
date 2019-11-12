@@ -4,6 +4,7 @@ import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 import org.apache.commons.lang3.StringUtils
+import kotlin.collections.Map
 
 data class Slider(@JsonIgnore val id: String?,
                   @JsonIgnore val `class`: String?,

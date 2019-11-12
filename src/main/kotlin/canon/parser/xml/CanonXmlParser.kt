@@ -60,7 +60,7 @@ class CanonXmlParser {
         parsers["selection"] = SelectionStrategy()
         parsers["singleChoice"] = SingleChoiceStrategy()
         parsers["slider"] = SliderStrategy()
-        parsers["slotMachine"] = SlotMachineStrategy()
+        parsers["slotmachine"] = SlotMachineStrategy()
         parsers["smallDevice"] = SmallDeviceStrategy()
         parsers["spinner"] = SpinnerStrategy()
         parsers["submit"] = SubmitStrategy()

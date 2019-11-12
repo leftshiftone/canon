@@ -4,6 +4,7 @@ import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.support.Base64
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class Suggestion(@JsonIgnore val id: String?,
                       @JsonIgnore val `class`: String?,

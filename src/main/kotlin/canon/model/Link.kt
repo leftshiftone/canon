@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class Link(@JsonIgnore val id: String?, @JsonIgnore val `class`: String?, val value: String?, val text: String?) : IRenderable {
 

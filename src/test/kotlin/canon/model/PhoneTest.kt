@@ -1,6 +1,6 @@
 package canon.model
 
-import io.mockk.mockk
+import canon.support.TestEvaluator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -10,9 +10,9 @@ class PhoneTest {
     @Test
     fun testPhoneMapping() {
         val mapped = Phone("testId", "testClass", "placeHolder", false,
-                "testName", "testValue").toMap(HashMap(), mockk())
+                "testName", "testValue").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
+        assertEquals(6, mapped.size)
         assertEquals("placeHolder", mapped.get("placeholder"))
         assertEquals(false, mapped.get("required"))
         assertEquals("testName", mapped.get("name"))

@@ -1,12 +1,13 @@
 package canon.model
 
+import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IVisitor
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Map(@JsonIgnore val id: String?,
-               @JsonIgnore val `class`: String?,
+data class Map(@JsonIgnore override val id: String?,
+               @JsonIgnore override val `class`: String?,
                val name: String?,
                val src: String?,
                val mapType: String?,
@@ -15,7 +16,7 @@ data class Map(@JsonIgnore val id: String?,
                val exact: Boolean?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
-               val maxSelections: Int?) : IRenderable {
+               val maxSelections: Int?) : IRenderable, IClassAware {
 
     override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         // do nothing

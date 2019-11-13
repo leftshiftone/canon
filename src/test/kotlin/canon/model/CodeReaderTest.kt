@@ -1,6 +1,6 @@
 package canon.model
 
-import io.mockk.mockk
+import canon.support.TestEvaluator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -10,9 +10,9 @@ class CodeReaderTest {
     @Test
     fun testCodeReaderMapping() {
         val mapped = CodeReader("testId", "testClass", "testName", "testFormat")
-                .toMap(HashMap(), mockk())
+                .toMap(HashMap(), TestEvaluator())
 
-        assertEquals(2, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("testName", mapped.get("name"))
         assertEquals("testFormat", mapped.get("format"))
     }

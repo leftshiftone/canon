@@ -1,14 +1,15 @@
 package canon.model
 
+import canon.api.IClassAware
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Email(@JsonIgnore val id: String?,
-                 @JsonIgnore val `class`: String?,
+data class Email(@JsonIgnore override val id: String?,
+                 @JsonIgnore override val `class`: String?,
                  val placeholder: String?,
                  val required: Boolean?,
                  val name: String?,
-                 val value: String?) : IRenderable {
+                 val value: String?) : IRenderable, IClassAware {
 
     override fun toString() = "Email(placeholder=$placeholder, required=$required, name=$name, value=$value)"
 }

@@ -76,7 +76,9 @@ class CanonXmlParser {
 
     fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
         try {
-            val xml = "<markup><smallDevice>$str</smallDevice></markup>"
+            var xml = str.replace("&", "&amp;")
+            xml = str.replace("\n", "")
+            xml = "<markup><smallDevice>$xml</smallDevice></markup>"
 
             // TODO: refactor!
             if (DOCUMENT_BUILDER_FACTORY.get() == null)

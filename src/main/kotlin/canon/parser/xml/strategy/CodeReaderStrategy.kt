@@ -7,7 +7,7 @@ import org.w3c.dom.Node
 
 class CodeReaderStrategy : AbstractParseStrategy<CodeReader>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): CodeReader {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): CodeReader {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")

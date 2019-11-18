@@ -11,7 +11,7 @@ class CameraStrategyTest {
     @Test
     fun testParse() {
         val xml = "<camera id='testId' class='testClass' name='testName' maxCompressSize='1.0'></camera>"
-        val parsed = CameraStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = CameraStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

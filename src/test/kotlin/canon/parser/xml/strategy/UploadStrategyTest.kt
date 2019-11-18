@@ -12,7 +12,7 @@ class UploadStrategyTest {
     fun testParse() {
         val xml = "<upload id='testId' class='testClass' accept='jpeg, png' name='testName' " +
                 "maxSize='5.0' maxCompressSize='1.0'>test</upload>"
-        val parsed = UploadStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = UploadStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

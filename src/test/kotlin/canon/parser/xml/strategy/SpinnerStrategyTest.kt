@@ -13,7 +13,7 @@ class SpinnerStrategyTest {
         val xml = "<spinner id='testId' class='testClass' name='testName' " +
                 "min='1.0' step='2.0' value='1.5' values='1.0, 5.0, 10.0'>" +
                 "</spinner>"
-        val parsed = SpinnerStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SpinnerStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

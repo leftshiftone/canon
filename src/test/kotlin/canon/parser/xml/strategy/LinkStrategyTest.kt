@@ -11,7 +11,7 @@ class LinkStrategyTest {
     @Test
     fun testParse() {
         val xml = "<link id='testId' class='testClass' value='testValue' text='testText'></link>"
-        val parsed = LinkStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = LinkStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

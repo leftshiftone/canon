@@ -12,7 +12,7 @@ class TextStrategyTest {
     fun testParse() {
         val xml = "<text id='testId' class='testClass' regex='regEx' placeholder='*' " +
                 "required='true' name='testName'>test</text>"
-        val parsed = TextStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TextStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

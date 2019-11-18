@@ -8,7 +8,7 @@ import org.w3c.dom.Node
 
 class TextStrategy : AbstractParseStrategy<NewText>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): NewText {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): NewText {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val regex = node.attrAsText("regex")

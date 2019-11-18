@@ -12,7 +12,7 @@ class ButtonStrategyTest {
     @Test
     fun testParse() {
         val xml = "<button id='testId' class='testClass' text='testText' name='testName' value='testValue'>testText</button>"
-        val parsed = ButtonStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = ButtonStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

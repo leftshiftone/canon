@@ -11,7 +11,7 @@ class ColStrategyTest {
     @Test
     fun testParse() {
         val xml = "<col id='testId' class='testClass'><text>test</text></col>"
-        val parsed = ColStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = ColStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

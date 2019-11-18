@@ -13,7 +13,7 @@ class ReelStrategyTest {
         val xml = "<reel id='testId' class='testClass' name='testName'>" +
                 "<reelValue id='testId2' class='testClass' value='testValue' valueType='string'></reelValue>" +
                 "</reel>"
-        val parsed = ReelStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = ReelStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

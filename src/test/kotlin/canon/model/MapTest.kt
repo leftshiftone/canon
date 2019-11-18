@@ -11,17 +11,18 @@ class MapTest {
     fun testMapMapping() {
         val mapped = Map("testId", "testClass", "testName", "testSrc",
                 "type", "centerlng", "centerlat", true,
-                false, true, 1).toMap(HashMap(), TestEvaluator())
+                false, true, 12,1).toMap(HashMap(), TestEvaluator())
 
         assertEquals(11, mapped.size)
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testSrc", mapped.get("src"))
-        assertEquals("type", mapped.get("mapType"))
-        assertEquals("centerlng", mapped.get("centerLng"))
-        assertEquals("centerlat", mapped.get("centerLat"))
-        assertEquals(true, mapped.get("exact"))
-        assertEquals(false, mapped.get("centerBrowserLocation"))
-        assertEquals(true, mapped.get("required"))
-        assertEquals(1, mapped.get("maxSelections"))
+        assertEquals("testName", mapped["name"])
+        assertEquals("testSrc", mapped["src"])
+        assertEquals("type", mapped["mapType"])
+        assertEquals("centerlng", mapped["centerLng"])
+        assertEquals("centerlat", mapped["centerLat"])
+        assertEquals(true, mapped["exact"])
+        assertEquals(false, mapped["centerBrowserLocation"])
+        assertEquals(true, mapped["required"])
+        assertEquals(12, mapped["zoom"])
+        assertEquals(1, mapped["maxSelections"])
     }
 }

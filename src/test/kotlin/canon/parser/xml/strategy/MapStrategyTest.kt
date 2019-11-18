@@ -12,7 +12,7 @@ class MapStrategyTest {
     fun testParse() {
         val xml = "<map id='testId' class='testClass' name='testName' src='testSrc' " +
                 "mapType='type' centerLng='12.0' centerLat='10.0' exact='true'></map>"
-        val parsed = MapStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = MapStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

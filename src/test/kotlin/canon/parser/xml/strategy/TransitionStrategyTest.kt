@@ -13,7 +13,7 @@ class TransitionStrategyTest {
         val xml = "<transition id='testId' class='testClass' name='testName' direction='right' wrapped='in'>" +
                 "<text id='testId2' class='testClass'>test</text>" +
                 "</transition>"
-        val parsed = TransitionStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TransitionStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

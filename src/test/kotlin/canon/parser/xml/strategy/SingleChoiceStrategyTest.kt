@@ -13,7 +13,7 @@ class SingleChoiceStrategyTest {
         val xml = "<singleChoice id='testId' class='testClass' name='testName' sieve='true'>" +
                 "<choice id='testId2' class='testClass' text='testText' selected='true'></choice>" +
                 "</singleChoice>"
-        val parsed = SingleChoiceStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SingleChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

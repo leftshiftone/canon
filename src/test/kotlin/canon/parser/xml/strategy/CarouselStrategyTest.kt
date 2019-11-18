@@ -11,7 +11,7 @@ class CarouselStrategyTest {
     @Test
     fun testParse() {
         val xml = "<carousel id='testId' class='testClass' text='testText' name='testName'></carousel>"
-        val parsed = CarouselStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = CarouselStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

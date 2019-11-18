@@ -14,7 +14,7 @@ class MultipleChoiceStrategyTest {
                 "<choice id='testId2' class='testClass' text='testText' selected='true'></choice>" +
                 "<choice id='testId3' class='testClass' text='testText' selected='false'></choice>" +
                 "</multipleChoice>"
-        val parsed = MultipleChoiceStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = MultipleChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

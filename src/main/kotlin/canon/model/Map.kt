@@ -16,6 +16,7 @@ data class Map(@JsonIgnore override val id: String?,
                val exact: Boolean?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
+               val zoom: Int?,
                val maxSelections: Int?) : IRenderable, IClassAware {
 
     override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
@@ -23,7 +24,7 @@ data class Map(@JsonIgnore override val id: String?,
     }
 
     override fun toString(): String {
-        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, exact=$exact, centerBrowserLocation=$centerBrowserLocation, required=$required, maxSelections=$maxSelections) ${super.toString()}"
+        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, exact=$exact, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections) ${super.toString()}"
     }
 
 }

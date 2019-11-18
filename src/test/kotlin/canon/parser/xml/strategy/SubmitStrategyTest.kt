@@ -11,7 +11,7 @@ class SubmitStrategyTest {
     @Test
     fun testParse() {
         val xml = "<submit id='testId' class='testClass' name='testName'>text</submit>"
-        val parsed = SubmitStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SubmitStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

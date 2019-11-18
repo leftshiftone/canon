@@ -11,7 +11,7 @@ class ImageStrategyTest {
     @Test
     fun testParse() {
         val xml = "<image id='testId' class='testClass' src='testSrc' width='10.0' height='20.0'></image>"
-        val parsed = ImageStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = ImageStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

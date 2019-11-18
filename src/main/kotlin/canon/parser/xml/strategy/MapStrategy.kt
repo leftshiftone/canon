@@ -10,8 +10,7 @@ import org.w3c.dom.Node
 
 class MapStrategy : AbstractParseStrategy<Map>() {
 
-    override fun parse(node: Node, context: kotlin.collections.Map<String, Any?>
-                       , factory: (Node, kotlin.collections.Map<String, Any?>) -> List<IRenderable>): Map {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Map {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
@@ -23,8 +22,9 @@ class MapStrategy : AbstractParseStrategy<Map>() {
         val exact = node.attrAsBoolean("exact", false)
         val centerBrowserLocation = node.attrAsBoolean("centerBrowserLocation", false)
         val required = node.attrAsBoolean("required", false)
+        val zoom = node.attrAsInt("zoom", 8)
         val maxSelections = node.attrAsInt("maxSelections", 3)
 
-        return Map(id, `class`, name, src, mapType, centerLng, centerLat, exact, centerBrowserLocation, required, maxSelections)
+        return Map(id, `class`, name, src, mapType, centerLng, centerLat, exact, centerBrowserLocation, required, zoom, maxSelections)
     }
 }

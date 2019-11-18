@@ -8,12 +8,12 @@ import org.w3c.dom.Node
 
 class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): SingleChoice {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SingleChoice {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
         val sieve = node.attrAsBoolean("sieve", false)
 
-        return SingleChoice(id, `class`, name, sieve, factory(node, context))
+        return SingleChoice(id, `class`, name, sieve, factory(node))
     }
 }

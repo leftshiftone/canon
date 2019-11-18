@@ -12,7 +12,7 @@ import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-class CanonXmlParser {
+open class CanonXmlParser {
 
     companion object {
         val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()
@@ -74,39 +74,38 @@ class CanonXmlParser {
         parsers["video"] = VideoStrategy()
     }
 
-    fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
+    fun parse(str: String): List<IRenderable> {
         try {
             var xml = str.replace("&", "&amp;")
-            xml = str.replace("\n", "")
             xml = "<markup><smallDevice>$xml</smallDevice></markup>"
 
             // TODO: refactor!
             if (DOCUMENT_BUILDER_FACTORY.get() == null)
-                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance());
+                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
             if (DOCUMENT_BUILDER.get() == null)
-                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder());
+                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
 
             val document = DOCUMENT_BUILDER.get().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
-            return toRenderables(document.childNodes, ArrayList<IRenderable>(), context)
+            return toRenderables(document.childNodes, ArrayList<IRenderable>())
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>, context: Map<String, Any?>): List<IRenderable> {
+    fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
-            toRenderable(nodeList.item(i), renderables, context)
+            toRenderable(nodeList.item(i), renderables)
         }
         return renderables
     }
 
-    fun toRenderables(node: Node, context: Map<String, Any?>): List<IRenderable> {
-        return toRenderables(node.childNodes, ArrayList(), context)
+    fun toRenderables(node: Node): List<IRenderable> {
+        return toRenderables(node.childNodes, ArrayList())
     }
 
     // TODO: refactor!
-    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>, context: Map<String, Any?>) {
+    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
 
         val attributes = getAttributes(node.attributes)
 
@@ -120,11 +119,11 @@ class CanonXmlParser {
         }
 
         if (node.nodeName.equals("markup"))
-            toRenderables(node.childNodes, renderables, context)
-        else if (node.nodeName.equals("#text") && node.textContent.isNotEmpty())
-            renderables.add(wrap(parsers.get("text")!!.parse(node, context, this::toRenderables)))
-        else if (parsers.containsKey(node.nodeName))
-            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, context, this::toRenderables)))
+            toRenderables(node.childNodes, renderables)
+        else if (node.nodeName.equals("#text")) {
+            if (node.textContent.isNotBlank()) renderables.add(wrap(parsers.get("text")!!.parse(node, this::toRenderables)))
+        } else if (parsers.containsKey(node.nodeName))
+            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, this::toRenderables)))
         else
             throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
     }
@@ -156,4 +155,7 @@ class CanonXmlParser {
         return map
     }
 
+    fun setParseStrategy(key: String, parseStrategy: AbstractParseStrategy<IRenderable>) {
+        parsers[key] = parseStrategy
+    }
 }

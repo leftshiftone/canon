@@ -8,7 +8,7 @@ import org.w3c.dom.Node
 
 class UploadStrategy : AbstractParseStrategy<Upload>() {
     
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Upload {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Upload {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val accept = node.attrAsText("accept")

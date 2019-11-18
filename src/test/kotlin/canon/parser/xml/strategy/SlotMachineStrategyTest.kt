@@ -12,7 +12,7 @@ class SlotMachineStrategyTest {
     fun testParse() {
         val xml = "<slotmachine id='testId' class='testClass' name='testName'>" +
                 "</slotmachine>"
-        val parsed = SlotMachineStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SlotMachineStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

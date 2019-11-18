@@ -11,7 +11,7 @@ class EmailStrategyTest {
     @Test
     fun testParse() {
         val xml = "<email id='testId' class='testClass' placeholder='*' required='true' name='testName'>text</email>"
-        val parsed = EmailStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = EmailStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

@@ -24,6 +24,7 @@ open class CanonXmlParser {
             DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
         }
 
+        @JvmStatic
         fun getDocumentBuilder(): DocumentBuilder {
             // TODO: refactor!
             if (DOCUMENT_BUILDER_FACTORY.get() == null)

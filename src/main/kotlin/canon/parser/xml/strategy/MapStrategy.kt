@@ -2,6 +2,7 @@ package canon.parser.xml.strategy
 
 import canon.api.IRenderable
 import canon.extension.attrAsBoolean
+import canon.extension.attrAsDouble
 import canon.extension.attrAsInt
 import canon.extension.attrAsText
 import canon.model.Map
@@ -17,8 +18,8 @@ class MapStrategy : AbstractParseStrategy<Map>() {
         val src = node.attrAsText("src")
         var mapType = node.attrAsText("mapType")
         if (StringUtils.isEmpty(mapType) || StringUtils.equals(mapType, "google") || StringUtils.equals(mapType, "osm")) mapType = "osm"
-        val centerLng = node.attrAsText("centerLng")
-        val centerLat = node.attrAsText("centerLat")
+        val centerLng = node.attrAsDouble("centerLng", 0.0)
+        val centerLat = node.attrAsDouble("centerLat", 0.0)
         val exact = node.attrAsBoolean("exact", false)
         val centerBrowserLocation = node.attrAsBoolean("centerBrowserLocation", false)
         val required = node.attrAsBoolean("required", false)

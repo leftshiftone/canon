@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Submit
 import org.w3c.dom.Node
 
-class SubmitStrategy : AbstractParseStrategy<Submit>() {
+open class SubmitStrategy : AbstractParseStrategy<Submit>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Submit {
         val id = node.attrAsText("id")

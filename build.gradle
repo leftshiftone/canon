@@ -50,6 +50,13 @@ apply plugin: "org.jetbrains.dokka"
 apply plugin: "maven-publish"
 apply plugin: "com.jfrog.bintray"
 
+tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+    kotlinOptions {
+        freeCompilerArgs = ['-Xjvm-default=compatibility']
+        jvmTarget = "1.8"
+    }
+}
+
 dependencies {
     antlr "org.antlr:antlr4:4.7.2"
 

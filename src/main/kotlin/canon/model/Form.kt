@@ -9,5 +9,5 @@ data class Form(@JsonIgnore override val id: String?,
            val name: String?,
            @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
 
-    override fun toString() = "Form(name=$name)"
+    override fun toString() = "Form(name=$name) { ${renderables?.map { it.toString() }} }"
 }

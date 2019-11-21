@@ -23,6 +23,15 @@ open class CanonXmlParser {
             DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
             DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
         }
+
+        fun getDocumentBuilder(): DocumentBuilder {
+            // TODO: refactor!
+            if (DOCUMENT_BUILDER_FACTORY.get() == null)
+                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
+            if (DOCUMENT_BUILDER.get() == null)
+                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
+            return DOCUMENT_BUILDER.get()
+        }
     }
 
     private val parsers: HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
@@ -61,6 +70,7 @@ open class CanonXmlParser {
         parsers["singleChoice"] = SingleChoiceStrategy()
         parsers["slider"] = SliderStrategy()
         parsers["slotmachine"] = SlotMachineStrategy()
+        parsers["slotMachine"] = SlotMachineStrategy()
         parsers["smallDevice"] = SmallDeviceStrategy()
         parsers["spinner"] = SpinnerStrategy()
         parsers["submit"] = SubmitStrategy()
@@ -79,13 +89,7 @@ open class CanonXmlParser {
             var xml = str.replace("&", "&amp;")
             xml = "<markup><smallDevice>$xml</smallDevice></markup>"
 
-            // TODO: refactor!
-            if (DOCUMENT_BUILDER_FACTORY.get() == null)
-                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
-            if (DOCUMENT_BUILDER.get() == null)
-                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
-
-            val document = DOCUMENT_BUILDER.get().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
+            val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
             return toRenderables(document.childNodes, ArrayList<IRenderable>())
         } catch (e: Exception) {
@@ -110,12 +114,11 @@ open class CanonXmlParser {
         val attributes = getAttributes(node.attributes)
 
         val wrap: (it: IRenderable) -> IRenderable = {
-            if (attributes.containsKey("if")) {
-                If(attributes["if"]!!.trim(), it, java.util.ArrayList())
-            } else if (attributes.containsKey("foreach")) {
-                Foreach(attributes["foreach"], it)
+            when {
+                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it, java.util.ArrayList())
+                attributes.containsKey("foreach") -> Foreach(attributes["foreach"], it)
+                else -> it
             }
-            it
         }
 
         if (node.nodeName.equals("markup"))
@@ -139,12 +142,6 @@ open class CanonXmlParser {
         }
         if (attributes.getNamedItem("if") != null) {
             map["if"] = attributes.getNamedItem("if").textContent
-        }
-        if (attributes.getNamedItem("value") != null) {
-            map["value"] = attributes.getNamedItem("value").textContent
-        }
-        if (attributes.getNamedItem("name") != null) {
-            map["name"] = attributes.getNamedItem("name").textContent
         }
 
         for (i in 0 until attributes.length) {

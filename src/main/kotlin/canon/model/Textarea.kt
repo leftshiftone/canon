@@ -16,7 +16,8 @@ data class Textarea(@JsonIgnore override val id: String?,
                     val cols: Int?) : IRenderable, IClassAware {
 
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return mapOf("cols" to cols, "rows" to rows,
+        return mapOf("cols" to cols,
+                "rows" to rows,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),
                 "name" to name,
                 "value" to evaluator.evaluate(value ?: "", context),

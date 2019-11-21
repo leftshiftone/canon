@@ -16,8 +16,8 @@ class TextareaStrategy : AbstractParseStrategy<Textarea>() {
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
         val required = node.attrAsBoolean("required", false)
-        val rows = node.attrAsInt("rows", 0)
-        val cols = node.attrAsInt("cols", 0)
+        val rows = node.attrAsInt("rows", 10)
+        val cols = node.attrAsInt("cols", 40)
 
         return Textarea(id, `class`, placeholder, name, value, required, rows, cols)
     }

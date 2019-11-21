@@ -1,4 +1,5 @@
 import groovy.util.Node
+import org.gradle.api.JavaVersion
 import org.gradle.api.credentials.AwsCredentials
 import org.gradle.api.publish.maven.MavenPublication
 import org.gradle.api.tasks.bundling.Jar
@@ -50,10 +51,17 @@ apply plugin: "org.jetbrains.dokka"
 apply plugin: "maven-publish"
 apply plugin: "com.jfrog.bintray"
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
+
+compileKotlin {
     kotlinOptions {
-        freeCompilerArgs = ['-Xjvm-default=compatibility']
-        jvmTarget = "1.8"
+        freeCompilerArgs = ["-Xjsr305=strict", "-Xjvm-default=compatibility"]
+        jvmTarget = JavaVersion.VERSION_1_8
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        freeCompilerArgs = ["-Xjsr305=strict", "-Xjvm-default=compatibility"]
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 }
 

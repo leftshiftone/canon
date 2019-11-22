@@ -92,13 +92,13 @@ open class CanonXmlParser {
 
             val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
 
-            return toRenderables(document.childNodes, ArrayList<IRenderable>())
+            return toRenderables(document.childNodes, mutableListOf())
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>): List<IRenderable> {
+    fun toRenderables(nodeList: NodeList, renderables: MutableList<IRenderable>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
             toRenderable(nodeList.item(i), renderables)
         }
@@ -106,37 +106,39 @@ open class CanonXmlParser {
     }
 
     fun toRenderables(node: Node): List<IRenderable> {
-        return toRenderables(node.childNodes, ArrayList())
+        return toRenderables(node.childNodes, mutableListOf())
     }
 
     // TODO: refactor!
-    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>) {
+    fun toRenderable(node: Node, renderables: MutableList<IRenderable>) {
 
         val attributes = getAttributes(node.attributes)
 
         val wrap: (it: IRenderable) -> IRenderable = {
             when {
-                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it, java.util.ArrayList())
+                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it, emptyList())
                 attributes.containsKey("foreach") -> Foreach(attributes["foreach"], it)
                 else -> it
             }
         }
 
-        if (node.nodeName.equals("markup"))
+        if (node.nodeName == "markup") {
             toRenderables(node.childNodes, renderables)
-        else if (node.nodeName.equals("#text")) {
-            if (node.textContent.isNotBlank()) renderables.add(wrap(parsers.get("text")!!.parse(node, this::toRenderables)))
-        } else if (parsers.containsKey(node.nodeName))
-            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, this::toRenderables)))
-        else
-            throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
+        } else if (node.nodeName == "#text") {
+            if (node.textContent.isNotBlank())
+                renderables.add(wrap(parsers["text"]!!.parse(node, this::toRenderables)))
+        } else if (parsers.containsKey(node.nodeName)) {
+            renderables.add(wrap(parsers[node.nodeName]!!.parse(node, this::toRenderables)))
+        } else {
+            throw IllegalArgumentException("unknown markup element ${node.nodeName}")
+        }
     }
 
     fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {
         if (attributes == null) {
-            return java.util.HashMap()
+            return emptyMap()
         }
-        val map = java.util.HashMap<String, String>()
+        val map = mutableMapOf<String, String>()
 
         if (attributes.getNamedItem("foreach") != null) {
             map["foreach"] = attributes.getNamedItem("foreach").textContent

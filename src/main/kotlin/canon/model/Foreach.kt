@@ -19,13 +19,14 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
     init {
         this.target = forEachStmt?.let { getTarget(it) }.toString()
         this.source = forEachStmt?.let { getSource(it) }.toString()
+        @Suppress("UNCHECKED_CAST")
         this.renderables = listOf(renderable) as List<IRenderable>
     }
 
     private fun getTarget(forEachStmt: String): String {
         val beforeInStmt = forEachStmt.substringBefore(" in ")
 
-        assert(!beforeInStmt.isNullOrEmpty()) { "the foreach target attribute must not be null" }
+        assert(beforeInStmt.isNotEmpty()) { "the foreach target attribute must not be null" }
         assert(beforeInStmt.trim().startsWith("$")) { "the foreach target attribute have to start with a '$' symbol" }
         return beforeInStmt.trim().substring(1)
     }
@@ -33,7 +34,7 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
     private fun getSource(forEachStmt: String): String {
         val beforeInStmt = forEachStmt.substringAfter(" in ")
 
-        assert(!beforeInStmt.isNullOrEmpty()) { "the foreach target attribute must not be null" }
+        assert(beforeInStmt.isNotEmpty()) { "the foreach target attribute must not be null" }
         assert(beforeInStmt.trim().startsWith("$")) { "the foreach target attribute have to start with a '$' symbol" }
         return beforeInStmt.trim().substring(1)
     }
@@ -42,8 +43,9 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
         val iterator = Iterators.toIterator(Maps.getDeep(visitor.getContext(), source))
 
         while (iterator.hasNext()) {
-            val nested = HashMap(visitor.getContext()).put(target, iterator.next())
-            renderables.forEach(visitor.wrap(nested as kotlin.collections.Map<String, Any>)::visitRenderable)
+            val nested = visitor.getContext().toMutableMap()
+            nested[target] = iterator.next()
+            renderables.forEach(visitor.wrap(nested)::visitRenderable)
         }
 
         renderables.forEach(visitor::visitRenderable)

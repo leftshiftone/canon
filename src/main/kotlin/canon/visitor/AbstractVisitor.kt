@@ -6,9 +6,12 @@ import canon.api.IRenderable
 import canon.api.IVisitor
 import canon.model.*
 import canon.model.Map
-import kotlin.collections.Map as KotlinMap
 
-abstract class AbstractVisitor(context: KotlinMap<String, Any>) : IVisitor {
+abstract class AbstractVisitor(private val context: kotlin.collections.Map<String, Any>) : IVisitor {
+
+    override fun getContext(): kotlin.collections.Map<String, Any> {
+        return context
+    }
 
     override fun visitRenderable(renderable: IRenderable?) {
         when (renderable) {

@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Link
 import org.w3c.dom.Node
 
-class LinkStrategy : AbstractParseStrategy<Link>() {
+open class LinkStrategy : AbstractParseStrategy<Link>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Link {
         val id = node.attrAsText("id")

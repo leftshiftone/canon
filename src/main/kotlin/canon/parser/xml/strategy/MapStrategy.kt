@@ -9,7 +9,7 @@ import canon.model.Map
 import org.apache.commons.lang3.StringUtils
 import org.w3c.dom.Node
 
-class MapStrategy : AbstractParseStrategy<Map>() {
+open class MapStrategy : AbstractParseStrategy<Map>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Map {
         val id = node.attrAsText("id")

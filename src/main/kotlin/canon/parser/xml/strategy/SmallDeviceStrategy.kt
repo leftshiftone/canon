@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.SmallDevice
 import org.w3c.dom.Node
 
-class SmallDeviceStrategy : AbstractParseStrategy<SmallDevice>() {
+open class SmallDeviceStrategy : AbstractParseStrategy<SmallDevice>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SmallDevice {
         val id = node.attrAsText("id")

@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.MultipleChoice
 import org.w3c.dom.Node
 
-class MultipleChoiceStrategy : AbstractParseStrategy<MultipleChoice>() {
+open class MultipleChoiceStrategy : AbstractParseStrategy<MultipleChoice>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): MultipleChoice {
         val id = node.attrAsText("id")

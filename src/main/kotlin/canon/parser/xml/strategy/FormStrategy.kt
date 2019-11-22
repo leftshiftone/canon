@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Form
 import org.w3c.dom.Node
 
-class FormStrategy : AbstractParseStrategy<Form>() {
+open class FormStrategy : AbstractParseStrategy<Form>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Form {
         val id = node.attrAsText("id")

@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Trigger
 import org.w3c.dom.Node
 
-class TriggerStrategy : AbstractParseStrategy<Trigger>() {
+open class TriggerStrategy : AbstractParseStrategy<Trigger>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Trigger {
         val id = node.attrAsText("id")

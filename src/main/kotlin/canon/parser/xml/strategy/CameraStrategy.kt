@@ -7,7 +7,7 @@ import canon.extension.attrAsText
 import canon.model.Camera
 import org.w3c.dom.Node
 
-class CameraStrategy : AbstractParseStrategy<Camera>() {
+open class CameraStrategy : AbstractParseStrategy<Camera>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Camera {
         val id = node.attrAsText("id")

@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.SingleChoice
 import org.w3c.dom.Node
 
-class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
+open class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SingleChoice {
         val id = node.attrAsText("id")

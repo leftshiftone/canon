@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Email
 import org.w3c.dom.Node
 
-class EmailStrategy : AbstractParseStrategy<Email>() {
+open class EmailStrategy : AbstractParseStrategy<Email>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Email {
         val id = node.attrAsText("id")

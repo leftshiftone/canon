@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Table
 import org.w3c.dom.Node
 
-class TableStrategy : AbstractParseStrategy<Table>() {
+open class TableStrategy : AbstractParseStrategy<Table>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Table {
         val id = node.attrAsText("id")

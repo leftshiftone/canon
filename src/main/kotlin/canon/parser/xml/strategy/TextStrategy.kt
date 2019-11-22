@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.NewText
 import org.w3c.dom.Node
 
-class TextStrategy : AbstractParseStrategy<NewText>() {
+open class TextStrategy : AbstractParseStrategy<NewText>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): NewText {
         val id = node.attrAsText("id")

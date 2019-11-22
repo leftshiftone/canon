@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Transition
 import org.w3c.dom.Node
 
-class TransitionStrategy : AbstractParseStrategy<Transition>() {
+open class TransitionStrategy : AbstractParseStrategy<Transition>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Transition {
         val id = node.attrAsText("id")

@@ -5,7 +5,8 @@ import canon.extension.attrAsText
 import canon.model.Checkbox
 import org.w3c.dom.Node
 
-class CheckboxStrategy : AbstractParseStrategy<Checkbox>() {
+@Deprecated("Will be replaced with MultipleChoiceStrategy")
+open class CheckboxStrategy : AbstractParseStrategy<Checkbox>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Checkbox {
         val id = node.attrAsText("id")

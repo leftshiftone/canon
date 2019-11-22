@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Block
 import org.w3c.dom.Node
 
-class BlockStrategy : AbstractParseStrategy<Block>() {
+open class BlockStrategy : AbstractParseStrategy<Block>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Block {
         val id = node.attrAsText("id")

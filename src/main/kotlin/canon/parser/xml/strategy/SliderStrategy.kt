@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Slider
 import org.w3c.dom.Node
 
-class SliderStrategy : AbstractParseStrategy<Slider>() {
+open class SliderStrategy : AbstractParseStrategy<Slider>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Slider {
         val id = node.attrAsText("id")

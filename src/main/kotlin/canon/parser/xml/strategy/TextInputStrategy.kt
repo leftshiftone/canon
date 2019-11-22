@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.TextInput
 import org.w3c.dom.Node
 
-class TextInputStrategy : AbstractParseStrategy<TextInput>() {
+open class TextInputStrategy : AbstractParseStrategy<TextInput>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>) : TextInput {
         val id = node.attrAsText("id")

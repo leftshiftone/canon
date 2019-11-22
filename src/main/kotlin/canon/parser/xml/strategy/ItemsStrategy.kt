@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Items
 import org.w3c.dom.Node
 
-class ItemsStrategy : AbstractParseStrategy<Items>() {
+open class ItemsStrategy : AbstractParseStrategy<Items>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Items {
         val id = node.attrAsText("id")

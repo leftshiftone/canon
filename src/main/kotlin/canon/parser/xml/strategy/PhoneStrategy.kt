@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Phone
 import org.w3c.dom.Node
 
-class PhoneStrategy : AbstractParseStrategy<Phone>() {
+open class PhoneStrategy : AbstractParseStrategy<Phone>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Phone {
         val id = node.attrAsText("id")

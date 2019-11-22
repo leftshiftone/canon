@@ -7,7 +7,7 @@ import canon.extension.attrAsText
 import canon.model.Textarea
 import org.w3c.dom.Node
 
-class TextareaStrategy : AbstractParseStrategy<Textarea>() {
+open class TextareaStrategy : AbstractParseStrategy<Textarea>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Textarea {
         val id = node.attrAsText("id")

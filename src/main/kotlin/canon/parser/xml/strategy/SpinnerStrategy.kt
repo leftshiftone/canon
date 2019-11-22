@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Spinner
 import org.w3c.dom.Node
 
-class SpinnerStrategy : AbstractParseStrategy<Spinner>() {
+open class SpinnerStrategy : AbstractParseStrategy<Spinner>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Spinner {
         val id = node.attrAsText("id")

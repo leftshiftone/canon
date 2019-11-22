@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Selection
 import org.w3c.dom.Node
 
-class SelectionStrategy : AbstractParseStrategy<Selection>() {
+open class SelectionStrategy : AbstractParseStrategy<Selection>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Selection {
         val id = node.attrAsText("id")

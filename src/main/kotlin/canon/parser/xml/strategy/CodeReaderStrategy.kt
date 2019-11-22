@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.CodeReader
 import org.w3c.dom.Node
 
-class CodeReaderStrategy : AbstractParseStrategy<CodeReader>() {
+open class CodeReaderStrategy : AbstractParseStrategy<CodeReader>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): CodeReader {
         val id = node.attrAsText("id")

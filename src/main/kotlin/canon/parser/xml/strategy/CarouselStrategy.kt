@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Carousel
 import org.w3c.dom.Node
 
-class CarouselStrategy : AbstractParseStrategy<Carousel>() {
+open class CarouselStrategy : AbstractParseStrategy<Carousel>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Carousel {
         val id = node.attrAsText("id")

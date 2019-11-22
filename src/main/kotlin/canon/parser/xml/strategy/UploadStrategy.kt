@@ -6,7 +6,7 @@ import canon.extension.attrAsText
 import canon.model.Upload
 import org.w3c.dom.Node
 
-class UploadStrategy : AbstractParseStrategy<Upload>() {
+open class UploadStrategy : AbstractParseStrategy<Upload>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Upload {
         val id = node.attrAsText("id")

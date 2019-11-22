@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.ReelValue
 import org.w3c.dom.Node
 
-class ReelValueStrategy : AbstractParseStrategy<ReelValue>() {
+open class ReelValueStrategy : AbstractParseStrategy<ReelValue>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): ReelValue {
         val id = node.attrAsText("id")

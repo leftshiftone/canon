@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Overlay
 import org.w3c.dom.Node
 
-class OverlayStrategy : AbstractParseStrategy<Overlay>() {
+open class OverlayStrategy : AbstractParseStrategy<Overlay>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Overlay {
         val id = node.attrAsText("id")

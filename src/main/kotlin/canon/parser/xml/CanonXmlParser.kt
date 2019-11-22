@@ -35,55 +35,53 @@ open class CanonXmlParser {
         }
     }
 
-    private val parsers: HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
-
-    init {
-        parsers["block"] = BlockStrategy()
-        parsers["bold"] = BoldStrategy()
-        parsers["break"] = BreakStrategy()
-        parsers["button"] = ButtonStrategy()
-        parsers["calendar"] = CalendarStrategy()
-        parsers["camera"] = CameraStrategy()
-        parsers["carousel"] = CarouselStrategy()
-        parsers["checkbox"] = CheckboxStrategy()
-        parsers["choice"] = ChoiceStrategy()
-        parsers["codeReader"] = CodeReaderStrategy()
-        parsers["col"] = ColStrategy()
-        parsers["email"] = EmailStrategy()
-        parsers["form"] = FormStrategy()
-        parsers["headline"] = HeadlineStrategy()
-        parsers["image"] = ImageStrategy()
-        parsers["italic"] = ItalicStrategy()
-        parsers["item"] = ItemStrategy()
-        parsers["items"] = ItemsStrategy()
-        //parsers["label"] = LabelStrategy()
-        parsers["text"] = OldTextStrategy()
-        parsers["link"] = LinkStrategy()
-        parsers["map"] = MapStrategy()
-        parsers["multipleChoice"] = MultipleChoiceStrategy()
-        parsers["overlay"] = OverlayStrategy()
-        parsers["overlays"] = OverlaysStrategy()
-        parsers["phone"] = PhoneStrategy()
-        parsers["reel"] = ReelStrategy()
-        parsers["reelValue"] = ReelValueStrategy()
-        parsers["row"] = RowStrategy()
-        parsers["selection"] = SelectionStrategy()
-        parsers["singleChoice"] = SingleChoiceStrategy()
-        parsers["slider"] = SliderStrategy()
-        parsers["slotmachine"] = SlotMachineStrategy()
-        parsers["slotMachine"] = SlotMachineStrategy()
-        parsers["smallDevice"] = SmallDeviceStrategy()
-        parsers["spinner"] = SpinnerStrategy()
-        parsers["submit"] = SubmitStrategy()
-        parsers["suggestion"] = SuggestionStrategy()
-        parsers["table"] = TableStrategy()
-        //parsers["text"] = TextStrategy()
-        parsers["textInput"] = TextInputStrategy()
-        parsers["textarea"] = TextareaStrategy()
-        parsers["trigger"] = TriggerStrategy()
-        parsers["upload"] = UploadStrategy()
-        parsers["video"] = VideoStrategy()
-    }
+    private val parsers: MutableMap<String, AbstractParseStrategy<IRenderable>> = mutableMapOf(
+            "block" to BlockStrategy(),
+            "bold" to BoldStrategy(),
+            "break" to BreakStrategy(),
+            "button" to ButtonStrategy(),
+            "calendar" to CalendarStrategy(),
+            "camera" to CameraStrategy(),
+            "carousel" to CarouselStrategy(),
+            "checkbox" to CheckboxStrategy(),
+            "choice" to ChoiceStrategy(),
+            "codeReader" to CodeReaderStrategy(),
+            "col" to ColStrategy(),
+            "email" to EmailStrategy(),
+            "form" to FormStrategy(),
+            "headline" to HeadlineStrategy(),
+            "image" to ImageStrategy(),
+            "italic" to ItalicStrategy(),
+            "item" to ItemStrategy(),
+            "items" to ItemsStrategy(),
+            //"label" to LabelStrategy(),
+            "text" to OldTextStrategy(),
+            "link" to LinkStrategy(),
+            "map" to MapStrategy(),
+            "multipleChoice" to MultipleChoiceStrategy(),
+            "overlay" to OverlayStrategy(),
+            "overlays" to OverlaysStrategy(),
+            "phone" to PhoneStrategy(),
+            "reel" to ReelStrategy(),
+            "reelValue" to ReelValueStrategy(),
+            "row" to RowStrategy(),
+            "selection" to SelectionStrategy(),
+            "singleChoice" to SingleChoiceStrategy(),
+            "slider" to SliderStrategy(),
+            "slotmachine" to SlotMachineStrategy(),
+            "slotMachine" to SlotMachineStrategy(),
+            "smallDevice" to SmallDeviceStrategy(),
+            "spinner" to SpinnerStrategy(),
+            "submit" to SubmitStrategy(),
+            "suggestion" to SuggestionStrategy(),
+            "table" to TableStrategy(),
+            //"text" to TextStrategy(),
+            "textInput" to TextInputStrategy(),
+            "textarea" to TextareaStrategy(),
+            "trigger" to TriggerStrategy(),
+            "upload" to UploadStrategy(),
+            "video" to VideoStrategy()
+    )
 
     fun parse(str: String): List<IRenderable> {
         try {
@@ -91,7 +89,6 @@ open class CanonXmlParser {
             xml = "<markup><smallDevice>$xml</smallDevice></markup>"
 
             val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
-
             return toRenderables(document.childNodes, mutableListOf())
         } catch (e: Exception) {
             throw RuntimeException(e)
@@ -109,7 +106,6 @@ open class CanonXmlParser {
         return toRenderables(node.childNodes, mutableListOf())
     }
 
-    // TODO: refactor!
     fun toRenderable(node: Node, renderables: MutableList<IRenderable>) {
 
         val attributes = getAttributes(node.attributes)

@@ -5,7 +5,7 @@ import canon.extension.attrAsText
 import canon.model.Suggestion
 import org.w3c.dom.Node
 
-class SuggestionStrategy : AbstractParseStrategy<Suggestion>() {
+open class SuggestionStrategy : AbstractParseStrategy<Suggestion>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Suggestion {
         val id = node.attrAsText("id")

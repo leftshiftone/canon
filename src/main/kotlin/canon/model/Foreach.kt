@@ -14,7 +14,8 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
     private val target: String
     @JsonIgnore
     private val source: String
-    override val renderables: List<IRenderable>
+
+    val renderables: List<IRenderable>
 
     init {
         this.target = forEachStmt?.let { getTarget(it) }.toString()
@@ -26,7 +27,7 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
     private fun getTarget(forEachStmt: String): String {
         val beforeInStmt = forEachStmt.substringBefore(" in ")
 
-        assert(beforeInStmt.isNotEmpty()) { "the foreach target attribute must not be null" }
+        assert(beforeInStmt.isNotEmpty()) { "the foreach target attribute must not be empty" }
         assert(beforeInStmt.trim().startsWith("$")) { "the foreach target attribute have to start with a '$' symbol" }
         return beforeInStmt.trim().substring(1)
     }
@@ -47,7 +48,6 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
             nested[target] = iterator.next()
             renderables.forEach(visitor.wrap(nested)::visitRenderable)
         }
-
         renderables.forEach(visitor::visitRenderable)
     }
 

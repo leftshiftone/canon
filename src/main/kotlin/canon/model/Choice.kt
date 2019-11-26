@@ -8,7 +8,7 @@ data class Choice(@JsonIgnore override val id: String?,
              @JsonIgnore override val `class`: String?,
              val text: String?,
              val selected: Boolean?,
-             @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+             @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
 
     override fun toString() = "Choice(text=$text, selected=$selected)"
 

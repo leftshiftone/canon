@@ -14,4 +14,12 @@ class LabelTest {
         assertEquals(3, mapped.size)
         assertEquals("testText", mapped.get("text"))
     }
+
+    @Test
+    fun `mapping with expression`() {
+        val mapped = Label("testId", "testClass", "{{\$foo}}").toMap(HashMap(), TestEvaluator())
+
+        assertEquals(3, mapped.size)
+        assertEquals("\$foo", mapped["text"])
+    }
 }

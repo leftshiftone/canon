@@ -120,7 +120,7 @@ open class CanonXmlParser {
 
         if (node.nodeName == "markup") {
             toRenderables(node.childNodes, renderables)
-        } else if (node.nodeName == "#text") {
+        } else if (node.nodeName == "#text") { // todo: why is it needed here?
             if (node.textContent.isNotBlank())
                 renderables.add(wrap(parsers["text"]!!.parse(node, this::toRenderables)))
         } else if (parsers.containsKey(node.nodeName)) {

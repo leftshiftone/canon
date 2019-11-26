@@ -7,6 +7,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 data class Reel(@JsonIgnore override val id: String?,
            @JsonIgnore override val `class`: String?,
            val name: String?,
-           @JsonIgnore override val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+           @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
     override fun toString() = "Reel(name=$name)"
 }

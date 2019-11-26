@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class If(@JsonIgnore val expression: String?,
               @JsonIgnore val renderable: IRenderable?,
-              @JsonIgnore override val renderables: List<IRenderable>?) : IRenderable, IStackeable {
+              @JsonIgnore private val renderables: List<IRenderable>?) : IRenderable, IStackeable {
 
     override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
         if (evaluator.evaluate(expression?.trim(), visitor.getContext())?.toBoolean()!!) visitor.visitRenderable(this.renderable)

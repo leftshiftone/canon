@@ -9,7 +9,7 @@ data class Label(@JsonIgnore override val id: String?,
                  @JsonIgnore override val `class`: String?,
                  val text: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf("text" to evaluator.evaluate(text, context))
     }
 

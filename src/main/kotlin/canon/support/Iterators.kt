@@ -1,19 +1,15 @@
 package canon.support
 
-import kotlin.IllegalArgumentException
-import kotlin.collections.ArrayList
 
 object Iterators {
 
-    fun toIterator(obj: Any?) : Iterator<Any> {
-        when (obj) {
-            null -> return ArrayList<Any>().iterator()
-            is Array<*> -> return toIterator(listOf(obj))
-            is Collection<*> -> return (mutableListOf<Any>(obj)).iterator()
+    fun toIterator(obj: Any?): Iterator<Any?> {
+        return when (obj) {
+            null -> emptyList<Any>().iterator()
+            is Array<*> -> obj.iterator()
+            is Collection<*> -> obj.iterator()
+            is IntArray, is ShortArray, is LongArray, is ByteArray -> throw IllegalArgumentException("cannot return an iterator from primitive array")
+            else -> throw IllegalArgumentException("cannot return iterator for $obj")
         }
-
-        if (obj is IntArray || obj is ShortArray || obj is ByteArray || obj is LongArray)
-            throw IllegalArgumentException("cannot return an iterator from primitive array")
-        throw IllegalArgumentException("cannot return iterator from $obj")
     }
 }

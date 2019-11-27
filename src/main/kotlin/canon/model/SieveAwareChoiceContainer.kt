@@ -12,7 +12,7 @@ data class SieveAwareChoiceContainer(@JsonIgnore override val id: String?,
                                      val required: Boolean?,
                                      @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
         return mapOf("name" to evaluator.evaluate(name, context),
                 "sieve" to sieve,
                 "required" to required).plus(toIdAndClassMap(context, evaluator))

@@ -7,6 +7,7 @@ import canon.api.IVisitor
 import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
+import java.util.Optional.ofNullable
 
 data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRenderable, IStackeable {
 
@@ -45,10 +46,10 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
 
         while (iterator.hasNext()) {
             val nested = visitor.getContext().toMutableMap()
-            nested[target] = iterator.next()
+            ofNullable(iterator.next())
+                    .ifPresent { nested[target] = it }
             renderables.forEach(visitor.wrap(nested)::visitRenderable)
         }
-        renderables.forEach(visitor::visitRenderable)
     }
 
     override fun getType(): String {

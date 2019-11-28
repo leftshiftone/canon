@@ -1,6 +1,7 @@
 package canon.model
 
 import canon.api.IClassAware
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -10,5 +11,15 @@ data class Phone(@JsonIgnore override val id: String?,
                  val required: Boolean?,
                  val name: String?,
                  val value: String?) : IRenderable, IClassAware {
+
+    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+        return toIdAndClassMap(context, evaluator) + mapOf(
+                "placeholder" to placeholder,
+                "required" to required,
+                "name" to name,
+                "value" to evaluator.evaluate(value ?: "", context)
+        )
+    }
+
     override fun toString() = "Phone(placeholder=$placeholder, required=$required, name=$name, value=$value)"
 }

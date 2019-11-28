@@ -12,7 +12,7 @@ open class PhoneStrategy : AbstractParseStrategy<Phone>() {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val placeholder = node.attrAsText("placeholder")
-        val required = node.attrAsBoolean("required", false)
+        val required = node.attrAsBoolean("required", true)
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 

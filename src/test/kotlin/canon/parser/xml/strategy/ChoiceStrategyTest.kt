@@ -2,8 +2,7 @@ package canon.parser.xml.strategy
 
 import canon.extension.toNode
 import canon.parser.xml.CanonXmlParser
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class ChoiceStrategyTest {
@@ -13,11 +12,11 @@ class ChoiceStrategyTest {
         val xml = "<choice id='testId' class='testClass' text='testText' selected='true'></choice>"
         val parsed = ChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
-        assertNotNull(parsed)
-        assertEquals("testId", parsed.id)
-        assertEquals("testClass", parsed.`class`)
-        assertEquals("testText", parsed.text)
-        assertEquals(true, parsed.selected)
+        assertThat(parsed).isNotNull
+        assertThat(parsed.id).isEqualTo("testId")
+        assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.text).isEqualTo("testText")
+        assertThat(parsed.selected).isEqualTo("true")
     }
 
 }

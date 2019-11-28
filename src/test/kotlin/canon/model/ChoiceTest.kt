@@ -9,7 +9,7 @@ class ChoiceTest {
 
     @Test
     fun testChoiceMapping() {
-        val mapped = Choice("testId", "testClass", "testText", false,
+        val mapped = Choice("testId", "testClass", "testText", "false",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
         assertEquals(4, mapped.size)

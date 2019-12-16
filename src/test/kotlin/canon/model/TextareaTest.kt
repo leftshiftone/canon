@@ -1,7 +1,6 @@
 package canon.model
 
 import canon.support.TestEvaluator
-import io.mockk.mockk
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -13,7 +12,7 @@ class TextareaTest {
         val mapped = Textarea("testId", "testClass", "placeHolder", "testName",
                 "testValue", false, 10, 9).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(6, mapped.size)
+        assertEquals(8, mapped.size)
         assertEquals("placeHolder", mapped.get("placeholder"))
         assertEquals("testName", mapped.get("name"))
         assertEquals("testValue", mapped.get("value"))

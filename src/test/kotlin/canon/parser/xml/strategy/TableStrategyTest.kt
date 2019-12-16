@@ -13,7 +13,7 @@ class TableStrategyTest {
         val xml = "<table id='testId' class='testClass' name='testName'>" +
                 "<row id='testId1' class='testClass' />" +
                 "</table>"
-        val parsed = TableStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TableStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

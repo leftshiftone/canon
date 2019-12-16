@@ -13,7 +13,7 @@ class SmallDeviceStrategyTest {
         val xml = "<smallDevice id='testId' class='testClass' name='testName'>" +
                 "<text id='testId2' class='testClass'>test</text>" +
                 "</smallDevice>"
-        val parsed = SmallDeviceStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SmallDeviceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

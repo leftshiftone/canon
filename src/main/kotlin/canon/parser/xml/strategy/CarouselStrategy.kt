@@ -6,16 +6,16 @@ import canon.extension.attrAsText
 import canon.model.Carousel
 import org.w3c.dom.Node
 
-class CarouselStrategy : AbstractParseStrategy<Carousel>() {
+open class CarouselStrategy : AbstractParseStrategy<Carousel>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Carousel {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Carousel {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val text = node.attrAsText("text")
         val name = node.attrAsText("name")
         val selected = node.attrAsBoolean("selected", false)
 
-        return Carousel(id, `class`, text, name, selected, factory(node, context))
+        return Carousel(id, `class`, text, name, selected, factory(node))
     }
 
 }

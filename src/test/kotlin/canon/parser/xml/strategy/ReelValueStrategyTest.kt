@@ -11,7 +11,7 @@ class ReelValueStrategyTest {
     @Test
     fun testParse() {
         val xml = "<reelValue id='testId' class='testClass' value='testValue' valueType='string'></reelValue>"
-        val parsed = ReelValueStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = ReelValueStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

@@ -12,7 +12,7 @@ class TextareaStrategyTest {
     fun testParse() {
         val xml = "<textarea id='testId' class='testClass' placeholder='*' " +
                 "name='testName' value='testValue' rows='5' cols='3'></textarea>"
-        val parsed = TextareaStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TextareaStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

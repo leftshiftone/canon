@@ -11,7 +11,7 @@ class FormStrategyTest {
     @Test
     fun testParse() {
         val xml = "<form id='testId' class='testClass' name='submitForm'><submit>test</submit></form>"
-        val parsed = FormStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = FormStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

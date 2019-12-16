@@ -11,7 +11,7 @@ class LabelStrategyTest {
     @Test
     fun testParse() {
         val xml = "<label id='testId' class='testClass'>text</label>"
-        val parsed = LabelStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = LabelStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

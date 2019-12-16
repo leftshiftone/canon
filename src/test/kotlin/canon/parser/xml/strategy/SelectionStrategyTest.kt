@@ -12,7 +12,7 @@ class SelectionStrategyTest {
     fun testParse() {
         val xml = "<selection id='testId' class='testClass' name='testName'>" +
                 "</selection>"
-        val parsed = SelectionStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = SelectionStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

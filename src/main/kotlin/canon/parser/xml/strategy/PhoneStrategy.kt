@@ -6,13 +6,13 @@ import canon.extension.attrAsText
 import canon.model.Phone
 import org.w3c.dom.Node
 
-class PhoneStrategy : AbstractParseStrategy<Phone>() {
+open class PhoneStrategy : AbstractParseStrategy<Phone>() {
     
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Phone {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Phone {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val placeholder = node.attrAsText("placeholder")
-        val required = node.attrAsBoolean("required", false)
+        val required = node.attrAsBoolean("required", true)
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 

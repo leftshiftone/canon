@@ -12,7 +12,7 @@ import javax.xml.parsers.DocumentBuilder
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-class CanonXmlParser {
+open class CanonXmlParser {
 
     companion object {
         val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()
@@ -23,127 +23,124 @@ class CanonXmlParser {
             DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
             DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
         }
-    }
 
-    private val parsers: HashMap<String, AbstractParseStrategy<IRenderable>> = HashMap()
-
-    init {
-        parsers["block"] = BlockStrategy()
-        parsers["bold"] = BoldStrategy()
-        parsers["break"] = BreakStrategy()
-        parsers["button"] = ButtonStrategy()
-        parsers["calendar"] = CalendarStrategy()
-        parsers["camera"] = CameraStrategy()
-        parsers["carousel"] = CarouselStrategy()
-        parsers["checkbox"] = CheckboxStrategy()
-        parsers["choice"] = ChoiceStrategy()
-        parsers["codeReader"] = CodeReaderStrategy()
-        parsers["col"] = ColStrategy()
-        parsers["email"] = EmailStrategy()
-        parsers["form"] = FormStrategy()
-        parsers["headline"] = HeadlineStrategy()
-        parsers["image"] = ImageStrategy()
-        parsers["italic"] = ItalicStrategy()
-        parsers["item"] = ItemStrategy()
-        parsers["items"] = ItemsStrategy()
-        //parsers["label"] = LabelStrategy()
-        parsers["text"] = OldTextStrategy()
-        parsers["link"] = LinkStrategy()
-        parsers["map"] = MapStrategy()
-        parsers["multipleChoice"] = MultipleChoiceStrategy()
-        parsers["overlay"] = OverlayStrategy()
-        parsers["overlays"] = OverlaysStrategy()
-        parsers["phone"] = PhoneStrategy()
-        parsers["reel"] = ReelStrategy()
-        parsers["reelValue"] = ReelValueStrategy()
-        parsers["row"] = RowStrategy()
-        parsers["selection"] = SelectionStrategy()
-        parsers["singleChoice"] = SingleChoiceStrategy()
-        parsers["slider"] = SliderStrategy()
-        parsers["slotmachine"] = SlotMachineStrategy()
-        parsers["smallDevice"] = SmallDeviceStrategy()
-        parsers["spinner"] = SpinnerStrategy()
-        parsers["submit"] = SubmitStrategy()
-        parsers["suggestion"] = SuggestionStrategy()
-        parsers["table"] = TableStrategy()
-        //parsers["text"] = TextStrategy()
-        parsers["textInput"] = TextInputStrategy()
-        parsers["textarea"] = TextareaStrategy()
-        parsers["trigger"] = TriggerStrategy()
-        parsers["upload"] = UploadStrategy()
-        parsers["video"] = VideoStrategy()
-    }
-
-    fun parse(str: String, context: Map<String, Any?>): List<IRenderable> {
-        try {
-            val xml = "<markup><smallDevice>$str</smallDevice></markup>"
-
+        @JvmStatic
+        fun getDocumentBuilder(): DocumentBuilder {
             // TODO: refactor!
             if (DOCUMENT_BUILDER_FACTORY.get() == null)
-                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance());
+                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
             if (DOCUMENT_BUILDER.get() == null)
-                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder());
+                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
+            return DOCUMENT_BUILDER.get()
+        }
+    }
 
-            val document = DOCUMENT_BUILDER.get().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
+    private val parsers: MutableMap<String, AbstractParseStrategy<IRenderable>> = mutableMapOf(
+            "block" to BlockStrategy(),
+            "bold" to BoldStrategy(),
+            "break" to BreakStrategy(),
+            "button" to ButtonStrategy(),
+            "calendar" to CalendarStrategy(),
+            "camera" to CameraStrategy(),
+            "carousel" to CarouselStrategy(),
+            "checkbox" to CheckboxStrategy(),
+            "choice" to ChoiceStrategy(),
+            "codeReader" to CodeReaderStrategy(),
+            "col" to ColStrategy(),
+            "email" to EmailStrategy(),
+            "form" to FormStrategy(),
+            "headline" to HeadlineStrategy(),
+            "image" to ImageStrategy(),
+            "italic" to ItalicStrategy(),
+            "item" to ItemStrategy(),
+            "items" to ItemsStrategy(),
+            //"label" to LabelStrategy(),
+            "text" to OldTextStrategy(),
+            "link" to LinkStrategy(),
+            "map" to MapStrategy(),
+            "multipleChoice" to MultipleChoiceStrategy(),
+            "overlay" to OverlayStrategy(),
+            "overlays" to OverlaysStrategy(),
+            "phone" to PhoneStrategy(),
+            "reel" to ReelStrategy(),
+            "reelValue" to ReelValueStrategy(),
+            "row" to RowStrategy(),
+            "selection" to SelectionStrategy(),
+            "singleChoice" to SingleChoiceStrategy(),
+            "slider" to SliderStrategy(),
+            "slotmachine" to SlotMachineStrategy(),
+            "slotMachine" to SlotMachineStrategy(),
+            "smallDevice" to SmallDeviceStrategy(),
+            "spinner" to SpinnerStrategy(),
+            "submit" to SubmitStrategy(),
+            "suggestion" to SuggestionStrategy(),
+            "table" to TableStrategy(),
+            //"text" to TextStrategy(),
+            "textInput" to TextInputStrategy(),
+            "textarea" to TextareaStrategy(),
+            "trigger" to TriggerStrategy(),
+            "upload" to UploadStrategy(),
+            "video" to VideoStrategy()
+    )
 
-            return toRenderables(document.childNodes, ArrayList<IRenderable>(), context)
+    fun parse(str: String): List<IRenderable> {
+        try {
+            var xml = str.replace("&", "&amp;")
+            xml = "<markup><smallDevice>$xml</smallDevice></markup>"
+
+            val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
+            return toRenderables(document.childNodes, mutableListOf())
         } catch (e: Exception) {
             throw RuntimeException(e)
         }
     }
 
-    fun toRenderables(nodeList: NodeList, renderables: ArrayList<IRenderable>, context: Map<String, Any?>): List<IRenderable> {
+    fun toRenderables(nodeList: NodeList, renderables: MutableList<IRenderable>): List<IRenderable> {
         for (i in 0 until nodeList.length) {
-            toRenderable(nodeList.item(i), renderables, context)
+            toRenderable(nodeList.item(i), renderables)
         }
         return renderables
     }
 
-    fun toRenderables(node: Node, context: Map<String, Any?>): List<IRenderable> {
-        return toRenderables(node.childNodes, ArrayList(), context)
+    fun toRenderables(node: Node): List<IRenderable> {
+        return toRenderables(node.childNodes, mutableListOf())
     }
 
-    // TODO: refactor!
-    fun toRenderable(node: Node, renderables: ArrayList<IRenderable>, context: Map<String, Any?>) {
+    fun toRenderable(node: Node, renderables: MutableList<IRenderable>) {
 
         val attributes = getAttributes(node.attributes)
 
         val wrap: (it: IRenderable) -> IRenderable = {
-            if (attributes.containsKey("if")) {
-                If(attributes["if"]!!.trim(), it, java.util.ArrayList())
-            } else if (attributes.containsKey("foreach")) {
-                Foreach(attributes["foreach"], it)
+            when {
+                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it, emptyList())
+                attributes.containsKey("foreach") -> Foreach(attributes["foreach"], it)
+                else -> it
             }
-            it
         }
 
-        if (node.nodeName.equals("markup"))
-            toRenderables(node.childNodes, renderables, context)
-        else if (node.nodeName.equals("#text") && node.textContent.isNotEmpty())
-            renderables.add(wrap(parsers.get("text")!!.parse(node, context, this::toRenderables)))
-        else if (parsers.containsKey(node.nodeName))
-            renderables.add(wrap(parsers.get(node.nodeName)!!.parse(node, context, this::toRenderables)))
-        else
-            throw java.lang.IllegalArgumentException("unknown markup elemenent ${node.nodeName}")
+        if (node.nodeName == "markup") {
+            toRenderables(node.childNodes, renderables)
+        } else if (node.nodeName == "#text") { // todo: why is it needed here?
+            if (node.textContent.isNotBlank())
+                renderables.add(wrap(parsers["text"]!!.parse(node, this::toRenderables)))
+        } else if (parsers.containsKey(node.nodeName)) {
+            renderables.add(wrap(parsers[node.nodeName]!!.parse(node, this::toRenderables)))
+        } else {
+            throw IllegalArgumentException("unknown markup element ${node.nodeName}")
+        }
     }
 
     fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {
         if (attributes == null) {
-            return java.util.HashMap()
+            return emptyMap()
         }
-        val map = java.util.HashMap<String, String>()
+        val map = mutableMapOf<String, String>()
 
         if (attributes.getNamedItem("foreach") != null) {
             map["foreach"] = attributes.getNamedItem("foreach").textContent
         }
         if (attributes.getNamedItem("if") != null) {
             map["if"] = attributes.getNamedItem("if").textContent
-        }
-        if (attributes.getNamedItem("value") != null) {
-            map["value"] = attributes.getNamedItem("value").textContent
-        }
-        if (attributes.getNamedItem("name") != null) {
-            map["name"] = attributes.getNamedItem("name").textContent
         }
 
         for (i in 0 until attributes.length) {
@@ -154,4 +151,7 @@ class CanonXmlParser {
         return map
     }
 
+    fun setParseStrategy(key: String, parseStrategy: AbstractParseStrategy<IRenderable>) {
+        parsers[key] = parseStrategy
+    }
 }

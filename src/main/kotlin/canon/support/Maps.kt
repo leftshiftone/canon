@@ -9,10 +9,11 @@ object Maps {
         val iterator = path.split(".").iterator()
         while (iterator.hasNext()) {
             val obj = currentMap?.get(iterator.next())
+            @Suppress("UNCHECKED_CAST")
             if (!iterator.hasNext()) return obj as T?
             if (obj is Map<*, *>) currentMap = obj else return null
         }
 
-        return null;
+        return null
     }
 }

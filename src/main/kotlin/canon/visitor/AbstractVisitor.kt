@@ -6,13 +6,15 @@ import canon.api.IRenderable
 import canon.api.IVisitor
 import canon.model.*
 import canon.model.Map
-import kotlin.collections.Map as KotlinMap
 
-abstract class AbstractVisitor(context: KotlinMap<String, Any>) : IVisitor {
+abstract class AbstractVisitor(private val context: kotlin.collections.Map<String, Any>) : IVisitor {
+
+    override fun getContext(): kotlin.collections.Map<String, Any> {
+        return context
+    }
 
     override fun visitRenderable(renderable: IRenderable?) {
         when (renderable) {
-
             is Block -> visitBlock(renderable)
             is Bold -> visitBold(renderable)
             is Break -> visitBreak(renderable)
@@ -53,11 +55,13 @@ abstract class AbstractVisitor(context: KotlinMap<String, Any>) : IVisitor {
             is Suggestion -> visitSuggestion(renderable)
             is Table -> visitTable(renderable)
             is Text -> visitText(renderable)
+            is TextInput -> visitTextInput(renderable)
             is Textarea -> visitTextarea(renderable)
             is Transition -> visitTransition(renderable)
             is Trigger -> visitTrigger(renderable)
             is Upload -> visitUpload(renderable)
             is Video -> visitVideo(renderable)
+            else -> throw IllegalArgumentException("renderable (${renderable?.getType()}) $renderable not implemented")
         }
     }
 
@@ -101,6 +105,7 @@ abstract class AbstractVisitor(context: KotlinMap<String, Any>) : IVisitor {
     open fun visitSuggestion(suggestion: Suggestion) {}
     open fun visitTable(renderable: Table) {}
     open fun visitText(renderable: Text) {}
+    open fun visitTextInput(renderable: TextInput) {}
     open fun visitTextarea(renderable: Textarea) {}
     open fun visitTransition(renderable: Transition) {}
     open fun visitTrigger(renderable: Trigger) {}

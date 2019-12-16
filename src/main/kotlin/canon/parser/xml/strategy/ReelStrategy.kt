@@ -5,13 +5,13 @@ import canon.extension.attrAsText
 import canon.model.Reel
 import org.w3c.dom.Node
 
-class ReelStrategy : AbstractParseStrategy<Reel>() {
+open class ReelStrategy : AbstractParseStrategy<Reel>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Reel {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Reel {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
 
-        return Reel(id, `class`, name, factory(node, context))
+        return Reel(id, `class`, name, factory(node))
     }
 }

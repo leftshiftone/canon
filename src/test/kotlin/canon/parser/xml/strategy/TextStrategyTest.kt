@@ -2,8 +2,7 @@ package canon.parser.xml.strategy
 
 import canon.extension.toNode
 import canon.parser.xml.CanonXmlParser
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class TextStrategyTest {
@@ -12,16 +11,16 @@ class TextStrategyTest {
     fun testParse() {
         val xml = "<text id='testId' class='testClass' regex='regEx' placeholder='*' " +
                 "required='true' name='testName'>test</text>"
-        val parsed = TextStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TextStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
-        assertNotNull(parsed)
-        assertEquals("testId", parsed.id)
-        assertEquals("testClass", parsed.`class`)
-        assertEquals("regEx", parsed.regex)
-        assertEquals("*", parsed.placeholder)
-        assertEquals(true, parsed.required)
-        assertEquals("testName", parsed.name)
-        assertEquals("test", parsed.value)
+        assertThat(parsed).isNotNull
+        assertThat(parsed.id).isEqualTo("testId")
+        assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.regex).isEqualTo("regEx")
+        assertThat(parsed.placeholder).isEqualTo("*")
+        assertThat(parsed.required).isTrue()
+        assertThat(parsed.name).isEqualTo("testName")
+        assertThat(parsed.value).isEqualTo("test")
     }
 
 }

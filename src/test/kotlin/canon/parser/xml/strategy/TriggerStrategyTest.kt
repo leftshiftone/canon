@@ -11,7 +11,7 @@ class TriggerStrategyTest {
     @Test
     fun testParse() {
         val xml = "<trigger id='testId' class='testClass' name='testName' text='testText' />"
-        val parsed = TriggerStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = TriggerStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

@@ -6,9 +6,9 @@ import canon.extension.attrAsText
 import canon.model.Spinner
 import org.w3c.dom.Node
 
-class SpinnerStrategy : AbstractParseStrategy<Spinner>() {
+open class SpinnerStrategy : AbstractParseStrategy<Spinner>() {
     
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Spinner {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Spinner {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val min = node.attrAsDouble("min", 0.0)

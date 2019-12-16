@@ -6,14 +6,14 @@ import canon.extension.attrAsText
 import canon.model.SingleChoice
 import org.w3c.dom.Node
 
-class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
+open class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): SingleChoice {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SingleChoice {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
-        val sieve = node.attrAsBoolean("sieve", false)
+        val sieve = node.attrAsBoolean("sieve", true)
 
-        return SingleChoice(id, `class`, name, sieve, factory(node, context))
+        return SingleChoice(id, `class`, name, sieve, factory(node))
     }
 }

@@ -12,7 +12,7 @@ class PhoneStrategyTest {
     fun testParse() {
         val xml = "<phone id='testId' class='testClass' placeholder='*' required='true' " +
                 "name='testName' value='testValue'></phone>"
-        val parsed = PhoneStrategy().parse(xml.toNode(), HashMap<String, Any?>(), CanonXmlParser()::toRenderables)
+        val parsed = PhoneStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)

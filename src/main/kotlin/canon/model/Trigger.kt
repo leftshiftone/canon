@@ -1,11 +1,12 @@
 package canon.model
 
+import canon.api.IClassAware
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Trigger(@JsonIgnore val id: String?,
-                   @JsonIgnore val `class`: String?,
+data class Trigger(@JsonIgnore override val id: String?,
+                   @JsonIgnore override val `class`: String?,
                    val name: String?,
-                   val text: String?) : IRenderable {
+                   val text: String?) : IRenderable, IClassAware {
     override fun toString() = "Trigger(name=$name, text=$text)"
 }

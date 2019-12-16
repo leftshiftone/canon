@@ -5,9 +5,9 @@ import canon.extension.attrAsText
 import canon.model.Suggestion
 import org.w3c.dom.Node
 
-class SuggestionStrategy : AbstractParseStrategy<Suggestion>() {
+open class SuggestionStrategy : AbstractParseStrategy<Suggestion>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Suggestion {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Suggestion {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")

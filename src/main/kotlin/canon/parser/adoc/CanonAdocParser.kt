@@ -32,7 +32,7 @@ class CanonAdocParser {
             val errorListener = CanonExceptionListener()
             parser.addErrorListener(errorListener)
 
-            val visitor = CanonVisitor()
+            val visitor = CanonAdocVisitor()
             val astList = visitor.visit(parser.compilation()) ?: throw CanonException("invalid adoc script")
 
             if (errorListener.get() != null) {

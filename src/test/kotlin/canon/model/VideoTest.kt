@@ -1,6 +1,6 @@
 package canon.model
 
-import io.mockk.mockk
+import canon.support.TestEvaluator
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
@@ -9,9 +9,9 @@ class VideoTest {
 
     @Test
     fun testVideoMapping() {
-        val mapped = Video("testId", "testClass", "testSrc").toMap(HashMap(), mockk())
+        val mapped = Video("testId", "testClass", "testSrc").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(1, mapped.size)
+        assertEquals(3, mapped.size)
         assertEquals("testSrc", mapped.get("src"))
     }
 }

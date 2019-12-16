@@ -5,13 +5,13 @@ import canon.extension.attrAsText
 import canon.model.Col
 import org.w3c.dom.Node
 
-class ColStrategy : AbstractParseStrategy<Col>() {
+open class ColStrategy : AbstractParseStrategy<Col>() {
 
-    override fun parse(node: Node, context: Map<String, Any?>, factory: (Node, Map<String, Any?>) -> List<IRenderable>): Col {
+    override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Col {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
 
-        return Col(id, `class`, factory(node, context))
+        return Col(id, `class`, factory(node))
     }
 
 

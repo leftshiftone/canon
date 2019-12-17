@@ -11,7 +11,7 @@ data class Label(@JsonIgnore override val id: String?,
                  @JsonIgnore override val `class`: String?,
                  val text: String?) : IRenderable, IClassAware, ILabelAware {
 
-    override fun getLabel(): String? {
+    override fun label(): String? {
         return text
     }
 

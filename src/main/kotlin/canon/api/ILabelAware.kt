@@ -5,5 +5,5 @@ package canon.api
  */
 interface ILabelAware {
 
-    fun getLabel(): String?
+    fun label(): String?
 }

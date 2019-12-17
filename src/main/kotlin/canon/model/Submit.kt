@@ -12,7 +12,7 @@ data class Submit(@JsonIgnore override val id: String?,
                   val text: String?,
                   val name: String?) : IRenderable, IClassAware, ILabelAware {
 
-    override fun getLabel(): String? {
+    override fun label(): String? {
         return text
     }
 

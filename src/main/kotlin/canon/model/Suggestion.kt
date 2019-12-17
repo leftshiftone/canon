@@ -1,9 +1,6 @@
 package canon.model
 
-import canon.api.IClassAware
-import canon.api.IClickable
-import canon.api.IEvaluator
-import canon.api.IRenderable
+import canon.api.*
 import canon.support.Base64
 import com.fasterxml.jackson.annotation.JsonIgnore
 import kotlin.collections.Map
@@ -12,10 +9,18 @@ data class Suggestion(@JsonIgnore override val id: String?,
                       @JsonIgnore override val `class`: String?,
                       val text: String?,
                       val name: String?,
-                      val value: String?) : IRenderable, IClassAware, IClickable {
+                      val value: String?) : IRenderable, IClassAware, IClickable, IValueAware {
 
-    override fun getLabel(): String? {
+    override fun label(): String? {
         return text
+    }
+
+    override fun name(): String? {
+        return name
+    }
+
+    override fun value(): String? {
+        return value
     }
 
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {

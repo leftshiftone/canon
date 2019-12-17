@@ -5,6 +5,7 @@ import canon.api.IEvaluator
 import canon.api.ILabelAware
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class Submit(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,

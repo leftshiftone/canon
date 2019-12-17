@@ -4,6 +4,7 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class Choice(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,

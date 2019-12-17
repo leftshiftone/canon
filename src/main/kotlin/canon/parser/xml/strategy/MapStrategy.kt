@@ -6,7 +6,6 @@ import canon.extension.attrAsDouble
 import canon.extension.attrAsInt
 import canon.extension.attrAsText
 import canon.model.Map
-import org.apache.commons.lang3.StringUtils
 import org.w3c.dom.Node
 
 open class MapStrategy : AbstractParseStrategy<Map>() {
@@ -16,8 +15,7 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
         val src = node.attrAsText("src")
-        var mapType = node.attrAsText("mapType")
-        if (StringUtils.isEmpty(mapType)) mapType = "osm"
+        val mapType = node.attrAsText("mapType", "osm")
         val centerLng = node.attrAsDouble("centerLng", 0.0)
         val centerLat = node.attrAsDouble("centerLat", 0.0)
         val exact = node.attrAsBoolean("exact", false)

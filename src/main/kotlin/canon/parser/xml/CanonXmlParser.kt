@@ -70,7 +70,7 @@ open class CanonXmlParser {
             "slider" to SliderStrategy(),
             "slotmachine" to SlotMachineStrategy(),
             "slotMachine" to SlotMachineStrategy(),
-            "smallDevice" to SmallDeviceStrategy(),
+            "container" to ContainerStrategy(),
             "spinner" to SpinnerStrategy(),
             "submit" to SubmitStrategy(),
             "suggestion" to SuggestionStrategy(),
@@ -86,7 +86,7 @@ open class CanonXmlParser {
     fun parse(str: String): List<IRenderable> {
         try {
             var xml = str.replace("&", "&amp;")
-            xml = "<markup><smallDevice>$xml</smallDevice></markup>"
+            xml = "<markup><container>$xml</container></markup>"
 
             val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
             return toRenderables(document.childNodes, mutableListOf())

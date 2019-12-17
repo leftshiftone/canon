@@ -26,6 +26,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
             is Choice -> visitChoice(renderable)
             is CodeReader -> visitCodeReader(renderable)
             is Col -> visitCol(renderable)
+            is Container -> visitContainer(renderable)
             is Email -> visitEmail(renderable)
             is Foreach -> visitForeach(renderable)
             is Form -> visitForm(renderable)
@@ -49,7 +50,6 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
             is SingleChoice -> visitSingleChoice(renderable)
             is Slider -> visitSlider(renderable)
             is SlotMachine -> visitSlotMachine(renderable)
-            is SmallDevice -> visitSmallDevice(renderable)
             is Spinner -> visitSpinner(renderable)
             is Submit -> visitSubmit(renderable)
             is Suggestion -> visitSuggestion(renderable)
@@ -76,6 +76,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
     open fun visitChoice(choice: Choice) {}
     open fun visitCodeReader(renderable: CodeReader) {}
     open fun visitCol(renderable: Col) {}
+    open fun visitContainer(renderable: Container) {}
     open fun visitEmail(renderable: Email) {}
     open fun visitForeach(renderable: Foreach) {}
     open fun visitForm(renderable: Form) {}
@@ -99,7 +100,6 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
     open fun visitSingleChoice(singleChoice: SingleChoice) {}
     open fun visitSlider(renderable: Slider) {}
     open fun visitSlotMachine(renderable: SlotMachine) {}
-    open fun visitSmallDevice(renderable: SmallDevice) {}
     open fun visitSpinner(renderable: Spinner) {}
     open fun visitSubmit(submit: Submit) {}
     open fun visitSuggestion(suggestion: Suggestion) {}

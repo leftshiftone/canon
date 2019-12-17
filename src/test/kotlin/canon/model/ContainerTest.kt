@@ -5,11 +5,11 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 
 
-class SmallDeviceTest {
+class ContainerTest {
 
     @Test
-    fun testSmallDeviceMapping() {
-        val mapped = SmallDevice("testId", "testClass", "testName",
+    fun testContainerMapping() {
+        val mapped = Container("testId", "testClass", "testName",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
         assertEquals(3, mapped.size)

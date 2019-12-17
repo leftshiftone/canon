@@ -6,14 +6,14 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Assertions.assertNotNull
 import org.junit.jupiter.api.Test
 
-class SmallDeviceStrategyTest {
+class ContainerStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<smallDevice id='testId' class='testClass' name='testName'>" +
+        val xml = "<container id='testId' class='testClass' name='testName'>" +
                 "<text id='testId2' class='testClass'>test</text>" +
-                "</smallDevice>"
-        val parsed = SmallDeviceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+                "</container>"
+        val parsed = ContainerStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
@@ -21,5 +21,4 @@ class SmallDeviceStrategyTest {
         assertEquals("testName", parsed.name)
         assertEquals(1, parsed.renderables?.size)
     }
-
 }

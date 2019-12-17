@@ -8,6 +8,6 @@ data class Selection(@JsonIgnore override val id: String?,
                 @JsonIgnore override val `class`: String?,
                 val name: String?,
                 val countdownInSec: Int?,
-                @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+                @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
     override fun toString() = "Selection(name=$name, countdownInSec=$countdownInSec)"
 }

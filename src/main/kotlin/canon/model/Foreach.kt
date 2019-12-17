@@ -2,14 +2,14 @@ package canon.model
 
 import canon.api.IEvaluator
 import canon.api.IRenderable
-import canon.api.IStackeable
+import canon.api.IStackable
 import canon.api.IVisitor
 import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.Optional.ofNullable
 
-data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRenderable, IStackeable {
+data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRenderable, IStackable {
 
     @JsonIgnore
     private val target: String

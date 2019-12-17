@@ -9,7 +9,7 @@ data class MultipleChoice(@JsonIgnore override val id: String?,
                           @JsonIgnore override val `class`: String?,
                           val name: String?,
                           val sieve: Boolean?,
-                          @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+                          @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
 
     override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf(

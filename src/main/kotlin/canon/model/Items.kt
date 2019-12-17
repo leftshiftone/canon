@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 data class Items(@JsonIgnore override val id: String?,
             @JsonIgnore override val `class`: String?,
             val ordered: Boolean?,
-            @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+            @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
 
     override fun toString() = "Items(ordered=$ordered) { ${renderables?.map { it.toString() }} }"
 

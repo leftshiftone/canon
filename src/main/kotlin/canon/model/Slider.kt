@@ -15,7 +15,7 @@ data class Slider(@JsonIgnore override val id: String?,
                   val name: String?,
                   val values: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
 
         val valuesList = if (values.isNullOrBlank()) {
             emptyList()

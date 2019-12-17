@@ -12,7 +12,7 @@ data class Phone(@JsonIgnore override val id: String?,
                  val name: String?,
                  val value: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf(
                 "placeholder" to placeholder,
                 "required" to required,

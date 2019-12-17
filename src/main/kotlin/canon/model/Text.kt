@@ -14,7 +14,7 @@ data class Text(@JsonIgnore override val id: String?,
         return text
     }
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf("text" to evaluator.evaluate(text, context))
     }
 

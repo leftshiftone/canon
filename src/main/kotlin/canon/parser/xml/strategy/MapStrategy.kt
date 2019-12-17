@@ -17,7 +17,7 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
         val name = node.attrAsText("name")
         val src = node.attrAsText("src")
         var mapType = node.attrAsText("mapType")
-        if (StringUtils.isEmpty(mapType) || StringUtils.equals(mapType, "google") || StringUtils.equals(mapType, "osm")) mapType = "osm"
+        if (StringUtils.isEmpty(mapType)) mapType = "osm"
         val centerLng = node.attrAsDouble("centerLng", 0.0)
         val centerLat = node.attrAsDouble("centerLat", 0.0)
         val exact = node.attrAsBoolean("exact", false)

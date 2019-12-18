@@ -13,7 +13,7 @@ data class Map(@JsonIgnore override val id: String?,
                val mapType: String?,
                val centerLng: Double?,
                val centerLat: Double?,
-               val exact: Boolean?,
+               val route: String,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
                val zoom: Int?,
@@ -24,7 +24,7 @@ data class Map(@JsonIgnore override val id: String?,
     }
 
     override fun toString(): String {
-        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, exact=$exact, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections) ${super.toString()}"
+        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, route=$route, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections) ${super.toString()}"
     }
 
 }

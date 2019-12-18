@@ -8,10 +8,10 @@ import kotlin.collections.Map
 
 data class SingleChoice(@JsonIgnore override val id: String?,
                         @JsonIgnore override val `class`: String?,
-                        val name: String?,
-                        val sieve: Boolean?,
-                        val required: Boolean? = false,
-                        @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
+                        override val name: String?,
+                        override val sieve: Boolean?,
+                        override val required: Boolean?,
+                        @JsonIgnore override val renderables: List<IRenderable>?) : SieveAwareChoiceContainer(id, `class`, name, sieve, required, renderables), IClassAware {
 
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf(

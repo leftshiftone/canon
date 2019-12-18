@@ -19,7 +19,7 @@ class SingleChoiceStrategyTest {
         assertThat(parsed.`class`).isEqualTo("testClass")
         assertThat(parsed.name).isEqualTo("testName")
         assertThat(parsed.sieve).isEqualTo(true)
-        assertThat(parsed.required).isEqualTo(false)
+        assertThat(parsed.required).isEqualTo(true)
         assertThat(parsed.renderables?.size).isEqualTo(1)
     }
 

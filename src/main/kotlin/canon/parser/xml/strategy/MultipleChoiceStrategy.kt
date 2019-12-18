@@ -13,7 +13,8 @@ open class MultipleChoiceStrategy : AbstractParseStrategy<MultipleChoice>() {
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
         val sieve = node.attrAsBoolean("sieve", true)
+        val required = node.attrAsBoolean("required", true)
 
-        return MultipleChoice(id, `class`, name, sieve, factory(node))
+        return MultipleChoice(id, `class`, name, sieve, required, factory(node))
     }
 }

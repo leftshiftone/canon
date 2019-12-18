@@ -10,9 +10,10 @@ open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Choice {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val name = node.attrAsText("name")
         val text = node.attrAsText("text")
         val selected = node.attrAsText("selected", "false")
 
-        return Choice(id, `class`, text, selected, factory(node))
+        return Choice(id, `class`, name, text, selected, factory(node))
     }
 }

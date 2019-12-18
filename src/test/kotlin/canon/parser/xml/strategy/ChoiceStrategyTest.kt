@@ -9,12 +9,13 @@ class ChoiceStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<choice id='testId' class='testClass' text='testText' selected='true'></choice>"
+        val xml = "<choice id='testId' class='testClass' name='choiceName' text='testText' selected='true'></choice>"
         val parsed = ChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertThat(parsed).isNotNull
         assertThat(parsed.id).isEqualTo("testId")
         assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.name).isEqualTo("choiceName")
         assertThat(parsed.text).isEqualTo("testText")
         assertThat(parsed.selected).isEqualTo("true")
     }

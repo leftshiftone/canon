@@ -1,7 +1,7 @@
 package canon.model
 
 import canon.support.TestEvaluator
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 
@@ -9,11 +9,12 @@ class SingleChoiceTest {
 
     @Test
     fun testSingleChoiceMapping() {
-        val mapped = SingleChoice("testId", "testClass", "testName", false,
-                ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = SingleChoice("testId", "testClass", "testName", false, true,
+                renderables = ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
-        assertEquals("testName", mapped.get("name"))
-        assertEquals(false, mapped.get("sieve"))
+        assertThat(mapped.size).isEqualTo(5)
+        assertThat(mapped["name"]).isEqualTo("testName")
+        assertThat(mapped["sieve"]).isEqualTo(false)
+        assertThat(mapped["required"]).isEqualTo(true)
     }
 }

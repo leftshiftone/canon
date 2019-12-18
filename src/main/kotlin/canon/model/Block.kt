@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 data class Block(@JsonIgnore override val id: String?,
                  @JsonIgnore override val `class`: String?,
                  val name: String?,
-                 @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+                 @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
 
     override fun toString() = "Block(name=$name) { ${renderables?.map { it.toString() }}"
 

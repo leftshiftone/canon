@@ -9,6 +9,6 @@ data class Transition(@JsonIgnore override val id: String?,
                  val name: String?,
                  val direction: String?,
                  val wrapped: String?,
-                 @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackeable(renderables), IClassAware {
+                 @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
     override fun toString() = "Transition(name=$name, direction=$direction, wrapped=$wrapped)"
 }

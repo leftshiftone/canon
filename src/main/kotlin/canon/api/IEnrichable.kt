@@ -1,12 +1,15 @@
 package canon.api
 
-@Deprecated("Refactoring ongoing")
-interface IEnrichable : IRenderable {
+/**
+ * @author Michael Mair
+ */
+interface IEnrichable {
 
-    fun enrich(key: String, value:Any)
+    fun enrich(key: String?, value: Any?)
 
-    fun enrich(enriched: Map<String, Any>) { enriched.forEach {it -> enrich(it.key, it.value)} }
+    fun enrich(enriched: Map<String?, Any?>) {
+        enriched.forEach { (key: String?, value: Any?) -> this.enrich(key, value) }
+    }
 
-    fun getEnriched() : Map<String, Any>;
-
+    fun getEnriched(): Map<String?, Any?>?
 }

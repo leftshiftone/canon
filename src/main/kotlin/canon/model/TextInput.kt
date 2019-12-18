@@ -4,6 +4,7 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class TextInput(@JsonIgnore override val id: String?,
                      @JsonIgnore override val `class`: String?,
@@ -13,7 +14,7 @@ data class TextInput(@JsonIgnore override val id: String?,
                      val name: String?,
                      val value: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return toIdAndClassMap(context, evaluator) + mapOf(
                 "regex" to regex,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),

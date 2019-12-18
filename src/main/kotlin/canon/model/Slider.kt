@@ -5,6 +5,7 @@ import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
 import java.util.Optional.ofNullable
+import kotlin.collections.Map
 
 data class Slider(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,
@@ -15,7 +16,7 @@ data class Slider(@JsonIgnore override val id: String?,
                   val name: String?,
                   val values: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
 
         val valuesList = if (values.isNullOrBlank()) {
             emptyList()

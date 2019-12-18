@@ -13,7 +13,8 @@ open class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
         val `class` = node.attrAsText("class")
         val name = node.attrAsText("name")
         val sieve = node.attrAsBoolean("sieve", true)
+        val required = node.attrAsBoolean("required", false)
 
-        return SingleChoice(id, `class`, name, sieve, factory(node))
+        return SingleChoice(id = id, `class` = `class`, name =  name, sieve = sieve, required = required, renderables = factory(node))
     }
 }

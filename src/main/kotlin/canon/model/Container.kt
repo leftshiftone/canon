@@ -2,8 +2,10 @@ package canon.model
 
 import canon.api.IClassAware
 import canon.api.IEnrichable
+import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
+import kotlin.collections.Map
 
 data class Container(@JsonIgnore override val id: String?,
                      @JsonIgnore override val `class`: String?,
@@ -16,10 +18,13 @@ data class Container(@JsonIgnore override val id: String?,
         enrichedData[key] = value
     }
 
-    override fun getEnriched(): kotlin.collections.Map<String?, Any?>? {
+    override fun getEnriched(): Map<String?, Any?>? {
         return enrichedData
     }
 
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+        return mapOf("name" to name).plus(toIdAndClassMap(context, evaluator))
+    }
 
     override fun toString() = "Container(name=$name)"
 }

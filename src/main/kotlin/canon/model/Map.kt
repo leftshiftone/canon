@@ -14,7 +14,7 @@ data class Map(@JsonIgnore override val id: String?,
                val mapType: String?,
                val centerLng: Double?,
                val centerLat: Double?,
-               val route: String?,
+               val routePoints: String?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
                val zoom: Int?,
@@ -30,7 +30,7 @@ data class Map(@JsonIgnore override val id: String?,
                 "mapType" to mapType,
                 "centerLng" to centerLng,
                 "centerLat" to centerLat,
-                "route" to evaluator.evaluate(route ?: "", context),
+                "routePoints" to evaluator.evaluate(routePoints ?: "", context),
                 "centerBrowserLocation" to centerBrowserLocation,
                 "required" to required,
                 "zoom" to zoom,
@@ -38,7 +38,7 @@ data class Map(@JsonIgnore override val id: String?,
     }
 
     override fun toString(): String {
-        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, route=$route, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections) ${super.toString()}"
+        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, routePoints=$routePoints, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections) ${super.toString()}"
     }
 
 }

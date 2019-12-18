@@ -11,7 +11,7 @@ class MapStrategyTest {
     @Test
     fun testParse() {
         val xml = "<map id='testId' class='testClass' name='testName' src='testSrc' " +
-                "mapType='type' centerLng='12.0' centerLat='10.0' exact='true'></map>"
+                "mapType='type' centerLng='12.0' centerLat='10.0' route='testRoute'></map>"
         val parsed = MapStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertNotNull(parsed)
@@ -22,7 +22,7 @@ class MapStrategyTest {
         assertEquals("type", parsed.mapType)
         assertEquals(12.0, parsed.centerLng)
         assertEquals(10.0, parsed.centerLat)
-        assertEquals(true, parsed.exact)
+        assertEquals("testRoute", parsed.route)
         assertEquals(false, parsed.centerBrowserLocation)
         assertEquals(false, parsed.required)
 

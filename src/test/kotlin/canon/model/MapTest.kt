@@ -10,7 +10,7 @@ class MapTest {
     @Test
     fun testMapMapping() {
         val mapped = Map("testId", "testClass", "testName", "testSrc",
-                "type", 123.0, -170.0, true,
+                "type", 123.0, -170.0, "testRoute",
                 false, true, 12, 1).toMap(HashMap(), TestEvaluator())
 
         assertEquals(12, mapped.size)
@@ -19,7 +19,7 @@ class MapTest {
         assertEquals("type", mapped["mapType"])
         assertEquals(123.0, mapped["centerLng"])
         assertEquals(-170.0, mapped["centerLat"])
-        assertEquals(true, mapped["exact"])
+        assertEquals("testRoute", mapped["route"])
         assertEquals(false, mapped["centerBrowserLocation"])
         assertEquals(true, mapped["required"])
         assertEquals(12, mapped["zoom"])

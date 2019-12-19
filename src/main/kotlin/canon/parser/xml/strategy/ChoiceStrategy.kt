@@ -14,6 +14,6 @@ open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
         val text = node.attrAsText("text")
         val selected = node.attrAsText("selected", "false")
 
-        return Choice(id, `class`, name, text, selected, factory(node))
+        return Choice(id, `class`, name, node.textContent, selected, factory(node))
     }
 }

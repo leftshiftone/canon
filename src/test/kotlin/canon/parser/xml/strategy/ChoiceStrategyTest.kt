@@ -9,7 +9,7 @@ class ChoiceStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<choice id='testId' class='testClass' name='choiceName' text='testText' selected='true'></choice>"
+        val xml = "<choice id='testId' class='testClass' name='choiceName' selected='true'>testText</choice>"
         val parsed = ChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertThat(parsed).isNotNull

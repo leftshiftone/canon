@@ -15,8 +15,9 @@ open class TextStrategy : AbstractParseStrategy<NewText>() {
         val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", true)
         val name = node.attrAsText("name")
+        val value = node.attrAsText("value")
 
-        return NewText(id, `class`, regex, placeholder, required, name, node.textContent)
+        return NewText(id, `class`, regex, placeholder, required, name, value)
     }
 
 }

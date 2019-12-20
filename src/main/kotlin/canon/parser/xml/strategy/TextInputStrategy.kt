@@ -15,7 +15,8 @@ open class TextInputStrategy : AbstractParseStrategy<TextInput>() {
         val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", true)
         val name = node.attrAsText("name")
+        val value = node.attrAsText("value")
 
-        return TextInput(id, `class`, regex, placeholder, required, name, node.textContent)
+        return TextInput(id, `class`, regex, placeholder, required, name, value)
     }
 }

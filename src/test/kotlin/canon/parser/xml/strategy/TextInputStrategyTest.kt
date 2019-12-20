@@ -5,12 +5,12 @@ import canon.parser.xml.CanonXmlParser
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
-class TextStrategyTest {
+class TextInputStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<text id='testId' class='testClass' regex='regEx' placeholder='*' " +
-                "required='true' name='testName' value='test'></text>"
+        val xml = "<textInput id='testId' class='testClass' regex='regEx' placeholder='*' " +
+                "required='true' name='testName' value='test'></textInput>"
         val parsed = TextStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertThat(parsed).isNotNull

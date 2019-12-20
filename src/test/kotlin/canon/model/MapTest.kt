@@ -1,7 +1,7 @@
 package canon.model
 
 import canon.support.TestEvaluator
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 
@@ -9,20 +9,24 @@ class MapTest {
 
     @Test
     fun testMapMapping() {
-        val mapped = Map("testId", "testClass", "testName", "testSrc",
-                "type", 123.0, -170.0, "45.3,46.8;45.8,44.7",
-                false, true, 12, 1).toMap(HashMap(), TestEvaluator())
+        val mapped = Map(id = "testId", `class` = "testClass", name = "testName",
+                src = "testSrc", mapType = "type", centerLng = 123.0, centerLat = -170.0,
+                markerIcon = "static/icons/icon01.svg", selectedMarkerIcon = "static/icons/icon02.svg",
+                routePoints = "45.3,46.8;45.8,44.7", centerBrowserLocation = false, required = true,
+                zoom = 12, maxSelections = 1).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(12, mapped.size)
-        assertEquals("testName", mapped["name"])
-        assertEquals("testSrc", mapped["src"])
-        assertEquals("type", mapped["mapType"])
-        assertEquals(123.0, mapped["centerLng"])
-        assertEquals(-170.0, mapped["centerLat"])
-        assertEquals("45.3,46.8;45.8,44.7", mapped["routePoints"])
-        assertEquals(false, mapped["centerBrowserLocation"])
-        assertEquals(true, mapped["required"])
-        assertEquals(12, mapped["zoom"])
-        assertEquals(1, mapped["maxSelections"])
+        assertThat(mapped.size).isEqualTo(14)
+        assertThat(mapped["name"]).isEqualTo("testName")
+        assertThat(mapped["src"]).isEqualTo("testSrc")
+        assertThat(mapped["mapType"]).isEqualTo("type")
+        assertThat(mapped["centerLng"]).isEqualTo(123.0)
+        assertThat(mapped["centerLat"]).isEqualTo(-170.0)
+        assertThat(mapped["markerIcon"]).isEqualTo("static/icons/icon01.svg")
+        assertThat(mapped["selectedMarkerIcon"]).isEqualTo("static/icons/icon02.svg")
+        assertThat(mapped["routePoints"]).isEqualTo("45.3,46.8;45.8,44.7")
+        assertThat(mapped["centerBrowserLocation"]).isEqualTo(false)
+        assertThat(mapped["required"]).isEqualTo(true)
+        assertThat(mapped["zoom"]).isEqualTo(12)
+        assertThat(mapped["maxSelections"]).isEqualTo(1)
     }
 }

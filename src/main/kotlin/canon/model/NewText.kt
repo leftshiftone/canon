@@ -17,7 +17,7 @@ data class NewText(@JsonIgnore override val id: String?,
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return mapOf("regex" to regex,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),
-                "name" to name,
+                "name" to evaluator.evaluate(name ?: "", context),
                 "value" to evaluator.evaluate(value ?: "", context),
                 "required" to required).plus(toIdAndClassMap(context, evaluator))
     }

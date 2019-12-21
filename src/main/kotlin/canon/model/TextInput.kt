@@ -18,7 +18,7 @@ data class TextInput(@JsonIgnore override val id: String?,
         return toIdAndClassMap(context, evaluator) + mapOf(
                 "regex" to regex,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),
-                "name" to name,
+                "name" to evaluator.evaluate(name ?: "", context),
                 "value" to evaluator.evaluate(value ?: "", context),
                 "required" to required
         )

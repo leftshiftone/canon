@@ -14,8 +14,9 @@ open class EmailStrategy : AbstractParseStrategy<Email>() {
         val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", false)
         val name = node.attrAsText("name")
+        val value = node.attrAsText("value")
 
-        return Email(id, `class`, placeholder, required, name, node.textContent)
+        return Email(id, `class`, placeholder, required, name, value)
     }
 
 }

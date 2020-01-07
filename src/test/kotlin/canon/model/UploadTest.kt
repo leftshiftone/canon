@@ -1,8 +1,8 @@
 package canon.model
 
 import canon.support.TestEvaluator
-import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
+import org.assertj.core.api.Assertions.assertThat
 
 
 class UploadTest {
@@ -12,11 +12,11 @@ class UploadTest {
         val mapped = Upload("testId", "testClass", "jpg, png","testName",
                 "testText", 5.0, 1.0).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(7, mapped.size)
-        assertEquals("jpg, png", mapped.get("accept"))
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testText", mapped.get("text"))
-        assertEquals(5.0, mapped.get("maxSize"))
-        assertEquals(1.0, mapped.get("maxCompressionSize"))
+        assertThat(mapped.size).isEqualTo(7)
+        assertThat(mapped.get("accept")).isEqualTo("jpg, png")
+        assertThat(mapped.get("name")).isEqualTo("testName")
+        assertThat(mapped.get("text")).isEqualTo("testText")
+        assertThat(mapped.get("maxSize")).isEqualTo(5.0)
+        assertThat(mapped.get("maxCompressSize")).isEqualTo(1.0)
     }
 }

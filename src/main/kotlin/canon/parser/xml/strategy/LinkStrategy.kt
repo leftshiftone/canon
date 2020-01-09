@@ -11,8 +11,7 @@ open class LinkStrategy : AbstractParseStrategy<Link>() {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
         val value = node.attrAsText("value")
-        val text = node.attrAsText("text")
 
-        return Link(id, `class`, value, text)
+        return Link(id, `class`, value, node.textContent)
     }
 }

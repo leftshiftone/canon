@@ -2,22 +2,20 @@ package canon.parser.xml.strategy
 
 import canon.extension.toNode
 import canon.parser.xml.CanonXmlParser
-import org.junit.jupiter.api.Assertions.assertEquals
-import org.junit.jupiter.api.Assertions.assertNotNull
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 
 class LinkStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<link id='testId' class='testClass' value='testValue' text='testText'></link>"
+        val xml = "<link id='testId' class='testClass' value='testValue'>42 is the answer</link>"
         val parsed = LinkStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
-        assertNotNull(parsed)
-        assertEquals("testId", parsed.id)
-        assertEquals("testClass", parsed.`class`)
-        assertEquals("testValue", parsed.value)
-        assertEquals("testText", parsed.text)
+        assertThat(parsed).isNotNull()
+        assertThat(parsed.id).isEqualTo("testId")
+        assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.value).isEqualTo("testValue")
+        assertThat(parsed.text).isEqualTo("42 is the answer")
     }
-
 }

@@ -2,7 +2,6 @@ package canon.parser.xml.strategy
 
 import canon.api.IRenderable
 import canon.extension.attrAsBoolean
-import canon.extension.attrAsDouble
 import canon.extension.attrAsInt
 import canon.extension.attrAsText
 import canon.model.Map
@@ -20,13 +19,15 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
         val centerLat = node.attrAsText("centerLat", "0.0")
         val markerIcon = node.attrAsText("markerIcon")
         val selectedMarkerIcon = node.attrAsText("selectedMarkerIcon")
+        val routeStartIcon = node.attrAsText("routeStartIcon")
+        val routeEndIcon = node.attrAsText("routeEndIcon")
         val routePoints = node.attrAsText("routePoints")
         val centerBrowserLocation = node.attrAsBoolean("centerBrowserLocation", false)
         val required = node.attrAsBoolean("required", false)
         val zoom = node.attrAsInt("zoom", 8)
         val maxSelections = node.attrAsInt("maxSelections", 3)
 
-        return Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routePoints,
+        return Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routeStartIcon, routeEndIcon, routePoints,
                 centerBrowserLocation, required, zoom, maxSelections)
     }
 }

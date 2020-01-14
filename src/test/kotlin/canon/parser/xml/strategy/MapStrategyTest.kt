@@ -20,11 +20,10 @@ class MapStrategyTest {
         assertThat(parsed.name).isEqualTo("testName")
         assertThat(parsed.src).isEqualTo("testSrc")
         assertThat(parsed.mapType).isEqualTo("type")
-        assertThat(parsed.centerLng).isEqualTo(12.0)
-        assertThat(parsed.centerLat).isEqualTo(10.0)
+        assertThat(parsed.centerLng).isEqualTo("12.0")
+        assertThat(parsed.centerLat).isEqualTo("10.0")
         assertThat(parsed.markerIcon).isEqualTo("static/icons/icon1.svg")
         assertThat(parsed.selectedMarkerIcon).isEqualTo("static/icons/icon2.svg")
-
         assertThat(parsed.routePoints).isEqualTo("45.3,46.8;45.8,44.7")
         assertThat(parsed.centerBrowserLocation).isFalse()
         assertThat(parsed.required).isFalse()

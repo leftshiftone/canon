@@ -16,6 +16,8 @@ data class Map(@JsonIgnore override val id: String?,
                val centerLat: String?,
                val markerIcon: String?,
                val selectedMarkerIcon: String?,
+               val routeStartIcon: String?,
+               val routeEndIcon: String?,
                val routePoints: String?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
@@ -37,6 +39,8 @@ data class Map(@JsonIgnore override val id: String?,
                 "centerLat" to (centerLat ?: 0.0),
                 "markerIcon" to markerIcon,
                 "selectedMarkerIcon" to selectedMarkerIcon,
+                "routeStartIcon" to routeStartIcon,
+                "routeEndIcon" to routeEndIcon,
                 "routePoints" to evaluator.evaluate(routePoints ?: "", context),
                 "centerBrowserLocation" to centerBrowserLocation,
                 "required" to required,
@@ -45,7 +49,7 @@ data class Map(@JsonIgnore override val id: String?,
     }
 
     override fun toString(): String {
-        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, markerIcon=$markerIcon, selectedMarkerIcon=$selectedMarkerIcon, routePoints=$routePoints, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections)}"
+        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, markerIcon=$markerIcon, selectedMarkerIcon=$selectedMarkerIcon, routeStartIcon=$routeStartIcon, routeEndIcon=$routeEndIcon, routePoints=$routePoints, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections)}"
     }
 
 }

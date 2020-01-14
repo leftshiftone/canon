@@ -27,11 +27,14 @@ data class Map(@JsonIgnore override val id: String?,
     }
 
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+        val centerLat = (evaluator.evaluate(centerLat ?: "0.0", context) ?: "0.0").toDoubleOrNull()
+        val centerLng = (evaluator.evaluate(centerLng ?: "0.0", context) ?: "0.0").toDoubleOrNull()
+
         return mapOf("name" to  evaluator.evaluate(name, context),
                 "src" to evaluator.evaluate(src ?: "", context),
                 "mapType" to mapType,
-                "centerLng" to (evaluator.evaluate(centerLng ?: "0", context) ?: "0").toDouble(),
-                "centerLat" to (evaluator.evaluate(centerLat ?: "0", context) ?: "0").toDouble(),
+                "centerLng" to (centerLng ?: 0.0),
+                "centerLat" to (centerLat ?: 0.0),
                 "markerIcon" to markerIcon,
                 "selectedMarkerIcon" to selectedMarkerIcon,
                 "routePoints" to evaluator.evaluate(routePoints ?: "", context),

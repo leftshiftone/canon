@@ -36,6 +36,7 @@ open class CanonXmlParser {
     }
 
     private val parsers: MutableMap<String, AbstractParseStrategy<IRenderable>> = mutableMapOf(
+            "basked" to BasketStrategy(),
             "block" to BlockStrategy(),
             "bold" to BoldStrategy(),
             "break" to BreakStrategy(),

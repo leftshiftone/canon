@@ -34,8 +34,15 @@ class XmlValidator(xsdStream: InputStream) {
      * @param stream the input stream
      * @return boolean
      */
-    fun validate(stream: InputStream) {
-        validator.validate(StreamSource(stream))
+    fun validate(stream: InputStream):XmlValidation {
+        try {
+            validator.validate(StreamSource(stream))
+            return XmlValidation.Success()
+        } catch (e: Exception) {
+            if (e is SAXException)
+                return XmlValidation.Failure(e)
+            throw java.lang.RuntimeException(e)
+        }
     }
 
     /**
@@ -44,7 +51,7 @@ class XmlValidator(xsdStream: InputStream) {
      * @param markup the markup text
      * @return boolean
      */
-    fun validate(markup: String) {
+    fun validate(markup: String):XmlValidation {
         return validate(markup.byteInputStream(StandardCharsets.UTF_8))
     }
 

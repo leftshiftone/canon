@@ -12,7 +12,7 @@ class NewTextTest {
         val mapped = NewText("testId", "testClass", "regEx", "placeHolder", false,
                 "testName", "testValue", "text").toMap(HashMap<String, Any>(), TestEvaluator())
 
-        assertEquals(7, mapped.size)
+        assertEquals(8, mapped.size)
         assertEquals("regEx", mapped.get("regex"))
         assertEquals("placeHolder", mapped.get("placeholder"))
         assertEquals(false, mapped.get("required"))

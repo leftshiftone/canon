@@ -19,6 +19,7 @@ data class NewText(@JsonIgnore override val id: String?,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),
                 "name" to evaluator.evaluate(name ?: "", context),
                 "value" to evaluator.evaluate(value ?: "", context),
+                "text" to evaluator.evaluate(text, context),
                 "required" to required).plus(toIdAndClassMap(context, evaluator))
     }
 

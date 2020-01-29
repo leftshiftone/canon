@@ -85,10 +85,12 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
         }
     }
 
+    @JvmOverloads
     fun parse(stream: InputStream, validate: Boolean = true): List<IRenderable> {
         return parse(stream.reader(StandardCharsets.UTF_8).readText(), validate)
     }
 
+    @JvmOverloads
     fun parse(str: String, validate: Boolean = true): List<IRenderable> {
         if (validate) {
             val validation = validator.validate(str)

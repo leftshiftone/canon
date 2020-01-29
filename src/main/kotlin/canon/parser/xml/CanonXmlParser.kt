@@ -130,8 +130,10 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
         if (node.nodeName == "#comment")
             return
-        if (node.nodeName == "markup")
+        if (node.nodeName == "markup") {
             toRenderables(node.childNodes, renderables)
+            return
+        }
 
         val strategy = resolveStrategy(node.nodeName)
         renderables.add(wrap(strategy.parse(node, this::toRenderables)))

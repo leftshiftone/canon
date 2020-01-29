@@ -4,10 +4,6 @@
 
 grammar Canon;
 
-@header {
-package canon.antlr;
-}
-
 IDENTIFIER : (Letter | SpecialChar) (LetterOrDigit | SpecialChar)*;
 HEADLINE   : '= ' Character+;
 ITEM       : '. ' Character+;

@@ -158,11 +158,12 @@ bintray {
 
 generateGrammarSource {
     outputDirectory = new File(project.buildDir, "generated-src/antlr/canon/antlr")
-    arguments += ["-visitor"]
+    arguments += ["-visitor", "-package", "canon.antlr"]
 }
 
 compileKotlin.dependsOn generateGrammarSource
+build.dependsOn generateGrammarSource
 
 compileTestKotlin.dependsOn generateTestGrammarSource
 
-sourceSets.main.kotlin.srcDirs += new File(buildDir, "generated-src/antlr")
+sourceSets.main.java.srcDirs += new File(buildDir, "generated-src/antlr")

@@ -61,6 +61,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
             is Trigger -> visitTrigger(renderable)
             is Upload -> visitUpload(renderable)
             is Video -> visitVideo(renderable)
+            is NewText -> visitNewText(renderable)
             else -> throw IllegalArgumentException("renderable (${renderable?.getType()}) $renderable not implemented")
         }
     }
@@ -107,6 +108,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
     open fun visitText(renderable: Text) {}
     open fun visitTextInput(renderable: TextInput) {}
     open fun visitTextarea(renderable: Textarea) {}
+    open fun visitNewText(renderable: NewText) {}
     open fun visitTransition(renderable: Transition) {}
     open fun visitTrigger(renderable: Trigger) {}
     open fun visitUpload(renderable: Upload) {}

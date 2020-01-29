@@ -14,7 +14,7 @@ data class NewText(@JsonIgnore override val id: String?,
                    val value: String?,
                    val text: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+    override fun toMap(context: kotlin.collections.Map<String, Any>, evaluator: IEvaluator): kotlin.collections.Map<String?, Any?> {
         return mapOf("regex" to regex,
                 "placeholder" to evaluator.evaluate(placeholder ?: "", context),
                 "name" to evaluator.evaluate(name ?: "", context),

@@ -1,0 +1,43 @@
+<!--
+  ~ Copyright (c) 2016-2019, Leftshift One
+  ~ __________________
+  ~ [2019] Leftshift One
+  ~ All Rights Reserved.
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Leftshift One and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Leftshift One
+  ~ and its suppliers and may be covered by Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Leftshift One.
+  -->
+
+<markup>
+    <text id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
+    <button id="01" value="a" name="b">Text</button>
+    <block>
+        <slider id="01" value="3" min="1" max="10" step="1" name="{{$foo}}"/>
+        <slotmachine id="01">
+            <reel id="01" name="name" class="abc">
+                <reelValue valueType="digit" value="3"/>
+            </reel>
+        </slotmachine>
+    </block>
+    <carousel id="01">
+        <block id="01" foreach='$lawyer in $result'>
+            <headline id="01">{{$lawyer.name}}</headline>
+            <text>\$lawyer.address</text>
+            <items id="01">
+                <item id="01">Telefon: \$lawyer.phone</item>
+                <item>Email: \$lawyer.email</item>
+            </items>
+        </block>
+    </carousel>
+    <image id="01" src="a" width="100" height="100" alt="b"/>
+    <link id="01" value="a">b</link>
+    <block>
+        <codeReader format="qr" name="abc"/>
+    </block>
+</markup>

@@ -1,0 +1,18 @@
+<markup>
+    <block>
+        <multipleChoice name="language" class="xyz">
+            <table class="button-layout">
+                <row>
+                    <col><choice class="deu" name="DEU" selected="true"> </choice></col>
+                    <col><choice class="eng" name="ENG"> </choice></col>
+                    <col><choice class="fra" name="FRA"> </choice></col>
+                </row>
+                <row>
+                    <col><text>DEU</text></col>
+                    <col><text>ENG</text></col>
+                    <col><text>FRA</text></col>
+                </row>
+            </table>
+        </multipleChoice>
+    </block>
+</markup>

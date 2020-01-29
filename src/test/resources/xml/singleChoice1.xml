@@ -1,0 +1,7 @@
+<markup>
+    <block>
+        <singleChoice name="test">
+            <text>hello world!</text>
+        </singleChoice>
+    </block>
+</markup>

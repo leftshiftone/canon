@@ -1,90 +1,99 @@
 package canon.parser.xml
 
 import canon.api.IRenderable
+import canon.exception.CanonException
 import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
+import canon.parser.xml.validation.XmlValidation
+import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
 import java.io.ByteArrayInputStream
-import javax.xml.parsers.DocumentBuilder
+import java.io.InputStream
+import java.nio.charset.StandardCharsets
+import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser {
+open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = {Optional.empty()}) {
+
+    private val validator = XmlValidator(CanonXmlParser::class.java.getResourceAsStream("/xml/canon.xsd"))
 
     companion object {
-        val DOCUMENT_BUILDER_FACTORY = ThreadLocal<DocumentBuilderFactory>()
-        val DOCUMENT_BUILDER = ThreadLocal<DocumentBuilder>()
-
-        init {
-            // DocumentBuilderFactory and DocumentBuilder are not thread safe but resource intensive instances
-            DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
-            DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
-        }
+        // DocumentBuilderFactory and DocumentBuilder are not thread safe but resource intensive instances
+        private val DOCUMENT_BUILDER = ThreadLocal.withInitial {
+            val builder = DocumentBuilderFactory.newInstance()
+            builder.newDocumentBuilder()
+        }!!
 
         @JvmStatic
-        fun getDocumentBuilder(): DocumentBuilder {
-            // TODO: refactor!
-            if (DOCUMENT_BUILDER_FACTORY.get() == null)
-                DOCUMENT_BUILDER_FACTORY.set(DocumentBuilderFactory.newInstance())
-            if (DOCUMENT_BUILDER.get() == null)
-                DOCUMENT_BUILDER.set(DOCUMENT_BUILDER_FACTORY.get().newDocumentBuilder())
-            return DOCUMENT_BUILDER.get()
+        fun getDocumentBuilder() = DOCUMENT_BUILDER.get()!!
+    }
+
+    private fun resolveStrategy(key: String): AbstractParseStrategy<IRenderable> {
+        val option = customStrategies(key)
+        if (option.isPresent) return option.get()
+        return when (key) {
+            "basket" -> BasketStrategy()
+            "block" -> BlockStrategy()
+            "bold" -> BoldStrategy()
+            "break" -> BreakStrategy()
+            "button" -> ButtonStrategy()
+            "calendar" -> CalendarStrategy()
+            "camera" -> CameraStrategy()
+            "carousel" -> CarouselStrategy()
+            "checkbox" -> CheckboxStrategy()
+            "choice" -> ChoiceStrategy()
+            "codeReader" -> CodeReaderStrategy()
+            "col" -> ColStrategy()
+            "email" -> EmailStrategy()
+            "form" -> FormStrategy()
+            "headline" -> HeadlineStrategy()
+            "image" -> ImageStrategy()
+            "italic" -> ItalicStrategy()
+            "item" -> ItemStrategy()
+            "items" -> ItemsStrategy()
+            "link" -> LinkStrategy()
+            "map" -> MapStrategy()
+            "multipleChoice" -> MultipleChoiceStrategy()
+            "overlay" -> OverlayStrategy()
+            "overlays" -> OverlaysStrategy()
+            "phone" -> PhoneStrategy()
+            "reel" -> ReelStrategy()
+            "reelValue" -> ReelValueStrategy()
+            "row" -> RowStrategy()
+            "selection" -> SelectionStrategy()
+            "singleChoice" -> SingleChoiceStrategy()
+            "slider" -> SliderStrategy()
+            "slotmachine" -> SlotMachineStrategy()
+            "slotMachine" -> SlotMachineStrategy()
+            "container" -> ContainerStrategy()
+            "spinner" -> SpinnerStrategy()
+            "submit" -> SubmitStrategy()
+            "suggestion" -> SuggestionStrategy()
+            "table" -> TableStrategy()
+            "text" -> TextStrategy()
+            "#text" -> TextStrategy()
+            "textInput" -> TextInputStrategy()
+            "textarea" -> TextareaStrategy()
+            "trigger" -> TriggerStrategy()
+            "upload" -> UploadStrategy()
+            "video" -> VideoStrategy()
+            else -> throw IllegalArgumentException("unknown markup element $key")
         }
     }
 
-    private val parsers: MutableMap<String, AbstractParseStrategy<IRenderable>> = mutableMapOf(
-            "basked" to BasketStrategy(),
-            "block" to BlockStrategy(),
-            "bold" to BoldStrategy(),
-            "break" to BreakStrategy(),
-            "button" to ButtonStrategy(),
-            "calendar" to CalendarStrategy(),
-            "camera" to CameraStrategy(),
-            "carousel" to CarouselStrategy(),
-            "checkbox" to CheckboxStrategy(),
-            "choice" to ChoiceStrategy(),
-            "codeReader" to CodeReaderStrategy(),
-            "col" to ColStrategy(),
-            "email" to EmailStrategy(),
-            "form" to FormStrategy(),
-            "headline" to HeadlineStrategy(),
-            "image" to ImageStrategy(),
-            "italic" to ItalicStrategy(),
-            "item" to ItemStrategy(),
-            "items" to ItemsStrategy(),
-            //"label" to LabelStrategy(),
-            "text" to OldTextStrategy(),
-            "link" to LinkStrategy(),
-            "map" to MapStrategy(),
-            "multipleChoice" to MultipleChoiceStrategy(),
-            "overlay" to OverlayStrategy(),
-            "overlays" to OverlaysStrategy(),
-            "phone" to PhoneStrategy(),
-            "reel" to ReelStrategy(),
-            "reelValue" to ReelValueStrategy(),
-            "row" to RowStrategy(),
-            "selection" to SelectionStrategy(),
-            "singleChoice" to SingleChoiceStrategy(),
-            "slider" to SliderStrategy(),
-            "slotmachine" to SlotMachineStrategy(),
-            "slotMachine" to SlotMachineStrategy(),
-            "container" to ContainerStrategy(),
-            "spinner" to SpinnerStrategy(),
-            "submit" to SubmitStrategy(),
-            "suggestion" to SuggestionStrategy(),
-            "table" to TableStrategy(),
-            //"text" to TextStrategy(),
-            "textInput" to TextInputStrategy(),
-            "textarea" to TextareaStrategy(),
-            "trigger" to TriggerStrategy(),
-            "upload" to UploadStrategy(),
-            "video" to VideoStrategy()
-    )
+    fun parse(stream: InputStream, validate: Boolean = true): List<IRenderable> {
+        return parse(stream.reader(StandardCharsets.UTF_8).readText(), validate)
+    }
 
-    fun parse(str: String): List<IRenderable> {
+    fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+        if (validate) {
+            val validation = validator.validate(str)
+            if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())
+        }
         try {
             var xml = str.replace("&", "&amp;")
             xml = "<markup><container>$xml</container></markup>"
@@ -119,16 +128,13 @@ open class CanonXmlParser {
             }
         }
 
-        if (node.nodeName == "markup") {
+        if (node.nodeName == "#comment")
+            return
+        if (node.nodeName == "markup")
             toRenderables(node.childNodes, renderables)
-        } else if (node.nodeName == "#text") { // todo: why is it needed here?
-            if (node.textContent.isNotBlank())
-                renderables.add(wrap(parsers["text"]!!.parse(node, this::toRenderables)))
-        } else if (parsers.containsKey(node.nodeName)) {
-            renderables.add(wrap(parsers[node.nodeName]!!.parse(node, this::toRenderables)))
-        } else {
-            throw IllegalArgumentException("unknown markup element ${node.nodeName}")
-        }
+
+        val strategy = resolveStrategy(node.nodeName)
+        renderables.add(wrap(strategy.parse(node, this::toRenderables)))
     }
 
     fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {
@@ -152,7 +158,4 @@ open class CanonXmlParser {
         return map
     }
 
-    fun setParseStrategy(key: String, parseStrategy: AbstractParseStrategy<IRenderable>) {
-        parsers[key] = parseStrategy
-    }
 }

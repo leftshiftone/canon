@@ -1,0 +1,6 @@
+<markup>
+    <text>abc</text>
+    <block>
+        <choice name="peter">hallo</choice>
+    </block>
+</markup>

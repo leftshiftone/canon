@@ -1,0 +1,7 @@
+<markup>
+    <block>
+        <singleChoice name="test">
+            <choice foreach="$v in $list" name="{{$v}}">{{$v}}</choice>
+        </singleChoice>
+    </block>
+</markup>

@@ -25,7 +25,6 @@ class XmlValidator(xsdStream: InputStream) {
         } catch (e: SAXException) {
             throw RuntimeException(e)
         }
-
     }
 
     /**
@@ -51,9 +50,6 @@ class XmlValidator(xsdStream: InputStream) {
      * @param markup the markup text
      * @return boolean
      */
-    fun validate(markup: String):XmlValidation {
-        return validate(markup.byteInputStream(StandardCharsets.UTF_8))
-    }
-
+    fun validate(markup: String) = validate(markup.byteInputStream(StandardCharsets.UTF_8))
 
 }

@@ -1,0 +1,37 @@
+<!--
+  ~ Copyright (c) 2016-2019, Leftshift One
+  ~ __________________
+  ~ [2019] Leftshift One
+  ~ All Rights Reserved.
+  ~ NOTICE:  All information contained herein is, and remains
+  ~ the property of Leftshift One and its suppliers,
+  ~ if any.  The intellectual and technical concepts contained
+  ~ herein are proprietary to Leftshift One
+  ~ and its suppliers and may be covered by Patents,
+  ~ patents in process, and are protected by trade secret or copyright law.
+  ~ Dissemination of this information or reproduction of this material
+  ~ is strictly forbidden unless prior written permission is obtained
+  ~ from Leftshift One.
+  -->
+
+<markup>
+    <form name="form">
+        <email name="email" placeholder="type here..." required="true" class="email"/>
+        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+        <phone name="phone" placeholder="type here..." required="true" class="phone"/>
+        <upload name="phone" accept=".docx, .img" maxSize="2"/>
+    </form>
+    <block>
+        <selection countdownInSec="2" name="name">
+            <block name="blockA">
+                <text>asdöfl</text>
+            </block>
+            <block name="blockB">
+                <text>asdöfl</text>
+            </block>
+            <block name="blockC">
+                <text>asdöfl</text>
+            </block>
+        </selection>
+    </block>
+</markup>

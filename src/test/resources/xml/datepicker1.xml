@@ -1,0 +1,4 @@
+<markup>
+    <text>Wählen Sie einen passenden Termin aus:</text>
+    <datePicker></datePicker>
+</markup>

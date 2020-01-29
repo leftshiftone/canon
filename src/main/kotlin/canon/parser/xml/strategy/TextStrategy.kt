@@ -17,8 +17,7 @@ open class TextStrategy : AbstractParseStrategy<NewText>() {
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
-        // FIXME: remove workaround
-        return NewText(id, `class`, regex, placeholder, required, name, if (value.isNotBlank()) value else node.textContent)
+        return NewText(id, `class`, regex, placeholder, required, name, value, node.textContent)
     }
 
 }

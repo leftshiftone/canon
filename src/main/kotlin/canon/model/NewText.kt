@@ -4,7 +4,6 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class NewText(@JsonIgnore override val id: String?,
                    @JsonIgnore override val `class`: String?,
@@ -12,7 +11,8 @@ data class NewText(@JsonIgnore override val id: String?,
                    val placeholder: String?,
                    val required: Boolean?,
                    val name: String?,
-                   val value: String?) : IRenderable, IClassAware {
+                   val value: String?,
+                   val text: String?) : IRenderable, IClassAware {
 
     override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
         return mapOf("regex" to regex,

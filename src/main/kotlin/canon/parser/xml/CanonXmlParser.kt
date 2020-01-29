@@ -136,6 +136,11 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             toRenderables(node.childNodes, renderables)
             return
         }
+        // FIXME: remove workaround
+        if (node.nodeName == "text" || node.nodeName == "#text") {
+            if (node.textContent.isBlank())
+                return
+        }
 
         val strategy = resolveStrategy(node.nodeName)
         renderables.add(wrap(strategy.parse(node, this::toRenderables)))

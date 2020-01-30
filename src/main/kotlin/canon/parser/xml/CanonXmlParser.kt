@@ -17,7 +17,7 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = {Optional.empty()}) {
+open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
 
     private val validator = XmlValidator(CanonXmlParser::class.java.getResourceAsStream("/xml/canon.xsd"))
 
@@ -92,14 +92,15 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
     @JvmOverloads
     fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+        var xml = str.replace("&", "&amp;")
+        if (!xml.startsWith("<markup>")) {
+            xml = "<markup><container>$xml</container></markup>"
+        }
         if (validate) {
-            val validation = validator.validate(str)
+            val validation = validator.validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())
         }
         try {
-            var xml = str.replace("&", "&amp;")
-            xml = "<markup><container>$xml</container></markup>"
-
             val document = getDocumentBuilder().parse(ByteArrayInputStream(xml.toByteArray(UTF_8)))
             return toRenderables(document.childNodes, mutableListOf())
         } catch (e: Exception) {

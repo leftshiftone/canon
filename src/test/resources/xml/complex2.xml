@@ -1,5 +1,4 @@
-<markup>
-    <text id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
+<text id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
     <button id="01" value="a" name="b">Text</button>
     <block>
         <slider id="01" value="3" min="1" max="10" step="1" name="{{$foo}}"/>
@@ -24,4 +23,3 @@
     <block>
         <codeReader format="qr" name="abc"/>
     </block>
-</markup>

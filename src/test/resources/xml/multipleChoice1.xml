@@ -1,5 +1,4 @@
-<markup>
-    <block>
+<block>
         <multipleChoice name="test" sieve="false">
             <choice name="a" selected="false">test</choice>
             <choice name="b" selected="true">test</choice>
@@ -8,4 +7,3 @@
             <choice name="e" selected="false">test</choice>
         </multipleChoice>
     </block>
-</markup>

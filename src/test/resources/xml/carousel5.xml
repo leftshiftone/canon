@@ -1,5 +1,4 @@
-<markup>
-    <carousel class="carousel" id="carousel">
+<carousel class="carousel" id="carousel">
         <block>
             <headline>first headline</headline>
             <text>first text</text>
@@ -11,4 +10,3 @@
     </carousel>
 
     <button>Next</button>
-</markup>

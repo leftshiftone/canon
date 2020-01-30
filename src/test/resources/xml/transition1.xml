@@ -1,5 +1,4 @@
-<markup>
-    <transition direction="right">
+<transition direction="right">
         <text id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
         <button id="01" value="a" name="b">Text</button>
 
@@ -99,5 +98,3 @@
         <suggestion>B</suggestion>
         <suggestion>C</suggestion>
     </transition>
-
-</markup>

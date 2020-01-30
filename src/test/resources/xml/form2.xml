@@ -1,8 +1,6 @@
-<markup>
-    <form name="outerForm">
+<form name="outerForm">
         <text>test</text>
         <form name="innerForm">
             <text>Inner test</text>
         </form>
     </form>
-</markup>

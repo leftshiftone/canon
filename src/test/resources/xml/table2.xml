@@ -1,5 +1,4 @@
-<markup>
-    <block>
+<block>
         <table>
             <row>
                 <col><button value="test">test</button></col>
@@ -11,4 +10,3 @@
             </row>
         </table>
     </block>
-</markup>

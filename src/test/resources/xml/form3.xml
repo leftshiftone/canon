@@ -1,5 +1,4 @@
-<markup>
-    <form name="form">
+<form name="form">
         <email name="email" placeholder="type here..." required="true" class="email"/>
         <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
         <phone name="phone" placeholder="type here..." required="true" class="phone"/>
@@ -18,4 +17,3 @@
             </block>
         </selection>
     </block>
-</markup>

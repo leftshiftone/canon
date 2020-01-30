@@ -1,8 +1,6 @@
-<markup>
-    <form>
+<form>
         <map maxSelections="5" name="here" src="https://map.map/" mapType="here" routePoints="5,6;6,8"/>
         <map maxSelections="5" name="google" src="https://map.map/" mapType="google"/>
         <map maxSelections="1" name="google" src="https://map.map/" mapType="here" routeEndIcon="static/end.png" routeStartIcon="static/start.png"/>
         <submit>Weiter</submit>
     </form>
-</markup>

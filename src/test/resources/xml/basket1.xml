@@ -1,5 +1,4 @@
-<markup>
-    <block>
+<block>
         <basket>
             <headline>first headline</headline>
             <text>first text</text>
@@ -9,4 +8,3 @@
             </block>
         </basket>
     </block>
-</markup>

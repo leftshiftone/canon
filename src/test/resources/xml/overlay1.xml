@@ -1,10 +1,7 @@
-<markup>
-
     <block>
         <trigger name="trigger_1">click me to trigger the 1st overlay</trigger>
         <trigger name="trigger_2">click me to trigger the 2nd overlay</trigger>
     </block>
-
     <overlays>
         <overlay trigger="trigger_1">
             <form>
@@ -21,5 +18,3 @@
             </block>
         </overlay>
     </overlays>
-
-</markup>

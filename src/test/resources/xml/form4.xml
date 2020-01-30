@@ -1,5 +1,4 @@
-<markup>
-    <form>
+<form>
         <textarea name="name"/>
         <textarea name="name1"/>
         <textarea name="name_"/>
@@ -11,4 +10,3 @@
         <textarea name="{{number(1)}}"/>
         <textarea name="{{concat('a', $name)}}"/>
     </form>
-</markup>

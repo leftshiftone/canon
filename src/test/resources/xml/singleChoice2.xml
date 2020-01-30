@@ -1,5 +1,4 @@
-<markup>
-    <block>
+<block>
         <singleChoice name="test" sieve="false">
             <choice name="a" selected="false">test</choice>
             <choice name="b" selected="false">test</choice>
@@ -8,4 +7,3 @@
             <choice name="e" selected="false">test</choice>
         </singleChoice>
     </block>
-</markup>

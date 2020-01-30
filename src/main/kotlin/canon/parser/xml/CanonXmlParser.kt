@@ -93,9 +93,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
     @JvmOverloads
     fun parse(str: String, validate: Boolean = true): List<IRenderable> {
         var xml = str.replace("&", "&amp;")
-        if (!xml.startsWith("<markup>")) {
-            xml = "<markup><container>$xml</container></markup>"
-        }
+        xml = "<markup><container>$xml</container></markup>"
         if (validate) {
             val validation = validator.validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())

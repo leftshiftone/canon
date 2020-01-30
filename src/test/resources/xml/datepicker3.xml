@@ -1,4 +1,2 @@
-<markup>
-    <text>Wählen Sie einen passenden Termin aus:</text>
+<text>Wählen Sie einen passenden Termin aus:</text>
     <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
-</markup>

@@ -1,5 +1,4 @@
-<markup>
-    <block>
+<block>
         <multipleChoice name="language" class="xyz">
             <table class="button-layout">
                 <row>
@@ -15,4 +14,3 @@
             </table>
         </multipleChoice>
     </block>
-</markup>

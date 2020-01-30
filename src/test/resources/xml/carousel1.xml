@@ -1,5 +1,4 @@
-<markup>
-    <text>Ich denke, ich habe passende Weine für Sie gefunden: </text>
+<text>Ich denke, ich habe passende Weine für Sie gefunden: </text>
     <carousel>
         <block foreach="$wine in $result">
             <headline>$wine.productName ($wine.year)</headline>
@@ -12,4 +11,3 @@
             <link value="$wine.url">Jetzt kaufen!</link>
         </block>
     </carousel>
-</markup>

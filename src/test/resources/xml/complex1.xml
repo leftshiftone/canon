@@ -1,5 +1,4 @@
-<markup>
-    <italic>VALUE</italic>
+<italic>VALUE</italic>
     <video src="src"/>
     <text>Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
     <button value="a" name="b">Text</button>
@@ -53,4 +52,3 @@
         </slotmachine>
         <checkbox name="a" value="b">Text</checkbox>
     </block>
-</markup>

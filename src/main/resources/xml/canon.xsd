@@ -580,6 +580,12 @@
 
     <xs:complexType name="markupType" mixed="true">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="containerType" name="container"/>
+        </xs:choice>
+    </xs:complexType>
+
+    <xs:complexType name="containerType" mixed="true">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="textType" name="text"/>
             <xs:element type="buttonType" name="button"/>
             <xs:element type="carouselType" name="carousel"/>

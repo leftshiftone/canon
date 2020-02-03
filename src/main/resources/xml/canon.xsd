@@ -618,8 +618,7 @@
         <xs:restriction base="xs:string">
             <xs:minLength value="1"/>
             <xs:maxLength value="50"/>
-            <xs:pattern value="[a-zA-Z_0-9]*"/>
-            <xs:pattern value="\{\{[a-zA-Z_0-9.$(),' ]*\}\}*"/>
+            <xs:pattern value="([a-zA-Z_0-9]*|\{\{[a-zA-Z_0-9.$(),' ]*\}\})*"/>
         </xs:restriction>
     </xs:simpleType>
     <!-- RevealJs wrapper type -->

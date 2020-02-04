@@ -1,0 +1,3 @@
+<button name="test" value="test">Test</button>
+<button name="{{mul($test, 2)}}" value="test">Test</button>
+<button name="test{{mul($test,2)}}asdf{{string($obj.test)}}" value="test">Test</button>

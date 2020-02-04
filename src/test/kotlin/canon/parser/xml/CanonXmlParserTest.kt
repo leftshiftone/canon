@@ -131,4 +131,12 @@ class CanonXmlParserTest {
     @Test
     fun choiceWithSieve5() = parseXml("/xml/choiceWithSieve5.xml")
 
+    @Test
+    fun nameArg1() = parseXml("/xml/nameArg1.xml")
+
+    @Test
+    fun nameArg2() = parseXml("/xml/nameArg2.xml", false)
+
+    @Test
+    fun nameArg3() = parseXml("/xml/nameArg3.xml", false)
 }

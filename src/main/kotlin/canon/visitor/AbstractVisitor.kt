@@ -15,6 +15,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
 
     override fun visitRenderable(renderable: IRenderable?) {
         when (renderable) {
+            is Basket -> visitBasket(renderable)
             is Block -> visitBlock(renderable)
             is Bold -> visitBold(renderable)
             is Break -> visitBreak(renderable)
@@ -66,6 +67,7 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
         }
     }
 
+    open fun visitBasket(renderable: Basket) {}
     open fun visitBlock(renderable: Block) {}
     open fun visitBold(renderable: Bold) {}
     open fun visitBreak(renderable: Break) {}

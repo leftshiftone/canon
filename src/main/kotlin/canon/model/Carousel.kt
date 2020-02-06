@@ -10,5 +10,5 @@ data class Carousel(@JsonIgnore override val id: String?,
                val name: String?,
                val selected: Boolean?,
                @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
-    override fun toString() = "Carousel(text=$text, name=$name, selected=$selected)"
+    override fun toString() = "Carousel(text=$text, name=$name, selected=$selected) { ${renderables?.map { it.toString() }}"
 }

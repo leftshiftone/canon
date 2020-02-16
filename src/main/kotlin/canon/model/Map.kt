@@ -4,8 +4,8 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IVisitor
+import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class Map(@JsonIgnore override val id: String?,
                @JsonIgnore override val `class`: String?,
@@ -24,28 +24,28 @@ data class Map(@JsonIgnore override val id: String?,
                val zoom: Int?,
                val maxSelections: Int?) : IRenderable, IClassAware {
 
-    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
-        // do nothing
+    override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
+        return visitor.empty()
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        val centerLat = (evaluator.evaluate(centerLat ?: "0.0", context) ?: "0.0").toDoubleOrNull()
-        val centerLng = (evaluator.evaluate(centerLng ?: "0.0", context) ?: "0.0").toDoubleOrNull()
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val builder = MapBuilder()
+        builder.put("centerLat", centerLat, 0.0) {evaluator.evaluate(it, context).toDoubleOrNull()?:0.0}
+        builder.put("centerLng", centerLng, 0.0) {evaluator.evaluate(it, context).toDoubleOrNull()?:0.0}
+        builder.put("name", name) {evaluator.evaluate(it, context)}
+        builder.put("src", src) {evaluator.evaluate(it, context)}
+        builder.put("mapType", mapType)
+        builder.put("markerIcon", markerIcon)
+        builder.put("selectedMarkerIcon", selectedMarkerIcon)
+        builder.put("routeStartIcon", routeStartIcon)
+        builder.put("routeEndIcon", routeEndIcon)
+        builder.put("routePoints", routePoints) {evaluator.evaluate(it, context)}
+        builder.put("centerBrowserLocation", centerBrowserLocation)
+        builder.put("required", required)
+        builder.put("zoom", zoom)
+        builder.put("maxSelections", maxSelections)
 
-        return mapOf("name" to  evaluator.evaluate(name, context),
-                "src" to evaluator.evaluate(src ?: "", context),
-                "mapType" to mapType,
-                "centerLng" to (centerLng ?: 0.0),
-                "centerLat" to (centerLat ?: 0.0),
-                "markerIcon" to markerIcon,
-                "selectedMarkerIcon" to selectedMarkerIcon,
-                "routeStartIcon" to routeStartIcon,
-                "routeEndIcon" to routeEndIcon,
-                "routePoints" to evaluator.evaluate(routePoints ?: "", context),
-                "centerBrowserLocation" to centerBrowserLocation,
-                "required" to required,
-                "zoom" to zoom,
-                "maxSelections" to maxSelections).plus(toIdAndClassMap(context, evaluator))
+        return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }
 
     override fun toString(): String {

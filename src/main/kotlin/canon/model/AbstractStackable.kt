@@ -8,7 +8,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 
 abstract class AbstractStackable(@JsonIgnore private val renderables: List<IRenderable>?) : IRenderable, IStackable {
 
-    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
-        renderables?.forEach(visitor::visitRenderable)
+    override fun <R> accept(visitor: IVisitor<R>, evaluator: IEvaluator): R {
+        if (renderables == null)
+            return visitor.empty()
+        return renderables.map { e -> visitor.visitRenderable(e) }.reduce { a, b -> visitor.merge(a, b) }
     }
 }

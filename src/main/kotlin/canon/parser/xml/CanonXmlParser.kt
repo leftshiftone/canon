@@ -75,7 +75,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "suggestion" -> SuggestionStrategy()
             "table" -> TableStrategy()
             "text" -> OldTextStrategy()
-            "#text" -> OldTextStrategy()
+            "#text" -> OldTextStrategy(true)
             "textInput" -> TextInputStrategy()
             "textarea" -> TextareaStrategy()
             "trigger" -> TriggerStrategy()
@@ -123,7 +123,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
         val wrap: (it: IRenderable) -> IRenderable = {
             when {
-                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it, emptyList())
+                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it)
                 attributes.containsKey("foreach") -> Foreach(attributes["foreach"], it)
                 else -> it
             }

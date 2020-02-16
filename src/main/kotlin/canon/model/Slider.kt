@@ -3,9 +3,8 @@ package canon.model
 import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
+import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
-import java.util.Optional.ofNullable
-import kotlin.collections.Map
 
 data class Slider(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,
@@ -16,20 +15,15 @@ data class Slider(@JsonIgnore override val id: String?,
                   val name: String?,
                   val values: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val builder = MapBuilder()
+        builder.put("values", values, ArrayList<Any>()) {evaluator.evaluate(it, context).split(",")}
+        builder.put("name", name) {evaluator.evaluate(it, context)}
+        builder.put("min", min)
+        builder.put("max", max)
+        builder.put("step", step)
+        builder.put("value", value)
 
-        val valuesList = if (values.isNullOrBlank()) {
-            emptyList()
-        } else {
-            ofNullable(evaluator.evaluate(values, context)).orElse("").split(",")
-        }
-        return toIdAndClassMap(context, evaluator) + mapOf(
-                "name" to evaluator.evaluate(name, context),
-                "min" to min,
-                "max" to max,
-                "step" to step,
-                "value" to value,
-                "values" to valuesList
-        )
+        return toIdAndClassMap(context, evaluator) + builder.toMap()
     }
 }

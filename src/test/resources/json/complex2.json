@@ -1,0 +1,129 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "id": "01",
+          "text": "Basierend auf Ihren Angaben können wir Ihnen folgende 1 Resultate vorschlagen:",
+          "type": "text"
+        },
+        {
+          "name": "b",
+          "text": "Text",
+          "id": "01",
+          "type": "button",
+          "value": "eyJwYXlsb2FkIjoiYSJ9"
+        },
+        {
+          "elements": [
+            {
+              "min": 1.0,
+              "max": 10.0,
+              "values": [],
+              "name": "{{$foo}}",
+              "step": 1.0,
+              "id": "01",
+              "type": "slider",
+              "value": 3.0
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "valueType": "digit",
+                      "type": "reelValue",
+                      "value": "3"
+                    }
+                  ],
+                  "name": "name",
+                  "id": "01",
+                  "type": "reel",
+                  "class": "abc"
+                }
+              ],
+              "id": "01",
+              "type": "slotMachine"
+            }
+          ],
+          "type": "block"
+        },
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "text": "{Max Mustermann}",
+                  "id": "01",
+                  "type": "headline"
+                },
+                {
+                  "text": "${lawyer.address}",
+                  "type": "text"
+                },
+                {
+                  "ordered": false,
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "text": "Telefon: $lawyer.phone",
+                          "type": "text"
+                        }
+                      ],
+                      "id": "01",
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "Email: max@mustermann@example.com",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    }
+                  ],
+                  "id": "01",
+                  "type": "items"
+                }
+              ],
+              "id": "01",
+              "type": "block"
+            }
+          ],
+          "id": "01",
+          "type": "carousel",
+          "selected": false
+        },
+        {
+          "src": "a",
+          "width": "100",
+          "alt": "b",
+          "id": "01",
+          "type": "image",
+          "height": "100"
+        },
+        {
+          "text": "b",
+          "id": "01",
+          "type": "link",
+          "value": "a"
+        },
+        {
+          "elements": [
+            {
+              "name": "abc",
+              "format": "qr",
+              "type": "codeReader"
+            }
+          ],
+          "type": "block"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

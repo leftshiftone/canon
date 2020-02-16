@@ -1,0 +1,106 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "text": "Ich denke, ich habe passende Weine für Sie gefunden:",
+          "type": "text"
+        },
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "text": "Champagne Cuvee (2010)",
+                  "type": "headline"
+                },
+                {
+                  "src": "http://example.com/picture.jpg",
+                  "type": "image"
+                },
+                {
+                  "text": "Geschmack:",
+                  "type": "bold"
+                },
+                {
+                  "text": "Trocken |",
+                  "type": "text"
+                },
+                {
+                  "text": "Rebsorte:",
+                  "type": "bold"
+                },
+                {
+                  "text": "Cuvee",
+                  "type": "text"
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "text": "Preis:",
+                  "type": "bold"
+                },
+                {
+                  "text": "20.95 €",
+                  "type": "text"
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "text": "Hergestellt in:",
+                  "type": "bold"
+                },
+                {
+                  "text": "France | Champagne",
+                  "type": "text"
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "text": "Verkostungsnotiz:",
+                  "type": "bold"
+                },
+                {
+                  "text": "#limit($wine.tasteNotice, 150)",
+                  "type": "text"
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "type": "break"
+                },
+                {
+                  "text": "Jetzt kaufen!",
+                  "type": "link",
+                  "value": "http://example.com/picture.jpg"
+                }
+              ],
+              "type": "block"
+            }
+          ],
+          "type": "carousel",
+          "selected": false
+        },
+        {
+          "text": "A",
+          "type": "suggestion"
+        },
+        {
+          "text": "B",
+          "type": "suggestion"
+        },
+        {
+          "text": "C",
+          "type": "suggestion"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

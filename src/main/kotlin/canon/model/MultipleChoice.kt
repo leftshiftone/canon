@@ -4,7 +4,6 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class MultipleChoice(@JsonIgnore override val id: String?,
                           @JsonIgnore override val `class`: String?,
@@ -13,12 +12,16 @@ data class MultipleChoice(@JsonIgnore override val id: String?,
                           override val required: Boolean?,
                           @JsonIgnore override val renderables: List<IRenderable>?) : SieveAwareChoiceContainer(id, `class`, name, sieve, required, renderables), IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return toIdAndClassMap(context, evaluator) + mapOf(
-                "name" to evaluator.evaluate(name, context),
-                "sieve" to sieve,
-                "required" to required
-        )
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val map = HashMap<String, Any>()
+        if (name != null && name.isNotBlank())
+            map["name"] = evaluator.evaluate(name, context)!!
+        if (sieve != null)
+            map["sieve"] = sieve
+        if (required != null)
+            map["required"] = required
+
+        return toIdAndClassMap(context, evaluator) + map
     }
 
     override fun toString() = "MultipleChoice(name=$name, sieve=$sieve, required=$required)"

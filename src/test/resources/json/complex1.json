@@ -1,0 +1,283 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "text": "VALUE",
+          "type": "italic"
+        },
+        {
+          "src": "src",
+          "type": "video"
+        },
+        {
+          "text": "Basierend auf Ihren Angaben können wir Ihnen folgende 1 Resultate vorschlagen:",
+          "type": "text"
+        },
+        {
+          "name": "b",
+          "text": "Text",
+          "type": "button",
+          "value": "eyJwYXlsb2FkIjoiYSJ9"
+        },
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "text": "{{Max Mustermann}}",
+                  "type": "headline"
+                },
+                {
+                  "text": "${lawyer.address}",
+                  "type": "text"
+                },
+                {
+                  "ordered": false,
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "text": "Telefon: 123456789",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "Email: max@mustermann@example.com",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    }
+                  ],
+                  "type": "items"
+                },
+                {
+                  "text": "Tätigkeitsgebiete",
+                  "type": "text"
+                },
+                {
+                  "ordered": false,
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "text": "abc",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "abc",
+                          "type": "text"
+                        },
+                        {
+                          "ordered": false,
+                          "elements": [
+                            {
+                              "elements": [
+                                {
+                                  "text": "abc",
+                                  "type": "text"
+                                }
+                              ],
+                              "type": "item"
+                            },
+                            {
+                              "elements": [
+                                {
+                                  "text": "abc",
+                                  "type": "text"
+                                }
+                              ],
+                              "type": "item"
+                            },
+                            {
+                              "elements": [
+                                {
+                                  "text": "abc",
+                                  "type": "text"
+                                }
+                              ],
+                              "type": "item"
+                            }
+                          ],
+                          "type": "items"
+                        }
+                      ],
+                      "type": "item"
+                    }
+                  ],
+                  "type": "items"
+                },
+                {
+                  "ordered": false,
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "text": "A",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "B",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "C",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    }
+                  ],
+                  "type": "items"
+                },
+                {
+                  "text": "Sprachen",
+                  "type": "text"
+                },
+                {
+                  "ordered": false,
+                  "elements": [
+                    {
+                      "elements": [
+                        {
+                          "text": "Deutsch",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    },
+                    {
+                      "elements": [
+                        {
+                          "text": "Englisch",
+                          "type": "text"
+                        }
+                      ],
+                      "type": "item"
+                    }
+                  ],
+                  "type": "items"
+                },
+                {
+                  "name": "a",
+                  "type": "checkbox",
+                  "value": "b",
+                  "group": "a"
+                }
+              ],
+              "type": "block"
+            }
+          ],
+          "type": "carousel",
+          "selected": false
+        },
+        {
+          "src": "a",
+          "width": "100",
+          "alt": "b",
+          "type": "image",
+          "height": "100"
+        },
+        {
+          "text": "b",
+          "type": "link",
+          "value": "a"
+        },
+        {
+          "text": "${lawyer.name}",
+          "type": "headline"
+        },
+        {
+          "elements": [
+            {
+              "src": "a",
+              "width": "100",
+              "alt": "b",
+              "type": "image",
+              "height": "100"
+            },
+            {
+              "text": "b",
+              "type": "link",
+              "value": "a"
+            },
+            {
+              "name": "a",
+              "type": "checkbox",
+              "value": "b",
+              "group": "a"
+            },
+            {
+              "text": "${lawyer.name}",
+              "type": "headline"
+            },
+            {
+              "name": "ta",
+              "type": "textarea",
+              "rows": 1,
+              "cols": 1,
+              "value": "abc",
+              "required": false
+            },
+            {
+              "min": 1.0,
+              "max": 10.0,
+              "values": [],
+              "name": "{{$foo}}",
+              "step": 1.0,
+              "type": "slider",
+              "value": 3.0
+            },
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "valueType": "digit",
+                      "type": "reelValue",
+                      "value": "3"
+                    }
+                  ],
+                  "name": "name",
+                  "type": "reel",
+                  "class": "abc"
+                }
+              ],
+              "type": "slotMachine"
+            },
+            {
+              "name": "a",
+              "type": "checkbox",
+              "value": "b",
+              "group": "a"
+            }
+          ],
+          "type": "block"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

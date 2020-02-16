@@ -8,11 +8,6 @@ import org.junit.jupiter.api.Test
 class IteratorsTest {
 
     @Test
-    fun `empty iterator is returned for null`() {
-        assertTrue(Iterators.toIterator(null) is Iterator)
-    }
-
-    @Test
     fun `iterator is returned for array`() {
         assertTrue(Iterators.toIterator(arrayOf("test", "test2", "test3")) is Iterator)
     }

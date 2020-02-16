@@ -1,0 +1,17 @@
+[ [ {
+  "elements" : [ {
+    "centerLng" : 0.0,
+    "centerBrowserLocation" : false,
+    "src" : "src",
+    "name" : "name",
+    "mapType" : "osm",
+    "zoom" : 8,
+    "centerLat" : 0.0,
+    "type" : "map",
+    "required" : false,
+    "maxSelections" : 3
+  } ],
+  "index" : 0,
+  "type" : "container",
+  "timestamp" : 0
+} ] ]

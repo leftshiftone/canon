@@ -7,7 +7,6 @@ import canon.api.IVisitor
 import canon.support.Iterators
 import canon.support.Maps
 import com.fasterxml.jackson.annotation.JsonIgnore
-import java.util.Optional.ofNullable
 
 data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRenderable, IStackable {
 
@@ -41,21 +40,21 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
         return beforeInStmt.trim().substring(1)
     }
 
-    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
-        val iterator = Iterators.toIterator(Maps.getDeep(visitor.getContext(), source))
+    override fun <R> accept(visitor: IVisitor<R>, evaluator: IEvaluator): R {
+        val obj:Any? = Maps.getDeep(visitor.getContext(), source)
+        if (obj == null)
+            return visitor.empty()
+        val iterator = Iterators.toIterator(obj)
 
-        while (iterator.hasNext()) {
-            val nested = visitor.getContext().toMutableMap()
-            ofNullable(iterator.next())
-                    .ifPresent { nested[target] = it }
-            renderables.forEach(visitor.wrap(nested)::visitRenderable)
-        }
+        return iterator.asSequence().toList()
+                .flatMap {
+                    val nested = visitor.getContext().toMutableMap()
+                    nested.put(target, it)
+                    renderables.map { e -> visitor.wrap(nested).visitRenderable(e) }
+                }.fold(visitor.empty()) { acc, r -> visitor.merge(acc, r) }
     }
 
-    override fun getType(): String {
-        return "text"
-    }
-
+    override fun getType() = "foreach"
     override fun toString() = "Foreach(target='$target', source='$source')"
 
 }

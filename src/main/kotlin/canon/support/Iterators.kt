@@ -3,11 +3,10 @@ package canon.support
 
 object Iterators {
 
-    fun toIterator(obj: Any?): Iterator<Any?> {
+    fun toIterator(obj: Any): Iterator<Any> {
         return when (obj) {
-            null -> emptyList<Any>().iterator()
-            is Array<*> -> obj.iterator()
-            is Collection<*> -> obj.iterator()
+            is Array<*> -> obj.filter { it != null }.iterator() as Iterator<Any>
+            is Collection<*> -> obj.filter { it != null }.iterator() as Iterator<Any>
             is IntArray, is ShortArray, is LongArray, is ByteArray -> throw IllegalArgumentException("cannot return an iterator from primitive array")
             else -> throw IllegalArgumentException("cannot return iterator for $obj")
         }

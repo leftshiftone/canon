@@ -1,0 +1,47 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "elements": [
+            {
+              "text": "item1",
+              "type": "text"
+            }
+          ],
+          "type": "item"
+        },
+        {
+          "elements": [
+            {
+              "text": "item2",
+              "type": "text"
+            }
+          ],
+          "type": "item"
+        },
+        {
+          "elements": [
+            {
+              "text": "item3",
+              "type": "text"
+            }
+          ],
+          "type": "item"
+        },
+        {
+          "elements": [
+            {
+              "text": "item4",
+              "type": "text"
+            }
+          ],
+          "type": "item"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

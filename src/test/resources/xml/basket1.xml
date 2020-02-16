@@ -3,8 +3,8 @@
             <headline>first headline</headline>
             <text>first text</text>
             <block>
-                <headline>first headline</headline>
-                <text>first text</text>
+                <headline>second headline</headline>
+                <text>second text</text>
             </block>
         </basket>
     </block>

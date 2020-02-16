@@ -5,11 +5,11 @@ package canon.api
  */
 interface IEnrichable {
 
-    fun enrich(key: String?, value: Any?)
+    fun enrich(key: String, value: Any)
 
-    fun enrich(enriched: Map<String?, Any?>) {
+    fun enrich(enriched: Map<String, Any>) {
         enriched.forEach { (key: String?, value: Any?) -> this.enrich(key, value) }
     }
 
-    fun getEnriched(): Map<String?, Any?>?
+    fun getEnriched(): Map<String, Any>
 }

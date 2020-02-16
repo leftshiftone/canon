@@ -4,8 +4,8 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.ILabelAware
 import canon.api.IRenderable
+import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class Submit(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,
@@ -16,8 +16,12 @@ data class Submit(@JsonIgnore override val id: String?,
         return text
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return mapOf("text" to evaluator.evaluate(text, context), "name" to name).plus(toIdAndClassMap(context, evaluator))
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val builder = MapBuilder()
+        builder.put("text", text) {evaluator.evaluate(it, context)}
+        builder.put("name", name)
+
+        return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }
 
     override fun toString() = "Submit(text=$text, name=$name)"

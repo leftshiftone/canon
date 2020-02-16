@@ -4,8 +4,8 @@ import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.ILabelAware
 import canon.api.IRenderable
+import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class Text(@JsonIgnore override val id: String?,
                 @JsonIgnore override val `class`: String?,
@@ -15,8 +15,10 @@ data class Text(@JsonIgnore override val id: String?,
         return text
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return toIdAndClassMap(context, evaluator) + mapOf("text" to evaluator.evaluate(text, context))
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val builder = MapBuilder()
+        builder.put("text", text) {evaluator.evaluate(it, context)}
+        return toIdAndClassMap(context, evaluator) + builder.toMap()
     }
 
     override fun toString() = "Text(text=$text)"

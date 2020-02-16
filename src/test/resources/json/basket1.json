@@ -1,0 +1,43 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "text": "first headline",
+                  "type": "headline"
+                },
+                {
+                  "text": "first text",
+                  "type": "text"
+                },
+                {
+                  "elements": [
+                    {
+                      "text": "second headline",
+                      "type": "headline"
+                    },
+                    {
+                      "text": "second text",
+                      "type": "text"
+                    }
+                  ],
+                  "type": "block"
+                }
+              ],
+              "type": "basket",
+              "required": false
+            }
+          ],
+          "type": "block"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

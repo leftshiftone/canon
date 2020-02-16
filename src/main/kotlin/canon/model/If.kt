@@ -8,11 +8,16 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 
 
 data class If(@JsonIgnore val expression: String?,
-              @JsonIgnore val renderable: IRenderable?,
-              @JsonIgnore private val renderables: List<IRenderable>?) : IRenderable, IStackable {
+              @JsonIgnore val renderable: IRenderable?) : IRenderable, IStackable {
 
-    override fun accept(visitor: IVisitor, evaluator: IEvaluator) {
-        if (evaluator.evaluate(expression?.trim(), visitor.getContext())?.toBoolean()!!) visitor.visitRenderable(this.renderable)
+    override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
+        if (expression.isNullOrBlank())
+            return visitor.empty()
+        val evaluation = evaluator.evaluate(expression.trim(), visitor.getContext()).toBoolean()
+        return when (evaluation) {
+            true -> visitor.visitRenderable(this.renderable)
+            else -> visitor.empty()
+        }
     }
 
     override fun toString() = "If(expression=$expression, renderable=$renderable)"

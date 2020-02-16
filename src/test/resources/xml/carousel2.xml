@@ -1,16 +1,26 @@
-<text>Ich denke, ich habe passende Weine für Sie gefunden: </text>
-    <carousel>
-        <block foreach="$wine in $result">
-            <headline>$wine.productName ($wine.year)</headline>
-            <image src="$wine.pictureUrl" />
-            <bold>Geschmack:</bold><text>$wine.taste | </text><bold>Rebsorte:</bold><text>$wine.grapeType</text> <break/>
-            <bold>Preis:</bold><text> $wine.price €</text><break/>
-            <bold>Hergestellt in:</bold><text> $wine.country | $wine.region </text><break/>
-            <bold>Verkostungsnotiz:</bold><text> #limit($wine.tasteNotice, 150)</text>
-            <break /><break />
-            <link value="$wine.url">Jetzt kaufen!</link>
-        </block>
-    </carousel>
-    <suggestion>A</suggestion>
-    <suggestion>B</suggestion>
-    <suggestion>C</suggestion>
+<text>Ich denke, ich habe passende Weine für Sie gefunden:</text>
+<carousel>
+<block foreach="$wine in $result">
+    <headline>$wine.productName ($wine.year)</headline>
+    <image src="$wine.pictureUrl"/>
+    <bold>Geschmack:</bold>
+    <text>$wine.taste |</text>
+    <bold>Rebsorte:</bold>
+    <text>$wine.grapeType</text>
+    <break/>
+    <bold>Preis:</bold>
+    <text>$wine.price €</text>
+    <break/>
+    <bold>Hergestellt in:</bold>
+    <text>$wine.country | $wine.region</text>
+    <break/>
+    <bold>Verkostungsnotiz:</bold>
+    <text>#limit($wine.tasteNotice, 150)</text>
+    <break/>
+    <break/>
+    <link value="$wine.url">Jetzt kaufen!</link>
+</block>
+</carousel>
+<suggestion>A</suggestion>
+<suggestion>B</suggestion>
+<suggestion>C</suggestion>

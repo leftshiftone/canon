@@ -1,0 +1,60 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "elements": [
+                    {
+                      "text": "a",
+                      "type": "text"
+                    }
+                  ],
+                  "name": "a",
+                  "text": "a",
+                  "type": "choice",
+                  "selected": false
+                },
+                {
+                  "elements": [
+                    {
+                      "text": "b",
+                      "type": "text"
+                    }
+                  ],
+                  "name": "b",
+                  "text": "b",
+                  "type": "choice",
+                  "selected": false
+                },
+                {
+                  "elements": [
+                    {
+                      "text": "c",
+                      "type": "text"
+                    }
+                  ],
+                  "name": "c",
+                  "text": "c",
+                  "type": "choice",
+                  "selected": false
+                }
+              ],
+              "name": "test",
+              "sieve": true,
+              "type": "singleChoice",
+              "required": true
+            }
+          ],
+          "type": "block"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

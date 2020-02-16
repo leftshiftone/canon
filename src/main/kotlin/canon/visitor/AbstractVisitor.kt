@@ -7,14 +7,14 @@ import canon.api.IVisitor
 import canon.model.*
 import canon.model.Map
 
-abstract class AbstractVisitor(private val context: kotlin.collections.Map<String, Any>) : IVisitor {
+typealias KMap = kotlin.collections.Map<String, Any>
 
-    override fun getContext(): kotlin.collections.Map<String, Any> {
-        return context
-    }
+abstract class AbstractVisitor<R>(private val context: KMap) : IVisitor<List<R>> {
 
-    override fun visitRenderable(renderable: IRenderable?) {
-        when (renderable) {
+    override fun getContext() = context
+
+    override fun visitRenderable(renderable: IRenderable?):List<R> {
+        return when (renderable) {
             is Basket -> visitBasket(renderable)
             is Block -> visitBlock(renderable)
             is Bold -> visitBold(renderable)
@@ -67,52 +67,53 @@ abstract class AbstractVisitor(private val context: kotlin.collections.Map<Strin
         }
     }
 
-    open fun visitBasket(renderable: Basket) {}
-    open fun visitBlock(renderable: Block) {}
-    open fun visitBold(renderable: Bold) {}
-    open fun visitBreak(renderable: Break) {}
-    open fun visitButton(renderable: Button) {}
-    open fun visitCalendar(calendar: Calendar) {}
-    open fun visitCamera(camera: Camera) {}
-    open fun visitCarousel(renderable: Carousel) {}
-    open fun visitCheckbox(renderable: Checkbox) {}
-    open fun visitChoice(choice: Choice) {}
-    open fun visitCodeReader(renderable: CodeReader) {}
-    open fun visitCol(renderable: Col) {}
-    open fun visitContainer(renderable: Container) {}
-    open fun visitEmail(renderable: Email) {}
-    open fun visitForeach(renderable: Foreach) {}
-    open fun visitForm(renderable: Form) {}
-    open fun visitHeadline(renderable: Headline) {}
-    open fun visitIf(renderable: If) {}
-    open fun visitImage(renderable: Image) {}
-    open fun visitItalic(renderable: Italic) {}
-    open fun visitItems(renderable: Items) {}
-    open fun visitItem(renderable: Item) {}
-    open fun visitLabel(renderable: Label) {}
-    open fun visitLink(renderable: Link) {}
-    open fun visitMap(map: Map) {}
-    open fun visitMultipleChoice(multipleChoice: MultipleChoice) {}
-    open fun visitOverlay(overlay: Overlay) {}
-    open fun visitOverlays(overlays: Overlays) {}
-    open fun visitPhone(renderable: Phone) {}
-    open fun visitReel(renderable: Reel) {}
-    open fun visitReelValue(renderable: ReelValue) {}
-    open fun visitRow(renderable: Row) {}
-    open fun visitSelection(renderable: Selection) {}
-    open fun visitSingleChoice(singleChoice: SingleChoice) {}
-    open fun visitSlider(renderable: Slider) {}
-    open fun visitSlotMachine(renderable: SlotMachine) {}
-    open fun visitSpinner(renderable: Spinner) {}
-    open fun visitSubmit(submit: Submit) {}
-    open fun visitSuggestion(suggestion: Suggestion) {}
-    open fun visitTable(renderable: Table) {}
-    open fun visitText(renderable: Text) {}
-    open fun visitTextInput(renderable: TextInput) {}
-    open fun visitTextarea(renderable: Textarea) {}
-    open fun visitNewText(renderable: NewText) {}
-    open fun visitTransition(renderable: Transition) {}
-    open fun visitTrigger(renderable: Trigger) {}
-    open fun visitUpload(renderable: Upload) {}
-    open fun visitVideo(renderable: Video) {}
+    open fun visitBasket(renderable: Basket) = listOf<R>()
+    open fun visitBlock(renderable: Block) = listOf<R>()
+    open fun visitBold(renderable: Bold) = listOf<R>()
+    open fun visitBreak(renderable: Break) = listOf<R>()
+    open fun visitButton(renderable: Button) = listOf<R>()
+    open fun visitCalendar(renderable: Calendar) = listOf<R>()
+    open fun visitCamera(renderable: Camera) = listOf<R>()
+    open fun visitCarousel(renderable: Carousel) = listOf<R>()
+    @Deprecated("will be removed in a future release", replaceWith = ReplaceWith("multipleChoice"))
+    open fun visitCheckbox(renderable: Checkbox) = listOf<R>()
+    open fun visitChoice(renderable: Choice) = listOf<R>()
+    open fun visitCodeReader(renderable: CodeReader) = listOf<R>()
+    open fun visitCol(renderable: Col) = listOf<R>()
+    open fun visitContainer(renderable: Container) = listOf<R>()
+    open fun visitEmail(renderable: Email) = listOf<R>()
+    open fun visitForeach(renderable: Foreach) = listOf<R>()
+    open fun visitForm(renderable: Form) = listOf<R>()
+    open fun visitHeadline(renderable: Headline) = listOf<R>()
+    open fun visitIf(renderable: If) = listOf<R>()
+    open fun visitImage(renderable: Image) = listOf<R>()
+    open fun visitItalic(renderable: Italic) = listOf<R>()
+    open fun visitItems(renderable: Items) = listOf<R>()
+    open fun visitItem(renderable: Item) = listOf<R>()
+    open fun visitLabel(renderable: Label) = listOf<R>()
+    open fun visitLink(renderable: Link) = listOf<R>()
+    open fun visitMap(renderable: Map) = listOf<R>()
+    open fun visitMultipleChoice(renderable: MultipleChoice) = listOf<R>()
+    open fun visitOverlay(renderable: Overlay) = listOf<R>()
+    open fun visitOverlays(renderable: Overlays) = listOf<R>()
+    open fun visitPhone(renderable: Phone) = listOf<R>()
+    open fun visitReel(renderable: Reel) = listOf<R>()
+    open fun visitReelValue(renderable: ReelValue) = listOf<R>()
+    open fun visitRow(renderable: Row) = listOf<R>()
+    open fun visitSelection(renderable: Selection) = listOf<R>()
+    open fun visitSingleChoice(renderable: SingleChoice) = listOf<R>()
+    open fun visitSlider(renderable: Slider) = listOf<R>()
+    open fun visitSlotMachine(renderable: SlotMachine) = listOf<R>()
+    open fun visitSpinner(renderable: Spinner) = listOf<R>()
+    open fun visitSubmit(renderable: Submit) = listOf<R>()
+    open fun visitSuggestion(renderable: Suggestion) = listOf<R>()
+    open fun visitTable(renderable: Table) = listOf<R>()
+    open fun visitText(renderable: Text) = listOf<R>()
+    open fun visitTextInput(renderable: TextInput) = listOf<R>()
+    open fun visitTextarea(renderable: Textarea) = listOf<R>()
+    open fun visitNewText(renderable: NewText) = listOf<R>()
+    open fun visitTransition(renderable: Transition) = listOf<R>()
+    open fun visitTrigger(renderable: Trigger) = listOf<R>()
+    open fun visitUpload(renderable: Upload) = listOf<R>()
+    open fun visitVideo(renderable: Video) = listOf<R>()
 }

@@ -1,0 +1,51 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "elements": [
+            {
+              "elements": [
+                {
+                  "text": "first headline",
+                  "type": "headline"
+                },
+                {
+                  "text": "first text",
+                  "type": "text"
+                }
+              ],
+              "type": "block"
+            },
+            {
+              "elements": [
+                {
+                  "text": "first headline",
+                  "type": "headline"
+                },
+                {
+                  "text": "first text",
+                  "type": "text"
+                }
+              ],
+              "type": "block"
+            }
+          ],
+          "id": "carousel",
+          "type": "carousel",
+          "class": "carousel",
+          "selected": false
+        },
+        {
+          "name": "result",
+          "text": "Next",
+          "type": "button",
+          "value": "eyJwYXlsb2FkIjoiIn0="
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

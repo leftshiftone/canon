@@ -2,8 +2,8 @@ package canon.model
 
 import canon.api.*
 import canon.support.Base64
+import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
-import kotlin.collections.Map
 
 data class Suggestion(@JsonIgnore override val id: String?,
                       @JsonIgnore override val `class`: String?,
@@ -23,10 +23,13 @@ data class Suggestion(@JsonIgnore override val id: String?,
         return value
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String?, Any?> {
-        return mapOf("text" to text,
-                "value" to Base64.encodeUTF8String(Base64.decode(value)),
-                "name" to name).plus(toIdAndClassMap(context, evaluator))
+    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+        val builder = MapBuilder()
+        builder.put("text", text)
+        builder.put("name", name)
+        builder.put("value", value) {Base64.encodeUTF8String(Base64.decode(it as String?))!!}
+
+        return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }
 
     override fun toString() = "Suggestion(text=$text, name=$name, value=$value)"

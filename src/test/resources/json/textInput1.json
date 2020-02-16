@@ -1,0 +1,15 @@
+[ [ {
+  "elements" : [ {
+    "regex" : "[0-9][a-z]",
+    "name" : "usefulInput",
+    "id" : "textinput",
+    "placeholder" : "abc",
+    "type" : "textInput",
+    "class" : "textinput",
+    "value" : "def",
+    "required" : true
+  } ],
+  "index" : 0,
+  "type" : "container",
+  "timestamp" : 0
+} ] ]

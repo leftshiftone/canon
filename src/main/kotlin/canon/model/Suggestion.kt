@@ -23,7 +23,7 @@ data class Suggestion(@JsonIgnore override val id: String?,
         return value
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
         builder.put("text", text)
         builder.put("name", name)

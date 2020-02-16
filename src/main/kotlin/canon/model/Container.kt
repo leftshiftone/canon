@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IClassAware
 import canon.api.IEnrichable
 import canon.api.IRenderable
+import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class Container(@JsonIgnore override val id: String?,
@@ -16,7 +17,7 @@ data class Container(@JsonIgnore override val id: String?,
         enrichedData[key] = value
     }
 
-    override fun getEnriched(): Map<String, Any> {
+    override fun getEnriched(): KMap<String, Any> {
         return enrichedData
     }
 

@@ -1,9 +1,6 @@
 package canon.model
 
-import canon.api.IClassAware
-import canon.api.IEvaluator
-import canon.api.IRenderable
-import canon.api.IVisitor
+import canon.api.*
 import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -28,7 +25,7 @@ data class Map(@JsonIgnore override val id: String?,
         return visitor.empty()
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
         builder.put("centerLat", centerLat, 0.0) {evaluator.evaluate(it, context).toDoubleOrNull()?:0.0}
         builder.put("centerLng", centerLng, 0.0) {evaluator.evaluate(it, context).toDoubleOrNull()?:0.0}

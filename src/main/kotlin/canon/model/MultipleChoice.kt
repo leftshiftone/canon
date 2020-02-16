@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
+import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class MultipleChoice(@JsonIgnore override val id: String?,
@@ -12,7 +13,7 @@ data class MultipleChoice(@JsonIgnore override val id: String?,
                           override val required: Boolean?,
                           @JsonIgnore override val renderables: List<IRenderable>?) : SieveAwareChoiceContainer(id, `class`, name, sieve, required, renderables), IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (name != null && name.isNotBlank())
             map["name"] = evaluator.evaluate(name, context)!!

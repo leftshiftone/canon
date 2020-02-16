@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
+import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class Image(@JsonIgnore override val id: String?, @JsonIgnore override val `class`: String?,
@@ -11,7 +12,7 @@ data class Image(@JsonIgnore override val id: String?, @JsonIgnore override val 
                  val height: String?,
                  val alt: String?) : IRenderable, IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (src != null && src.isNotBlank())
             map.put("src", evaluator.evaluate(src, context)!!)

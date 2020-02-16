@@ -3,6 +3,7 @@ package canon.model
 import canon.api.IClassAware
 import canon.api.IEvaluator
 import canon.api.IRenderable
+import canon.api.KMap
 import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -15,7 +16,7 @@ data class Textarea(@JsonIgnore override val id: String?,
                     val rows: Int?,
                     val cols: Int?) : IRenderable, IClassAware {
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
         builder.put("cols", cols)
         builder.put("rows", rows)

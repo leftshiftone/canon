@@ -1,9 +1,6 @@
 package canon.model
 
-import canon.api.IClassAware
-import canon.api.IEvaluator
-import canon.api.ILabelAware
-import canon.api.IRenderable
+import canon.api.*
 import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
 
@@ -16,7 +13,7 @@ data class Submit(@JsonIgnore override val id: String?,
         return text
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
         builder.put("text", text) {evaluator.evaluate(it, context)}
         builder.put("name", name)

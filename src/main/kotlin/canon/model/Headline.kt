@@ -1,9 +1,6 @@
 package canon.model
 
-import canon.api.IClassAware
-import canon.api.IEvaluator
-import canon.api.ILabelAware
-import canon.api.IRenderable
+import canon.api.*
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class Headline(@JsonIgnore override val id: String?,
@@ -14,7 +11,7 @@ data class Headline(@JsonIgnore override val id: String?,
         return text
     }
 
-    override fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
+    override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (text != null && text.isNotBlank())
             map["text"] = evaluator.evaluate(text, context)!!

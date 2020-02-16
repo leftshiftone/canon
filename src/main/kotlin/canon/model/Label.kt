@@ -14,7 +14,7 @@ data class Label(@JsonIgnore override val id: String?,
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (text != null && text.isNotBlank())
-            map["text"] = evaluator.evaluate(text, context)!!
+            map["text"] = evaluator.evaluate(text, context)
 
         return toIdAndClassMap(context, evaluator) + map
     }

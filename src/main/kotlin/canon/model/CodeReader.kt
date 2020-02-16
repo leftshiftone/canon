@@ -14,7 +14,7 @@ data class CodeReader(@JsonIgnore override val id: String?,
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (name != null && name.isNotBlank())
-            map["name"] = evaluator.evaluate(name ?: "", context)!!
+            map["name"] = evaluator.evaluate(name, context)
         if (format != null && format.isNotBlank())
             map["format"] = format
 

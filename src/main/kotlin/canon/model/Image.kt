@@ -15,7 +15,7 @@ data class Image(@JsonIgnore override val id: String?, @JsonIgnore override val 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (src != null && src.isNotBlank())
-            map.put("src", evaluator.evaluate(src, context)!!)
+            map.put("src", evaluator.evaluate(src, context))
         if (width != null && width.isNotBlank())
             map.put("width", width)
         if (height != null && height.isNotBlank())

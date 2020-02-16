@@ -16,11 +16,11 @@ data class Choice(@JsonIgnore override val id: String?,
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
         if (name != null && name.isNotBlank())
-            map["name"] = evaluator.evaluate(name, context)!!
+            map["name"] = evaluator.evaluate(name, context)
         if (text != null && text.isNotBlank())
-            map["text"] = evaluator.evaluate(text, context)!!
+            map["text"] = evaluator.evaluate(text, context)
         if (selected != null && selected.isNotBlank())
-            map["selected"] = evaluator.evaluate(selected, context)!!.toBoolean()
+            map["selected"] = evaluator.evaluate(selected, context).toBoolean()
 
         return toIdAndClassMap(context, evaluator) + map
     }

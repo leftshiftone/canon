@@ -3,6 +3,7 @@ package canon.support
 
 object Iterators {
 
+    @Suppress("UNCHECKED_CAST")
     fun toIterator(obj: Any): Iterator<Any> {
         return when (obj) {
             is Array<*> -> obj.filter { it != null }.iterator() as Iterator<Any>

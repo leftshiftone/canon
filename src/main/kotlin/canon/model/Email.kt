@@ -22,7 +22,7 @@ data class Email(@JsonIgnore override val id: String?,
         if (name != null && name.isNotBlank())
             map["name"] = name
         if (value != null && value.isNotBlank())
-            map["value"] = evaluator.evaluate(value ?: "", context)!!
+            map["value"] = evaluator.evaluate(value, context)
 
         return toIdAndClassMap(context, evaluator) + map
     }

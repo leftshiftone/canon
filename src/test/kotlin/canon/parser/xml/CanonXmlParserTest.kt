@@ -2,12 +2,27 @@ package canon.parser.xml
 
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
+import java.util.concurrent.CountDownLatch
+import java.util.concurrent.TimeUnit
 
 class CanonXmlParserTest {
 
     private fun parseXml(path: String, expectSuccess: Boolean = true) {
         try {
             val result = CanonXmlParser().parse(CanonXmlParserTest::class.java.getResourceAsStream(path))
+            Assertions.assertNotNull(result)
+            Assertions.assertTrue(result.isNotEmpty())
+        } catch (e: Exception) {
+            if (expectSuccess) {
+                Assertions.fail<String>("xml '$path' should not throw a validation exception", e)
+            }
+        }
+    }
+
+
+    private fun parseXml(cannonParser: CanonXmlParser, path: String, expectSuccess: Boolean = true) {
+        try {
+            val result = cannonParser.parse(CanonXmlParserTest::class.java.getResourceAsStream(path))
             Assertions.assertNotNull(result)
             Assertions.assertTrue(result.isNotEmpty())
         } catch (e: Exception) {
@@ -139,4 +154,26 @@ class CanonXmlParserTest {
 
     @Test
     fun nameArg3() = parseXml("/xml/nameArg3.xml", false)
+
+
+    @Test
+    fun parallelTest() {
+        val barrier = CountDownLatch(1)
+        val endBarrier = CountDownLatch(25)
+        val canonXmlParser = CanonXmlParser()
+        (0..24).forEach {
+            Thread {
+                try{
+                    barrier.await(10, TimeUnit.SECONDS)
+                    println("Thread-${it} starting execution")
+                    parseXml(canonXmlParser,"/xml/complex1.xml")
+                    } finally {
+                        endBarrier.countDown()
+                    }
+                }.start()
+        }
+        barrier.countDown()
+        endBarrier.await(60, TimeUnit.SECONDS)
+    }
+
 }

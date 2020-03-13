@@ -167,10 +167,10 @@ class CanonXmlParserTest {
                     barrier.await(10, TimeUnit.SECONDS)
                     println("Thread-${it} starting execution")
                     parseXml(canonXmlParser,"/xml/complex1.xml")
-                    } finally {
-                        endBarrier.countDown()
-                    }
-                }.start()
+                } finally {
+                    endBarrier.countDown()
+                }
+            }.start()
         }
         barrier.countDown()
         endBarrier.await(60, TimeUnit.SECONDS)

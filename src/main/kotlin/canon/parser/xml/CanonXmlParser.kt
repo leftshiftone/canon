@@ -19,7 +19,6 @@ import kotlin.text.Charsets.UTF_8
 
 open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
 
-    private val validator = XmlValidator(CanonXmlParser::class.java.getResourceAsStream("/xml/canon.xsd"))
 
     companion object {
         // DocumentBuilderFactory and DocumentBuilder are not thread safe but resource intensive instances
@@ -27,9 +26,16 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             val builder = DocumentBuilderFactory.newInstance()
             builder.newDocumentBuilder()
         }!!
+        // XMLValidator is not thread safe but resource intensive instances
+        private val VALIDATOR =  ThreadLocal.withInitial {
+            XmlValidator(CanonXmlParser::class.java.getResourceAsStream("/xml/canon.xsd"))
+        }
 
         @JvmStatic
         fun getDocumentBuilder() = DOCUMENT_BUILDER.get()!!
+
+        @JvmStatic
+        fun getValidator() = VALIDATOR.get()!!
     }
 
     private fun resolveStrategy(key: String): AbstractParseStrategy<IRenderable> {
@@ -95,7 +101,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
         var xml = str.replace("&", "&amp;")
         xml = "<markup><container>$xml</container></markup>"
         if (validate) {
-            val validation = validator.validate(xml)
+            val validation = getValidator().validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())
         }
         try {

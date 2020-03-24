@@ -1,12 +1,12 @@
 <carousel class="carousel" id="carousel">
-        <block>
-            <headline>first headline</headline>
-            <text>first text</text>
-        </block>
-        <block>
-            <headline>first headline</headline>
-            <text>first text</text>
-        </block>
-    </carousel>
+    <block>
+        <headline>first headline</headline>
+        <label>first label</label>
+    </block>
+    <block>
+        <headline>first headline</headline>
+        <label>first label</label>
+    </block>
+</carousel>
 
-    <button>Next</button>
+<button>Next</button>

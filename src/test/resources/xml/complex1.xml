@@ -1,17 +1,17 @@
 <italic>VALUE</italic>
     <video src="src"/>
-    <text>Basierend auf Ihren Angaben können wir Ihnen folgende ${result.size()} Resultate vorschlagen:</text>
+    <label>Basierend auf Ihren Angaben können wir Ihnen folgende ${result.size()} Resultate vorschlagen:</label>
     <button value="a" name="b">Text</button>
 
     <carousel>
         <block foreach='$lawyer in $result'>
             <headline>{{$lawyer.name}}</headline>
-            <text>${lawyer.address}</text>
+            <label>${lawyer.address}</label>
             <items>
                 <item>Telefon: ${lawyer.phone}</item>
                 <item>Email: ${lawyer.email}</item>
             </items>
-            <text>Tätigkeitsgebiete</text>
+            <label>Tätigkeitsgebiete</label>
             <items>
                 <item>abc</item>
                 <item>
@@ -27,7 +27,7 @@
             <items>
                 <item foreach='$topic in $lawyer.topics'>$topic</item>
             </items>
-            <text>Sprachen</text>
+            <label>Sprachen</label>
             <items>
                 <item foreach='$type in $lawyer.languages'>$type</item>
             </items>

@@ -7,9 +7,9 @@
                     <col><choice class="fra" name="FRA"> </choice></col>
                 </row>
                 <row>
-                    <col><text>DEU</text></col>
-                    <col><text>ENG</text></col>
-                    <col><text>FRA</text></col>
+                    <col><label>DEU</label></col>
+                    <col><label>ENG</label></col>
+                    <col><label>FRA</label></col>
                 </row>
             </table>
         </multipleChoice>

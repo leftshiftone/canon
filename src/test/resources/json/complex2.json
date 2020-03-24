@@ -5,7 +5,7 @@
         {
           "id": "01",
           "text": "Basierend auf Ihren Angaben können wir Ihnen folgende 1 Resultate vorschlagen:",
-          "type": "text"
+          "type": "label"
         },
         {
           "name": "b",
@@ -59,7 +59,7 @@
                 },
                 {
                   "text": "${lawyer.address}",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "ordered": false,
@@ -68,7 +68,7 @@
                       "elements": [
                         {
                           "text": "Telefon: $lawyer.phone",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "id": "01",
@@ -78,7 +78,7 @@
                       "elements": [
                         {
                           "text": "Email: max@mustermann@example.com",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"

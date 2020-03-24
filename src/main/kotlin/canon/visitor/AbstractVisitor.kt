@@ -56,13 +56,11 @@ abstract class AbstractVisitor<R>(private val context: KMap) : IVisitor<List<R>>
             is Suggestion -> visitSuggestion(renderable)
             is Table -> visitTable(renderable)
             is Text -> visitText(renderable)
-            is TextInput -> visitTextInput(renderable)
             is Textarea -> visitTextarea(renderable)
             is Transition -> visitTransition(renderable)
             is Trigger -> visitTrigger(renderable)
             is Upload -> visitUpload(renderable)
             is Video -> visitVideo(renderable)
-            is NewText -> visitNewText(renderable)
             else -> throw IllegalArgumentException("renderable (${renderable?.getType()}) $renderable not implemented")
         }
     }
@@ -109,9 +107,7 @@ abstract class AbstractVisitor<R>(private val context: KMap) : IVisitor<List<R>>
     open fun visitSuggestion(renderable: Suggestion) = listOf<R>()
     open fun visitTable(renderable: Table) = listOf<R>()
     open fun visitText(renderable: Text) = listOf<R>()
-    open fun visitTextInput(renderable: TextInput) = listOf<R>()
     open fun visitTextarea(renderable: Textarea) = listOf<R>()
-    open fun visitNewText(renderable: NewText) = listOf<R>()
     open fun visitTransition(renderable: Transition) = listOf<R>()
     open fun visitTrigger(renderable: Trigger) = listOf<R>()
     open fun visitUpload(renderable: Upload) = listOf<R>()

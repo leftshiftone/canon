@@ -1,2 +1,1 @@
-<text>Wählen Sie einen passenden Termin aus:</text>
-    <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
+<label>Wählen Sie einen passenden Termin aus:</label>

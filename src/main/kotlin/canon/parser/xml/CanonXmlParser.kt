@@ -61,6 +61,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "italic" -> ItalicStrategy()
             "item" -> ItemStrategy()
             "items" -> ItemsStrategy()
+            "label" -> LabelStrategy()
             "link" -> LinkStrategy()
             "map" -> MapStrategy()
             "multipleChoice" -> MultipleChoiceStrategy()
@@ -80,9 +81,8 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "submit" -> SubmitStrategy()
             "suggestion" -> SuggestionStrategy()
             "table" -> TableStrategy()
-            "text" -> OldTextStrategy()
-            "#text" -> OldTextStrategy(true)
-            "textInput" -> TextInputStrategy()
+            "text" -> TextStrategy()
+            "#text" -> LabelStrategy(true)
             "textarea" -> TextareaStrategy()
             "trigger" -> TriggerStrategy()
             "upload" -> UploadStrategy()
@@ -142,7 +142,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             return
         }
         // FIXME: remove workaround
-        if (node.nodeName == "text" || node.nodeName == "#text") {
+        if (node.nodeName == "label" || node.nodeName == "#text") {
             if (node.textContent.isBlank())
                 return
         }

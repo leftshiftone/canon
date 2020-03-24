@@ -1,5 +1,5 @@
 <transition direction="right">
-        <text id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</text>
+        <label id="01">Basierend auf Ihren Angaben können wir Ihnen folgende \$result.size() Resultate vorschlagen:</label>
         <button id="01" value="a" name="b">Text</button>
 
     </transition>
@@ -19,7 +19,7 @@
         <carousel id="01">
             <block id="01" foreach='\$lawyer in \$result'>
                 <headline id="01">{{$lawyer.name}}</headline>
-                <text>\$lawyer.address</text>
+                <label>\$lawyer.address</label>
                 <items id="01">
                     <item id="01">Telefon: \$lawyer.phone</item>
                     <item>Email: \$lawyer.email</item>
@@ -38,7 +38,7 @@
 
     <transition>
         <block foreach='\$lawyer in \$result'>
-            <text>Sprachen</text>
+            <label>Sprachen</label>
             <items>
                 <item foreach='\$type in \$lawyer.languages'>\$type</item>
             </items>
@@ -59,11 +59,11 @@
         <table>
             <row>
                 <col><button value="test">test</button></col>
-                <col><text>h1</text></col>
+                <col><label>h1</label></col>
             </row>
             <row>
                 <col><button value="text">text</button></col>
-                <col><text>h1</text></col>
+                <col><label>h1</label></col>
             </row>
         </table>
     </transition>
@@ -71,7 +71,7 @@
     <transition>
         <map name="name" src="https://map.map/" mapType="google" routePoints="47.1,46.2;45,5;0,0.5"/>
         <block>
-            <text>Text</text>
+            <label>label</label>
             <checkbox name="a" value="b" checked="true">A</checkbox>
             <checkbox name="a" value="b" checked="true">B</checkbox>
             <checkbox name="a" value="b" checked="true">C</checkbox>
@@ -81,15 +81,15 @@
     </transition>
 
     <transition>
-        <text>Ich denke, ich habe passende Weine für Sie gefunden: </text>
+        <label>Ich denke, ich habe passende Weine für Sie gefunden: </label>
         <carousel>
             <block foreach="$wine in $result">
                 <headline>$wine.productName ($wine.year)</headline>
                 <image src="$wine.pictureUrl" />
-                <bold>Geschmack:</bold><text>$wine.taste | </text><bold>Rebsorte:</bold><text>$wine.grapeType</text> <break/>
-                <bold>Preis:</bold><text> $wine.price €</text><break/>
-                <bold>Hergestellt in:</bold><text> $wine.country | $wine.region </text><break/>
-                <bold>Verkostungsnotiz:</bold><text> #limit($wine.tasteNotice, 150)</text>
+                <bold>Geschmack:</bold><label>$wine.taste | </label><bold>Rebsorte:</bold><label>$wine.grapeType</label> <break/>
+                <bold>Preis:</bold><label> $wine.price €</label><break/>
+                <bold>Hergestellt in:</bold><label> $wine.country | $wine.region </label><break/>
+                <bold>Verkostungsnotiz:</bold><label> #limit($wine.tasteNotice, 150)</label>
                 <break /><break />
                 <link value="$wine.url">Jetzt kaufen!</link>
             </block>

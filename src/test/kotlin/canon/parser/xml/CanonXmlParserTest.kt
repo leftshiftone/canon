@@ -32,10 +32,10 @@ class CanonXmlParserTest {
     fun items() = parseXml(CanonXmlParser(),"/xml/items.xml")
 
     @Test
-    fun text1() = parseXml(CanonXmlParser(),"/xml/text1.xml")
+    fun text1() = parseXml(CanonXmlParser(),"/xml/label1.xml")
 
     @Test
-    fun text2() = parseXml(CanonXmlParser(),"/xml/text2.xml")
+    fun text2() = parseXml(CanonXmlParser(),"/xml/label2.xml")
 
     @Test
     fun table1() = parseXml(CanonXmlParser(),"/xml/table1.xml")

@@ -5,8 +5,8 @@
         {
           "elements": [
             {
-              "text": "Text",
-              "type": "text"
+              "text": "label",
+              "type": "label"
             },
             {
               "name": "a",

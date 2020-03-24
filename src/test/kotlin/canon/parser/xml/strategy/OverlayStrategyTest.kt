@@ -11,7 +11,7 @@ class OverlayStrategyTest {
     @Test
     fun testParse() {
         val xml = "<overlay id='testId' class='testClass' trigger='testTrigger'>" +
-                "<text id='testId2' class='testClass'>test</text>" +
+                "<label id='testId2' class='testClass'>test</label>" +
                 "</overlay>"
         val parsed = OverlaysStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 

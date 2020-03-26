@@ -582,6 +582,7 @@
         <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="containerType" name="container"/>
         </xs:choice>
+        <xs:attribute name="version" type="xs:string" use="required"/>
     </xs:complexType>
 
     <xs:complexType name="containerType" mixed="true">

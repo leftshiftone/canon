@@ -14,7 +14,10 @@ internal class CanonXlstTransformerTest {
     private fun transformFromFileSystem(transformer: CanonXlstTransformer, pathToXMLToTransform: String, pathToExpectedXML: String,  expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(CanonXlstTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
-            Assertions.assertThat(result).isEqualTo(CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText())
+            println("actualResult $result" )
+            val expectedResult = CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText()
+            println("expectedResult $expectedResult" )
+            Assertions.assertThat(result).isEqualTo(expectedResult)
         } catch (e: Exception) {
             if (expectSuccess) {
                 Assertions.fail<String>("xml '$pathToXMLToTransform' should not throw a transformation exception", e)

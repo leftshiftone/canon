@@ -11,13 +11,14 @@ import java.util.concurrent.TimeUnit
 
 internal class CanonXlstTransformerTest {
 
+    val WHITE_SPACE_REGEX= "\\s".toRegex()
+
     private fun transformFromFileSystem(transformer: CanonXlstTransformer, pathToXMLToTransform: String, pathToExpectedXML: String,  expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(CanonXlstTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
-            println("actualResult $result" )
-            val expectedResult = CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText()
-            println("expectedResult $expectedResult" )
-            Assertions.assertThat(result).isEqualTo(expectedResult)
+            val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
+            val expectedResultInRaw = CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
+            Assertions.assertThat(resultInRaw).isEqualTo(expectedResultInRaw)
         } catch (e: Exception) {
             if (expectSuccess) {
                 Assertions.fail<String>("xml '$pathToXMLToTransform' should not throw a transformation exception", e)
@@ -28,7 +29,7 @@ internal class CanonXlstTransformerTest {
     private fun transformString(transformer: CanonXlstTransformer, xmlToTransform: String, expectedXml: String,  expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(xmlToTransform)
-            Assertions.assertThat(result.replace("\\s".toRegex(), "")).isEqualTo(expectedXml.replace("\\s".toRegex(), ""))
+            Assertions.assertThat(result.replace(WHITE_SPACE_REGEX, "")).isEqualTo(expectedXml.replace(WHITE_SPACE_REGEX, ""))
         } catch (e: Exception) {
             if (expectSuccess) {
                 Assertions.fail<String>("xml '$expectedXml' should not throw a transformation exception", e)

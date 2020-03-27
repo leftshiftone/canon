@@ -1,16 +1,21 @@
 package canon.parser.xml.xlst
 
+import org.slf4j.LoggerFactory
 import java.util.*
 
 class SemanticVersion : Comparable<SemanticVersion> {
 
     val major : String
+
+
     val minor : String
     val patch : String
-
     companion object {
+
+        val log = LoggerFactory.getLogger(this::class.java)
         @JvmStatic
         fun isValidVersion(versionToValidate : String) : Boolean {
+            log.debug("validating version $versionToValidate")
             val matchResult = findVersionMatches(versionToValidate)
             if(matchResult!=null
                     && matchResult.groups.isNotEmpty()
@@ -18,8 +23,10 @@ class SemanticVersion : Comparable<SemanticVersion> {
                     && matchResult.groups[1]!=null
                     && matchResult.groups[2]!=null
                     && matchResult.groups[3]!=null){
+                log.debug("Version $versionToValidate is valid")
                 return true
             }
+            log.debug("Version $versionToValidate is not valid")
             return false
         }
 
@@ -59,10 +66,10 @@ class SemanticVersion : Comparable<SemanticVersion> {
         return "$major.$minor.$patch"
     }
 
-    override fun equals(o: Any?): Boolean {
-        if (this === o) return true
-        if (o == null || javaClass != o.javaClass) return false
-        return major == (o as SemanticVersion).major && minor == o.minor && patch== o.patch
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other == null || javaClass != other.javaClass) return false
+        return major == (other as SemanticVersion).major && minor == other.minor && patch== other.patch
     }
 
     override fun hashCode(): Int {

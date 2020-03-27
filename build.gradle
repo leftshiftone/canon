@@ -111,6 +111,18 @@ task javadocJar(type: Jar) {
     classifier "javadoc"
 }
 
+
+tasks.withType(Test) { testTask ->
+    minHeapSize = "1G"
+    maxHeapSize = "2G"
+    testTask.beforeTest { descriptor ->
+        logger.lifecycle(descriptor.toString())
+    }
+    testTask.afterTest { descriptor, result ->
+        println "\n$descriptor.className [$descriptor.classDisplayName] > $descriptor.name [$descriptor.displayName]: $result.resultType"
+    }
+}
+
 publishing {
     publications {
         mavenJava(MavenPublication) {

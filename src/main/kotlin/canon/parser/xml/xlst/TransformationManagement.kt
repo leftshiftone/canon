@@ -34,8 +34,9 @@ class TransformationManagement  (val relativePath : String){
         }
     }
 
-    fun transform(rawXml : String, rawXmlVersion: String): String{
-        val transformerIterator = buildTransformationPath(rawXmlVersion)
+    fun transform(rawXml : String, rawXmlVersion: String?): String{
+        val xmlVersion = rawXmlVersion ?: "1.9.9"
+        val transformerIterator = buildTransformationPath(xmlVersion)
         if(transformerIterator==null || !transformerIterator.hasNext()){
             return rawXml
         }

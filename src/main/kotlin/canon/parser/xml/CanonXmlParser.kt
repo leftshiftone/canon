@@ -5,6 +5,7 @@ import canon.exception.CanonException
 import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
+import canon.parser.xml.upgrade.xlst.XLSTUpgradeHandler
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
@@ -92,14 +93,25 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
     }
 
     @JvmOverloads
-    fun parse(stream: InputStream, validate: Boolean = true): List<IRenderable> {
-        return parse(stream.reader(StandardCharsets.UTF_8).readText(), validate)
+    fun parse(stream: InputStream, version: String?, validate: Boolean = true): List<IRenderable> {
+        return parse(stream.reader(StandardCharsets.UTF_8).readText(), version, validate)
     }
 
     @JvmOverloads
-    fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+    fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
+        val transformer= XLSTUpgradeHandler("")
+        val xmlVersion= version ?: "1.9.0"
         var xml = str.replace("&", "&amp;")
-        xml = "<markup version=\"123\"><container>$xml</container></markup>"
+        xml = "<markup><container>$xml</container></markup>"
+        if(transformer.isUpgradeRequired(xmlVersion)){
+            val upgradedXML = transformer.upgrade(xml, xmlVersion)
+            return parse(upgradedXML,validate)
+        }
+        return parse(xml,validate)
+    }
+
+    @JvmOverloads
+    private fun parse(xml: String, validate: Boolean = true): List<IRenderable> {
         if (validate) {
             val validation = getValidator().validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())

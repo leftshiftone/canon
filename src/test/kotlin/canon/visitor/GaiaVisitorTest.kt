@@ -4,21 +4,23 @@ import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.parser.xml.CanonXmlParser
 import canon.parser.xml.CanonXmlParserTest
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.app.Velocity
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import org.skyscreamer.jsonassert.JSONAssert
 import java.io.StringWriter
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GaiaVisitorTest {
 
     companion object {
         val mapper = ObjectMapper().writerWithDefaultPrettyPrinter()
     }
-
     private fun parseXml(path: String, validate: Boolean = true): List<IRenderable> {
-        return CanonXmlParser().parse(CanonXmlParserTest::class.java.getResourceAsStream(path), validate)
+        return CanonXmlParser().parse(CanonXmlParserTest::class.java.getResourceAsStream(path),getCanonVersion(), validate)
     }
 
     private fun parseJson(path: String): String {

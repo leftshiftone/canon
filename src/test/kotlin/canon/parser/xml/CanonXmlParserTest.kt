@@ -1,5 +1,6 @@
 package canon.parser.xml
 
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 import java.util.concurrent.CountDownLatch
@@ -9,7 +10,7 @@ class CanonXmlParserTest {
 
     private fun parseXml(cannonParser: CanonXmlParser, path: String, expectSuccess: Boolean = true) {
         try {
-            val result = cannonParser.parse(CanonXmlParserTest::class.java.getResourceAsStream(path))
+            val result = cannonParser.parse(CanonXmlParserTest::class.java.getResourceAsStream(path), getCanonVersion())
             Assertions.assertNotNull(result)
             Assertions.assertTrue(result.isNotEmpty())
         } catch (e: Exception) {

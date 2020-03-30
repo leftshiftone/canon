@@ -1,19 +1,18 @@
 package canon.parser.xml.upgrade.xlst
 
 import canon.parser.xml.upgrade.SemanticVersion
-import canon.parser.xml.upgrade.SemanticVersion.Companion.isValidVersion
 import canon.parser.xml.upgrade.UpgradeHandler
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.extractTransformations
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import org.slf4j.LoggerFactory
-import java.io.BufferedReader
-import java.io.IOException
-import java.io.InputStream
-import java.io.InputStreamReader
 import java.util.*
 
 
 class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
+
+    override fun getLatestVersion() = getCanonVersion()
 
     override fun isUpgradeRequired(version: String): Boolean {
         log.debug("Check if there are transformations for version: $version")
@@ -28,10 +27,24 @@ class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
             return rawXml
         }
         val transformerIterator = buildTransformerIterator(rawXmlVersion)
-        if(transformerIterator==null || !transformerIterator.hasNext()){
-            return rawXml
+        return transform(transformerIterator!!,rawXml)
+    }
+
+    override fun upgrade(utterance : Map<String, List<String>>, rawXmlVersion: String): Map<String, List<String>>{
+        if(!isUpgradeRequired(rawXmlVersion)){
+            return utterance
         }
-        return transform(transformerIterator,rawXml)
+        val utteranceMap : Map<String, List<String>> = utterance
+        utterance.entries.map { utteranceEntry ->
+            val transformedListOfUtterances = utteranceEntry.value
+                    .map { utteranceValue ->
+                        transform(buildTransformerIterator(rawXmlVersion)!!, utteranceValue)
+                    }.toList()
+
+        utteranceMap.plus(utteranceEntry.key to transformedListOfUtterances)
+        }
+
+        return utteranceMap
     }
 
 
@@ -56,7 +69,7 @@ class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
     private fun retrieveAvailableTransformationsForAVersion(currentVersion: String):  List<SemanticVersion> {
         log.debug("Retrieve available transformations for version: $currentVersion")
         val curVersion = SemanticVersion(currentVersion)
-        val allAvailableTransformations = extractTransformations()
+        val allAvailableTransformations = extractTransformations(relativePath)
         log.debug("AvailableTransformations : ${allAvailableTransformations.joinToString(",")}")
         val transformationForGivenVersion= allAvailableTransformations
                 .filter {it > curVersion}
@@ -75,19 +88,5 @@ class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
         return xml
     }
 
-    private fun extractTransformations(): List<SemanticVersion> {
-        return getResourceFiles(relativePath)
-                .map { fileName -> fileName.substringAfter("transform_").substringBefore(".xlst")  }
-                .filter { extractedVersionFromFile -> isValidVersion(extractedVersionFromFile) }
-                .map { version -> SemanticVersion(version) }
-        }
-
-    @Throws(IOException::class)
-    fun getResourceFiles(path: String): List<String> = getResourceAsStream(path).use{
-        return if(it == null) emptyList()
-        else BufferedReader(InputStreamReader(it)).readLines()
-    }
-
-    private fun getResourceAsStream(resource: String): InputStream? = this::class.java.getResourceAsStream(resource)
 
 }

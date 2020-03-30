@@ -1,8 +1,4 @@
 <block>
     <label>label</label>
-    <checkbox name="a" value="b" checked="true">A</checkbox>
-    <checkbox name="a" value="b" checked="true">B</checkbox>
-    <checkbox name="a" value="b" checked="true">C</checkbox>
-    <checkbox name="a" value="b" checked="false">D</checkbox>
     <submit>senden</submit>
 </block>

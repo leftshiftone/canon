@@ -177,12 +177,6 @@
                     }
                   ],
                   "type": "items"
-                },
-                {
-                  "name": "a",
-                  "type": "checkbox",
-                  "value": "b",
-                  "group": "a"
                 }
               ],
               "type": "block"
@@ -222,12 +216,6 @@
               "value": "a"
             },
             {
-              "name": "a",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
               "text": "${lawyer.name}",
               "type": "headline"
             },
@@ -264,12 +252,6 @@
                 }
               ],
               "type": "slotMachine"
-            },
-            {
-              "name": "a",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
             }
           ],
           "type": "block"

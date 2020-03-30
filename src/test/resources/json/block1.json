@@ -9,34 +9,6 @@
               "type": "label"
             },
             {
-              "name": "a",
-              "checked": "true",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
-              "name": "a",
-              "checked": "true",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
-              "name": "a",
-              "checked": "true",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
-              "name": "a",
-              "checked": "false",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
               "text": "senden",
               "type": "submit"
             }

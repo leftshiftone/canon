@@ -34,14 +34,14 @@ class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
         if(!isUpgradeRequired(rawXmlVersion)){
             return utterance
         }
-        val utteranceMap : Map<String, List<String>> = utterance
+        val utteranceMap : MutableMap<String, List<String>> = mutableMapOf()
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                     .map { utteranceValue ->
                         transform(buildTransformerIterator(rawXmlVersion)!!, utteranceValue)
                     }.toList()
 
-        utteranceMap.plus(utteranceEntry.key to transformedListOfUtterances)
+        utteranceMap.put(utteranceEntry.key, transformedListOfUtterances)
         }
 
         return utteranceMap

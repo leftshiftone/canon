@@ -99,7 +99,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
     @JvmOverloads
     fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
-        val transformer= XLSTUpgradeHandler("")
+        val transformer= XLSTUpgradeHandler("/xml/xslt/transformers")
         val xmlVersion= version ?: "1.9.0"
         var xml = str.replace("&", "&amp;")
         xml = "<markup><container>$xml</container></markup>"

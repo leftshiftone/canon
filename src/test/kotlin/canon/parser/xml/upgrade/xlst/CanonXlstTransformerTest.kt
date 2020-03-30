@@ -40,11 +40,13 @@ internal class CanonXlstTransformerTest {
 
 
     @Test
-    fun complexXmlIsParsed() = transformFromFileSystem(CanonXlstTransformer("/xml/xlst/", SemanticVersion("2.0.0")), "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+    fun complexXmlIsParsed() = transformFromFileSystem(CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0")), "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
 
 
     @TestFactory
     fun `Transform XML with XSLT`() = listOf(
+            /*****************************************TEXT TRANSFORMATIONS ******************************************************/
+
             mapOf("name" to "Simple text tag is transformed to a label",
                     "givenXml" to """
                                                 <markup>
@@ -84,6 +86,179 @@ internal class CanonXlstTransformerTest {
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                     </container>
                                                 </markup>""".trimIndent()),
+            /*****************************************CALENDAR TRANSFORMATIONS ******************************************************/
+            mapOf("name" to "Calendar tag without attributes is removed_1",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <calendar></calendar>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "Calendar tag without attributes is removed_2",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <calendar/>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "Calendar tag with attribute id, class and name is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <calendar id="testId" class="testClass" name="testName"></calendar>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "Calendar tag with attribute id and name removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <calendar id="testId" name="testName"></calendar>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "Calendar tag with attribute id and class is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <calendar id="testId" class="testClass"></calendar>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+
+            /*****************************************DATEPICKER TRANSFORMATIONS ******************************************************/
+            mapOf("name" to "DatePicker tag without attributes is removed_1",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <datePicker></datePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DatePicker tag without attributes is removed_2",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <datePicker/>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DatePicker tag with attribute source and size is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <datePicker src="SOME ICAL STRING" size="0"></datePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DatePicker tag with attribute source removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <datePicker src="SOME ICAL STRING"></datePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DatePicker tag with attribute size is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <datePicker size="0"></datePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+
+            /*****************************************DATETIMEPICKER TRANSFORMATIONS ******************************************************/
+            mapOf("name" to "DateTimePicker tag without attributes is removed_1",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <DateTimePicker></DateTimePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DateTimePicker tag without attributes is removed_2",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <DateTimePicker/>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <DateTimePicker src="SOME ICAL STRING" size="0"></DateTimePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DateTimePicker tag with attribute source removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <DateTimePicker src="SOME ICAL STRING"></DateTimePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "DateTimePicker tag with attribute size is removed",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <DateTimePicker size="0"></DateTimePicker>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container/>
+                                                </markup>""".trimIndent()),
+
+            /*****************************************TEXTINPUT TRANSFORMATIONS ******************************************************/
+
             mapOf("name" to "TextInput tag with attribute id is transformed to a text",
                     "givenXml" to """
                                                 <markup>
@@ -113,7 +288,7 @@ internal class CanonXlstTransformerTest {
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {
 
-            transformString(CanonXlstTransformer("/xml/xlst/", SemanticVersion("2.0.0")), it["givenXml"] as String ,it["expectedTransformation"] as String)
+            transformString(CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0")), it["givenXml"] as String ,it["expectedTransformation"] as String)
         }
     }
 
@@ -122,7 +297,7 @@ internal class CanonXlstTransformerTest {
     fun parallelTest() {
         val barrier = CountDownLatch(1)
         val endBarrier = CountDownLatch(25)
-        val transformer= CanonXlstTransformer("/xml/xlst/", SemanticVersion("2.0.0"))
+        val transformer= CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0"))
         (0..24).forEach {
             Thread {
                 try{

@@ -15,4 +15,7 @@
      <text><xsl:apply-templates select="@*|node()"/></text>
   </xsl:template>
   <xsl:template match="textInput/node()"/>
+  <xsl:template match="datePicker"/>
+  <xsl:template match="dateTimePicker"/>
+  <xsl:template match="calendar"/>
 </xsl:stylesheet>

@@ -81,6 +81,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
+                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -108,17 +109,21 @@ internal class XLSTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
                         <markup>
                             <container>
+                                <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
+                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -146,17 +151,21 @@ internal class XLSTUpgradeHandlerTest {
                 "expectedTransformedXml" to """
                         <markup>
                             <container>
+                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelB>B</labelB>
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
+                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -185,17 +194,21 @@ internal class XLSTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
                         <markup>
                             <container>
+                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
+                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -223,17 +236,21 @@ internal class XLSTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
                         <markup>
                             <container>
+                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
+                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -318,7 +335,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
+                           </container>
                         </markup>
                                 """.trimMargin().trim(),
                     """
@@ -334,7 +351,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
+                           </container>
                         </markup>
                                 """.trimMargin().trim())),
 
@@ -347,39 +364,48 @@ internal class XLSTUpgradeHandlerTest {
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            </container>
+                               <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                           </container>
                         </markup>
                                 """.trimMargin().trim(),
                             """
                         <markup>
                             <container>
+                               <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelB>B</labelB>
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            </container>
+                              <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                           </container>
                         </markup>
                                 """.trimMargin().trim(),
                             """
                         <markup>
                             <container>
+                                <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
+                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label>address</label>
+                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
+                             <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim())
@@ -468,23 +494,28 @@ internal class XLSTUpgradeHandlerTest {
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                    </container>
+                                   <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                     </container>
                                 </markup>
                                         """.trimMargin().trim(),
                                     """
                                 <markup>
                                     <container>
+                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
+                                                <!-- text element was replaced for label by the XSLT Transformer-->
                                                 <label>address</label>
+                                                <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                 <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                 <labelA>A</labelA>
                                                 <labelB>B</labelB>
                                                 <labelC>C</labelC>
                                             </block>
                                         </carousel>
+                                    <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                     </container>
                                 </markup>
                                         """.trimMargin().trim()),
@@ -497,23 +528,28 @@ internal class XLSTUpgradeHandlerTest {
                                                         <headline>name in English</headline>
                                                     </block>
                                                 </carousel>
+                                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                             </container>
                                         </markup>
                                                 """.trimMargin().trim(),
                                                     """
                                         <markup>
                                             <container>
+                                                <!-- text element was replaced for label by the XSLT Transformer-->
                                                 <label id="123">Based on the Input we can suggest following results:</label>
                                                 <carousel>
                                                     <block foreach="">
                                                         <headline>name</headline>
-                                                        <label>address</label>
+                                                       <!-- text element was replaced for label by the XSLT Transformer-->
+                                                         <label>address</label>
+                                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                         <text name="textInputInEnglish" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <labelA>A</labelA>
                                                         <labelB>B</labelB>
                                                         <labelC>C</labelC>
                                                     </block>
                                                 </carousel>
+                                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                             </container>
                                         </markup>
                                                 """.trimMargin().trim())

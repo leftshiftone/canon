@@ -77,18 +77,6 @@ class CanonXmlParserTest {
     fun form5() = parseXml(CanonXmlParser(),"/xml/form5.xml", false)
 
     @Test
-    fun datepicker1() = parseXml(CanonXmlParser(),"/xml/datepicker1.xml", false)
-
-    @Test
-    fun datepicker2() = parseXml(CanonXmlParser(),"/xml/datepicker2.xml", false)
-
-    @Test
-    fun datepicker3() = parseXml(CanonXmlParser(),"/xml/datepicker3.xml", false)
-
-    @Test
-    fun datepicker4() = parseXml(CanonXmlParser(),"/xml/datepicker4.xml", false)
-
-    @Test
     fun transition1() = parseXml(CanonXmlParser(),"/xml/transition1.xml", false)
 
     @Test

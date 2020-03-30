@@ -2,6 +2,7 @@ package canon.parser.xml.upgrade.xlst
 
 import canon.parser.xml.upgrade.SemanticVersion
 import org.assertj.core.api.Assertions.assertThat
+import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
@@ -11,8 +12,15 @@ internal class XLSTUpgradeHandlerTest {
 
     @Test
     fun  `given a folder with no XLST files, no transformation is done`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst")
+        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/XXX/")
         assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
+    }
+
+    @Test
+    @Disabled("This test is temp ignored until version 2.0.0 is released")
+    fun  `given a the current version, a transformation is not needed`(){
+        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
+        assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
     }
 
 
@@ -384,10 +392,143 @@ internal class XLSTUpgradeHandlerTest {
             transformedXml.get("de")!!.forEachIndexed {i, utterance ->
                 assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get("de")!!.get(i).replace("\\s".toRegex(), ""))
             }
+        }
+    }
 
 
+    @TestFactory
+    fun `Transform a list of utterances in multiple languages through multiple sequential transformers`() = listOf(
+            mapOf(
+                    "name" to "YYY",
+                    "version" to "0.9.0",
+                    "utterance" to
+                            mapOf("de" to listOf("""
+                                <markup>
+                                    <container>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name</headline>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim(),
+                                    """
+                                <markup>
+                                    <container>
+                                        <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name</headline>
+                                                <text>address</text>
+                                                <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+                                                <textA>A</textA>
+                                                <textB>B</textB>
+                                                <textC>C</textC>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim()),
 
+                            "en" to listOf("""
+                                <markup>
+                                    <container>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name in English</headline>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim(),
+                                    """
+                                <markup>
+                                    <container>
+                                        <text id="123">Based on the Input we can suggest following results:</text>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name</headline>
+                                                <text>address</text>
+                                                <textInput name="textInputInEnglish" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+                                                <textA>A</textA>
+                                                <textB>B</textB>
+                                                <textC>C</textC>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim())),
 
+                            "expectedUtterance" to mapOf("de" to listOf("""
+                                <markup>
+                                    <container>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name</headline>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim(),
+                                    """
+                                <markup>
+                                    <container>
+                                        <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
+                                        <carousel>
+                                            <block foreach="">
+                                                <headline>name</headline>
+                                                <label>address</label>
+                                                <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+                                                <labelA>A</labelA>
+                                                <labelB>B</labelB>
+                                                <labelC>C</labelC>
+                                            </block>
+                                        </carousel>
+                                    </container>
+                                </markup>
+                                        """.trimMargin().trim()),
+
+                                    "en" to listOf("""
+                                        <markup>
+                                            <container>
+                                                <carousel>
+                                                    <block foreach="">
+                                                        <headline>name in English</headline>
+                                                    </block>
+                                                </carousel>
+                                            </container>
+                                        </markup>
+                                                """.trimMargin().trim(),
+                                                    """
+                                        <markup>
+                                            <container>
+                                                <label id="123">Based on the Input we can suggest following results:</label>
+                                                <carousel>
+                                                    <block foreach="">
+                                                        <headline>name</headline>
+                                                        <label>address</label>
+                                                        <text name="textInputInEnglish" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+                                                        <labelA>A</labelA>
+                                                        <labelB>B</labelB>
+                                                        <labelC>C</labelC>
+                                                    </block>
+                                                </carousel>
+                                            </container>
+                                        </markup>
+                                                """.trimMargin().trim())
+                            )
+            )
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
+            val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
+            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
+
+            transformedXml.entries.forEach {utteranceEntry ->
+                utteranceEntry.value.forEachIndexed { index, utterance ->
+                    assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get(utteranceEntry.key)!!.get(index).replace("\\s".toRegex(), ""))
+                }
+            }
         }
     }
 

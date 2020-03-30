@@ -205,7 +205,7 @@ internal class CanonXlstTransformerTest {
                     "givenXml" to """
                                                 <markup>
                                                     <container>
-                                                       <DateTimePicker></DateTimePicker>
+                                                       <dateTimePicker></dateTimePicker>
                                                     </container>
                                                  </markup>""".trimMargin().trim(),
                     "expectedTransformation" to """
@@ -216,7 +216,7 @@ internal class CanonXlstTransformerTest {
                     "givenXml" to """
                                                 <markup>
                                                     <container>
-                                                       <DateTimePicker/>
+                                                       <dateTimePicker/>
                                                     </container>
                                                  </markup>""".trimMargin().trim(),
                     "expectedTransformation" to """
@@ -227,7 +227,7 @@ internal class CanonXlstTransformerTest {
                     "givenXml" to """
                                                 <markup>
                                                     <container>
-                                                       <DateTimePicker src="SOME ICAL STRING" size="0"></DateTimePicker>
+                                                       <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
                                                     </container>
                                                  </markup>""".trimMargin().trim(),
                     "expectedTransformation" to """
@@ -238,7 +238,7 @@ internal class CanonXlstTransformerTest {
                     "givenXml" to """
                                                 <markup>
                                                     <container>
-                                                       <DateTimePicker src="SOME ICAL STRING"></DateTimePicker>
+                                                       <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
                                                     </container>
                                                  </markup>""".trimMargin().trim(),
                     "expectedTransformation" to """
@@ -249,7 +249,7 @@ internal class CanonXlstTransformerTest {
                     "givenXml" to """
                                                 <markup>
                                                     <container>
-                                                       <DateTimePicker size="0"></DateTimePicker>
+                                                       <dateTimePicker size="0"></dateTimePicker>
                                                     </container>
                                                  </markup>""".trimMargin().trim(),
                     "expectedTransformation" to """

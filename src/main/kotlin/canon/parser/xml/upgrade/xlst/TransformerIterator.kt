@@ -1,4 +1,4 @@
-package canon.parser.xml.xlst
+package canon.parser.xml.upgrade.xlst
 
 import java.util.*
 

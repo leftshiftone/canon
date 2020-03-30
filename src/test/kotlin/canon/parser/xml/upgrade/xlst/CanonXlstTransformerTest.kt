@@ -1,6 +1,7 @@
-package canon.parser.xml.xlst
+package canon.parser.xml.upgrade.xlst
 
 
+import canon.parser.xml.upgrade.SemanticVersion
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
@@ -40,6 +41,7 @@ internal class CanonXlstTransformerTest {
 
     @Test
     fun complexXmlIsParsed() = transformFromFileSystem(CanonXlstTransformer("/xml/xlst/", SemanticVersion("2.0.0")), "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+
 
     @TestFactory
     fun `Transform XML with XSLT`() = listOf(

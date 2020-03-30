@@ -1,4 +1,4 @@
-package canon.parser.xml.xlst
+package canon.parser.xml.upgrade
 
 import org.slf4j.LoggerFactory
 import java.util.*
@@ -31,7 +31,7 @@ class SemanticVersion : Comparable<SemanticVersion> {
         }
 
         fun findVersionMatches(version: String) : MatchResult?{
-            val regex = "^(\\d+).?(\\d+).?(\\*|\\d+)\$".toRegex()
+            val regex = "^(\\d+).?(\\d+).?(\\*|\\d+)-?(.*)\$".toRegex()
             return regex.find(version)
         }
     }
@@ -49,7 +49,7 @@ class SemanticVersion : Comparable<SemanticVersion> {
         patch= parseVersion.patch
     }
 
-    private fun parseVersion(version: String) : SemanticVersion{
+    private fun parseVersion(version: String) : SemanticVersion {
         val matchResult = findVersionMatches(version)
         return SemanticVersion(matchResult!!.groups[1]!!.value, matchResult.groups[2]!!.value, matchResult.groups[3]!!.value)
     }

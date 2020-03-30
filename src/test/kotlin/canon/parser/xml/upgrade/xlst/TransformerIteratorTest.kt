@@ -1,5 +1,6 @@
-package canon.parser.xml.xlst
+package canon.parser.xml.upgrade.xlst
 
+import canon.parser.xml.upgrade.SemanticVersion
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test

@@ -5,7 +5,7 @@ import canon.exception.CanonException
 import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
-import canon.parser.xml.upgrade.xlst.XLSTUpgradeHandler
+import canon.parser.xml.upgrade.xlst.XLSTCanonUpgradeHandler
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
@@ -97,7 +97,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
     @JvmOverloads
     fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
-        val transformer= XLSTUpgradeHandler("/xml/xlst/transformers/")
+        val transformer= XLSTCanonUpgradeHandler("/xml/xlst/transformers/")
         var xml = str.replace("&", "&amp;")
         xml = "<markup><container>$xml</container></markup>"
         if(transformer.isUpgradeRequired(version)){

@@ -1,14 +1,14 @@
 package canon.parser.xml.upgrade.xlst
 
+import canon.parser.xml.upgrade.CanonUpgradeHandler
 import canon.parser.xml.upgrade.SemanticVersion
-import canon.parser.xml.upgrade.UpgradeHandler
 import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.extractTransformations
 import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import org.slf4j.LoggerFactory
 import java.util.*
 
 
-class XLSTUpgradeHandler: UpgradeHandler {
+class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
     val relativePath : String

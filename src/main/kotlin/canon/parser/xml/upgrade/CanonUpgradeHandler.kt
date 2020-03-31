@@ -3,7 +3,7 @@ package canon.parser.xml.upgrade
 /**
  * This interface defines a XML Upgrade handler
  */
-interface UpgradeHandler {
+interface CanonUpgradeHandler {
 
     /**
      * It checks if a version must be upgraded

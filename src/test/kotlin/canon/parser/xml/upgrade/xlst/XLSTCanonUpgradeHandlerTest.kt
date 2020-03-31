@@ -7,23 +7,23 @@ import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
-internal class XLSTUpgradeHandlerTest {
+internal class XLSTCanonUpgradeHandlerTest {
 
 
     @Test
     fun  `given a folder with no XLST files, no transformation is done`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/XXX/")
+        val classUnderTest = XLSTCanonUpgradeHandler("/xml/xlst/XXX/")
         assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
     }
 
     @Test
     fun  `A null version requires an upgrade`(){
-        val classUnderTest = XLSTUpgradeHandler()
+        val classUnderTest = XLSTCanonUpgradeHandler()
         assertThat(classUnderTest.isUpgradeRequired(null)).isTrue()
     }
     @Test
     fun  `No version specified in isUpgradeRequired method is true`(){
-        val classUnderTest = XLSTUpgradeHandler()
+        val classUnderTest = XLSTCanonUpgradeHandler()
         assertThat(classUnderTest.isUpgradeRequired()).isTrue()
     }
 
@@ -33,7 +33,7 @@ internal class XLSTUpgradeHandlerTest {
             mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
             assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
         }
     }
@@ -44,7 +44,7 @@ internal class XLSTUpgradeHandlerTest {
             mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
             assertThat(classUnderTest.buildTransformerIterator("3.2.0")).isNull()
         }
     }
@@ -54,7 +54,7 @@ internal class XLSTUpgradeHandlerTest {
             mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
             assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
         }
     }
@@ -64,7 +64,7 @@ internal class XLSTUpgradeHandlerTest {
             mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
             val iterator = classUnderTest.buildTransformerIterator("0.9.0")
             assertThat(iterator).isNotNull()
             assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("1.0.0"))
@@ -80,7 +80,7 @@ internal class XLSTUpgradeHandlerTest {
             mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
             val iterator = classUnderTest.buildTransformerIterator("1.6.0")
             assertThat(iterator).isNotNull()
             assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("2.0.0"))
@@ -326,7 +326,7 @@ internal class XLSTUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
-            val classUnderTest = XLSTUpgradeHandler()
+            val classUnderTest = XLSTCanonUpgradeHandler()
             val transformedXml = classUnderTest.upgrade(it["rawXml"] as String, it["version"])
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
 
@@ -445,7 +445,7 @@ internal class XLSTUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
+            val classUnderTest = XLSTCanonUpgradeHandler("/xml/xlst/transformers")
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
             transformedXml.get("de")!!.forEachIndexed {i, utterance ->
                 assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get("de")!!.get(i).replace("\\s".toRegex(), ""))
@@ -587,7 +587,7 @@ internal class XLSTUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTUpgradeHandler()
+            val classUnderTest = XLSTCanonUpgradeHandler()
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
 
             transformedXml.entries.forEach {utteranceEntry ->

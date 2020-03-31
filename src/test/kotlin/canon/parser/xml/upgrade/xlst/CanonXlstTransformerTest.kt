@@ -49,313 +49,187 @@ internal class CanonXlstTransformerTest {
 
             mapOf("name" to "Simple text tag is transformed to a label",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <text>text</text>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label>text</label>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Text tag with attribute id and value is transformed to a label",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <text id="abc">text</text>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label id="abc">text</label>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Text tag with attribute id, class and if and value is transformed to a label",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <text id="abc" class=".cs" if="(aaa)">text</text>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Text tag with attribute id, class, if , name and value is transformed to a label",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <text id="abc" name="textname" class=".cs" if="(aaa)">text</text>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer-->                                                        
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             /*****************************************CALENDAR TRANSFORMATIONS ******************************************************/
             mapOf("name" to "Calendar tag without attributes is removed_1",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <calendar></calendar>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <calendar/>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <calendar id="testId" class="testClass" name="testName"></calendar>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <calendar id="testId" name="testName"></calendar>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                     <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <calendar id="testId" class="testClass"></calendar>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                     <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
 
             /*****************************************DATEPICKER TRANSFORMATIONS ******************************************************/
             mapOf("name" to "DatePicker tag without attributes is removed_1",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <datePicker></datePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <datePicker/>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                   <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <datePicker src="SOME ICAL STRING" size="0"></datePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <datePicker src="SOME ICAL STRING"></datePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <datePicker size="0"></datePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
 
             /*****************************************DATETIMEPICKER TRANSFORMATIONS ******************************************************/
             mapOf("name" to "DateTimePicker tag without attributes is removed_1",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <dateTimePicker></dateTimePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <dateTimePicker/>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                   <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                   <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                 """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                    """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <dateTimePicker size="0"></dateTimePicker>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                   """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                    """.trimIndent()),
 
             /*****************************************TEXTINPUT TRANSFORMATIONS ******************************************************/
 
             mapOf("name" to "TextInput tag with attribute id is transformed to a text",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <textInput id="abc"/>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                    """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                         <text id="abc"/>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent()),
+                                                    """.trimIndent()),
             mapOf("name" to "TextInput tag with attributes name, placeholder, regex, value, required and class is transformed to a text",
                     "givenXml" to """
-                                                <markup>
-                                                    <container>
                                                        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
-                                                    </container>
-                                                 </markup>""".trimMargin().trim(),
+                                                    """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                <markup>
-                                                    <container>
                                                         <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <automaticUpgraded/>
-                                                    </container>
-                                                </markup>""".trimIndent())
+                                                    """.trimIndent())
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {
 

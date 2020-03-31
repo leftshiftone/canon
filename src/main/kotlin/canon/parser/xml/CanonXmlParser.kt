@@ -99,7 +99,6 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
     fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
         val transformer= XLSTCanonUpgradeHandler("/xml/xlst/transformers/")
         var xml = str.replace("&", "&amp;")
-        xml = "<markup><container>$xml</container></markup>"
         if(transformer.isUpgradeRequired(version)){
             val upgradedXML = transformer.upgrade(xml, version)
             return parse(upgradedXML,validate)
@@ -107,7 +106,8 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
         return parse(xml,validate)
     }
 
-    private fun parse(xml: String, validate: Boolean = true): List<IRenderable> {
+    private fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+        var xml = "<markup><container>$str</container></markup>"
         if (validate) {
             val validation = getValidator().validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())

@@ -15,12 +15,20 @@ import javax.xml.transform.stream.StreamSource
 class CanonXlstTransformer (val relativePath : String, val version: SemanticVersion){
 
     private val log = LoggerFactory.getLogger(this::class.java)
+    val CLEAN_UP_XLST= "/xml/xlst/transformers/cleanup/transform_cleanup.xlst"
 
     fun execute(xml: String): String {
+        val markupXml= "<markup><container>$xml</container></markup>"
+        val transformedXML= applyXSLT(markupXml,"$relativePath/transform_$version.xlst")
+        val normalizedTransformedXML= applyXSLT(transformedXML,CLEAN_UP_XLST)
+        log.debug("Transformed xml: \nfrom $markupXml \nto${normalizedTransformedXML}")
+        return normalizedTransformedXML
+    }
 
+    private fun applyXSLT(xml: String, xlst: String): String {
         val factory = TransformerFactory.newInstance()
-        log.debug("Loading XLST transform file  $relativePath/transform_$version.xlst")
-        val xslt = StreamSource(CanonXlstTransformer::class.java.getResourceAsStream("$relativePath/transform_$version.xlst"))
+        log.debug("Loading XLST transform file  $xlst")
+        val xslt = StreamSource(CanonXlstTransformer::class.java.getResourceAsStream("$xlst"))
         val transformer = factory.newTransformer(xslt)
         log.debug("Xml to transformed: $xml")
         val text = StreamSource(StringReader(xml))

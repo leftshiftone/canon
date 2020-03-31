@@ -94,34 +94,34 @@ internal class XLSTCanonUpgradeHandlerTest {
                 "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0 but no changes must be made",
                 "version" to "0.9.0",
                 "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                 "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to " (FALLBACK CASE) Transform XML through transformers: 2.0.0 because no version is given",
                     "version" to null,
                     "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -133,12 +133,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -155,16 +155,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                                     </block>
                                 </carousel>
     
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             ),
             mapOf(
                 "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0",
                 "version" to "0.9.0",
                 "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -176,12 +176,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                 "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -197,8 +197,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             )
             ,
@@ -206,8 +206,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "name" to "Transform XML through transformers: 1.5.0 and 2.0.0",
                     "version" to "1.3.1",
                     "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -219,12 +219,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -240,16 +240,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to "Transform XML through transformers: 2.0.0",
                     "version" to "1.9.0",
                     "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -261,12 +261,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -282,16 +282,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to " No transform is required",
                     "version" to "2.0.0",
                     "rawXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -303,12 +303,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        <markup>
-                            <container>
+                        
+                            
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -320,8 +320,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim()
             )
     ).map {
@@ -344,19 +344,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "name" to "YYY",
                     "version" to "0.9.0",
                     "utterance" to mapOf("de" to listOf("""
-                        <markup>
-                            <container>
+                       
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                           
                                 """.trimMargin().trim(),
                      """
-                        <markup>
-                            <container>
+                        
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -368,12 +365,10 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                           </container>
-                        </markup>
+                          
                                 """.trimMargin().trim(),
                     """
-                        <markup>
-                            <container>
+                        
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -384,25 +379,24 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                           </container>
-                        </markup>
+                           
                                 """.trimMargin().trim())),
 
 
                     "expectedUtterance" to mapOf("de" to listOf("""
-                        <markup>
-                            <container>
+                        
+                            
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                           </container>
-                        </markup>
+                           
+                        
                                 """.trimMargin().trim(),
                             """
-                        <markup>
-                            <container>
+                        
+                            
                              <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -418,12 +412,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                           </container>
-                        </markup>
+                           
+                        
                                 """.trimMargin().trim(),
                             """
-                        <markup>
-                            <container>
+                        
+                            
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                              <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -438,8 +432,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            </container>
-                        </markup>
+                            
+                        
                                 """.trimMargin().trim())
                     )
             )
@@ -461,19 +455,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "version" to "0.9.0",
                     "utterance" to
                             mapOf("de" to listOf("""
-                                <markup>
-                                    <container>
+                                
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                    </container>
-                                </markup>
+                                  
                                         """.trimMargin().trim(),
                                     """
-                                <markup>
-                                    <container>
+                                
                                         <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                         <carousel>
                                             <block foreach="">
@@ -485,24 +476,20 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <textC>C</textC>
                                             </block>
                                         </carousel>
-                                    </container>
-                                </markup>
+                                    
                                         """.trimMargin().trim()),
 
                             "en" to listOf("""
-                                <markup>
-                                    <container>
+                               
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name in English</headline>
                                             </block>
                                         </carousel>
-                                    </container>
-                                </markup>
+                                   
                                         """.trimMargin().trim(),
                                     """
-                                <markup>
-                                    <container>
+                                
                                         <text id="123">Based on the Input we can suggest following results:</text>
                                         <carousel>
                                             <block foreach="">
@@ -514,24 +501,23 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <textC>C</textC>
                                             </block>
                                         </carousel>
-                                    </container>
-                                </markup>
+                                    
                                         """.trimMargin().trim())),
 
                             "expectedUtterance" to mapOf("de" to listOf("""
-                                <markup>
-                                    <container>
+                                
+                                    
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                     </container>
-                                </markup>
+                                     
+                                
                                         """.trimMargin().trim(),
                                     """
-                                <markup>
-                                    <container>
+                                
+                                    
                                        <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -547,24 +533,24 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <labelC>C</labelC>
                                             </block>
                                         </carousel>
-                                    </container>
-                                </markup>
+                                    
+                                
                                         """.trimMargin().trim()),
 
                                     "en" to listOf("""
-                                        <markup>
-                                            <container>
+                                        
+                                            
                                                 <carousel>
                                                     <block foreach="">
                                                         <headline>name in English</headline>
                                                     </block>
                                                 </carousel>
-                                            </container>
-                                        </markup>
+                                            
+                                        
                                                 """.trimMargin().trim(),
                                                     """
-                                        <markup>
-                                            <container>
+                                        
+                                            
                                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                                 <label id="123">Based on the Input we can suggest following results:</label>
@@ -580,8 +566,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                         <labelC>C</labelC>
                                                     </block>
                                                 </carousel>
-                                            </container>
-                                        </markup>
+                                            
+                                        
                                                 """.trimMargin().trim())
                             )
             )

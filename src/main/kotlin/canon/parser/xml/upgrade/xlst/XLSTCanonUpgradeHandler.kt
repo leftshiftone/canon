@@ -12,13 +12,13 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
     val relativePath : String
-    val UPGRADE_CLEAN_UP_TRANSFORMER : CanonXlstTransformer
+    val UPGRADE_LOG_TRANSFORMER : CanonXlstTransformer
     val DEFAULT_VERSION ="1.9.0"
 
 
     constructor(relativePath : String) {
         this.relativePath= relativePath
-        this.UPGRADE_CLEAN_UP_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
+        this.UPGRADE_LOG_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
 
     }
 
@@ -52,7 +52,7 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
 
     private fun getVersion(version : String?) = version ?: DEFAULT_VERSION
 
-    fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>>{
+    private fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>>{
 
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
@@ -104,7 +104,7 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
             log.debug("Applying transformation for version ${transformer.version} from path ${transformer.relativePath}")
             return transform(iterator,transformer.execute(xml))
         }
-        return UPGRADE_CLEAN_UP_TRANSFORMER.execute(xml)
+        return UPGRADE_LOG_TRANSFORMER.execute(xml)
 
     }
 

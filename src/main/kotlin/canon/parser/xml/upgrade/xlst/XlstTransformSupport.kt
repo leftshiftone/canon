@@ -27,7 +27,7 @@ class XlstTransformSupport {
             else BufferedReader(InputStreamReader(it)).readLines()
         }
 
-        private fun getResourceAsStream(resource: String): InputStream? = this::class.java.getResourceAsStream(resource)
+        private fun getResourceAsStream(resource: String): InputStream? = XlstTransformSupport::class.java.getResourceAsStream(resource)
 
         fun getCanonVersion(): String {
             val prop = Properties()

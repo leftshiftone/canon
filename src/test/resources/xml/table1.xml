@@ -2,11 +2,11 @@
         <table>
             <row>
                 <col><button value="test">test</button></col>
-                <col><text>h1</text></col>
+                <col><label>h1</label></col>
             </row>
             <row>
                 <col><button value="text">text</button></col>
-                <col><text>h1</text></col>
+                <col><label>h1</label></col>
             </row>
         </table>
     </block>

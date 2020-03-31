@@ -33,10 +33,10 @@ class CanonXmlParserTest {
     fun items() = parseXml(CanonXmlParser(),"/xml/items.xml")
 
     @Test
-    fun text1() = parseXml(CanonXmlParser(),"/xml/text1.xml")
+    fun text1() = parseXml(CanonXmlParser(),"/xml/label1.xml")
 
     @Test
-    fun text2() = parseXml(CanonXmlParser(),"/xml/text2.xml")
+    fun text2() = parseXml(CanonXmlParser(),"/xml/label2.xml")
 
     @Test
     fun table1() = parseXml(CanonXmlParser(),"/xml/table1.xml")
@@ -76,18 +76,6 @@ class CanonXmlParserTest {
 
     @Test
     fun form5() = parseXml(CanonXmlParser(),"/xml/form5.xml", false)
-
-    @Test
-    fun datepicker1() = parseXml(CanonXmlParser(),"/xml/datepicker1.xml", false)
-
-    @Test
-    fun datepicker2() = parseXml(CanonXmlParser(),"/xml/datepicker2.xml", false)
-
-    @Test
-    fun datepicker3() = parseXml(CanonXmlParser(),"/xml/datepicker3.xml", false)
-
-    @Test
-    fun datepicker4() = parseXml(CanonXmlParser(),"/xml/datepicker4.xml", false)
 
     @Test
     fun transition1() = parseXml(CanonXmlParser(),"/xml/transition1.xml", false)

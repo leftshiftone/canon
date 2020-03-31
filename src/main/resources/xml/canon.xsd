@@ -42,9 +42,7 @@
             <xs:element type="itemsType" name="items"/>
             <xs:element type="videoType" name="video"/>
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="calendarType" name="calendar"/>
-            <xs:element type="textType" name="text"/>
-            <xs:element type="checkboxType" name="checkbox"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="linkType" name="link"/>
             <xs:element type="boldType" name="bold"/>
@@ -55,7 +53,7 @@
             <xs:element type="sliderType" name="slider"/>
             <xs:element type="mapType" name="map"/>
             <xs:element type="formType" name="form"/>
-            <xs:element type="textInputType" name="textInput"/>
+            <xs:element type="textType" name="text"/>
             <xs:element type="textareaType" name="textarea"/>
             <xs:element type="choiceType" name="choice"/>
             <xs:element type="emailType" name="email" />
@@ -85,10 +83,8 @@
         <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="videoType" name="video"/>
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="calendarType" name="calendar"/>
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
-            <xs:element type="checkboxType" name="checkbox"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="linkType" name="link"/>
             <xs:element type="boldType" name="bold"/>
@@ -99,7 +95,7 @@
             <xs:element type="sliderType" name="slider"/>
             <xs:element type="mapType" name="map"/>
             <xs:element type="formType" name="form"/>
-            <xs:element type="textInputType" name="textInput"/>
+            <xs:element type="textType" name="text"/>
             <xs:element type="textareaType" name="textarea"/>
             <xs:element type="choiceType" name="choice"/>
         </xs:choice>
@@ -200,12 +196,6 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="calendarType">
-        <xs:attribute name="name" type="name"/>
-        <xs:attribute type="xs:string" name="id"/>
-        <xs:attribute type="xs:string" name="class"/>
-    </xs:complexType>
-
     <xs:complexType name="suggestionType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
@@ -227,18 +217,6 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="checkboxType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="name" type="name"/>
-                <xs:attribute type="xs:string" name="value"/>
-                <xs:attribute type="xs:string" name="id"/>
-                <xs:attribute type="xs:string" name="class"/>
-                <xs:attribute type="xs:string" name="checked"/>
-            </xs:extension>
-        </xs:simpleContent>
-    </xs:complexType>
-
     <xs:complexType name="formType">
         <xs:choice maxOccurs="unbounded" minOccurs="1">
             <xs:element type="videoType" name="video"/>
@@ -248,19 +226,17 @@
             <xs:element type="italicType" name="italic"/>
             <xs:element type="xs:string" name="break"/>
             <xs:element type="buttonType" name="button"/>
-            <xs:element type="calendarType" name="calendar"/>
             <xs:element type="cameraType" name="camera"/>
             <xs:element type="carouselType" name="carousel" />
             <xs:element type="codeReaderType" name="codeReader"/>
-            <xs:element type="checkboxType" name="checkbox"/>
             <xs:element type="emailType" name="email" />
             <xs:element type="headlineType" name="headline" />
             <xs:element type="imageType" name="image"/>
             <xs:element type="itemsType" name="items"/>
             <xs:element type="phoneType" name="phone" />
             <xs:element type="submitType" name="submit" minOccurs="1" maxOccurs="1" />
+            <xs:element type="labelType" name="label"/>
             <xs:element type="textType" name="text"/>
-            <xs:element type="textInputType" name="textInput"/>
             <xs:element type="textareaType" name="textarea"/>
             <xs:element type="slotMachineType" name="slotmachine"/>
             <xs:element type="reelType" name="reel"/>
@@ -280,7 +256,7 @@
         <xs:attribute type="xs:string" name="class"/>
     </xs:complexType>
 
-    <xs:complexType name="textInputType">
+    <xs:complexType name="textType">
         <xs:attribute name="name" type="name" use="required"/>
         <xs:attribute type="xs:string" name="regex"/>
         <xs:attribute type="xs:string" name="placeholder"/>
@@ -325,11 +301,10 @@
             <xs:element type="videoType" name="video"/>
             <xs:element type="triggerType" name="trigger"/>
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
-            <xs:element type="textInputType" name="textInput"/>
+            <xs:element type="textType" name="text"/>
             <xs:element type="textareaType" name="textarea"/>
-            <xs:element type="checkboxType" name="checkbox"/>
             <xs:element type="slotMachineType" name="slotmachine"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="linkType" name="link"/>
@@ -339,7 +314,6 @@
             <xs:element type="mapType" name="map"/>
             <xs:element type="submitType" name="submit"/>
             <xs:element type="xs:string" name="break"/>
-            <xs:element type="calendarType" name="calendar"/>
             <xs:element type="buttonType" name="button"/>
             <xs:element type="sliderType" name="slider"/>
             <xs:element type="spinnerType" name="spinner"/>
@@ -366,11 +340,10 @@
             <xs:element type="videoType" name="video"/>
             <xs:element type="triggerType" name="trigger"/>
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
-            <xs:element type="textInputType" name="textInput"/>
+            <xs:element type="textType" name="text"/>
             <xs:element type="textareaType" name="textarea"/>
-            <xs:element type="checkboxType" name="checkbox"/>
             <xs:element type="slotMachineType" name="slotmachine"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="linkType" name="link"/>
@@ -380,7 +353,6 @@
             <xs:element type="mapType" name="map"/>
             <xs:element type="submitType" name="submit"/>
             <xs:element type="xs:string" name="break"/>
-            <xs:element type="calendarType" name="calendar"/>
             <xs:element type="buttonType" name="button"/>
             <xs:element type="sliderType" name="slider"/>
             <xs:element type="spinnerType" name="spinner"/>
@@ -416,7 +388,7 @@
     <xs:complexType name="selectionBlockType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="boldType" name="bold"/>
@@ -442,7 +414,7 @@
         </xs:simpleContent>
     </xs:complexType>
 
-    <xs:complexType name="textType">
+    <xs:complexType name="labelType">
         <xs:simpleContent>
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="id"/>
@@ -586,7 +558,7 @@
 
     <xs:complexType name="containerType" mixed="true">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="buttonType" name="button"/>
             <xs:element type="carouselType" name="carousel"/>
             <xs:element type="imageType" name="image"/>
@@ -627,11 +599,10 @@
             <xs:element type="formType" name="form" />
             <xs:element type="blockType" name="block"/>
             <xs:element type="headlineType" name="headline"/>
-            <xs:element type="textType" name="text"/>
+            <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
-            <xs:element type="textInputType" name="textInput"/>
+            <xs:element type="textType" name="text"/>
             <xs:element type="textareaType" name="textarea"/>
-            <xs:element type="checkboxType" name="checkbox"/>
             <xs:element type="slotMachineType" name="slotmachine"/>
             <xs:element type="reelType" name="reel"/>
             <xs:element type="imageType" name="image"/>
@@ -642,7 +613,6 @@
             <xs:element type="mapType" name="map"/>
             <xs:element type="submitType" name="submit"/>
             <xs:element type="xs:string" name="break"/>
-            <xs:element type="calendarType" name="calendar"/>
             <xs:element type="buttonType" name="button"/>
             <xs:element type="sliderType" name="slider"/>
             <xs:element type="spinnerType" name="spinner"/>

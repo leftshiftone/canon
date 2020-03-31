@@ -12,7 +12,7 @@
         },
         {
           "text": "Basierend auf Ihren Angaben können wir Ihnen folgende 1 Resultate vorschlagen:",
-          "type": "text"
+          "type": "label"
         },
         {
           "name": "b",
@@ -30,7 +30,7 @@
                 },
                 {
                   "text": "${lawyer.address}",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "ordered": false,
@@ -39,7 +39,7 @@
                       "elements": [
                         {
                           "text": "Telefon: 123456789",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -48,7 +48,7 @@
                       "elements": [
                         {
                           "text": "Email: max@mustermann@example.com",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -58,7 +58,7 @@
                 },
                 {
                   "text": "Tätigkeitsgebiete",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "ordered": false,
@@ -67,7 +67,7 @@
                       "elements": [
                         {
                           "text": "abc",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -76,7 +76,7 @@
                       "elements": [
                         {
                           "text": "abc",
-                          "type": "text"
+                          "type": "label"
                         },
                         {
                           "ordered": false,
@@ -85,7 +85,7 @@
                               "elements": [
                                 {
                                   "text": "abc",
-                                  "type": "text"
+                                  "type": "label"
                                 }
                               ],
                               "type": "item"
@@ -94,7 +94,7 @@
                               "elements": [
                                 {
                                   "text": "abc",
-                                  "type": "text"
+                                  "type": "label"
                                 }
                               ],
                               "type": "item"
@@ -103,7 +103,7 @@
                               "elements": [
                                 {
                                   "text": "abc",
-                                  "type": "text"
+                                  "type": "label"
                                 }
                               ],
                               "type": "item"
@@ -124,7 +124,7 @@
                       "elements": [
                         {
                           "text": "A",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -133,7 +133,7 @@
                       "elements": [
                         {
                           "text": "B",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -142,7 +142,7 @@
                       "elements": [
                         {
                           "text": "C",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -152,7 +152,7 @@
                 },
                 {
                   "text": "Sprachen",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "ordered": false,
@@ -161,7 +161,7 @@
                       "elements": [
                         {
                           "text": "Deutsch",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
@@ -170,19 +170,13 @@
                       "elements": [
                         {
                           "text": "Englisch",
-                          "type": "text"
+                          "type": "label"
                         }
                       ],
                       "type": "item"
                     }
                   ],
                   "type": "items"
-                },
-                {
-                  "name": "a",
-                  "type": "checkbox",
-                  "value": "b",
-                  "group": "a"
                 }
               ],
               "type": "block"
@@ -222,12 +216,6 @@
               "value": "a"
             },
             {
-              "name": "a",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
-            },
-            {
               "text": "${lawyer.name}",
               "type": "headline"
             },
@@ -264,12 +252,6 @@
                 }
               ],
               "type": "slotMachine"
-            },
-            {
-              "name": "a",
-              "type": "checkbox",
-              "value": "b",
-              "group": "a"
             }
           ],
           "type": "block"

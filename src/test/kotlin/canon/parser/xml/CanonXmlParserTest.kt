@@ -1,8 +1,6 @@
 package canon.parser.xml
 
-import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import org.junit.jupiter.api.Assertions
-import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.Test
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
@@ -10,8 +8,7 @@ import java.util.concurrent.TimeUnit
 class CanonXmlParserTest {
 
     private fun parseXml(cannonParser: CanonXmlParser, path: String, expectSuccess: Boolean = true) {
-       parseXml(cannonParser,path, "1.9.0",expectSuccess)
-       parseXml(cannonParser,path, getCanonVersion(),expectSuccess)
+       parseXml(cannonParser,path, "2.0.0",expectSuccess)
     }
 
     private fun parseXml(cannonParser: CanonXmlParser, path: String, version: String, expectSuccess: Boolean = true) {
@@ -78,7 +75,6 @@ class CanonXmlParserTest {
     fun form2() = parseXml(CanonXmlParser(),"/xml/form2.xml", false)
 
     @Test
-    @Disabled("TODO fix label cannot have attribute name")
     fun form3() = parseXml(CanonXmlParser(),"/xml/form3.xml")
 
     @Test

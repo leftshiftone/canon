@@ -122,7 +122,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -164,7 +164,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -207,7 +207,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -249,7 +249,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -383,7 +383,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                              <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                              <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                            </container>
                         </markup>
                                 """.trimMargin().trim(),
@@ -403,7 +403,7 @@ internal class XLSTUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                             <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim())
@@ -512,7 +512,7 @@ internal class XLSTUpgradeHandlerTest {
                                                 <labelC>C</labelC>
                                             </block>
                                         </carousel>
-                                    <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                    <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                     </container>
                                 </markup>
                                         """.trimMargin().trim()),
@@ -545,7 +545,7 @@ internal class XLSTUpgradeHandlerTest {
                                                         <labelC>C</labelC>
                                                     </block>
                                                 </carousel>
-                                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                             </container>
                                         </markup>
                                                 """.trimMargin().trim())

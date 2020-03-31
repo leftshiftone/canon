@@ -7,7 +7,7 @@ interface UpgradeHandler {
 
     /**
      * It checks if a version must be upgraded
-     * @param version Version to check if is behind the current version
+     * @paramversion to check if is behind the current version
      * @return whether the version requires an upgrade or not
      */
     fun isUpgradeRequired(version: String = "1.9.0"): Boolean

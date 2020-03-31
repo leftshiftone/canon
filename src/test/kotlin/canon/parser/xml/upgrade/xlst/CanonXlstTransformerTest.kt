@@ -17,8 +17,6 @@ internal class CanonXlstTransformerTest {
     private fun transformFromFileSystem(transformer: CanonXlstTransformer, pathToXMLToTransform: String, pathToExpectedXML: String,  expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(CanonXlstTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
-            print("RESULT --- $result")
-
             val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
             val expectedResultInRaw = CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
             Assertions.assertThat(resultInRaw).isEqualTo(expectedResultInRaw)
@@ -32,8 +30,6 @@ internal class CanonXlstTransformerTest {
     private fun transformString(transformer: CanonXlstTransformer, xmlToTransform: String, expectedXml: String,  expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(xmlToTransform)
-            print("RESULT --- $result")
-
             Assertions.assertThat(result.replace(WHITE_SPACE_REGEX, "")).isEqualTo(expectedXml.replace(WHITE_SPACE_REGEX, ""))
         } catch (e: Exception) {
             if (expectSuccess) {
@@ -92,6 +88,22 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
+                                                        <label id="abc" class=".cs" if="(aaa)">text</label>
+                                                        <automaticUpgraded/>
+                                                    </container>
+                                                </markup>""".trimIndent()),
+            mapOf("name" to "Text tag with attribute id, class, if , name and value is transformed to a label",
+                    "givenXml" to """
+                                                <markup>
+                                                    <container>
+                                                       <text id="abc" name="textname" class=".cs" if="(aaa)">text</text>
+                                                    </container>
+                                                 </markup>""".trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                <markup>
+                                                    <container>
+                                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                                        <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer-->                                                        
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
                                                     </container>

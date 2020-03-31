@@ -19,9 +19,13 @@
  <xsl:template match="text">
 <!-- text was replaced for label by the XSLT Transformer -->
     <xsl:comment> text element was replaced for label by the XSLT Transformer</xsl:comment>
+    <xsl:if test="./@name"> <xsl:comment>attribute name of element text was removed when converting it to label by the XSLT Transformer</xsl:comment></xsl:if>
    <label><xsl:apply-templates select="@*|node()"/></label>
    <automaticUpgraded/>
  </xsl:template>
+
+<!-- attribute name of element text was removed when converting it to label by the XSLT Transformer -->
+ <xsl:template match="text/@name"/>
 
 <!-- textInput element was replaced for text by the XSLT Transformer -->
  <xsl:template match="textInput">

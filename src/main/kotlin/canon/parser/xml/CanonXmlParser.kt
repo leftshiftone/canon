@@ -97,7 +97,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
     @JvmOverloads
     fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
-        val transformer= XLSTUpgradeHandler("/xml/xslt/transformers")
+        val transformer= XLSTUpgradeHandler("/xml/xlst/transformers/")
         val xmlVersion= version ?: "1.9.0"
         var xml = str.replace("&", "&amp;")
         xml = "<markup><container>$xml</container></markup>"
@@ -145,7 +145,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             }
         }
 
-        if (node.nodeName == "#comment")
+        if (node.nodeName == "#comment" || node.nodeName =="comment")
             return
         if (node.nodeName == "markup") {
             toRenderables(node.childNodes, renderables)

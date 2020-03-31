@@ -16,45 +16,65 @@ internal class XLSTUpgradeHandlerTest {
         assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
     }
 
-    @Test
+    @TestFactory
     @Disabled("This test is temp ignored until version 2.0.0 is released")
-    fun  `given a the current version, a transformation is not needed`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
-        assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
+    fun  `given a the current version, a transformation is not needed`() = listOf(
+            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
+            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
+        }
     }
 
 
-    @Test
-    fun  `given a folder with one XLST older than the current version, no transformation is done`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
-        assertThat(classUnderTest.buildTransformerIterator("3.2.0")).isNull()
+    @TestFactory
+    fun  `given a folder with one XLST older than the current version, no transformation is done`() = listOf(
+            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
+            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            assertThat(classUnderTest.buildTransformerIterator("3.2.0")).isNull()
+        }
     }
 
-    @Test
-    fun  `given a folder with one XLST newer than the current version, the transformerIterator has one transformation`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
-        assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
+    @TestFactory
+    fun  `given a folder with one XLST newer than the current version, the transformerIterator has one transformation`() = listOf(
+            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
+            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
+        }
     }
 
-    @Test
-    fun  `given a folder with 4 newer XLST files than the current version, the transformerIterator contains all of them and in ASC order`() {
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
-        val iterator = classUnderTest.buildTransformerIterator("0.9.0")
-        assertThat(iterator).isNotNull()
-        assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("1.0.0"))
-        assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.3.0"))
-        assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.5.0"))
-        assertThat(iterator.next().version).isEqualTo(SemanticVersion("2.0.0"))
-        assertThat(iterator.hasNext()).isFalse()
+    @TestFactory
+    fun  `given a folder with 4 newer XLST files than the current version, the transformerIterator contains all of them and in ASC order`() = listOf(
+            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
+            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val iterator = classUnderTest.buildTransformerIterator("0.9.0")
+            assertThat(iterator).isNotNull()
+            assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("1.0.0"))
+            assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.3.0"))
+            assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.5.0"))
+            assertThat(iterator.next().version).isEqualTo(SemanticVersion("2.0.0"))
+            assertThat(iterator.hasNext()).isFalse()
+        }
     }
 
-    @Test
-    fun  `given a folder with one older XLST files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`(){
-        val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
-        val iterator = classUnderTest.buildTransformerIterator("1.6.0")
-        assertThat(iterator).isNotNull()
-        assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("2.0.0"))
-        assertThat(iterator.hasNext()).isFalse()
+    @TestFactory
+    fun  `given a folder with one older XLST files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() = listOf(
+            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
+            val classUnderTest = if (it["transformerPath"] == null) XLSTUpgradeHandler() else XLSTUpgradeHandler(it["transformerPath"] as String)
+            val iterator = classUnderTest.buildTransformerIterator("1.6.0")
+            assertThat(iterator).isNotNull()
+            assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("2.0.0"))
+            assertThat(iterator.hasNext()).isFalse()
+        }
     }
 
     @TestFactory
@@ -294,7 +314,7 @@ internal class XLSTUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
-            val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
+            val classUnderTest = XLSTUpgradeHandler()
             val transformedXml = if(it["version"]==null) classUnderTest.upgrade(it["rawXml"] as String) else classUnderTest.upgrade(it["rawXml"] as String, it["version"] as String)
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
 
@@ -553,7 +573,7 @@ internal class XLSTUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTUpgradeHandler("/xml/xlst/transformers")
+            val classUnderTest = XLSTUpgradeHandler()
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
 
             transformedXml.entries.forEach {utteranceEntry ->

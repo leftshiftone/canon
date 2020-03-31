@@ -8,10 +8,20 @@ import org.slf4j.LoggerFactory
 import java.util.*
 
 
-class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
+class XLSTUpgradeHandler: UpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
-    val UPGRADE_CLEAN_UP_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
+    val relativePath : String
+    val UPGRADE_CLEAN_UP_TRANSFORMER : CanonXlstTransformer
+
+
+    constructor(relativePath : String) {
+        this.relativePath= relativePath
+        this.UPGRADE_CLEAN_UP_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
+
+    }
+
+    constructor() : this("/xml/xlst/transformers")
 
     override fun getLatestVersion() = getCanonVersion()
 

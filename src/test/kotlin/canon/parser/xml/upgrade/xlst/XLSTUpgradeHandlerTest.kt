@@ -16,6 +16,17 @@ internal class XLSTUpgradeHandlerTest {
         assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
     }
 
+    @Test
+    fun  `A null version requires an upgrade`(){
+        val classUnderTest = XLSTUpgradeHandler()
+        assertThat(classUnderTest.isUpgradeRequired(null)).isTrue()
+    }
+    @Test
+    fun  `No version specified in isUpgradeRequired method is true`(){
+        val classUnderTest = XLSTUpgradeHandler()
+        assertThat(classUnderTest.isUpgradeRequired()).isTrue()
+    }
+
     @TestFactory
     @Disabled("This test is temp ignored until version 2.0.0 is released")
     fun  `given a the current version, a transformation is not needed`() = listOf(
@@ -315,8 +326,10 @@ internal class XLSTUpgradeHandlerTest {
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
             val classUnderTest = XLSTUpgradeHandler()
-            val transformedXml = if(it["version"]==null) classUnderTest.upgrade(it["rawXml"] as String) else classUnderTest.upgrade(it["rawXml"] as String, it["version"] as String)
+            val transformedXml = classUnderTest.upgrade(it["rawXml"] as String, it["version"])
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
+
+
 
         }
     }

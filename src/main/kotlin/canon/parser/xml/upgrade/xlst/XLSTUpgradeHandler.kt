@@ -13,6 +13,7 @@ class XLSTUpgradeHandler: UpgradeHandler {
     val log = LoggerFactory.getLogger(this::class.java)
     val relativePath : String
     val UPGRADE_CLEAN_UP_TRANSFORMER : CanonXlstTransformer
+    val DEFAULT_VERSION ="1.9.0"
 
 
     constructor(relativePath : String) {
@@ -25,7 +26,8 @@ class XLSTUpgradeHandler: UpgradeHandler {
 
     override fun getLatestVersion() = getCanonVersion()
 
-    override fun isUpgradeRequired(version: String): Boolean {
+    override fun isUpgradeRequired(version: String?): Boolean {
+        if(version==null) return true
         log.debug("Check if there are transformations for version: $version")
         val requiredTransformations = retrieveAvailableTransformationsForAVersion(version)
         val numberOfRequiredTransformations = requiredTransformations?.count()
@@ -33,20 +35,22 @@ class XLSTUpgradeHandler: UpgradeHandler {
         return numberOfRequiredTransformations>0
     }
 
-    override fun upgrade(rawXml : String, rawXmlVersion: String): String{
+    override fun upgrade(rawXml : String, rawXmlVersion: String?): String{
         if(!isUpgradeRequired(rawXmlVersion)){
             return rawXml
         }
-        val transformerIterator = buildTransformerIterator(rawXmlVersion)
+        val transformerIterator = buildTransformerIterator(getVersion(rawXmlVersion))
         return transform(transformerIterator!!,rawXml)
     }
 
-    override fun upgrade(utterance : Map<String, List<String>>, rawXmlVersion: String): Map<String, List<String>>{
+    override fun upgrade(utterance : Map<String, List<String>>, rawXmlVersion: String?): Map<String, List<String>>{
         if(!isUpgradeRequired(rawXmlVersion)){
             return utterance
         }
-        return upgradeUtterance(utterance,rawXmlVersion, mapOf())
+        return upgradeUtterance(utterance,getVersion(rawXmlVersion), mapOf())
     }
+
+    private fun getVersion(version : String?) = version ?: DEFAULT_VERSION
 
     fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>>{
 

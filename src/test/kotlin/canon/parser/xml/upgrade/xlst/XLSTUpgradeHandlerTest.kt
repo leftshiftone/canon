@@ -81,7 +81,6 @@ internal class XLSTUpgradeHandlerTest {
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                             </container>
                         </markup>
                                 """.trimMargin().trim()
@@ -364,7 +363,6 @@ internal class XLSTUpgradeHandlerTest {
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                               <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                            </container>
                         </markup>
                                 """.trimMargin().trim(),
@@ -494,7 +492,6 @@ internal class XLSTUpgradeHandlerTest {
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                   <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                      </container>
                                 </markup>
                                         """.trimMargin().trim(),
@@ -528,7 +525,6 @@ internal class XLSTUpgradeHandlerTest {
                                                         <headline>name in English</headline>
                                                     </block>
                                                 </carousel>
-                                            <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                             </container>
                                         </markup>
                                                 """.trimMargin().trim(),

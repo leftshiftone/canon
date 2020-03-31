@@ -13,7 +13,6 @@
 <xsl:template match="container">
     <xsl:copy>
         <xsl:apply-templates select="@*|node()"/>
-    <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
     </xsl:copy>
 </xsl:template>
 
@@ -21,12 +20,14 @@
 <!-- text was replaced for label by the XSLT Transformer -->
     <xsl:comment> text element was replaced for label by the XSLT Transformer</xsl:comment>
    <label><xsl:apply-templates select="@*|node()"/></label>
+   <automaticUpgraded/>
  </xsl:template>
 
 <!-- textInput element was replaced for text by the XSLT Transformer -->
  <xsl:template match="textInput">
      <xsl:comment> textInput element was replaced for text by the XSLT Transformer</xsl:comment>
      <text><xsl:apply-templates select="@*|node()"/></text>
+     <automaticUpgraded/>
 </xsl:template>
 
 
@@ -34,17 +35,20 @@
 <!-- datePicker element was removed by the XSLT Transformer -->
   <xsl:template match="datePicker">
      <xsl:comment>datePicker element was removed by the XSLT Transformer</xsl:comment>
+    <automaticUpgraded/>
 </xsl:template>
 
 <!-- dateTimePicker element was removed by the XSLT Transformer -->
   <xsl:template match="dateTimePicker">
      <xsl:comment> dateTimePicker element was removed by the XSLT Transformer</xsl:comment>
+     <automaticUpgraded/>
 </xsl:template>
 
 <!-- Calendar element was removed by the XSLT Transformer -->
   <xsl:template match="calendar">
      <xsl:comment> Calendar element was removed by the XSLT Transformer</xsl:comment>
-</xsl:template>
+     <automaticUpgraded/>
+  </xsl:template>
 
 
 </xsl:stylesheet>

@@ -11,6 +11,7 @@ import java.util.*
 class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
+    val UPGRADE_CLEAN_UP_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
 
     override fun getLatestVersion() = getCanonVersion()
 
@@ -89,7 +90,8 @@ class XLSTUpgradeHandler  (val relativePath : String) : UpgradeHandler {
             log.debug("Applying transformation for version ${transformer.version} from path ${transformer.relativePath}")
             return transform(iterator,transformer.execute(xml))
         }
-        return xml
+        return UPGRADE_CLEAN_UP_TRANSFORMER.execute(xml)
+
     }
 
 

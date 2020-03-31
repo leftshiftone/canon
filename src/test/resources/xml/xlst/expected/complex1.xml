@@ -4,20 +4,24 @@
         <video src="src"/>
         <!-- text element was replaced for label by the XSLT Transformer-->
         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende ${result.size()} Resultate vorschlagen:</label>
+        <automaticUpgraded/>
         <button value="a" name="b">Text</button>
         <carousel>
             <block foreach="$lawyer in $result">
                 <headline>{{$lawyer.name}}</headline>
                 <!-- text element was replaced for label by the XSLT Transformer-->
                 <label>${lawyer.address}</label>
+                <automaticUpgraded/>
                 <!-- textInput element was replaced for text by the XSLT Transformer-->
                 <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+                <automaticUpgraded/>
                 <items>
                     <item>Telefon: ${lawyer.phone}</item>
                     <item>Email: ${lawyer.email}</item>
                 </items>
                 <!-- text element was replaced for label by the XSLT Transformer-->
                 <label>Tätigkeitsgebiete</label>
+                <automaticUpgraded/>
                 <items>
                     <item>abc</item>
                     <item>
@@ -33,6 +37,7 @@
                 </items>
                 <!-- text element was replaced for label by the XSLT Transformer-->
                 <label>Sprachen</label>
+                <automaticUpgraded/>
                 <items>
                     <item foreach="$type in $lawyer.languages">$type</item>
                 </items>
@@ -56,6 +61,5 @@
             </slotmachine>
             <checkbox name="a" value="b">Text</checkbox>
         </block>
-        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
     </container>
 </markup>

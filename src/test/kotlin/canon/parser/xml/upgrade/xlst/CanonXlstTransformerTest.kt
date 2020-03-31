@@ -63,7 +63,7 @@ internal class CanonXlstTransformerTest {
                                                     <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label>text</label>
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Text tag with attribute id and value is transformed to a label",
@@ -78,7 +78,7 @@ internal class CanonXlstTransformerTest {
                                                     <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label id="abc">text</label>
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Text tag with attribute id, class and if and value is transformed to a label",
@@ -93,7 +93,7 @@ internal class CanonXlstTransformerTest {
                                                     <container>
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             /*****************************************CALENDAR TRANSFORMATIONS ******************************************************/
@@ -108,7 +108,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
@@ -122,7 +122,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
@@ -136,7 +136,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
@@ -150,7 +150,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                      <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
@@ -164,7 +164,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                      <container>
                                                         <!-- Calendar element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
 
@@ -180,7 +180,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
@@ -194,7 +194,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                    <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
@@ -208,7 +208,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source removed",
@@ -222,7 +222,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
@@ -236,7 +236,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- datePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
 
@@ -252,7 +252,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
@@ -266,7 +266,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                    <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
@@ -280,7 +280,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                    <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
@@ -294,7 +294,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
@@ -308,7 +308,7 @@ internal class CanonXlstTransformerTest {
                                                 <markup>
                                                     <container>
                                                         <!-- dateTimePicker element was removed by the XSLT Transformer-->
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
 
@@ -326,7 +326,7 @@ internal class CanonXlstTransformerTest {
                                                     <container>
                                                         <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                         <text id="abc"/>
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent()),
             mapOf("name" to "TextInput tag with attributes name, placeholder, regex, value, required and class is transformed to a text",
@@ -341,7 +341,7 @@ internal class CanonXlstTransformerTest {
                                                     <container>
                                                         <!-- textInput element was replaced for text by the XSLT Transformer-->
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
-                                                        <comment>Document was automatically migrated to version version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                                        <automaticUpgraded/>
                                                     </container>
                                                 </markup>""".trimIndent())
     ).map {

@@ -30,6 +30,7 @@ class MapStrategyTest {
         assertThat(parsed.routePoints).isEqualTo("45.3,46.8;45.8,44.7")
         assertThat(parsed.centerBrowserLocation).isFalse()
         assertThat(parsed.required).isFalse()
+        assertThat(parsed.zoom).isEqualTo("8")
 
     }
 

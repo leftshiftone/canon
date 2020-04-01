@@ -23,6 +23,8 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
         UPGRADE_LOG_TRANSFORMER= if(zeroTransformer!=null) XSLTTransformer(zeroTransformer) else null
     }
 
+    constructor() : this(XSLTTransformSupport.getDefaultTransformers())
+
     override fun getLatestVersion() = getCanonVersion()
 
     override fun isUpgradeRequired(version: String?): Boolean {

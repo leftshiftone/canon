@@ -6,7 +6,6 @@ import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
 import canon.parser.xml.upgrade.CanonUpgradeHandler
-import canon.parser.xml.upgrade.xslt.XSLTTransformSupport.Companion.getDefaultTransformers
 import canon.parser.xml.upgrade.xslt.XSLTUpgradeHandler
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
@@ -20,7 +19,7 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpgradeHandler(getDefaultTransformers()), val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
+open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpgradeHandler(), val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
 
 
     companion object {

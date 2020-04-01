@@ -10,7 +10,7 @@ class XSLTTransformSupport {
     companion object {
         fun getDefaultTransformers(): List<String> {
             val pathToTransformers = "/xml/xslt/transformers/"
-            return getResourceFiles(pathToTransformers).map { pathToTransformers.plus(it) }
+            return getResourceFiles(pathToTransformers).ifEmpty { listOf("transform_0.0.0.xslt","transform_2.0.0.xslt") }.map { pathToTransformers.plus(it) }
         }
 
         fun getResourceFiles(path: String): List<String> = getResourceAsStream(path).use{

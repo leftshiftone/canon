@@ -1,17 +1,9 @@
 package canon.support
 
 import canon.exception.CanonException
-import com.fasterxml.jackson.databind.ObjectMapper
-import io.mockk.every
-import io.mockk.mockk
-import io.mockk.slot
-import io.mockk.spyk
 import org.assertj.core.api.Assertions.assertThat
 import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
-import java.io.IOException
-import java.lang.NullPointerException
-import java.util.*
 
 class Base64Test {
 

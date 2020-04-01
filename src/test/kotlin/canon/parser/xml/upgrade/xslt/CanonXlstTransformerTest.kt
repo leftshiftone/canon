@@ -1,7 +1,6 @@
-package canon.parser.xml.upgrade.xlst
+package canon.parser.xml.upgrade.xslt
 
 
-import canon.parser.xml.upgrade.CanonXlstTransformerConfiguration
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
@@ -10,16 +9,16 @@ import java.nio.charset.StandardCharsets
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
 
-internal class CanonXlstTransformerTest {
+internal class XSLTTransformerTest {
 
     val WHITE_SPACE_REGEX= "\\s".toRegex()
-    val TRANSFORMER_2_0_0 = CanonXlstTransformer(CanonXlstTransformerConfiguration(("/xml/xlst/transformers/transform_2.0.0.xlst")))
+    val TRANSFORMER_2_0_0 = XSLTTransformer(XSLTTransformerConfiguration(("/xml/xslt/transformers/transform_2.0.0.xslt")))
 
-    private fun transformFromFileSystem(transformer: CanonXlstTransformer, pathToXMLToTransform: String, pathToExpectedXML: String,  expectSuccess: Boolean = true) {
+    private fun transformFromFileSystem(transformer: XSLTTransformer, pathToXMLToTransform: String, pathToExpectedXML: String, expectSuccess: Boolean = true) {
         try {
-            val result = transformer.execute(CanonXlstTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
+            val result = transformer.execute(XSLTTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
             val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
-            val expectedResultInRaw = CanonXlstTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
+            val expectedResultInRaw = XSLTTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
             Assertions.assertThat(resultInRaw).isEqualTo(expectedResultInRaw)
         } catch (e: Exception) {
             if (expectSuccess) {
@@ -28,7 +27,7 @@ internal class CanonXlstTransformerTest {
         }
     }
 
-    private fun transformString(transformer: CanonXlstTransformer, xmlToTransform: String, expectedXml: String,  expectSuccess: Boolean = true) {
+    private fun transformString(transformer: XSLTTransformer, xmlToTransform: String, expectedXml: String, expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(xmlToTransform)
             Assertions.assertThat(result.replace(WHITE_SPACE_REGEX, "")).isEqualTo(expectedXml.replace(WHITE_SPACE_REGEX, ""))
@@ -41,7 +40,7 @@ internal class CanonXlstTransformerTest {
 
 
     @Test
-    fun complexXmlIsParsed() = transformFromFileSystem(TRANSFORMER_2_0_0, "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+    fun complexXmlIsParsed() = transformFromFileSystem(TRANSFORMER_2_0_0, "/xml/xslt/complex1.xml","/xml/xslt/expected/complex1.xml")
 
 
     @TestFactory
@@ -248,7 +247,7 @@ internal class CanonXlstTransformerTest {
                 try{
                     barrier.await(10, TimeUnit.SECONDS)
                     println("Thread-${it} starting execution")
-                    transformFromFileSystem(TRANSFORMER_2_0_0,"/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+                    transformFromFileSystem(TRANSFORMER_2_0_0,"/xml/xslt/complex1.xml","/xml/xslt/expected/complex1.xml")
                 } finally {
                     endBarrier.countDown()
                 }

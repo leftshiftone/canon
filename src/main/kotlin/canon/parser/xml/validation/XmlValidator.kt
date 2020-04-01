@@ -1,6 +1,6 @@
 package canon.parser.xml.validation
 
-import canon.parser.xml.upgrade.xlst.XlstTransformSupport
+import canon.parser.xml.upgrade.xslt.XSLTTransformSupport
 import org.xml.sax.SAXException
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
@@ -34,7 +34,7 @@ class XmlValidator(xsdStream: InputStream) {
      * @return version of canon
      */
     fun getVersion(): String {
-        return XlstTransformSupport.getCanonVersion()
+        return XSLTTransformSupport.getCanonVersion()
     }
 
     /**

@@ -1,9 +1,10 @@
-package canon.parser.xml.upgrade
+package canon.parser.xml.upgrade.xslt
 
+import canon.parser.xml.upgrade.SemanticVersion
 import org.slf4j.LoggerFactory
 import java.util.*
 
-class CanonXlstTransformerConfiguration : Comparable<CanonXlstTransformerConfiguration> {
+class XSLTTransformerConfiguration : Comparable<XSLTTransformerConfiguration> {
 
     val transformerLocation : String
     val version: SemanticVersion
@@ -34,7 +35,7 @@ class CanonXlstTransformerConfiguration : Comparable<CanonXlstTransformerConfigu
         }
 
         fun findVersionMatches(transformerPath: String) : MatchResult?{
-            val regex = "^(.*)transform_(\\d+).?(\\d+).?(\\*|\\d+)-?(.*).xlst\$".toRegex()
+            val regex = "^(.*)transform_(\\d+).?(\\d+).?(\\*|\\d+)-?(.*).xslt\$".toRegex()
             return regex.find(transformerPath)
         }
 
@@ -62,7 +63,7 @@ class CanonXlstTransformerConfiguration : Comparable<CanonXlstTransformerConfigu
         return SemanticVersion(matchResult!!.groups[2]!!.value, matchResult.groups[3]!!.value, matchResult.groups[4]!!.value)
     }
 
-    override fun compareTo(other: CanonXlstTransformerConfiguration): Int {
+    override fun compareTo(other: XSLTTransformerConfiguration): Int {
         return this.version.compareTo(other.version);
     }
 
@@ -73,7 +74,7 @@ class CanonXlstTransformerConfiguration : Comparable<CanonXlstTransformerConfigu
     override fun equals(other: Any?): Boolean {
         if (this === other) return true
         if (other == null || javaClass != other.javaClass) return false
-        return version == (other as CanonXlstTransformerConfiguration).version
+        return version == (other as XSLTTransformerConfiguration).version
     }
 
     override fun hashCode(): Int {

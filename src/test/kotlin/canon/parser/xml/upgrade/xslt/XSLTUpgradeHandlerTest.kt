@@ -1,56 +1,56 @@
-package canon.parser.xml.upgrade.xlst
+package canon.parser.xml.upgrade.xslt
 
 import canon.parser.xml.upgrade.SemanticVersion
-import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getDefaultTransformers
+import canon.parser.xml.upgrade.xslt.XSLTTransformSupport.Companion.getDefaultTransformers
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestFactory
 
-internal class XLSTCanonUpgradeHandlerTest {
+internal class XSLTUpgradeHandlerTest {
 
     val DEFAULT_TRANSFORMERS= getDefaultTransformers()
 
 //    @Test
-//    fun  `given a folder with no XLST files, no transformation is done`(){
-//        val classUnderTest = XLSTCanonUpgradeHandler(getTestTransformers())
+//    fun  `given a folder with no xslt files, no transformation is done`(){
+//        val classUnderTest = XSLTCanonUpgradeHandler(getTestTransformers())
 //        assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
 //    }
 
     @Test
     fun  `A null version requires an upgrade`(){
-        val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+        val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired(null)).isTrue()
     }
     @Test
     fun  `No version specified in isUpgradeRequired method is true`(){
-        val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+        val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired()).isTrue()
     }
 
     @TestFactory
     @Disabled("This test is temp ignored until version 2.0.0 is released")
     fun  `given a the current version, a transformation is not needed`() = listOf(
-            mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+            mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xslt/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
         }
     }
 
 
     @Test
-    fun  `given a folder with one XLST newer than the current version, the transformerIterator has one transformation`() {
-            val classUnderTest =XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+    fun  `given a folder with one xslt newer than the current version, the transformerIterator has one transformation`() {
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
 
     }
 
     @Test
-    fun  `given a folder with 4 newer XLST files than the current version, the transformerIterator contains all of them and in ASC order`() {
-            val classUnderTest =XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+    fun  `given a folder with 4 newer xslt files than the current version, the transformerIterator contains all of them and in ASC order`() {
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             val iterator = classUnderTest.buildTransformerIterator("0.9.0")
             assertThat(iterator).isNotNull()
             assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("1.0.0"))
@@ -61,8 +61,8 @@ internal class XLSTCanonUpgradeHandlerTest {
     }
 
     @TestFactory
-    fun  `given a folder with one older XLST files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
-            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+    fun  `given a folder with one older xslt files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             val iterator = classUnderTest.buildTransformerIterator("1.6.0")
             assertThat(iterator).isNotNull()
             assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("2.0.0"))
@@ -121,7 +121,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -164,7 +164,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                 "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -207,7 +207,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -249,7 +249,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -308,7 +308,7 @@ internal class XLSTCanonUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
-            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["rawXml"] as String, it["version"])
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
 
@@ -379,7 +379,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                             """
 
 
-                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -400,7 +400,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                             """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                              <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
@@ -421,7 +421,7 @@ internal class XLSTCanonUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
             transformedXml.get("de")!!.forEachIndexed {i, utterance ->
                 assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get("de")!!.get(i).replace("\\s".toRegex(), ""))
@@ -500,7 +500,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                                     """
 
 
-                                       <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                       <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                         <carousel>
@@ -533,7 +533,7 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                     """
 
 
-                                               <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
+                                               <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
                                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                                 <label id="123">Based on the Input we can suggest following results:</label>
                                                 <carousel>
@@ -555,7 +555,7 @@ internal class XLSTCanonUpgradeHandlerTest {
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
 
             transformedXml.entries.forEach {utteranceEntry ->

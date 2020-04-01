@@ -1,18 +1,15 @@
-package canon.parser.xml.upgrade.xlst
+package canon.parser.xml.upgrade.xslt
 
-import org.slf4j.LoggerFactory
 import java.io.BufferedReader
 import java.io.InputStream
 import java.io.InputStreamReader
 import java.util.*
 
-class XlstTransformSupport {
+class XSLTTransformSupport {
 
     companion object {
-        val log = LoggerFactory.getLogger(this::class.java)
-
         fun getDefaultTransformers(): List<String> {
-            val pathToTransformers = "/xml/xlst/transformers/"
+            val pathToTransformers = "/xml/xslt/transformers/"
             return getResourceFiles(pathToTransformers).map { pathToTransformers.plus(it) }
         }
 
@@ -21,7 +18,7 @@ class XlstTransformSupport {
             else BufferedReader(InputStreamReader(it)).readLines()
         }
 
-        private fun getResourceAsStream(resource: String): InputStream? = XlstTransformSupport::class.java.getResourceAsStream(resource)
+        private fun getResourceAsStream(resource: String): InputStream? = XSLTTransformSupport::class.java.getResourceAsStream(resource)
 
         fun getCanonVersion(): String {
             val prop = Properties()

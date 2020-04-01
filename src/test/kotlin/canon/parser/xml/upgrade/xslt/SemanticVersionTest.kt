@@ -1,4 +1,4 @@
-package canon.parser.xml.upgrade.xlst
+package canon.parser.xml.upgrade.xslt
 
 import canon.parser.xml.upgrade.SemanticVersion
 import org.assertj.core.api.Assertions

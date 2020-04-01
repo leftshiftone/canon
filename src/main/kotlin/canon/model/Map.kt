@@ -18,7 +18,7 @@ data class Map(@JsonIgnore override val id: String?,
                val routePoints: String?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
-               val zoom: Int?,
+               val zoom: String?,
                val maxSelections: Int?) : IRenderable, IClassAware {
 
     override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
@@ -39,7 +39,7 @@ data class Map(@JsonIgnore override val id: String?,
         builder.put("routePoints", routePoints) {evaluator.evaluate(it, context)}
         builder.put("centerBrowserLocation", centerBrowserLocation)
         builder.put("required", required)
-        builder.put("zoom", zoom)
+        builder.put("zoom", zoom, 8) {evaluator.evaluate(it, context).toIntOrNull()?:8}
         builder.put("maxSelections", maxSelections)
 
         return builder.toMap().plus(toIdAndClassMap(context, evaluator))

@@ -14,7 +14,7 @@ class MapTest {
                 markerIcon = "static/icons/icon01.svg", selectedMarkerIcon = "static/icons/icon02.svg",
                 routeStartIcon = "static/icons/start.png", routeEndIcon = "static/icons/end.png",
                 routePoints = "45.3,46.8;45.8,44.7", centerBrowserLocation = false, required = true,
-                zoom = 12, maxSelections = 1).toMap(HashMap(), TestEvaluator())
+                zoom = "12", maxSelections = 1).toMap(HashMap(), TestEvaluator())
 
         assertThat(mapped.size).isEqualTo(16)
         assertThat(mapped["name"]).isEqualTo("testName")
@@ -40,7 +40,7 @@ class MapTest {
                 markerIcon = "static/icons/icon01.svg", selectedMarkerIcon = "static/icons/icon02.svg",
                 routeStartIcon = "static/icons/start.png", routeEndIcon = "static/icons/end.png",
                 routePoints = "45.3,46.8;45.8,44.7", centerBrowserLocation = false, required = true,
-                zoom = 12, maxSelections = 1).toMap(HashMap(), TestEvaluator())
+                zoom = "12", maxSelections = 1).toMap(HashMap(), TestEvaluator())
 
         assertThat(mapped.size).isEqualTo(16)
         assertThat(mapped["centerLng"]).isEqualTo(0.0)

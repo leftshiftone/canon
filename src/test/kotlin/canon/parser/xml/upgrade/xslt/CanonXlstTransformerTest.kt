@@ -52,7 +52,7 @@ internal class XSLTTransformerTest {
                                                        <text>text</text>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                                        <!-- text element was replaced with label-->
                                                         <label>text</label>
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
@@ -61,7 +61,7 @@ internal class XSLTTransformerTest {
                                                        <text id="abc">text</text>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                                        <!-- text element was replaced with label-->
                                                         <label id="abc">text</label>
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
@@ -70,7 +70,7 @@ internal class XSLTTransformerTest {
                                                        <text id="abc" class=".cs" if="(aaa)">text</text>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                                        <!-- text element was replaced with label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
@@ -79,8 +79,8 @@ internal class XSLTTransformerTest {
                                                        <text id="abc" name="textname" class=".cs" if="(aaa)">text</text>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced for label by the XSLT Transformer-->
-                                                        <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer-->
+                                                        <!-- text element was replaced with label-->
+                                                        <!-- attribute name of element text was removed when converting it to label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
@@ -90,7 +90,7 @@ internal class XSLTTransformerTest {
                                                        <calendar></calendar>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed by the XSLT Transformer-->
+                                                        <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
@@ -98,7 +98,7 @@ internal class XSLTTransformerTest {
                                                        <calendar/>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed by the XSLT Transformer-->
+                                                        <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
@@ -106,7 +106,7 @@ internal class XSLTTransformerTest {
                                                        <calendar id="testId" class="testClass" name="testName"></calendar>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed by the XSLT Transformer-->
+                                                        <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
@@ -114,7 +114,7 @@ internal class XSLTTransformerTest {
                                                        <calendar id="testId" name="testName"></calendar>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed by the XSLT Transformer-->
+                                                        <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
@@ -122,7 +122,7 @@ internal class XSLTTransformerTest {
                                                        <calendar id="testId" class="testClass"></calendar>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed by the XSLT Transformer-->
+                                                        <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
 
@@ -132,7 +132,7 @@ internal class XSLTTransformerTest {
                                                        <datePicker></datePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed by the XSLT Transformer-->
+                                                        <!-- datePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
@@ -140,7 +140,7 @@ internal class XSLTTransformerTest {
                                                        <datePicker/>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed by the XSLT Transformer-->
+                                                        <!-- datePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
@@ -148,7 +148,7 @@ internal class XSLTTransformerTest {
                                                        <datePicker src="SOME ICAL STRING" size="0"></datePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed by the XSLT Transformer-->
+                                                        <!-- datePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute source removed",
@@ -156,7 +156,7 @@ internal class XSLTTransformerTest {
                                                        <datePicker src="SOME ICAL STRING"></datePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed by the XSLT Transformer-->
+                                                        <!-- datePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
@@ -164,7 +164,7 @@ internal class XSLTTransformerTest {
                                                        <datePicker size="0"></datePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed by the XSLT Transformer-->
+                                                        <!-- datePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
 
@@ -174,7 +174,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker></dateTimePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed by the XSLT Transformer-->
+                                                        <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
@@ -182,7 +182,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker/>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed by the XSLT Transformer-->
+                                                        <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
@@ -190,7 +190,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed by the XSLT Transformer-->
+                                                        <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
@@ -198,7 +198,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed by the XSLT Transformer-->
+                                                        <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
                                                     """.trimIndent()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
@@ -206,7 +206,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker size="0"></dateTimePicker>
                                                    """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed by the XSLT Transformer-->
+                                                        <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
                                                     """.trimIndent()),
 
@@ -217,7 +217,7 @@ internal class XSLTTransformerTest {
                                                        <textInput id="abc"/>
                                                     """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                                        <!-- textInput element was replaced with text-->
                                                         <text id="abc"/>
                                                         <automaticUpgraded/>
                                                     """.trimIndent()),
@@ -226,7 +226,7 @@ internal class XSLTTransformerTest {
                                                        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                     """.trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                                        <!-- textInput element was replaced with text-->
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <automaticUpgraded/>
                                                     """.trimIndent())

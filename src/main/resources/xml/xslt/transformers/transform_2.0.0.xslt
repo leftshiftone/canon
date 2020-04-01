@@ -17,46 +17,46 @@
     </xsl:template>
 
     <xsl:template match="text">
-        <!-- text was replaced for label by the XSLT Transformer -->
-        <xsl:comment> text element was replaced for label by the XSLT Transformer</xsl:comment>
-        <xsl:if test="./@name"> <xsl:comment>attribute name of element text was removed when converting it to label by the XSLT Transformer</xsl:comment></xsl:if>
+        <!-- text was replaced with label -->
+        <xsl:comment> text element was replaced with label</xsl:comment>
+        <xsl:if test="./@name"> <xsl:comment>attribute name of element text was removed when converting it to label</xsl:comment></xsl:if>
         <label><xsl:apply-templates select="@*|node()"/></label>
         <automaticUpgraded/>
     </xsl:template>
 
-    <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer -->
+    <!-- attribute name of element text was removed when converting it to label -->
     <xsl:template match="text/@name"/>
 
-    <!-- textInput element was replaced for text by the XSLT Transformer -->
+    <!-- textInput element was replaced with text -->
     <xsl:template match="textInput">
-        <xsl:comment> textInput element was replaced for text by the XSLT Transformer</xsl:comment>
+        <xsl:comment> textInput element was replaced with text</xsl:comment>
         <text><xsl:apply-templates select="@*|node()"/></text>
         <automaticUpgraded/>
     </xsl:template>
 
 
     <xsl:template match="textInput/node()"/>
-    <!-- datePicker element was removed by the XSLT Transformer -->
+    <!-- datePicker element was removed -->
     <xsl:template match="datePicker">
-        <xsl:comment>datePicker element was removed by the XSLT Transformer</xsl:comment>
+        <xsl:comment>datePicker element was removed</xsl:comment>
         <automaticUpgraded/>
     </xsl:template>
 
-    <!-- dateTimePicker element was removed by the XSLT Transformer -->
+    <!-- dateTimePicker element was removed -->
     <xsl:template match="dateTimePicker">
-        <xsl:comment> dateTimePicker element was removed by the XSLT Transformer</xsl:comment>
+        <xsl:comment> dateTimePicker element was removed</xsl:comment>
         <automaticUpgraded/>
     </xsl:template>
 
-    <!-- Calendar element was removed by the XSLT Transformer -->
+    <!-- Calendar element was removed -->
     <xsl:template match="calendar">
-        <xsl:comment> Calendar element was removed by the XSLT Transformer</xsl:comment>
+        <xsl:comment> Calendar element was removed</xsl:comment>
         <automaticUpgraded/>
     </xsl:template>
 
-    <!-- Checkbox element was commented out by the XSLT Transformer -->
+    <!-- Checkbox element was commented out -->
     <xsl:template match="checkbox">
-        <xsl:comment>Checkbox element was commented out by the XSLT Transformer</xsl:comment>
+        <xsl:comment>Checkbox element was commented out</xsl:comment>
         <xsl:text disable-output-escaping="yes">
     &lt;!-- before migration: </xsl:text>
         <xsl:copy>

@@ -123,15 +123,15 @@ internal class XSLTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                <!-- text element was replaced for label by the XSLT Transformer-->
+                                <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                         <!-- text element was replaced for label by the XSLT Transformer-->
+                                         <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
@@ -166,15 +166,15 @@ internal class XSLTUpgradeHandlerTest {
                 "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                 <!-- text element was replaced for label by the XSLT Transformer-->
+                                <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                 <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                         <!-- text element was replaced for label by the XSLT Transformer-->
+                                         <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelB>B</labelB>
@@ -209,15 +209,15 @@ internal class XSLTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                 <!-- text element was replaced for label by the XSLT Transformer-->
+                                <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                 <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                         <!-- text element was replaced for label by the XSLT Transformer-->
+                                         <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
@@ -251,15 +251,15 @@ internal class XSLTUpgradeHandlerTest {
                     "expectedTransformedXml" to """
 
 
-                            <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                 <!-- text element was replaced for label by the XSLT Transformer-->
+                            <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                 <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                         <!-- text element was replaced for label by the XSLT Transformer-->
+                                         <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <textA>A</textA>
                                         <textB>B</textB>
@@ -381,15 +381,15 @@ internal class XSLTUpgradeHandlerTest {
                             """
 
 
-                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                               <!-- text element was replaced for label by the XSLT Transformer-->
+                             <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                               <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                        <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelB>B</labelB>
@@ -402,15 +402,15 @@ internal class XSLTUpgradeHandlerTest {
                             """
 
 
-                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                             <!-- text element was replaced for label by the XSLT Transformer-->
+                                <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                             <!-- text element was replaced with label-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
-                                        <!-- text element was replaced for label by the XSLT Transformer-->
+                                        <!-- text element was replaced with label-->
                                         <label>address</label>
-                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                        <!-- textInput element was replaced with text-->
                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                         <labelA>A</labelA>
                                         <labelC>C</labelC>
@@ -502,15 +502,15 @@ internal class XSLTUpgradeHandlerTest {
                                     """
 
 
-                                       <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                       <!-- text element was replaced for label by the XSLT Transformer-->
+                                       <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                       <!-- text element was replaced with label-->
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
-                                                <!-- text element was replaced for label by the XSLT Transformer-->
+                                                <!-- text element was replaced with label-->
                                                 <label>address</label>
-                                                <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                                <!-- textInput element was replaced with text-->
                                                 <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                 <labelA>A</labelA>
                                                 <labelB>B</labelB>
@@ -535,15 +535,15 @@ internal class XSLTUpgradeHandlerTest {
                                                     """
 
 
-                                               <comment>Document was automatically migrated to version CANON-2.0.0 by a XSLT Transformer: transform_2.0.0.xslt</comment>
-                                                <!-- text element was replaced for label by the XSLT Transformer-->
+                                               <comment>Document was automatically migrated to version CANON-2.0.0 </comment>
+                                                <!-- text element was replaced with label-->
                                                 <label id="123">Based on the Input we can suggest following results:</label>
                                                 <carousel>
                                                     <block foreach="">
                                                         <headline>name</headline>
-                                                       <!-- text element was replaced for label by the XSLT Transformer-->
+                                                       <!-- text element was replaced with label-->
                                                          <label>address</label>
-                                                        <!-- textInput element was replaced for text by the XSLT Transformer-->
+                                                        <!-- textInput element was replaced with text-->
                                                         <text name="textInputInEnglish" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <labelA>A</labelA>
                                                         <labelB>B</labelB>

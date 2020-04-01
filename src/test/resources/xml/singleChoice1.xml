@@ -1,5 +1,5 @@
 <block>
         <singleChoice name="test">
-            <text>hello world!</text>
+            <label>hello world!</label>
         </singleChoice>
     </block>

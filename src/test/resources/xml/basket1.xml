@@ -1,10 +1,10 @@
 <block>
         <basket>
             <headline>first headline</headline>
-            <text>first text</text>
+            <label>first label</label>
             <block>
                 <headline>second headline</headline>
-                <text>second text</text>
+                <label>second label</label>
             </block>
         </basket>
     </block>

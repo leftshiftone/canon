@@ -5,7 +5,6 @@ import canon.api.IEvaluator
 import canon.api.IRenderable
 import canon.api.IStackable
 import canon.model.*
-import canon.model.Calendar
 import java.time.Instant
 import java.util.*
 import java.util.concurrent.atomic.AtomicInteger
@@ -22,10 +21,8 @@ open class GaiaVisitor(map: Map<String, Any>,
     override fun visitBold(renderable: Bold) = listOf(toMap(renderable))
     override fun visitBreak(renderable: Break) = listOf(toMap(renderable))
     override fun visitButton(renderable: Button) = listOf(toMap(renderable))
-    override fun visitCalendar(renderable: Calendar) = listOf(toMap(renderable))
     override fun visitCamera(renderable: Camera) = listOf(toMap(renderable))
     override fun visitCarousel(renderable: Carousel) = listOf(toMap(renderable))
-    override fun visitCheckbox(renderable: Checkbox) = listOf(toMap(renderable))
     override fun visitChoice(renderable: Choice) = listOf(toMap(renderable))
     override fun visitCodeReader(renderable: CodeReader) = listOf(toMap(renderable))
     override fun visitCol(renderable: Col) = listOf(toMap(renderable))
@@ -55,8 +52,6 @@ open class GaiaVisitor(map: Map<String, Any>,
     override fun visitSubmit(renderable: Submit) = listOf(toMap(renderable))
     override fun visitSuggestion(renderable: Suggestion) = listOf(toMap(renderable))
     override fun visitTable(renderable: Table) = listOf(toMap(renderable))
-    override fun visitNewText(renderable: NewText) = listOf(toMap(renderable))
-    override fun visitTextInput(renderable: TextInput) = listOf(toMap(renderable))
     override fun visitTextarea(renderable: Textarea) = listOf(toMap(renderable))
     override fun visitTransition(renderable: Transition) = listOf(toMap(renderable))
     override fun visitTrigger(renderable: Trigger) = listOf(toMap(renderable))
@@ -98,10 +93,8 @@ open class GaiaVisitor(map: Map<String, Any>,
         override fun visitBold(renderable: Bold) = listOf(toMap(renderable))
         override fun visitBreak(renderable: Break) = listOf(toMap(renderable))
         override fun visitButton(renderable: Button) = listOf(toMap(renderable))
-        override fun visitCalendar(renderable: Calendar) = listOf(toMap(renderable))
         override fun visitCamera(renderable: Camera) = listOf(toMap(renderable))
         override fun visitCarousel(renderable: Carousel) = listOf(toMap(renderable))
-        override fun visitCheckbox(renderable: Checkbox) = listOf(toMap(renderable))
         override fun visitChoice(renderable: Choice) = listOf(toMap(renderable))
         override fun visitCodeReader(renderable: CodeReader) = listOf(toMap(renderable))
         override fun visitCol(renderable: Col) = listOf(toMap(renderable))
@@ -132,8 +125,6 @@ open class GaiaVisitor(map: Map<String, Any>,
         override fun visitSuggestion(renderable: Suggestion) = listOf(toMap(renderable))
         override fun visitTable(renderable: Table) = listOf(toMap(renderable))
         override fun visitText(renderable: Text) = listOf(toMap(renderable))
-        override fun visitNewText(renderable: NewText) = listOf(toMap(renderable))
-        override fun visitTextInput(renderable: TextInput) = listOf(toMap(renderable))
         override fun visitTextarea(renderable: Textarea) = listOf(toMap(renderable))
         override fun visitTransition(renderable: Transition) = listOf(toMap(renderable))
         override fun visitTrigger(renderable: Trigger) = listOf(toMap(renderable))

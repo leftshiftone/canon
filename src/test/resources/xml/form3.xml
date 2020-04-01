@@ -1,19 +1,19 @@
 <form name="form">
         <email name="email" placeholder="type here..." required="true" class="email"/>
-        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
+        <text name="text" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
         <phone name="phone" placeholder="type here..." required="true" class="phone"/>
         <upload name="phone" accept=".docx, .img" maxSize="2"/>
     </form>
     <block>
         <selection countdownInSec="2" name="name">
             <block name="blockA">
-                <text>asdöfl</text>
+                <label>asdöfl</label>
             </block>
             <block name="blockB">
-                <text>asdöfl</text>
+                <label>asdöfl</label>
             </block>
             <block name="blockC">
-                <text>asdöfl</text>
+                <label>asdöfl</label>
             </block>
         </selection>
     </block>

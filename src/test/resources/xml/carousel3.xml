@@ -1,21 +1,21 @@
-<text>Ich denke, ich habe passende Weine für Sie gefunden:</text>
+<label>Ich denke, ich habe passende Weine für Sie gefunden:</label>
 <carousel>
 <block foreach="$wine in $result">
     <headline>$wine.productName ($wine.year)</headline>
     <image src="$wine.pictureUrl"/>
     <bold>Geschmack:</bold>
-    <text>$wine.taste |</text>
+    <label>$wine.taste |</label>
     <bold>Rebsorte:</bold>
-    <text>$wine.grapeType</text>
+    <label>$wine.grapeType</label>
     <break/>
     <bold>Preis:</bold>
-    <text>$wine.price €</text>
+    <label>$wine.price €</label>
     <break/>
     <bold>Hergestellt in:</bold>
-    <text>$wine.country | $wine.region</text>
+    <label>$wine.country | $wine.region</label>
     <break/>
     <bold>Verkostungsnotiz:</bold>
-    <text>#limit($wine.tasteNotice, 150)</text>
+    <label>#limit($wine.tasteNotice, 150)</label>
     <break/>
     <break/>
     <link value="$wine.url">Jetzt kaufen!</link>

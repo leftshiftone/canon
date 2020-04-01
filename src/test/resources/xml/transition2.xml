@@ -16,6 +16,5 @@
     </transition>
 
     <transition>
-        <text>Wählen Sie einen passenden Termin aus:</text>
-        <dateTimePicker></dateTimePicker>
+        <label>Wählen Sie einen passenden Termin aus:</label>
     </transition>

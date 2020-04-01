@@ -8,17 +8,18 @@ import com.fasterxml.jackson.databind.ObjectMapper
 import org.apache.velocity.VelocityContext
 import org.apache.velocity.app.Velocity
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.TestInstance
 import org.skyscreamer.jsonassert.JSONAssert
 import java.io.StringWriter
 
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 class GaiaVisitorTest {
 
     companion object {
         val mapper = ObjectMapper().writerWithDefaultPrettyPrinter()
     }
-
     private fun parseXml(path: String, validate: Boolean = true): List<IRenderable> {
-        return CanonXmlParser().parse(CanonXmlParserTest::class.java.getResourceAsStream(path), validate)
+        return CanonXmlParser().parse(CanonXmlParserTest::class.java.getResourceAsStream(path),"2.0.0", validate)
     }
 
     private fun parseJson(path: String): String {
@@ -46,6 +47,12 @@ class GaiaVisitorTest {
 
     @Test
     fun block2() = compare("block2")
+
+    @Test
+    fun label1() = compare("label1")
+
+    @Test
+    fun label2() = compare("label2")
 
     @Test
     fun carousel1() = compare("carousel1", mapOf(
@@ -136,7 +143,7 @@ class GaiaVisitorTest {
     fun item1() = compare("item1", mapOf("items" to listOf("item1", "item2", "item3", "item4")), false)
 
     @Test
-    fun textInput1() = compare("textInput1", mapOf(), false)
+    fun textInput1() = compare("text1", mapOf(), false)
 
     private class TestEvaluator() : IEvaluator {
 

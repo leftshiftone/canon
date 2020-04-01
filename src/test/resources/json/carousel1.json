@@ -4,7 +4,7 @@
       "elements": [
         {
           "text": "Ich denke, ich habe passende Weine für Sie gefunden:",
-          "type": "text"
+          "type": "label"
         },
         {
           "elements": [
@@ -24,7 +24,7 @@
                 },
                 {
                   "text": "Trocken |",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "text": "Rebsorte:",
@@ -32,7 +32,7 @@
                 },
                 {
                   "text": "Cuvee",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "type": "break"
@@ -43,7 +43,7 @@
                 },
                 {
                   "text": "20.95 €",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "type": "break"
@@ -54,7 +54,7 @@
                 },
                 {
                   "text": "France | Champagne",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "type": "break"
@@ -65,7 +65,7 @@
                 },
                 {
                   "text": "#limit($wine.tasteNotice, 150)",
-                  "type": "text"
+                  "type": "label"
                 },
                 {
                   "type": "break"

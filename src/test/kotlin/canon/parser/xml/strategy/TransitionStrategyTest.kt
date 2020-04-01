@@ -11,7 +11,7 @@ class TransitionStrategyTest {
     @Test
     fun testParse() {
         val xml = "<transition id='testId' class='testClass' name='testName' direction='right' wrapped='in'>" +
-                "<text id='testId2' class='testClass'>test</text>" +
+                "<label id='testId2' class='testClass'>test</label>" +
                 "</transition>"
         val parsed = TransitionStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 

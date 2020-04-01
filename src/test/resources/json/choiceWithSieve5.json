@@ -10,7 +10,7 @@
                   "elements": [
                     {
                       "text": "a",
-                      "type": "text"
+                      "type": "label"
                     }
                   ],
                   "name": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
@@ -22,7 +22,7 @@
                   "elements": [
                     {
                       "text": "b",
-                      "type": "text"
+                      "type": "label"
                     }
                   ],
                   "name": "b",
@@ -34,7 +34,7 @@
                   "elements": [
                     {
                       "text": "c",
-                      "type": "text"
+                      "type": "label"
                     }
                   ],
                   "name": "c",

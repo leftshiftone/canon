@@ -1,5 +1,6 @@
 package canon.parser.xml.validation
 
+import canon.exception.CanonException
 import org.xml.sax.SAXException
 import java.io.InputStream
 import java.nio.charset.StandardCharsets
@@ -23,7 +24,7 @@ class XmlValidator(xsdStream: InputStream) {
             val schema = factory.newSchema(StreamSource(xsdStream))
             this.validator = schema.newValidator()
         } catch (e: SAXException) {
-            throw RuntimeException(e)
+            throw CanonException(e)
         }
     }
 
@@ -40,7 +41,8 @@ class XmlValidator(xsdStream: InputStream) {
         } catch (e: Exception) {
             if (e is SAXException)
                 return XmlValidation.Failure(e)
-            throw java.lang.RuntimeException(e)
+
+            throw CanonException(e)
         }
     }
 

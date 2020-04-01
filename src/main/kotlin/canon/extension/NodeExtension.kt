@@ -15,18 +15,12 @@ internal fun Node.attrAsBoolean(name:String, defaultValue:Boolean):Boolean {
     return optional.map { it.textContent.equals("true", true) }.orElse(defaultValue)
 }
 internal fun Node.attrAsDouble(name:String, defaultValue:Double) : Double {
-    return try {
         if (this.attributes == null) return defaultValue
-        this.attributes.getNamedItem(name).textContent.toDouble()
-    } catch (ex : RuntimeException) {
-        defaultValue
-    }
+        val optional = Optional.ofNullable(this.attributes.getNamedItem(name))
+        return optional.map { it.textContent.toDouble() }.orElse(defaultValue)
 }
 internal fun Node.attrAsInt(name:String, defaultValue:Int) : Int {
-    return try {
         if (this.attributes == null) return defaultValue
-        this.attributes.getNamedItem(name).textContent.toInt()
-    } catch (ex : RuntimeException) {
-        defaultValue
-    }
+        val optional = Optional.ofNullable(this.attributes.getNamedItem(name))
+        return optional.map { it.textContent.toInt() }.orElse(defaultValue)
 }

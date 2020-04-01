@@ -49,3 +49,34 @@
     </slotmachine>
     <checkbox name="a" value="b">Text</checkbox>
 </block>
+
+<block>
+<form>
+    <checkbox name="hello" value="world" />
+    <checkbox name="hello" value="world" />
+</form>
+<block>
+    <checkbox name="hello" value="world" />
+    <checkbox name="hello" value="world" />
+</block>
+
+<block>
+    <checkbox name="hello" value="world" />
+    <block>
+        <checkbox name="hello" value="world" />
+    </block>
+</block>
+<form>
+    <table>
+        <row>
+            <col> <checkbox name="hello" value="world" /> </col>
+            <col> <checkbox name="hello" value="world" /> </col>
+        </row>
+        <row>
+            <col> <checkbox name="hello" value="world" /> </col>
+            <col> <checkbox name="hello" value="world" /> </col>
+        </row>
+    </table>
+</form>
+</block>
+

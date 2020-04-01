@@ -1,8 +1,9 @@
 package canon.parser.xml.upgrade.xlst
 
 import canon.parser.xml.upgrade.CanonUpgradeHandler
+import canon.parser.xml.upgrade.CanonXlstTransformerConfiguration
+import canon.parser.xml.upgrade.CanonXlstTransformerConfiguration.Companion.isValidTransformerPath
 import canon.parser.xml.upgrade.SemanticVersion
-import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.extractTransformations
 import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getCanonVersion
 import org.slf4j.LoggerFactory
 import java.util.*
@@ -11,18 +12,16 @@ import java.util.*
 class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
 
     val log = LoggerFactory.getLogger(this::class.java)
-    val relativePath : String
-    val UPGRADE_LOG_TRANSFORMER : CanonXlstTransformer
+    val transformerConfig : List<CanonXlstTransformerConfiguration>
+    val UPGRADE_LOG_TRANSFORMER : CanonXlstTransformer?
     val DEFAULT_VERSION ="1.9.0"
 
 
-    constructor(relativePath : String) {
-        this.relativePath= relativePath
-        this.UPGRADE_LOG_TRANSFORMER = CanonXlstTransformer(relativePath, SemanticVersion("0","0","0"))
-
+    constructor(xlstSheets : List<String>) {
+        this.transformerConfig= xlstSheets.filter { isValidTransformerPath(it) }.map { sheet -> CanonXlstTransformerConfiguration(sheet) }.toList()
+        val zeroTransformer= this.transformerConfig.filter { config -> config.version== SemanticVersion("0","0","0")  }.firstOrNull()
+        UPGRADE_LOG_TRANSFORMER= if(zeroTransformer!=null) CanonXlstTransformer(zeroTransformer) else null
     }
-
-    constructor() : this("/xml/xlst/transformers")
 
     override fun getLatestVersion() = getCanonVersion()
 
@@ -30,7 +29,7 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
         if(version==null) return true
         log.debug("Check if there are transformations for version: $version")
         val requiredTransformations = retrieveAvailableTransformationsForAVersion(version)
-        val numberOfRequiredTransformations = requiredTransformations?.count()
+        val numberOfRequiredTransformations = requiredTransformations.count()
         log.debug("$numberOfRequiredTransformations transformations were found for version $version")
         return numberOfRequiredTransformations>0
     }
@@ -53,7 +52,6 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
     private fun getVersion(version : String?) = version ?: DEFAULT_VERSION
 
     private fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>>{
-
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                     .map { utteranceValue ->
@@ -62,7 +60,6 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
 
             return upgradeUtterance(utterance.minus(utteranceEntry.key), rawXmlVersion ,result.plus(utteranceEntry.key to transformedListOfUtterances))
         }
-
         return result
     }
 
@@ -74,7 +71,7 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
         transformations
                 .sortedDescending()
                 .map {
-                    CanonXlstTransformer(relativePath,it)}
+                    CanonXlstTransformer(it)}
                 .forEach {stack.push(it)}
         return if(stack.isNullOrEmpty()) {
             log.debug("No transformations found for version $currentVersion")
@@ -85,13 +82,13 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
         }
     }
 
-    private fun retrieveAvailableTransformationsForAVersion(currentVersion: String):  List<SemanticVersion> {
+    private fun retrieveAvailableTransformationsForAVersion(currentVersion: String):  List<CanonXlstTransformerConfiguration> {
         log.debug("Retrieve available transformations for version: $currentVersion")
         val curVersion = SemanticVersion(currentVersion)
-        val allAvailableTransformations = extractTransformations(relativePath)
+        val allAvailableTransformations=this.transformerConfig.map { config-> config.version }.toList()
         log.debug("AvailableTransformations : ${allAvailableTransformations.joinToString(",")}")
-        val transformationForGivenVersion= allAvailableTransformations
-                .filter {it > curVersion}
+        val transformationForGivenVersion= this.transformerConfig
+                .filter {it.version > curVersion}
         log.debug("AvailableTransformations for $currentVersion : ${allAvailableTransformations.joinToString(",")}")
         return transformationForGivenVersion
 
@@ -101,11 +98,10 @@ class XLSTCanonUpgradeHandler: CanonUpgradeHandler {
     private fun transform(iterator : TransformerIterator, xml: String): String{
         while(iterator.hasNext()){
             val transformer = iterator.next()
-            log.debug("Applying transformation for version ${transformer.version} from path ${transformer.relativePath}")
+            log.debug("Applying transformation for version ${transformer.config}")
             return transform(iterator,transformer.execute(xml))
         }
-        return UPGRADE_LOG_TRANSFORMER.execute(xml)
-
+        return UPGRADE_LOG_TRANSFORMER?.execute(xml) ?: return xml
     }
 
 

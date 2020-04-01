@@ -5,7 +5,9 @@ import canon.exception.CanonException
 import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
+import canon.parser.xml.upgrade.CanonUpgradeHandler
 import canon.parser.xml.upgrade.xlst.XLSTCanonUpgradeHandler
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getDefaultTransformers
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
@@ -18,7 +20,7 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
+open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XLSTCanonUpgradeHandler(getDefaultTransformers()), val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
 
 
     companion object {
@@ -97,10 +99,10 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
 
     @JvmOverloads
     fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
-        val transformer= XLSTCanonUpgradeHandler("/xml/xlst/transformers/")
+//        val transformer= XLSTCanonUpgradeHandler(listOf("/xml/xlst/transformers/"))
         var xml = str.replace("&", "&amp;")
-        if(transformer.isUpgradeRequired(version)){
-            val upgradedXML = transformer.upgrade(xml, version)
+        if(canonUpgradeHandler.isUpgradeRequired(version)){
+            val upgradedXML = canonUpgradeHandler.upgrade(xml, version)
             return parse(upgradedXML,validate)
         }
         return parse(xml,validate)

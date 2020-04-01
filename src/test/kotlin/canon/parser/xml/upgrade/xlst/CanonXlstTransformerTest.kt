@@ -1,7 +1,7 @@
 package canon.parser.xml.upgrade.xlst
 
 
-import canon.parser.xml.upgrade.SemanticVersion
+import canon.parser.xml.upgrade.CanonXlstTransformerConfiguration
 import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.Test
@@ -13,6 +13,7 @@ import java.util.concurrent.TimeUnit
 internal class CanonXlstTransformerTest {
 
     val WHITE_SPACE_REGEX= "\\s".toRegex()
+    val TRANSFORMER_2_0_0 = CanonXlstTransformer(CanonXlstTransformerConfiguration(("/xml/xlst/transformers/transform_2.0.0.xlst")))
 
     private fun transformFromFileSystem(transformer: CanonXlstTransformer, pathToXMLToTransform: String, pathToExpectedXML: String,  expectSuccess: Boolean = true) {
         try {
@@ -40,7 +41,7 @@ internal class CanonXlstTransformerTest {
 
 
     @Test
-    fun complexXmlIsParsed() = transformFromFileSystem(CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0")), "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+    fun complexXmlIsParsed() = transformFromFileSystem(TRANSFORMER_2_0_0, "/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
 
 
     @TestFactory
@@ -80,7 +81,7 @@ internal class CanonXlstTransformerTest {
                                                  """.trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- text element was replaced for label by the XSLT Transformer-->
-                                                        <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer-->                                                        
+                                                        <!-- attribute name of element text was removed when converting it to label by the XSLT Transformer-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
                                                 """.trimIndent()),
@@ -233,7 +234,7 @@ internal class CanonXlstTransformerTest {
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {
 
-            transformString(CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0")), it["givenXml"] as String ,it["expectedTransformation"] as String)
+            transformString(TRANSFORMER_2_0_0, it["givenXml"] as String ,it["expectedTransformation"] as String)
         }
     }
 
@@ -242,13 +243,12 @@ internal class CanonXlstTransformerTest {
     fun parallelTest() {
         val barrier = CountDownLatch(1)
         val endBarrier = CountDownLatch(25)
-        val transformer= CanonXlstTransformer("/xml/xlst/transformers", SemanticVersion("2.0.0"))
         (0..24).forEach {
             Thread {
                 try{
                     barrier.await(10, TimeUnit.SECONDS)
                     println("Thread-${it} starting execution")
-                    transformFromFileSystem(transformer,"/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
+                    transformFromFileSystem(TRANSFORMER_2_0_0,"/xml/xlst/complex1.xml","/xml/xlst/expected/complex1.xml")
                 } finally {
                     endBarrier.countDown()
                 }

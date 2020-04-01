@@ -1,6 +1,6 @@
 package canon.parser.xml.upgrade.xlst
 
-import canon.parser.xml.upgrade.SemanticVersion
+import canon.parser.xml.upgrade.CanonXlstTransformerConfiguration
 import org.slf4j.LoggerFactory
 import java.io.StringReader
 import java.io.StringWriter
@@ -9,17 +9,17 @@ import javax.xml.transform.stream.StreamResult
 import javax.xml.transform.stream.StreamSource
 
 /**
- *  This class transforms a XML String with a XLST file. The location of the XLST file will be determined by the relativePath and version
+ *  This class transforms a XML String with a XLST file. The location of the XLST file will be determined by its configuration
  *  provided in the constructor
  */
-class CanonXlstTransformer (val relativePath : String, val version: SemanticVersion){
+class CanonXlstTransformer (val config : CanonXlstTransformerConfiguration){
 
     private val log = LoggerFactory.getLogger(this::class.java)
     val CLEAN_UP_XLST= "/xml/xlst/transformers/cleanup/transform_cleanup.xlst"
 
     fun execute(xml: String): String {
         val markupXml= "<markup><container>$xml</container></markup>"
-        val transformedXML= applyXSLT(markupXml,"$relativePath/transform_$version.xlst")
+        val transformedXML= applyXSLT(markupXml,config.transformerLocation)
         val normalizedTransformedXML= applyXSLT(transformedXML,CLEAN_UP_XLST)
         log.debug("Transformed xml: \nfrom $markupXml \nto${normalizedTransformedXML}")
         return normalizedTransformedXML

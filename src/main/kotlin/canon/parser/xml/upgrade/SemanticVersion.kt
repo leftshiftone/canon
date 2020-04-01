@@ -6,8 +6,6 @@ import java.util.*
 class SemanticVersion : Comparable<SemanticVersion> {
 
     val major : String
-
-
     val minor : String
     val patch : String
     companion object {
@@ -51,7 +49,7 @@ class SemanticVersion : Comparable<SemanticVersion> {
 
     private fun parseVersion(version: String) : SemanticVersion {
         val matchResult = findVersionMatches(version)
-        return SemanticVersion(matchResult!!.groups[1]!!.value, matchResult.groups[2]!!.value, matchResult.groups[3]!!.value)
+        return SemanticVersion( matchResult!!.groups[1]!!.value, matchResult.groups[2]!!.value, matchResult.groups[3]!!.value)
     }
 
     override fun compareTo(other: SemanticVersion): Int {

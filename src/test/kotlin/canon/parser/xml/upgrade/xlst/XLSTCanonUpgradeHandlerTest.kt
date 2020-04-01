@@ -1,6 +1,7 @@
 package canon.parser.xml.upgrade.xlst
 
 import canon.parser.xml.upgrade.SemanticVersion
+import canon.parser.xml.upgrade.xlst.XlstTransformSupport.Companion.getDefaultTransformers
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Disabled
 import org.junit.jupiter.api.DynamicTest
@@ -9,83 +10,64 @@ import org.junit.jupiter.api.TestFactory
 
 internal class XLSTCanonUpgradeHandlerTest {
 
+    val DEFAULT_TRANSFORMERS= getDefaultTransformers()
 
-    @Test
-    fun  `given a folder with no XLST files, no transformation is done`(){
-        val classUnderTest = XLSTCanonUpgradeHandler("/xml/xlst/XXX/")
-        assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
-    }
+//    @Test
+//    fun  `given a folder with no XLST files, no transformation is done`(){
+//        val classUnderTest = XLSTCanonUpgradeHandler(getTestTransformers())
+//        assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
+//    }
 
     @Test
     fun  `A null version requires an upgrade`(){
-        val classUnderTest = XLSTCanonUpgradeHandler()
+        val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired(null)).isTrue()
     }
     @Test
     fun  `No version specified in isUpgradeRequired method is true`(){
-        val classUnderTest = XLSTCanonUpgradeHandler()
+        val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired()).isTrue()
     }
 
     @TestFactory
     @Disabled("This test is temp ignored until version 2.0.0 is released")
     fun  `given a the current version, a transformation is not needed`() = listOf(
-            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
+            mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
+            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             assertThat(classUnderTest.isUpgradeRequired(classUnderTest.getLatestVersion())).isFalse()
         }
     }
 
 
-    @TestFactory
-    fun  `given a folder with one XLST older than the current version, no transformation is done`() = listOf(
-            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
-    ).map {
-        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
-            assertThat(classUnderTest.buildTransformerIterator("3.2.0")).isNull()
-        }
-    }
-
-    @TestFactory
-    fun  `given a folder with one XLST newer than the current version, the transformerIterator has one transformation`() = listOf(
-            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
-    ).map {
-        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
+    @Test
+    fun  `given a folder with one XLST newer than the current version, the transformerIterator has one transformation`() {
+            val classUnderTest =XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
-        }
+
     }
 
-    @TestFactory
-    fun  `given a folder with 4 newer XLST files than the current version, the transformerIterator contains all of them and in ASC order`() = listOf(
-            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
-    ).map {
-        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
+    @Test
+    fun  `given a folder with 4 newer XLST files than the current version, the transformerIterator contains all of them and in ASC order`() {
+            val classUnderTest =XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             val iterator = classUnderTest.buildTransformerIterator("0.9.0")
             assertThat(iterator).isNotNull()
-            assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("1.0.0"))
-            assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.3.0"))
-            assertThat(iterator.next().version).isEqualTo(SemanticVersion("1.5.0"))
-            assertThat(iterator.next().version).isEqualTo(SemanticVersion("2.0.0"))
+            assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("1.0.0"))
+            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("1.3.0"))
+            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("1.5.0"))
+            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("2.0.0"))
             assertThat(iterator.hasNext()).isFalse()
-        }
     }
 
     @TestFactory
-    fun  `given a folder with one older XLST files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() = listOf(
-            mapOf("name" to "defaultTransformerPath", "transformerPath" to null),mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xlst/transformers")
-    ).map {
-        DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
-            val classUnderTest = if (it["transformerPath"] == null) XLSTCanonUpgradeHandler() else XLSTCanonUpgradeHandler(it["transformerPath"] as String)
+    fun  `given a folder with one older XLST files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
+            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             val iterator = classUnderTest.buildTransformerIterator("1.6.0")
             assertThat(iterator).isNotNull()
-            assertThat(iterator!!.next().version).isEqualTo(SemanticVersion("2.0.0"))
+            assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("2.0.0"))
             assertThat(iterator.hasNext()).isFalse()
-        }
+
     }
 
     @TestFactory
@@ -94,34 +76,34 @@ internal class XLSTCanonUpgradeHandlerTest {
                 "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0 but no changes must be made",
                 "version" to "0.9.0",
                 "rawXml" to """
-                        
-                            
+
+
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                 "expectedTransformedXml" to """
-                        
-                            
+
+
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to " (FALLBACK CASE) Transform XML through transformers: 2.0.0 because no version is given",
                     "version" to null,
                     "rawXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -133,12 +115,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        
-                            
+
+
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -154,17 +136,17 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-    
-                            
-                        
+
+
+
                                 """.trimMargin().trim()
             ),
             mapOf(
                 "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0",
                 "version" to "0.9.0",
                 "rawXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -176,12 +158,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                 "expectedTransformedXml" to """
-                        
-                            
+
+
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -197,8 +179,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim()
             )
             ,
@@ -206,8 +188,8 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "name" to "Transform XML through transformers: 1.5.0 and 2.0.0",
                     "version" to "1.3.1",
                     "rawXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -219,12 +201,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        
-                            
+
+
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -240,16 +222,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to "Transform XML through transformers: 2.0.0",
                     "version" to "1.9.0",
                     "rawXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -261,12 +243,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        
-                            
+
+
                             <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                  <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -282,16 +264,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim()
             ),
             mapOf(
                     "name" to " No transform is required",
                     "version" to "2.0.0",
                     "rawXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -303,12 +285,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim(),
                     "expectedTransformedXml" to """
-                        
-                            
+
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -320,13 +302,13 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim()
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
-            val classUnderTest = XLSTCanonUpgradeHandler()
+            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["rawXml"] as String, it["version"])
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
 
@@ -344,16 +326,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "name" to "YYY",
                     "version" to "0.9.0",
                     "utterance" to mapOf("de" to listOf("""
-                       
+
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                           
+
                                 """.trimMargin().trim(),
                      """
-                        
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -365,10 +347,10 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                          
+
                                 """.trimMargin().trim(),
                     """
-                        
+
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
                                     <block foreach="">
@@ -379,24 +361,24 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
-                           
+
                                 """.trimMargin().trim())),
 
 
                     "expectedUtterance" to mapOf("de" to listOf("""
-                        
-                            
+
+
                                 <carousel>
                                     <block foreach="">
                                         <headline>name</headline>
                                     </block>
                                 </carousel>
-                           
-                        
+
+
                                 """.trimMargin().trim(),
                             """
-                        
-                            
+
+
                              <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -412,12 +394,12 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                           
-                        
+
+
                                 """.trimMargin().trim(),
                             """
-                        
-                            
+
+
                                 <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                              <!-- text element was replaced for label by the XSLT Transformer-->
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -432,14 +414,14 @@ internal class XLSTCanonUpgradeHandlerTest {
                                         <labelC>C</labelC>
                                     </block>
                                 </carousel>
-                            
-                        
+
+
                                 """.trimMargin().trim())
                     )
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTCanonUpgradeHandler("/xml/xlst/transformers")
+            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
             transformedXml.get("de")!!.forEachIndexed {i, utterance ->
                 assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get("de")!!.get(i).replace("\\s".toRegex(), ""))
@@ -455,16 +437,16 @@ internal class XLSTCanonUpgradeHandlerTest {
                     "version" to "0.9.0",
                     "utterance" to
                             mapOf("de" to listOf("""
-                                
+
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                  
+
                                         """.trimMargin().trim(),
                                     """
-                                
+
                                         <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                         <carousel>
                                             <block foreach="">
@@ -476,20 +458,20 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <textC>C</textC>
                                             </block>
                                         </carousel>
-                                    
+
                                         """.trimMargin().trim()),
 
                             "en" to listOf("""
-                               
+
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name in English</headline>
                                             </block>
                                         </carousel>
-                                   
+
                                         """.trimMargin().trim(),
                                     """
-                                
+
                                         <text id="123">Based on the Input we can suggest following results:</text>
                                         <carousel>
                                             <block foreach="">
@@ -501,23 +483,23 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <textC>C</textC>
                                             </block>
                                         </carousel>
-                                    
+
                                         """.trimMargin().trim())),
 
                             "expectedUtterance" to mapOf("de" to listOf("""
-                                
-                                    
+
+
                                         <carousel>
                                             <block foreach="">
                                                 <headline>name</headline>
                                             </block>
                                         </carousel>
-                                     
-                                
+
+
                                         """.trimMargin().trim(),
                                     """
-                                
-                                    
+
+
                                        <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                        <!-- text element was replaced for label by the XSLT Transformer-->
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -533,24 +515,24 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                 <labelC>C</labelC>
                                             </block>
                                         </carousel>
-                                    
-                                
+
+
                                         """.trimMargin().trim()),
 
                                     "en" to listOf("""
-                                        
-                                            
+
+
                                                 <carousel>
                                                     <block foreach="">
                                                         <headline>name in English</headline>
                                                     </block>
                                                 </carousel>
-                                            
-                                        
+
+
                                                 """.trimMargin().trim(),
                                                     """
-                                        
-                                            
+
+
                                                <comment>Document was automatically migrated to version CANON-2.0.0 by a XLST Trasnformer: transform_2.0.0.xlst</comment>
                                                 <!-- text element was replaced for label by the XSLT Transformer-->
                                                 <label id="123">Based on the Input we can suggest following results:</label>
@@ -566,14 +548,14 @@ internal class XLSTCanonUpgradeHandlerTest {
                                                         <labelC>C</labelC>
                                                     </block>
                                                 </carousel>
-                                            
-                                        
+
+
                                                 """.trimMargin().trim())
                             )
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
-            val classUnderTest = XLSTCanonUpgradeHandler()
+            val classUnderTest = XLSTCanonUpgradeHandler(DEFAULT_TRANSFORMERS)
             val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
 
             transformedXml.entries.forEach {utteranceEntry ->

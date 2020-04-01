@@ -14,12 +14,12 @@ import javax.xml.transform.stream.StreamSource
 class XSLTTransformer (val config : XSLTTransformerConfiguration){
 
     private val log = LoggerFactory.getLogger(this::class.java)
-    val CLEAN_UP_xslt= "/xml/xslt/transformers/cleanup/transform_cleanup.xslt"
+    val CLEAN_UP_XSLT= "/xml/xslt/transformers/cleanup/transform_cleanup.xslt"
 
     fun execute(xml: String): String {
         val markupXml= "<markup><container>$xml</container></markup>"
         val transformedXML= applyXSLT(markupXml,config.transformerLocation)
-        val normalizedTransformedXML= applyXSLT(transformedXML,CLEAN_UP_xslt)
+        val normalizedTransformedXML= applyXSLT(transformedXML,CLEAN_UP_XSLT)
         log.debug("Transformed xml: \nfrom $markupXml \nto${normalizedTransformedXML}")
         return normalizedTransformedXML
     }

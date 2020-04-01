@@ -11,6 +11,7 @@ import org.assertj.core.api.Assertions.assertThatThrownBy
 import org.junit.jupiter.api.Test
 import java.io.IOException
 import java.lang.NullPointerException
+import java.util.*
 
 class Base64Test {
 
@@ -22,13 +23,6 @@ class Base64Test {
     fun testEncode() {
         assertThat(Base64.encode(testString)).isEqualTo(encodedTestString)
     }
-
-    /*@Test
-    fun testEncodeNull() {
-        val objectMapper = spyk<ObjectMapper>()
-        every { objectMapper.writeValueAsBytes(testString) }.throws(IOException("test"))
-        assertThatThrownBy { Base64.decode(testString) }.isExactlyInstanceOf(CanonException::class.java)
-    }*/
 
     @Test
     fun testEncodeUTF8String() {

@@ -306,15 +306,18 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 """.trimMargin().trim()
+            ),
+            mapOf(
+                    "name" to "null",
+                    "version" to "2.0.0",
+                    "rawXml" to null,
+                    "expectedTransformedXml" to ""
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["rawXml"]}] -> ${it["expectedTransformedXml"]}") {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val transformedXml = classUnderTest.upgrade(it["rawXml"] as String, it["version"])
+            val transformedXml = classUnderTest.upgrade(it["rawXml"] as String?, it["version"])
             assertThat(transformedXml.replace("\\s".toRegex(), "")).isEqualTo(it["expectedTransformedXml"]!!.replace("\\s".toRegex(), ""))
-
-
-
         }
     }
 
@@ -553,11 +556,18 @@ internal class XSLTUpgradeHandlerTest {
 
                                                 """.trimMargin().trim())
                             )
+            ),
+
+            mapOf(
+                    "name" to "null",
+                    "version" to "0.9.0",
+                    "utterance" to null,
+                    "expectedUtterance" to mapOf<String, List<String>>()
             )
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
+            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>?, it["version"] as String)
 
             transformedXml.entries.forEach {utteranceEntry ->
                 utteranceEntry.value.forEachIndexed { index, utterance ->

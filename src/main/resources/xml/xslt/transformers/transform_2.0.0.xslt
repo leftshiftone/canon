@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="iso-8859-1"?>
 <xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
-    <xsl:output method="xml" version="1.0" encoding="UTF-8" omit-xml-declaration="yes" indent="yes"/>
-    <xsl:strip-space elements="*"/>
+    <xsl:output method="xml" version="1.0" encoding="UTF-8" omit-xml-declaration="yes"/>
     <xsl:template match="node()|@*">
         <xsl:copy>
             <xsl:apply-templates select="node()|@*"/>
@@ -58,12 +57,11 @@
     <xsl:template match="checkbox">
         <xsl:comment>Checkbox element was commented out</xsl:comment>
         <xsl:text disable-output-escaping="yes">
-    &lt;!-- before migration: </xsl:text>
+            &lt;!-- before migration: </xsl:text>
         <xsl:copy>
             <xsl:apply-templates select="@*|node()" />
         </xsl:copy>
-        <xsl:text disable-output-escaping="yes"> --&gt;
-    </xsl:text>
+        <xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
     </xsl:template>
 
 </xsl:stylesheet>

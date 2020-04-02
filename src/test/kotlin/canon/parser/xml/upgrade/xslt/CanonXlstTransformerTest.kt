@@ -16,7 +16,9 @@ internal class XSLTTransformerTest {
 
     private fun transformFromFileSystem(transformer: XSLTTransformer, pathToXMLToTransform: String, pathToExpectedXML: String, expectSuccess: Boolean = true) {
         try {
-            val result = transformer.execute(XSLTTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText())
+
+            val xmlToTransform= XSLTTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText()
+            val result = transformer.execute(normalizeXmlForTestComparison(xmlToTransform))
             val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
             val expectedResultInRaw = XSLTTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
             Assertions.assertThat(resultInRaw).isEqualTo(expectedResultInRaw)
@@ -30,13 +32,15 @@ internal class XSLTTransformerTest {
     private fun transformString(transformer: XSLTTransformer, xmlToTransform: String, expectedXml: String, expectSuccess: Boolean = true) {
         try {
             val result = transformer.execute(xmlToTransform)
-            Assertions.assertThat(result.replace(WHITE_SPACE_REGEX, "")).isEqualTo(expectedXml.replace(WHITE_SPACE_REGEX, ""))
+            Assertions.assertThat(normalizeXmlForTestComparison(result)).isEqualTo(normalizeXmlForTestComparison(expectedXml))
         } catch (e: Exception) {
             if (expectSuccess) {
                 Assertions.fail<String>("xml '$expectedXml' should not throw a transformation exception", e)
             }
         }
     }
+
+    private fun normalizeXmlForTestComparison(text : String) = text.trimIndent().trimMargin().trim().replace("\n", "").replace("\t", "")
 
 
     @Test
@@ -48,183 +52,190 @@ internal class XSLTTransformerTest {
             /*****************************************TEXT TRANSFORMATIONS ******************************************************/
 
             mapOf("name" to "Simple text tag is transformed to a label",
-                    "givenXml" to """
-                                                       <text>text</text>
-                                                 """.trimMargin().trim(),
+                    "givenXml" to """                   <text>text</text>
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- text element was replaced with label-->
                                                         <label>text</label>
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label and empty spaces are kept",
+                "givenXml" to """                       <text>  </text>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <!-- text element was replaced with label-->
+                                                        <label>  </label>
+                                                        <automaticUpgraded/>
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc">text</text>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- text element was replaced with label-->
                                                         <label id="abc">text</label>
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id, class and if and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc" class=".cs" if="(aaa)">text</text>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- text element was replaced with label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id, class, if , name and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc" name="textname" class=".cs" if="(aaa)">text</text>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- text element was replaced with label-->
-                                                        <!-- attribute name of element text was removed when converting it to label-->
+                                                        <!--attribute name of element text was removed when converting it to label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             /*****************************************CALENDAR TRANSFORMATIONS ******************************************************/
             mapOf("name" to "Calendar tag without attributes is removed_1",
                     "givenXml" to """
                                                        <calendar></calendar>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
                     "givenXml" to """
                                                        <calendar/>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass" name="testName"></calendar>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
                     "givenXml" to """
                                                        <calendar id="testId" name="testName"></calendar>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass"></calendar>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- Calendar element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATEPICKER TRANSFORMATIONS ******************************************************/
             mapOf("name" to "DatePicker tag without attributes is removed_1",
                     "givenXml" to """
                                                        <datePicker></datePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed-->
+                                                        <!--datePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
                     "givenXml" to """
                                                        <datePicker/>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed-->
+                                                        <!--datePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING" size="0"></datePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed-->
+                                                        <!--datePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING"></datePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed-->
+                                                        <!--datePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
                     "givenXml" to """
                                                        <datePicker size="0"></datePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- datePicker element was removed-->
+                                                        <!--datePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATETIMEPICKER TRANSFORMATIONS ******************************************************/
             mapOf("name" to "DateTimePicker tag without attributes is removed_1",
                     "givenXml" to """
                                                        <dateTimePicker></dateTimePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
                     "givenXml" to """
                                                        <dateTimePicker/>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
                     "givenXml" to """
                                                        <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                """.trimIndent()),
+                                                """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
                     "givenXml" to """
                                                        <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
-                                                 """.trimMargin().trim(),
+                                                 """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                    """.trimIndent()),
+                                                    """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
                     "givenXml" to """
                                                        <dateTimePicker size="0"></dateTimePicker>
-                                                   """.trimMargin().trim(),
+                                                   """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- dateTimePicker element was removed-->
                                                         <automaticUpgraded/>
-                                                    """.trimIndent()),
+                                                    """.trimIndent().trimMargin().trim()),
 
             /*****************************************TEXTINPUT TRANSFORMATIONS ******************************************************/
 
             mapOf("name" to "TextInput tag with attribute id is transformed to a text",
                     "givenXml" to """
                                                        <textInput id="abc"/>
-                                                    """.trimMargin().trim(),
+                                                    """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- textInput element was replaced with text-->
                                                         <text id="abc"/>
                                                         <automaticUpgraded/>
-                                                    """.trimIndent()),
+                                                    """.trimIndent().trimMargin().trim()),
             mapOf("name" to "TextInput tag with attributes name, placeholder, regex, value, required and class is transformed to a text",
                     "givenXml" to """
                                                        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
-                                                    """.trimMargin().trim(),
+                                                    """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
                                                         <!-- textInput element was replaced with text-->
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>

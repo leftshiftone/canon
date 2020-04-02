@@ -19,9 +19,9 @@ internal class XSLTTransformerTest {
 
             val xmlToTransform= XSLTTransformerTest::class.java.getResourceAsStream(pathToXMLToTransform).reader(StandardCharsets.UTF_8).readText()
             val result = transformer.execute(xmlToTransform)
-//            val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
-            val expectedResultInRaw = XSLTTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText()//.replace(WHITE_SPACE_REGEX, "")
-            Assertions.assertThat(result).isEqualTo(expectedResultInRaw)
+            val resultInRaw=result.replace(WHITE_SPACE_REGEX, "")
+            val expectedResultInRaw = XSLTTransformerTest::class.java.getResourceAsStream(pathToExpectedXML).reader(StandardCharsets.UTF_8).readText().replace(WHITE_SPACE_REGEX, "")
+            Assertions.assertThat(resultInRaw).isEqualTo(expectedResultInRaw)
         } catch (e: Exception) {
             if (expectSuccess) {
                 Assertions.fail<String>("xml '$pathToXMLToTransform' should not throw a transformation exception", e)

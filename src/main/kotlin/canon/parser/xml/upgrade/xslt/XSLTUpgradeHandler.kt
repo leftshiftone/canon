@@ -2,11 +2,9 @@ package canon.parser.xml.upgrade.xslt
 
 import canon.parser.xml.upgrade.CanonUpgradeHandler
 import canon.parser.xml.upgrade.SemanticVersion
-import canon.parser.xml.upgrade.TransformerIterator
 import canon.parser.xml.upgrade.xslt.XSLTTransformSupport.Companion.getCanonVersion
 import canon.parser.xml.upgrade.xslt.XSLTTransformerConfiguration.Companion.isValidTransformerPath
 import org.slf4j.LoggerFactory
-import java.util.*
 
 
 class XSLTUpgradeHandler: CanonUpgradeHandler {
@@ -19,8 +17,8 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
 
     constructor(xsltSheets : List<String>) {
         this.transformerConfig= xsltSheets.filter { isValidTransformerPath(it) }.map { sheet -> XSLTTransformerConfiguration(sheet) }.toList()
-        val zeroTransformer= this.transformerConfig.filter { config -> config.version== SemanticVersion("0","0","0")  }.firstOrNull()
-        UPGRADE_LOG_TRANSFORMER= if(zeroTransformer!=null) XSLTTransformer(zeroTransformer) else null
+        val zeroTransformer= this.transformerConfig.firstOrNull { it.version == SemanticVersion("0","0","0") }
+        UPGRADE_LOG_TRANSFORMER= zeroTransformer?.let { XSLTTransformer(it) }
     }
 
     constructor() : this(XSLTTransformSupport.getDefaultTransformers())
@@ -40,8 +38,8 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
         if(!isUpgradeRequired(rawXmlVersion)){
             return rawXml
         }
-        val transformerIterator = buildTransformerIterator(getVersion(rawXmlVersion))
-        return transform(transformerIterator!!,rawXml)
+        val transformers = buildTransformers(getVersion(rawXmlVersion))
+        return transform(transformers,rawXml)
     }
 
     override fun upgrade(utterance : Map<String, List<String>>, rawXmlVersion: String?): Map<String, List<String>>{
@@ -57,7 +55,7 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                     .map { utteranceValue ->
-                        transform(buildTransformerIterator(rawXmlVersion)!!, utteranceValue)
+                        transform(buildTransformers(rawXmlVersion), utteranceValue)
                     }.toList()
 
             return upgradeUtterance(utterance.minus(utteranceEntry.key), rawXmlVersion ,result.plus(utteranceEntry.key to transformedListOfUtterances))
@@ -66,23 +64,14 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
     }
 
 
-    fun buildTransformerIterator(currentVersion: String): TransformerIterator<XSLTTransformer>? {
+    fun buildTransformers(currentVersion: String): List<XSLTTransformer> {
         log.debug("Build transformation path for version $currentVersion")
         val transformations = retrieveAvailableTransformationsForAVersion(currentVersion)
-        val stack  = Stack<XSLTTransformer>()
-        transformations
-                .sortedDescending()
+        return transformations
                 .map {
                     XSLTTransformer(it)
                 }
-                .forEach {stack.push(it)}
-        return if(stack.isNullOrEmpty()) {
-            log.debug("No transformations found for version $currentVersion")
-            return null
-        } else {
-            log.debug("${stack.size} Transformation found for version $currentVersion")
-            TransformerIterator(stack)
-        }
+                .toList()
     }
 
     private fun retrieveAvailableTransformationsForAVersion(currentVersion: String):  List<XSLTTransformerConfiguration> {
@@ -98,13 +87,11 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
     }
 
 
-    private fun transform(iterator : TransformerIterator<XSLTTransformer>, xml: String): String{
-        while(iterator.hasNext()){
-            val transformer = iterator.next()
-            log.debug("Applying transformation for version ${transformer.config}")
-            return transform(iterator,transformer.execute(xml))
-        }
-        return UPGRADE_LOG_TRANSFORMER?.execute(xml) ?: return xml
+    private fun transform(transformers : List<XSLTTransformer>, initialXml: String): String{
+        return transformers.sortedByDescending { it.config.version }
+                .fold(initialXml) { xmlToUpgrade, it ->
+            it.execute(xmlToUpgrade)
+        }.let { UPGRADE_LOG_TRANSFORMER?.execute(it) ?: it }
     }
 
 

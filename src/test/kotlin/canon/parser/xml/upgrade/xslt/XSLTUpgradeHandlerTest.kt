@@ -14,11 +14,6 @@ internal class XSLTUpgradeHandlerTest {
     val DEFAULT_TRANSFORMERS= getDefaultTransformers()
     val TEST_TRANSFORMERS= getDefaultTransformers().plus(XSLTTransformSupport.getResourceFiles(testTransformerDir).map { testTransformerDir.plus(it) })
 
-//    @Test
-//    fun  `given a folder with no xslt files, no transformation is done`(){
-//        val classUnderTest = XSLTCanonUpgradeHandler(getTestTransformers())
-//        assertThat(classUnderTest.buildTransformerIterator("1.2.0")).isNull()
-//    }
 
     @Test
     fun  `A null version requires an upgrade`(){
@@ -46,29 +41,33 @@ internal class XSLTUpgradeHandlerTest {
     @Test
     fun  `given a folder with one xslt newer than the current version, the transformerIterator has one transformation`() {
             val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-            assertThat(classUnderTest.buildTransformerIterator("1.9.0")).isNotNull()
+            assertThat(classUnderTest.buildTransformers("1.9.0")).isNotNull()
 
     }
 
     @Test
     fun  `given a folder with 4 newer xslt files than the current version, the transformerIterator contains all of them and in ASC order`() {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val iterator = classUnderTest.buildTransformerIterator("0.9.0")
-            assertThat(iterator).isNotNull()
-            assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("1.0.0"))
-            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("1.3.0"))
-            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("1.5.0"))
-            assertThat(iterator.next().config.version).isEqualTo(SemanticVersion("2.0.0"))
-            assertThat(iterator.hasNext()).isFalse()
+            val transformerList = classUnderTest.buildTransformers("0.9.0")
+            assertThat(transformerList).isNotNull()
+            assertThat(transformerList).size().isEqualTo(4)
+            assertThat(transformerList).extracting("config").extracting("version")
+                    .contains(
+                            SemanticVersion("1.0.0")
+                            ,SemanticVersion("1.3.0")
+                            ,SemanticVersion("1.5.0")
+                            ,SemanticVersion("2.0.0")
+                    )
     }
 
-    @TestFactory
+    @Test
     fun  `given a folder with one older xslt files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
             val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-            val iterator = classUnderTest.buildTransformerIterator("1.6.0")
-            assertThat(iterator).isNotNull()
-            assertThat(iterator!!.next().config.version).isEqualTo(SemanticVersion("2.0.0"))
-            assertThat(iterator.hasNext()).isFalse()
+            val transformerList = classUnderTest.buildTransformers("1.6.0")
+            assertThat(transformerList).isNotNull()
+            assertThat(transformerList).size().isEqualTo(1)
+            assertThat(transformerList).element(0).extracting { it.config.version }.isEqualTo(SemanticVersion("2.0.0"))
+
 
     }
 

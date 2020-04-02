@@ -49,194 +49,196 @@ internal class XSLTTransformerTest {
     @Test
     fun `Transform keeps the format`(){
         val input="""<italic>VALUE</italic>
-                    <video src="src" />
-                    <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</text>
-                    <button value="a" name="b">Text</button>
-                    <carousel>
-                    <block foreach="lawyer in result">
-                        <headline>{{lawyer.name}}</headline>
-                        <text>{lawyer.address}</text>
-                        <text></text>
-                        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text" />
-                        <items>
-                            <item>Telefon: {lawyer.phone}</item>
-                            <item>Email: {lawyer.email}</item>
-                        </items>
-                        <text>Tätigkeitsgebiete</text>
-                        <items>
-                            <item>abc</item>
-                            <item>
-                                <items>
-                                    <item>abc</item>
-                                    <item>abc</item>
-                                    <item>abc</item>
-                                </items>
-                            </item>
-                        </items>
-                        <items>
-                            <item foreach="topic in lawyer.topics">topic</item>
-                        </items>
-                        <text>Sprachen</text>
-                        <items>
-                            <item foreach="type in lawyer.languages">type</item>
-                        </items>
-                        <checkbox name="a" value="b">Text</checkbox>
-                    </block>
-                    </carousel>
-                    <image src="a" width="100" height="100" alt="b" />
-                    <link value="a">b</link>
-                    <headline>{lawyer.name}</headline>
-                    <block>
-                    <image src="a" width="100" height="100" alt="b" />
-                    <link value="a">b</link>
-                    <checkbox name="a" value="b">Text</checkbox>
-                    <headline>{lawyer.name}</headline>
-                    <textarea name="ta" value="abc" cols="1" rows="1" />
-                    <slider value="3" min="1" max="10" step="1" name="{{foo}}" />
-                    <slotmachine>
-                        <reel name="name" class="abc">
-                            <reelValue valueType="digit" value="3" />
-                        </reel>
-                    </slotmachine>
-                    <checkbox name="a" value="b">Text</checkbox>
-                    </block>
-                    <block>
-                    <form>
-                        <checkbox name="hello" value="world" />
-                        <checkbox name="hello" value="world" />
-                    </form>
-                    <block>
-                        <checkbox name="hello" value="world" />
-                        <checkbox name="hello" value="world" />
-                    </block>
-                    <block>
-                        <checkbox name="hello" value="world" />
-                        <block>
-                            <checkbox name="hello" value="world" />
-                        </block>
-                    </block>
-                    <form>
-                        <table>
-                            <row>
-                                <col>
-                                    <checkbox name="hello" value="world" />
-                                </col>
-                                <col>
-                                    <checkbox name="hello" value="world" />
-                                </col>
-                            </row>
-                            <row>
-                                <col>
-                                    <checkbox name="hello" value="world" />
-                                </col>
-                                <col>
-                                    <checkbox name="hello" value="world" />
-                                </col>
-                            </row>
-                        </table>
-                    </form>
-                    </block>"""
+<video src="src" />
+<text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</text>
+<text>    </text>
+<button value="a" name="b">Text</button>
+<carousel>
+<block foreach="lawyer in result">
+    <headline>{{lawyer.name}}</headline>
+    <text>{lawyer.address}</text>
+    <text></text>
+    <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text" />
+    <items>
+        <item>Telefon: {lawyer.phone}</item>
+        <item>Email: {lawyer.email}</item>
+    </items>
+    <text>Tätigkeitsgebiete</text>
+    <items>
+        <item>abc</item>
+        <item>
+            <items>
+                <item>abc</item>
+                <item>abc</item>
+                <item>abc</item>
+            </items>
+        </item>
+    </items>
+    <items>
+        <item foreach="topic in lawyer.topics">topic</item>
+    </items>
+    <text>Sprachen</text>
+    <items>
+        <item foreach="type in lawyer.languages">type</item>
+    </items>
+    <checkbox name="a" value="b">Text</checkbox>
+</block>
+</carousel>
+<image src="a" width="100" height="100" alt="b" />
+<link value="a">b</link>
+<headline>{lawyer.name}</headline>
+<block>
+<image src="a" width="100" height="100" alt="b" />
+<link value="a">b</link>
+<checkbox name="a" value="b">Text</checkbox>
+<headline>{lawyer.name}</headline>
+<textarea name="ta" value="abc" cols="1" rows="1" />
+<slider value="3" min="1" max="10" step="1" name="{{foo}}" />
+<slotmachine>
+    <reel name="name" class="abc">
+        <reelValue valueType="digit" value="3" />
+    </reel>
+</slotmachine>
+<checkbox name="a" value="b">Text</checkbox>
+</block>
+<block>
+<form>
+    <checkbox name="hello" value="world" />
+    <checkbox name="hello" value="world" />
+</form>
+<block>
+    <checkbox name="hello" value="world" />
+    <checkbox name="hello" value="world" />
+</block>
+<block>
+    <checkbox name="hello" value="world" />
+    <block>
+        <checkbox name="hello" value="world" />
+    </block>
+</block>
+<form>
+    <table>
+        <row>
+            <col>
+                <checkbox name="hello" value="world" />
+            </col>
+            <col>
+                <checkbox name="hello" value="world" />
+            </col>
+        </row>
+        <row>
+            <col>
+                <checkbox name="hello" value="world" />
+            </col>
+            <col>
+                <checkbox name="hello" value="world" />
+            </col>
+        </row>
+    </table>
+</form>
+</block>"""
         val exptected="""<italic>VALUE</italic>
-                        <video src="src"/>
-                        <!-- text element was replaced with label--><label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</label><automaticUpgraded/>
-                        <button value="a" name="b">Text</button>
-                        <carousel>
-                        <block foreach="lawyer in result">
-                            <headline>{{lawyer.name}}</headline>
-                            <!-- text element was replaced with label--><label>{lawyer.address}</label><automaticUpgraded/>
-                            <!-- text element was replaced with label--><label/><automaticUpgraded/>
-                            <!-- textInput element was replaced with text--><text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/><automaticUpgraded/>
-                            <items>
-                                <item>Telefon: {lawyer.phone}</item>
-                                <item>Email: {lawyer.email}</item>
-                            </items>
-                            <!-- text element was replaced with label--><label>Tätigkeitsgebiete</label><automaticUpgraded/>
-                            <items>
-                                <item>abc</item>
-                                <item>
-                                    <items>
-                                        <item>abc</item>
-                                        <item>abc</item>
-                                        <item>abc</item>
-                                    </items>
-                                </item>
-                            </items>
-                            <items>
-                                <item foreach="topic in lawyer.topics">topic</item>
-                            </items>
-                            <!-- text element was replaced with label--><label>Sprachen</label><automaticUpgraded/>
-                            <items>
-                                <item foreach="type in lawyer.languages">type</item>
-                            </items>
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
-                        </block>
-                        </carousel>
-                        <image src="a" width="100" height="100" alt="b"/>
-                        <link value="a">b</link>
-                        <headline>{lawyer.name}</headline>
-                        <block>
-                        <image src="a" width="100" height="100" alt="b"/>
-                        <link value="a">b</link>
-                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
-                        <headline>{lawyer.name}</headline>
-                        <textarea name="ta" value="abc" cols="1" rows="1"/>
-                        <slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
-                        <slotmachine>
-                            <reel name="name" class="abc">
-                                <reelValue valueType="digit" value="3"/>
-                            </reel>
-                        </slotmachine>
-                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
-                        </block>
-                        <block>
-                        <form>
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                        </form>
-                        <block>
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                        </block>
-                        <block>
-                            <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                            <block>
-                                <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                            </block>
-                        </block>
-                        <form>
-                            <table>
-                                <row>
-                                    <col>
-                                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                                    </col>
-                                    <col>
-                                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                                    </col>
-                                </row>
-                                <row>
-                                    <col>
-                                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                                    </col>
-                                    <col>
-                                        <!--Checkbox element was commented out-->
-                                    <!-- before migration: <checkbox name="hello" value="world"/> -->
-                                    </col>
-                                </row>
-                            </table>
-                        </form>
-                        </block>"""
+<video src="src"/>
+<!-- text element was replaced with label--><label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</label><automaticUpgraded/>
+<!-- text element was replaced with label--><label>    </label><automaticUpgraded/>
+<button value="a" name="b">Text</button>
+<carousel>
+<block foreach="lawyer in result">
+    <headline>{{lawyer.name}}</headline>
+    <!-- text element was replaced with label--><label>{lawyer.address}</label><automaticUpgraded/>
+    <!-- text element was replaced with label--><label/><automaticUpgraded/>
+    <!-- textInput element was replaced with text--><text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/><automaticUpgraded/>
+    <items>
+        <item>Telefon: {lawyer.phone}</item>
+        <item>Email: {lawyer.email}</item>
+    </items>
+    <!-- text element was replaced with label--><label>Tätigkeitsgebiete</label><automaticUpgraded/>
+    <items>
+        <item>abc</item>
+        <item>
+            <items>
+                <item>abc</item>
+                <item>abc</item>
+                <item>abc</item>
+            </items>
+        </item>
+    </items>
+    <items>
+        <item foreach="topic in lawyer.topics">topic</item>
+    </items>
+    <!-- text element was replaced with label--><label>Sprachen</label><automaticUpgraded/>
+    <items>
+        <item foreach="type in lawyer.languages">type</item>
+    </items>
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+</block>
+</carousel>
+<image src="a" width="100" height="100" alt="b"/>
+<link value="a">b</link>
+<headline>{lawyer.name}</headline>
+<block>
+<image src="a" width="100" height="100" alt="b"/>
+<link value="a">b</link>
+<!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+<headline>{lawyer.name}</headline>
+<textarea name="ta" value="abc" cols="1" rows="1"/>
+<slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
+<slotmachine>
+    <reel name="name" class="abc">
+        <reelValue valueType="digit" value="3"/>
+    </reel>
+</slotmachine>
+<!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+</block>
+<block>
+<form>
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+</form>
+<block>
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+</block>
+<block>
+    <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+    <block>
+        <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+    </block>
+</block>
+<form>
+    <table>
+        <row>
+            <col>
+                <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            </col>
+            <col>
+                <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            </col>
+        </row>
+        <row>
+            <col>
+                <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            </col>
+            <col>
+                <!--Checkbox element was commented out-->
+            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            </col>
+        </row>
+    </table>
+</form>
+</block>"""
 
         val result= TRANSFORMER_2_0_0.execute(input)
         Assertions.assertThat(result).isEqualTo(exptected)

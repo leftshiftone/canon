@@ -6,25 +6,25 @@ import java.util.*
 
 class XSLTTransformerConfiguration : Comparable<XSLTTransformerConfiguration> {
 
-    val transformerLocation : String
+    val transformerLocation: String
     val version: SemanticVersion
 
     companion object {
+        private val log = LoggerFactory.getLogger(this::class.java)
 
-        val log = LoggerFactory.getLogger(this::class.java)
         @JvmStatic
-        fun isValidTransformerPath(transformerPath : String) : Boolean {
+        fun isValidTransformerPath(transformerPath: String): Boolean {
             log.debug("validating version $transformerPath")
             val matchResult = findVersionMatches(transformerPath)
 
-            if(matchResult!=null
+            if (matchResult != null
                     && matchResult.groups.isNotEmpty()
                     && matchResult.groups.size > 4
-                    && matchResult.groups[2]!=null
-                    && matchResult.groups[3]!=null
-                    && matchResult.groups[4]!=null){
+                    && matchResult.groups[2] != null
+                    && matchResult.groups[3] != null
+                    && matchResult.groups[4] != null) {
                 val transformerLocationMatch = extractRelativePath(transformerPath)
-                if(transformerLocationMatch!=null){
+                if (transformerLocationMatch != null) {
                     log.debug("Version $transformerPath is valid")
                     return true
                 }
@@ -34,31 +34,31 @@ class XSLTTransformerConfiguration : Comparable<XSLTTransformerConfiguration> {
             return false
         }
 
-        fun findVersionMatches(transformerPath: String) : MatchResult?{
+        fun findVersionMatches(transformerPath: String): MatchResult? {
             val regex = "^(.*)transform_(\\d+).?(\\d+).?(\\*|\\d+)-?(.*).xslt\$".toRegex()
             return regex.find(transformerPath)
         }
 
 
-        fun extractRelativePath(transformerPath: String) : String{
+        fun extractRelativePath(transformerPath: String): String {
             return transformerPath.substringAfterLast(".jar!")
         }
 
     }
 
-    constructor(_transformerLocation: String, _version: SemanticVersion){
-        this.transformerLocation=_transformerLocation
-        this.version=_version
+    constructor(_transformerLocation: String, _version: SemanticVersion) {
+        this.transformerLocation = _transformerLocation
+        this.version = _version
 
     }
 
-    constructor(transformerLocation : String) {
-        this.transformerLocation= extractRelativePath(transformerLocation)
+    constructor(transformerLocation: String) {
+        this.transformerLocation = extractRelativePath(transformerLocation)
         val parseVersion = parseTransformerLocation(this.transformerLocation)
-        this.version= parseVersion
+        this.version = parseVersion
     }
 
-    private fun parseTransformerLocation(transformerLocation: String) : SemanticVersion {
+    private fun parseTransformerLocation(transformerLocation: String): SemanticVersion {
         val matchResult = findVersionMatches(transformerLocation)
         return SemanticVersion(matchResult!!.groups[2]!!.value, matchResult.groups[3]!!.value, matchResult.groups[4]!!.value)
     }

@@ -24,7 +24,7 @@ interface CanonUpgradeHandler {
      * @param rawXmlVersion version of the XML string
      * @return XML transformed according to the latest version. If the rawXmlVersion does not require an upgrade, the rawXML will be returned.
      */
-    fun upgrade(rawXml : String, rawXmlVersion: String? = "1.9.0"): String
+    fun upgrade(rawXml : String?, rawXmlVersion: String? = "1.9.0"): String
 
 
     /**
@@ -35,6 +35,6 @@ interface CanonUpgradeHandler {
      * @param version of the XML that should/can be upgraded
      * @return a Utterance containing the transformed/upgraded XML strings
      */
-    fun upgrade(utterance : Map<String, List<String>> , rawXmlVersion: String? = "1.9.0"): Map<String, List<String>>
+    fun upgrade(utterance : Map<String, List<String>>? , rawXmlVersion: String? = "1.9.0"): Map<String, List<String>>
 
 }

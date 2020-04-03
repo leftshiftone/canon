@@ -34,24 +34,24 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
         return numberOfRequiredTransformations>0
     }
 
-    override fun upgrade(rawXml : String, rawXmlVersion: String?): String{
-        if(!isUpgradeRequired(rawXmlVersion)){
-            return rawXml
+    override fun upgrade(rawXml : String?, rawXmlVersion: String?): String {
+        if(rawXml == null || !isUpgradeRequired(rawXmlVersion)) {
+            return rawXml ?: ""
         }
         val transformers = buildTransformers(getVersion(rawXmlVersion))
         return transform(transformers,rawXml)
     }
 
-    override fun upgrade(utterance : Map<String, List<String>>, rawXmlVersion: String?): Map<String, List<String>>{
-        if(!isUpgradeRequired(rawXmlVersion)){
-            return utterance
+    override fun upgrade(utterance : Map<String, List<String>>?, rawXmlVersion: String?): Map<String, List<String>> {
+        if(utterance == null || !isUpgradeRequired(rawXmlVersion)){
+            return utterance ?: mapOf()
         }
         return upgradeUtterance(utterance,getVersion(rawXmlVersion), mapOf())
     }
 
     private fun getVersion(version : String?) = version ?: DEFAULT_VERSION
 
-    private fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>>{
+    private fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>> {
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                     .map { utteranceValue ->
@@ -87,7 +87,7 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
     }
 
 
-    private fun transform(transformers : List<XSLTTransformer>, initialXml: String): String{
+    private fun transform(transformers : List<XSLTTransformer>, initialXml: String): String {
         return transformers.sortedByDescending { it.config.version }
                 .fold(initialXml) { xmlToUpgrade, it ->
             it.execute(xmlToUpgrade)

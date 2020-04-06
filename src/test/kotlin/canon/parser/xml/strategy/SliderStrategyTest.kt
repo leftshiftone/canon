@@ -26,4 +26,22 @@ class SliderStrategyTest {
         assertEquals("1.0, 5.0, 10.0", parsed.values)
     }
 
+    @Test
+    fun testParseDefault() {
+        val xml = "<slider id='testId' class='testClass' name='testName' " +
+                "min='1.0' value='1.5' values='1.0, 5.0, 10.0'>" +
+                "</slider>"
+        val parsed = SliderStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+
+        assertNotNull(parsed)
+        assertEquals("testId", parsed.id)
+        assertEquals("testClass", parsed.`class`)
+        assertEquals("testName", parsed.name)
+        assertEquals(1.0, parsed.min)
+        assertEquals(10.0, parsed.max)
+        assertEquals(1.0, parsed.step)
+        assertEquals(1.5, parsed.value)
+        assertEquals("1.0, 5.0, 10.0", parsed.values)
+    }
+
 }

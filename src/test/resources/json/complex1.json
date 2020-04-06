@@ -16,7 +16,10 @@
         },
         {
           "name": "b",
-          "text": "Text",
+          "elements": [{
+            "type": "label",
+            "text": "Text"
+          }],
           "type": "button",
           "value": "eyJwYXlsb2FkIjoiYSJ9"
         },

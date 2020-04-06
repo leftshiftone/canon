@@ -17,7 +17,6 @@ class ButtonStrategyTest {
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
-        assertEquals("testText", parsed.text)
         assertEquals("testName", parsed.name)
         assertEquals("{\"payload\":\"testValue\"}", Base64.decode(parsed.value).toString())
 

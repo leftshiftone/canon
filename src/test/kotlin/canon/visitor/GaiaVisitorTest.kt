@@ -55,6 +55,9 @@ class GaiaVisitorTest {
     fun label2() = compare("label2")
 
     @Test
+    fun button1() = compare("button1")
+
+    @Test
     fun carousel1() = compare("carousel1", mapOf(
             "result" to listOf(mapOf(
                     "productName" to "Champagne Cuvee",

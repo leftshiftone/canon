@@ -7,11 +7,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore
 
 data class Button(@JsonIgnore override val id: String?,
                   @JsonIgnore override val `class`: String?,
-                  val text: String?,
                   val name: String?,
-                  var value: String?) : IRenderable, IClassAware, IClickable, IValueAware {
+                  var value: String?,
+                  @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IRenderable, IClassAware, IClickable, IValueAware {
+
     override fun label(): String? {
-        return text
+        TODO("Not yet implemented")
     }
 
     override fun name(): String? {
@@ -24,12 +25,11 @@ data class Button(@JsonIgnore override val id: String?,
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
-        builder.put("text", text) {evaluator.evaluate(it, context)}
         builder.put("value", value) {Base64.encodeUTF8String(evaluator.evaluate(Base64.decode(it as String?)!!, context))!!}
         builder.put("name", name, "result")
 
         return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }
 
-    override fun toString() = "Button(text=$text, name=$name, value=$value)"
+    override fun toString() = "Button(name=$name, value=$value) { ${renderables?.map { it.toString() }}"
 }

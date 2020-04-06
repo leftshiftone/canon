@@ -38,7 +38,10 @@
         },
         {
           "name": "result",
-          "text": "Next",
+          "elements": [{
+              "type": "label",
+              "text": "Next"
+            }],
           "type": "button",
           "value": "eyJwYXlsb2FkIjoiIn0="
         }

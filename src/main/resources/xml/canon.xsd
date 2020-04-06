@@ -132,15 +132,21 @@
         <xs:attribute type="xs:string" name="class"/>
     </xs:complexType>
 
-    <xs:complexType name="buttonType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute type="xs:string" name="value"/>
-                <xs:attribute name="name" type="name"/>
-                <xs:attribute type="xs:string" name="id"/>
-                <xs:attribute type="xs:string" name="class"/>
-            </xs:extension>
-        </xs:simpleContent>
+    <xs:complexType name="buttonType" mixed="true">
+        <xs:choice minOccurs="0">
+            <xs:element type="headlineType" name="headline"/>
+            <xs:element type="labelType" name="label"/>
+            <xs:element type="itemsType" name="items"/>
+            <xs:element type="imageType" name="image"/>
+            <xs:element type="boldType" name="bold"/>
+            <xs:element type="italicType" name="italic"/>
+            <xs:element type="xs:string" name="break"/>
+            <xs:element type="viewBlockType" name="block"/>
+        </xs:choice>
+        <xs:attribute type="xs:string" name="value"/>
+        <xs:attribute name="name" type="name"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
     </xs:complexType>
 
     <xs:complexType name="reelType">
@@ -295,7 +301,6 @@
         <xs:attribute type="xs:string" name="class"/>
     </xs:complexType>
 
-
     <xs:complexType name="blockType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="videoType" name="video"/>
@@ -328,6 +333,23 @@
             <xs:element type="emailType" name="email" />
             <xs:element type="phoneType" name="phone" />
             <xs:element type="basketType" name="basket" />
+        </xs:choice>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="foreach"/>
+        <xs:attribute type="xs:string" name="if"/>
+    </xs:complexType>
+
+    <xs:complexType name="viewBlockType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="headlineType" name="headline"/>
+            <xs:element type="labelType" name="label"/>
+            <xs:element type="itemsType" name="items"/>
+            <xs:element type="imageType" name="image"/>
+            <xs:element type="boldType" name="bold"/>
+            <xs:element type="italicType" name="italic"/>
+            <xs:element type="xs:string" name="break"/>
+            <xs:element type="viewBlockType" name="block"/>
         </xs:choice>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>

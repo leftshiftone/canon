@@ -11,10 +11,9 @@ open class ButtonStrategy : AbstractParseStrategy<Button>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Button {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
-        val text = node.textContent
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
-        return Button(id, `class`, text, name, Base64.encode(mapOf("payload" to value)))
+        return Button(id, `class`, name, Base64.encode(mapOf("payload" to value)), factory(node))
     }
 }

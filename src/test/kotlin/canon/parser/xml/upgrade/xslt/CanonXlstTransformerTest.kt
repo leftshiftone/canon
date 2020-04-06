@@ -131,7 +131,7 @@ internal class XSLTTransformerTest {
                 <checkbox name="hello" value="world" />
             </col>
             <col>
-                <checkbox name="hello" value="world" />
+                <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>
             </col>
         </row>
     </table>
@@ -171,7 +171,7 @@ internal class XSLTTransformerTest {
         <item foreach="type in lawyer.languages">type</item>
     </items>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
 </block>
 </carousel>
 <image src="a" width="100" height="100" alt="b"/>
@@ -181,7 +181,7 @@ internal class XSLTTransformerTest {
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
 <headline>{lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
 <slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
@@ -191,27 +191,27 @@ internal class XSLTTransformerTest {
     </reel>
 </slotmachine>
 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
 </block>
 <block>
 <form>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
 </form>
 <block>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
 </block>
 <block>
     <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
     <block>
         <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
     </block>
 </block>
 <form>
@@ -219,21 +219,21 @@ internal class XSLTTransformerTest {
         <row>
             <col>
                 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
             </col>
             <col>
                 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
             </col>
         </row>
         <row>
             <col>
                 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
             </col>
             <col>
                 <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> -->
+            <!-- before migration: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox> --><automaticUpgraded/>
             </col>
         </row>
     </table>

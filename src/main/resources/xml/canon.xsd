@@ -134,7 +134,6 @@
 
     <xs:complexType name="buttonType" mixed="true">
         <xs:choice minOccurs="0">
-            <xs:element type="headlineType" name="headline"/>
             <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
             <xs:element type="imageType" name="image"/>
@@ -342,7 +341,6 @@
 
     <xs:complexType name="viewBlockType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
-            <xs:element type="headlineType" name="headline"/>
             <xs:element type="labelType" name="label"/>
             <xs:element type="itemsType" name="items"/>
             <xs:element type="imageType" name="image"/>

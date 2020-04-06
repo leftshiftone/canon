@@ -1,7 +1,6 @@
 package canon.parser.xml.validation
 
 import canon.parser.xml.upgrade.xslt.XSLTTransformSupport
-import canon.exception.CanonException
 import org.xml.sax.SAXException
 import java.io.InputStream
 import java.nio.charset.StandardCharsets

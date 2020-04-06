@@ -5,6 +5,8 @@ import canon.exception.CanonException
 import canon.model.Foreach
 import canon.model.If
 import canon.parser.xml.strategy.*
+import canon.parser.xml.upgrade.CanonUpgradeHandler
+import canon.parser.xml.upgrade.xslt.XSLTUpgradeHandler
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
@@ -17,7 +19,7 @@ import java.util.*
 import javax.xml.parsers.DocumentBuilderFactory
 import kotlin.text.Charsets.UTF_8
 
-open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
+open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpgradeHandler(), val customStrategies: (String) -> Optional<AbstractParseStrategy<IRenderable>> = { Optional.empty() }) {
 
 
     companion object {
@@ -47,10 +49,8 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "bold" -> BoldStrategy()
             "break" -> BreakStrategy()
             "button" -> ButtonStrategy()
-            "calendar" -> CalendarStrategy()
             "camera" -> CameraStrategy()
             "carousel" -> CarouselStrategy()
-            "checkbox" -> CheckboxStrategy()
             "choice" -> ChoiceStrategy()
             "codeReader" -> CodeReaderStrategy()
             "col" -> ColStrategy()
@@ -61,6 +61,7 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "italic" -> ItalicStrategy()
             "item" -> ItemStrategy()
             "items" -> ItemsStrategy()
+            "label" -> LabelStrategy()
             "link" -> LinkStrategy()
             "map" -> MapStrategy()
             "multipleChoice" -> MultipleChoiceStrategy()
@@ -80,9 +81,8 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             "submit" -> SubmitStrategy()
             "suggestion" -> SuggestionStrategy()
             "table" -> TableStrategy()
-            "text" -> OldTextStrategy()
-            "#text" -> OldTextStrategy(true)
-            "textInput" -> TextInputStrategy()
+            "text" -> TextStrategy()
+            "#text" -> LabelStrategy(true)
             "textarea" -> TextareaStrategy()
             "trigger" -> TriggerStrategy()
             "upload" -> UploadStrategy()
@@ -92,14 +92,22 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
     }
 
     @JvmOverloads
-    fun parse(stream: InputStream, validate: Boolean = true): List<IRenderable> {
-        return parse(stream.reader(StandardCharsets.UTF_8).readText(), validate)
+    fun parse(stream: InputStream, version: String?, validate: Boolean = true): List<IRenderable> {
+        return parse(stream.reader(StandardCharsets.UTF_8).readText(), version, validate)
     }
 
     @JvmOverloads
-    fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+    fun parse(str: String, version: String?, validate: Boolean = true): List<IRenderable> {
         var xml = str.replace("&", "&amp;")
-        xml = "<markup><container>$xml</container></markup>"
+        if(canonUpgradeHandler.isUpgradeRequired(version)){
+            val upgradedXML = canonUpgradeHandler.upgrade(xml, version)
+            return parse(upgradedXML,validate)
+        }
+        return parse(xml,validate)
+    }
+
+    private fun parse(str: String, validate: Boolean = true): List<IRenderable> {
+        var xml = "<markup><container>$str</container></markup>"
         if (validate) {
             val validation = getValidator().validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())
@@ -135,14 +143,14 @@ open class CanonXmlParser(val customStrategies: (String) -> Optional<AbstractPar
             }
         }
 
-        if (node.nodeName == "#comment")
+        if (node.nodeName == "#comment" || node.nodeName =="comment")
             return
         if (node.nodeName == "markup") {
             toRenderables(node.childNodes, renderables)
             return
         }
         // FIXME: remove workaround
-        if (node.nodeName == "text" || node.nodeName == "#text") {
+        if (node.nodeName == "label" || node.nodeName == "#text") {
             if (node.textContent.isBlank())
                 return
         }

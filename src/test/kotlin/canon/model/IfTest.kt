@@ -9,16 +9,16 @@ class IfTest {
 
     @Test
     fun `test if with true`() {
-        val renderable = If("{{true}}", Text(null, null, "text"))
+        val renderable = If("{{true}}", Label(null, null, "label"))
 
         val mapped = renderable.accept(GaiaVisitor(mapOf(), TestEvaluator()), TestEvaluator())
         assertEquals(1, mapped.size)
-        assertEquals(mapped[0]["text"], "text")
+        assertEquals(mapped[0]["text"], "label")
     }
 
     @Test
     fun `test if with false`() {
-        val renderable = If("{{false}}", Text(null, null, "text"))
+        val renderable = If("{{false}}", Label(null, null, "label"))
 
         val mapped = renderable.accept(GaiaVisitor(mapOf(), TestEvaluator()), TestEvaluator())
         assertEquals(0, mapped.size)

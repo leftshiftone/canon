@@ -18,7 +18,7 @@ Bpmn-Designers daran das er in der Behaviour Übersicht einen grauen Label mit d
 mit der Bezeichnung "inaktiv" bei dem Behaviour.
 
 ----
-<text>abc</text>
+<label>abc</label>
 ----
 
 // end::on-off-switch[]

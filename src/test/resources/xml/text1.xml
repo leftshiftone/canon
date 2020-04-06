@@ -1,1 +1,1 @@
-Text
+<text class="text" id="text" name="usefulInput" placeholder="abc" value="def" regex="[0-9][a-z]"/>

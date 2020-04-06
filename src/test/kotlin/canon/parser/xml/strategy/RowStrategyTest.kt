@@ -11,7 +11,7 @@ class RowStrategyTest {
     @Test
     fun testParse() {
         val xml = "<row id='testId' class='testClass'>" +
-                "<text id='testId2' class='testClass'>test</text>" +
+                "<label id='testId2' class='testClass'>test</label>" +
                 "</row>"
         val parsed = RowStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 

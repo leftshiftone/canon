@@ -1,6 +1,6 @@
 <form name="outerForm">
-        <text>test</text>
+        <label>label</label>
         <form name="innerForm">
-            <text>Inner test</text>
+            <label>Inner label</label>
         </form>
     </form>

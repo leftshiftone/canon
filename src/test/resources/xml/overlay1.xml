@@ -8,7 +8,7 @@
                 <block>
                     <headline>WOW!</headline>
                 </block>
-                <textInput name="textInput"/>
+                <label name="label"/>
                 <submit>weiter</submit>
             </form>
         </overlay>

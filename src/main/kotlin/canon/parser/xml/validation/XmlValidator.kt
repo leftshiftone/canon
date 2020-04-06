@@ -1,5 +1,6 @@
 package canon.parser.xml.validation
 
+import canon.parser.xml.upgrade.xslt.XSLTTransformSupport
 import canon.exception.CanonException
 import org.xml.sax.SAXException
 import java.io.InputStream
@@ -24,8 +25,17 @@ class XmlValidator(xsdStream: InputStream) {
             val schema = factory.newSchema(StreamSource(xsdStream))
             this.validator = schema.newValidator()
         } catch (e: SAXException) {
-            throw CanonException(e)
+            throw RuntimeException(e)
         }
+    }
+
+    /**
+     * Provides the canon version used in the validation
+     *
+     * @return version of canon
+     */
+    fun getVersion(): String {
+        return XSLTTransformSupport.getCanonVersion()
     }
 
     /**
@@ -41,8 +51,7 @@ class XmlValidator(xsdStream: InputStream) {
         } catch (e: Exception) {
             if (e is SAXException)
                 return XmlValidation.Failure(e)
-
-            throw CanonException(e)
+            throw java.lang.RuntimeException(e)
         }
     }
 

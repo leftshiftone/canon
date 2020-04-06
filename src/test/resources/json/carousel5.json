@@ -11,8 +11,8 @@
                   "type": "headline"
                 },
                 {
-                  "text": "first text",
-                  "type": "text"
+                  "text": "first label",
+                  "type": "label"
                 }
               ],
               "type": "block"
@@ -24,8 +24,8 @@
                   "type": "headline"
                 },
                 {
-                  "text": "first text",
-                  "type": "text"
+                  "text": "first label",
+                  "type": "label"
                 }
               ],
               "type": "block"

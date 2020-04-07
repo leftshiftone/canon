@@ -9,11 +9,9 @@
         },
         {
           "name": "b",
-          "elements": [{
-            "type": "label",
-            "text": "Text"
-          }],
+          "elements": [ ],
           "id": "01",
+          "text": "Text",
           "type": "button",
           "value": "eyJwYXlsb2FkIjoiYSJ9"
         },

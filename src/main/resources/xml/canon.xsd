@@ -342,7 +342,6 @@
     <xs:complexType name="viewBlockType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="labelType" name="label"/>
-            <xs:element type="itemsType" name="items"/>
             <xs:element type="imageType" name="image"/>
             <xs:element type="boldType" name="bold"/>
             <xs:element type="italicType" name="italic"/>

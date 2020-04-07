@@ -18,8 +18,21 @@ class ButtonStrategyTest {
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
         assertEquals("testName", parsed.name)
+        assertEquals("testText", parsed.text)
         assertEquals("{\"payload\":\"testValue\"}", Base64.decode(parsed.value).toString())
+    }
 
+    @Test
+    fun testParse2() {
+        val xml = "<button id='testId' class='testClass' text='testText' name='testName' value='testValue'>\n\n<label>testText</label></button>"
+        val parsed = ButtonStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+
+        assertNotNull(parsed)
+        assertEquals("testId", parsed.id)
+        assertEquals("testClass", parsed.`class`)
+        assertEquals("testName", parsed.name)
+        assertEquals(null, parsed.text)
+        assertEquals("{\"payload\":\"testValue\"}", Base64.decode(parsed.value).toString())
     }
 
 }

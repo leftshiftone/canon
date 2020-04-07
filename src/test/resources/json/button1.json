@@ -1,11 +1,9 @@
 [ [ {
   "elements" : [ {
-    "elements" : [ {
-      "text" : "test",
-      "type" : "label"
-    } ],
+    "elements" : [ ],
     "name" : "result",
     "type" : "button",
+    "text" : "test",
     "value" : "eyJwYXlsb2FkIjoiIn0="
   }, {
     "elements" : [ {

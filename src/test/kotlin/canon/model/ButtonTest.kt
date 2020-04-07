@@ -11,10 +11,11 @@ class ButtonTest {
     @Test
     fun testButtonMapping() {
         val mapped = Button("testId", "testClass",
-                "testName", Base64.encode(mapOf("payload" to "testValue")), ArrayList()).toMap(HashMap(), TestEvaluator())
+                "testName", Base64.encode(mapOf("payload" to "testValue")), "testText", ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
+        assertEquals(5, mapped.size)
         assertEquals("testName", mapped.get("name"))
+        assertEquals("testText", mapped.get("text"))
         assertEquals("eyJwYXlsb2FkIjoidGVzdFZhbHVlIn0=", mapped.get("value"))
     }
 }

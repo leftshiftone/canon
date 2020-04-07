@@ -1,0 +1,7 @@
+<button>
+<block>
+    <label>test</label>
+    <image src="/img"/>
+    <button>test</button>
+</block>
+</button>

@@ -51,6 +51,18 @@ class CanonXmlParserTest {
     fun table2() = parseXml(CanonXmlParser(),"/xml/table2.xml", false)
 
     @Test
+    fun button1() = parseXml(CanonXmlParser(),"/xml/button1.xml", true)
+
+    @Test
+    fun button2() = parseXml(CanonXmlParser(),"/xml/button2.xml", false)
+
+    @Test
+    fun button3() = parseXml(CanonXmlParser(),"/xml/button3.xml", false)
+
+    @Test
+    fun button4() = parseXml(CanonXmlParser(),"/xml/button4.xml", false)
+
+    @Test
     fun carousel1() = parseXml(CanonXmlParser(),"/xml/carousel1.xml", false)
 
     @Test

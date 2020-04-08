@@ -438,6 +438,72 @@ internal class XSLTTransformerTest {
                                                         <!-- textInput element was replaced with text-->
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <automaticUpgraded/>
+                                                    """.trimIndent()),
+            /*****************************************ATREUS EXPRESSION TRANSFORMATIONS ******************************************************/
+            mapOf("name" to "atreus expression with single quotes can me migrated",
+                    "givenXml" to """
+                                                       <text if="{{eq(${'$'}someContextVar,'2')}}">this is the text</text>
+                                                    """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <!-- text element was replaced with label--><label if="{{eq(${'$'}someContextVar,'2')}}">this is the text</label><automaticUpgraded/>
+                                                    """.trimIndent()),
+            mapOf("name" to "atreus expression with double quotes can me migrated",
+                    "givenXml" to """
+                                                       <text if='{{eq(${'$'}someContextVar,"2")}}'>this is the text</text>
+                                                    """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <!-- text element was replaced with label--><label if="{{eq(${'$'}someContextVar,&quot;2&quot;)}}">this is the text</label><automaticUpgraded/>
+                                                    """.trimIndent()),
+            mapOf("name" to "atreus expression with double quotes can me migrated",
+                    "givenXml" to """
+                                                       <block if='{{or(isNull(${'$'}euCivic?), eq(${'$'}employmentPermission?, "yes"), and(eq(${'$'}euCivic?, "no"), isNull(${'$'}employmentPermission?) ) )}}' class="row no-gutters justify-content-center employment-permission">
+                                                        <block class="col">
+                                                            <block class="row">
+                                                                <text class="bold uppercase">Deine Beschäftigungspapiere</text>
+                                                            </block>
+                                                            <block class="row">
+                                                                <block class="col">
+                                                                    <upload maxCompressSize="1" maxSize="5" name="employment_permission_upload" accept="pdf,jpg,jpeg,png"></upload>
+                                                                </block>
+                                                                <block if="{{eq(${'$'}isMobile, false)}}" class="col">
+                                                                    <trigger name="employment_permission"></trigger>
+                                                                </block>
+                                                            </block>
+                                                            <block class="row">
+                                                                <block class="col">
+                                                                    <text>Datei hochladen</text>
+                                                                </block>
+                                                                <block if="{{eq(${'$'}isMobile, false)}}" class="col">
+                                                                    <text>Foto machen</text>
+                                                                </block>
+                                                            </block>
+                                                        </block>
+                                                    </block>
+                                                    """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <block if="{{or(isNull(${'$'}euCivic?), eq(${'$'}employmentPermission?, &quot;yes&quot;), and(eq(${'$'}euCivic?, &quot;no&quot;), isNull(${'$'}employmentPermission?) ) )}}" class="row no-gutters justify-content-center employment-permission">
+                                                            <block class="col">
+                                                                <block class="row">
+                                                                    <!-- text element was replaced with label--><label class="bold uppercase">Deine Beschäftigungspapiere</label><automaticUpgraded/>
+                                                                </block>
+                                                                <block class="row">
+                                                                    <block class="col">
+                                                                        <upload maxCompressSize="1" maxSize="5" name="employment_permission_upload" accept="pdf,jpg,jpeg,png"/>
+                                                                    </block>
+                                                                    <block if="{{eq(${'$'}isMobile, false)}}" class="col">
+                                                                        <trigger name="employment_permission"/>
+                                                                    </block>
+                                                                </block>
+                                                                <block class="row">
+                                                                    <block class="col">
+                                                                        <!-- text element was replaced with label--><label>Datei hochladen</label><automaticUpgraded/>
+                                                                    </block>
+                                                                    <block if="{{eq(${'$'}isMobile, false)}}" class="col">
+                                                                        <!-- text element was replaced with label--><label>Foto machen</label><automaticUpgraded/>
+                                                                    </block>
+                                                                </block>
+                                                            </block>
+                                                        </block>
                                                     """.trimIndent())
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {

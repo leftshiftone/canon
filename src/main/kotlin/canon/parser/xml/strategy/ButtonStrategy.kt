@@ -14,7 +14,13 @@ open class ButtonStrategy : AbstractParseStrategy<Button>() {
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
-        return if(node.firstChild.nodeName == "#text" && node.firstChild.textContent.trim().isNotEmpty()) {
+        var onlyText = true
+
+        for(i in 0 until node.childNodes.length)
+            if(node.childNodes.item(i).nodeName != "#text" && node.childNodes.item(i).nodeName != "#comment")
+                onlyText = false
+
+        return if(onlyText) {
             Button(id, `class`, name, Base64.encode(mapOf("payload" to value)), node.textContent, ArrayList())
         } else {
             Button(id, `class`, name, Base64.encode(mapOf("payload" to value)), null, factory(node))

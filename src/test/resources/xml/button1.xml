@@ -1,5 +1,7 @@
 <button>test</button>
 
+<button><!-- test -->test</button>
+
 <button>
 test
 test2

@@ -2,8 +2,20 @@
   "elements" : [ {
     "elements" : [ ],
     "name" : "result",
-    "type" : "button",
     "text" : "test",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ ],
+    "name" : "result",
+    "text" : "test",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ ],
+    "name" : "result",
+    "text" : "\ntest\ntest2\n",
+    "type" : "button",
     "value" : "eyJwYXlsb2FkIjoiIn0="
   }, {
     "elements" : [ {

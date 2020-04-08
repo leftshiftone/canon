@@ -54,7 +54,7 @@ class CanonXmlParserTest {
     fun button1() = parseXml(CanonXmlParser(),"/xml/button1.xml", true)
 
     @Test
-    fun button2() = parseXml(CanonXmlParser(),"/xml/button2.xml", false)
+    fun button2() = parseXml(CanonXmlParser(),"/xml/button2.xml", true)
 
     @Test
     fun button3() = parseXml(CanonXmlParser(),"/xml/button3.xml", false)

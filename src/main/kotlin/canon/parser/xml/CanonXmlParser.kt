@@ -161,7 +161,9 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
 
     fun unescapeAtreusExpression(expression: String?): String {
         expression ?: return ""
-        return expression.replace("&quot;", "\"", ignoreCase = true)
+        return expression
+                .replace("""(?<!\\)&quot;""".toRegex(RegexOption.IGNORE_CASE), "\"")
+                .replace("""\\&quot;""".toRegex(RegexOption.IGNORE_CASE), "&quot;")
     }
 
     fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {

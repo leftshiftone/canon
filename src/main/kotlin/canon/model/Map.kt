@@ -39,7 +39,7 @@ data class Map(@JsonIgnore override val id: String?,
         builder.put("routePoints", routePoints) {evaluator.evaluate(it, context)}
         builder.put("centerBrowserLocation", centerBrowserLocation)
         builder.put("required", required)
-        builder.put("zoom", zoom, 8) {evaluator.evaluate(it, context).toIntOrNull()?:8}
+        builder.put("zoom", zoom, 8.0) {evaluator.evaluate(it, context).toDoubleOrNull()?:8}
         builder.put("maxSelections", maxSelections)
 
         return builder.toMap().plus(toIdAndClassMap(context, evaluator))

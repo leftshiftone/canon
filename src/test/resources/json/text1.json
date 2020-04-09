@@ -2,10 +2,10 @@
   "elements" : [ {
     "regex" : "[0-9][a-z]",
     "name" : "usefulInput",
-    "id" : "textinput",
+    "id" : "text",
     "placeholder" : "abc",
-    "type" : "textInput",
-    "class" : "textinput",
+    "type" : "text",
+    "class" : "text",
     "value" : "def",
     "required" : true
   } ],

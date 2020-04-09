@@ -1,4 +1,4 @@
-<text>abc</text>
+<label>abc</label>
     <block>
         <choice name="peter">hallo</choice>
     </block>

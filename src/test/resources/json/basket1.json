@@ -11,8 +11,8 @@
                   "type": "headline"
                 },
                 {
-                  "text": "first text",
-                  "type": "text"
+                  "text": "first label",
+                  "type": "label"
                 },
                 {
                   "elements": [
@@ -21,8 +21,8 @@
                       "type": "headline"
                     },
                     {
-                      "text": "second text",
-                      "type": "text"
+                      "text": "second label",
+                      "type": "label"
                     }
                   ],
                   "type": "block"

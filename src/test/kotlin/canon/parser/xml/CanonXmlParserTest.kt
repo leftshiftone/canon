@@ -8,8 +8,12 @@ import java.util.concurrent.TimeUnit
 class CanonXmlParserTest {
 
     private fun parseXml(cannonParser: CanonXmlParser, path: String, expectSuccess: Boolean = true) {
+       parseXml(cannonParser,path, "2.0.0",expectSuccess)
+    }
+
+    private fun parseXml(cannonParser: CanonXmlParser, path: String, version: String, expectSuccess: Boolean = true) {
         try {
-            val result = cannonParser.parse(CanonXmlParserTest::class.java.getResourceAsStream(path))
+            val result = cannonParser.parse(CanonXmlParserTest::class.java.getResourceAsStream(path), version)
             Assertions.assertNotNull(result)
             Assertions.assertTrue(result.isNotEmpty())
         } catch (e: Exception) {
@@ -26,16 +30,19 @@ class CanonXmlParserTest {
     fun testComplex2() = parseXml(CanonXmlParser(),"/xml/complex2.xml")
 
     @Test
+    fun testComplexVersion190() = parseXml(CanonXmlParser(),"/xml/complex_version_1.9.0.xml", "1.9.0")
+
+    @Test
     fun span() = parseXml(CanonXmlParser(),"/xml/span.xml", false)
 
     @Test
     fun items() = parseXml(CanonXmlParser(),"/xml/items.xml")
 
     @Test
-    fun text1() = parseXml(CanonXmlParser(),"/xml/text1.xml")
+    fun text1() = parseXml(CanonXmlParser(),"/xml/label1.xml")
 
     @Test
-    fun text2() = parseXml(CanonXmlParser(),"/xml/text2.xml")
+    fun text2() = parseXml(CanonXmlParser(),"/xml/label2.xml")
 
     @Test
     fun table1() = parseXml(CanonXmlParser(),"/xml/table1.xml")
@@ -75,18 +82,6 @@ class CanonXmlParserTest {
 
     @Test
     fun form5() = parseXml(CanonXmlParser(),"/xml/form5.xml", false)
-
-    @Test
-    fun datepicker1() = parseXml(CanonXmlParser(),"/xml/datepicker1.xml", false)
-
-    @Test
-    fun datepicker2() = parseXml(CanonXmlParser(),"/xml/datepicker2.xml", false)
-
-    @Test
-    fun datepicker3() = parseXml(CanonXmlParser(),"/xml/datepicker3.xml", false)
-
-    @Test
-    fun datepicker4() = parseXml(CanonXmlParser(),"/xml/datepicker4.xml", false)
 
     @Test
     fun transition1() = parseXml(CanonXmlParser(),"/xml/transition1.xml", false)
@@ -161,6 +156,36 @@ class CanonXmlParserTest {
         }
         barrier.countDown()
         endBarrier.await(60, TimeUnit.SECONDS)
+    }
+
+    @Test
+    fun unescapingNullReturnsEmptyString() {
+        val result = CanonXmlParser().unescapeAtreusExpression(null)
+        Assertions.assertEquals(result, "")
+    }
+
+    @Test
+    fun unescapeQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ &quot;X&quot; }}")
+        Assertions.assertEquals("""{{ "X" }}""", result)
+    }
+
+    @Test
+    fun unescapeEscapedQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ \\&quot;X\\&quot; }}")
+        Assertions.assertEquals("""{{ &quot;X&quot; }}""", result)
+    }
+
+    @Test
+    fun unescapeUppercaseQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ &QUOT;X&QUOT; }}")
+        Assertions.assertEquals("""{{ "X" }}""", result)
+    }
+
+    @Test
+    fun unescapeUppercaseEscapedQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ \\&QUOT;X\\&QUOT; }}")
+        Assertions.assertEquals("""{{ &quot;X&quot; }}""", result)
     }
 
 }

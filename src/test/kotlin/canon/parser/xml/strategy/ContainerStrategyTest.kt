@@ -11,7 +11,7 @@ class ContainerStrategyTest {
     @Test
     fun testParse() {
         val xml = "<container id='testId' class='testClass' name='testName'>" +
-                "<text id='testId2' class='testClass'>test</text>" +
+                "<label id='testId2' class='testClass'>test</label>" +
                 "</container>"
         val parsed = ContainerStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 

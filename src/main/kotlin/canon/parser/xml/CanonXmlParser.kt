@@ -137,8 +137,8 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
 
         val wrap: (it: IRenderable) -> IRenderable = {
             when {
-                attributes.containsKey("if") -> If(attributes["if"]!!.trim(), it)
-                attributes.containsKey("foreach") -> Foreach(attributes["foreach"], it)
+                attributes.containsKey("if") -> If(unescapeAtreusExpression(attributes["if"]?.trim()), it)
+                attributes.containsKey("foreach") -> Foreach(unescapeAtreusExpression(attributes["foreach"]), it)
                 else -> it
             }
         }
@@ -157,6 +157,13 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
 
         val strategy = resolveStrategy(node.nodeName)
         renderables.add(wrap(strategy.parse(node, this::toRenderables)))
+    }
+
+    fun unescapeAtreusExpression(expression: String?): String {
+        expression ?: return ""
+        return expression
+                .replace("""(?<!\\)&quot;""".toRegex(RegexOption.IGNORE_CASE), "\"")
+                .replace("""\\&quot;""".toRegex(RegexOption.IGNORE_CASE), "&quot;")
     }
 
     fun getAttributes(attributes: NamedNodeMap?): Map<String, String> {

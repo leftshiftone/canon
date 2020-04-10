@@ -170,4 +170,34 @@ class CanonXmlParserTest {
         endBarrier.await(60, TimeUnit.SECONDS)
     }
 
+    @Test
+    fun unescapingNullReturnsEmptyString() {
+        val result = CanonXmlParser().unescapeAtreusExpression(null)
+        Assertions.assertEquals(result, "")
+    }
+
+    @Test
+    fun unescapeQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ &quot;X&quot; }}")
+        Assertions.assertEquals("""{{ "X" }}""", result)
+    }
+
+    @Test
+    fun unescapeEscapedQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ \\&quot;X\\&quot; }}")
+        Assertions.assertEquals("""{{ &quot;X&quot; }}""", result)
+    }
+
+    @Test
+    fun unescapeUppercaseQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ &QUOT;X&QUOT; }}")
+        Assertions.assertEquals("""{{ "X" }}""", result)
+    }
+
+    @Test
+    fun unescapeUppercaseEscapedQuot() {
+        val result = CanonXmlParser().unescapeAtreusExpression("{{ \\&QUOT;X\\&QUOT; }}")
+        Assertions.assertEquals("""{{ &quot;X&quot; }}""", result)
+    }
+
 }

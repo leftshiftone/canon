@@ -21,9 +21,9 @@ open class ButtonStrategy : AbstractParseStrategy<Button>() {
                 onlyText = false
 
         return if(onlyText) {
-            Button(id, `class`, name, Base64.encode(mapOf("payload" to value)), node.textContent, ArrayList())
+            Button(id, `class`, node.textContent, name, Base64.encode(mapOf("payload" to value)), ArrayList())
         } else {
-            Button(id, `class`, name, Base64.encode(mapOf("payload" to value)), null, factory(node))
+            Button(id, `class`, null, name, Base64.encode(mapOf("payload" to value)), factory(node))
         }
     }
 }

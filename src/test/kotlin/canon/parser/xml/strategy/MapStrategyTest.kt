@@ -10,7 +10,7 @@ class MapStrategyTest {
     @Test
     fun testParse() {
         val xml = "<map id='testId' class='testClass' name='testName' src='testSrc' " +
-                "mapType='type' centerLng='12.0' centerLat='10.0' markerIcon='static/icons/icon1.svg' " +
+                "mapType='type' centerLng='12.0' centerLat='10.0' zoom='9' markerIcon='static/icons/icon1.svg' " +
                 "selectedMarkerIcon='static/icons/icon2.svg' routeStartIcon='static/icons/start.png' " +
                 "routeEndIcon='static/icons/end.png' routePoints='45.3,46.8;45.8,44.7'></map>"
         val parsed = MapStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
@@ -30,7 +30,7 @@ class MapStrategyTest {
         assertThat(parsed.routePoints).isEqualTo("45.3,46.8;45.8,44.7")
         assertThat(parsed.centerBrowserLocation).isFalse()
         assertThat(parsed.required).isFalse()
-        assertThat(parsed.zoom).isEqualTo("8")
+        assertThat(parsed.zoom).isEqualTo("9")
 
     }
 

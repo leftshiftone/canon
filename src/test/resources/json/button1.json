@@ -1,0 +1,46 @@
+[ [ {
+  "elements" : [ {
+    "elements" : [ ],
+    "name" : "result",
+    "text" : "test",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ ],
+    "name" : "result",
+    "text" : "test",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ ],
+    "name" : "result",
+    "text" : "\ntest\ntest2\n",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ {
+      "src" : "/img",
+      "type" : "image"
+    } ],
+    "name" : "result",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  }, {
+    "elements" : [ {
+      "elements" : [ {
+        "text" : "test",
+        "type" : "label"
+      }, {
+        "src" : "/img",
+        "type" : "image"
+      } ],
+      "type" : "block"
+    } ],
+    "name" : "result",
+    "type" : "button",
+    "value" : "eyJwYXlsb2FkIjoiIn0="
+  } ],
+  "index" : 0,
+  "type" : "container",
+  "timestamp" : 0
+} ] ]

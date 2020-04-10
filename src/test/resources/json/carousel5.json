@@ -38,8 +38,9 @@
         },
         {
           "name": "result",
-          "text": "Next",
+          "elements": [ ],
           "type": "button",
+          "text": "Next",
           "value": "eyJwYXlsb2FkIjoiIn0="
         }
       ],

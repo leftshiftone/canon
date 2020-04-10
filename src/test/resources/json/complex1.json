@@ -16,8 +16,9 @@
         },
         {
           "name": "b",
-          "text": "Text",
+          "elements": [ ],
           "type": "button",
+          "text": "Text",
           "value": "eyJwYXlsb2FkIjoiYSJ9"
         },
         {

@@ -1,0 +1,19 @@
+<button>test</button>
+
+<button><!-- test -->test</button>
+
+<button>
+test
+test2
+</button>
+
+<button>
+<image src="/img"/>
+</button>
+
+<button>
+<block>
+    <label>test</label>
+    <image src="/img"/>
+</block>
+</button>

@@ -5,7 +5,7 @@
     "src" : "src",
     "name" : "name",
     "mapType" : "osm",
-    "zoom" : 8,
+    "zoom" : 8.0,
     "centerLat" : 0.0,
     "type" : "map",
     "required" : false,

@@ -220,7 +220,7 @@ internal class XSLTTransformerTest {
                 <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
             </col>
             <col>
-                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
         </row>
     </table>

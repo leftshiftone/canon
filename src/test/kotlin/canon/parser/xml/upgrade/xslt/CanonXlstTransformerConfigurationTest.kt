@@ -5,7 +5,7 @@ import org.assertj.core.api.Assertions
 import org.junit.jupiter.api.DynamicTest
 import org.junit.jupiter.api.TestFactory
 
-internal class CanonxsltTransformerConfigurationTest {
+internal class CanonXsltTransformerConfigurationTest {
 
 
     @TestFactory

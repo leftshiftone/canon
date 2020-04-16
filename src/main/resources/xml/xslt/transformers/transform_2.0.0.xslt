@@ -15,54 +15,48 @@
         </xsl:copy>
     </xsl:template>
 
-    <xsl:template match="text">
-        <!-- text was replaced with label -->
-        <xsl:comment> text element was replaced with label</xsl:comment>
-        <xsl:if test="./@name"> <xsl:comment>attribute name of element text was removed when converting it to label</xsl:comment></xsl:if>
-        <label><xsl:apply-templates select="@*|node()"/></label>
-        <automaticUpgraded/>
-    </xsl:template>
 
-    <!-- attribute name of element text was removed when converting it to label -->
+    <xsl:template match="text">
+        <label><xsl:apply-templates select="@*|node()"/></label>
+    </xsl:template>
     <xsl:template match="text/@name"/>
 
-    <!-- textInput element was replaced with text -->
     <xsl:template match="textInput">
-        <xsl:comment> textInput element was replaced with text</xsl:comment>
         <text><xsl:apply-templates select="@*|node()"/></text>
-        <automaticUpgraded/>
     </xsl:template>
 
 
     <xsl:template match="textInput/node()"/>
-    <!-- datePicker element was removed -->
     <xsl:template match="datePicker">
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+             whether markup needs manual a manual action or not -->
+        <xsl:comment>manual action needed</xsl:comment>
         <xsl:comment>datePicker element was removed</xsl:comment>
-        <automaticUpgraded/>
     </xsl:template>
 
-    <!-- dateTimePicker element was removed -->
     <xsl:template match="dateTimePicker">
-        <xsl:comment> dateTimePicker element was removed</xsl:comment>
-        <automaticUpgraded/>
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+             whether markup needs manual a manual action or not -->
+        <xsl:comment>manual action needed</xsl:comment>
+        <xsl:comment>dateTimePicker element was removed</xsl:comment>
     </xsl:template>
 
-    <!-- Calendar element was removed -->
     <xsl:template match="calendar">
-        <xsl:comment> Calendar element was removed</xsl:comment>
-        <automaticUpgraded/>
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+             whether markup needs manual a manual action or not -->
+        <xsl:comment>manual action needed</xsl:comment>
+        <xsl:comment>calendar element was removed</xsl:comment>
     </xsl:template>
 
-    <!-- Checkbox element was commented out -->
     <xsl:template match="checkbox">
-        <xsl:comment>Checkbox element was commented out</xsl:comment>
-        <xsl:text disable-output-escaping="yes">
-            &lt;!-- before migration: </xsl:text>
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+             whether markup needs manual a manual action or not -->
+        <xsl:comment>manual action needed</xsl:comment>
+        <xsl:text disable-output-escaping="yes">&lt;!--use choice instead of checkbox: </xsl:text>
         <xsl:copy>
             <xsl:apply-templates select="@*|node()" />
         </xsl:copy>
-        <xsl:text disable-output-escaping="yes"> --&gt;</xsl:text>
-        <automaticUpgraded/>
+        <xsl:text disable-output-escaping="yes">--&gt;</xsl:text>
     </xsl:template>
 
 </xsl:stylesheet>

@@ -170,7 +170,7 @@ internal class XSLTTransformerTest {
     <items>
         <item foreach="type in lawyer.languages">type</item>
     </items>
-    <!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 </block>
 </carousel>
 <image src="a" width="100" height="100" alt="b"/>
@@ -179,7 +179,7 @@ internal class XSLTTransformerTest {
 <block>
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
-<!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 <headline>{lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
 <slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
@@ -188,39 +188,39 @@ internal class XSLTTransformerTest {
         <reelValue valueType="digit" value="3"/>
     </reel>
 </slotmachine>
-<!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 </block>
 <block>
 <form>
-    <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
-    <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
 </form>
 <block>
-    <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
-    <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
 </block>
 <block>
-    <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
     <block>
-        <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+        <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
     </block>
 </block>
 <form>
     <table>
         <row>
             <col>
-                <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
             <col>
-                <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
         </row>
         <row>
             <col>
-                <!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
             <col>
-                <!--use choice instead of checkbox: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>-->
             </col>
         </row>
     </table>
@@ -277,35 +277,35 @@ internal class XSLTTransformerTest {
                                                        <calendar></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--calendar element was removed-->
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
                     "givenXml" to """
                                                        <calendar/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--calendar element was removed-->
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass" name="testName"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--calendar element was removed-->
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
                     "givenXml" to """
                                                        <calendar id="testId" name="testName"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--calendar element was removed-->
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--calendar element was removed-->
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATEPICKER TRANSFORMATIONS ******************************************************/
@@ -314,35 +314,35 @@ internal class XSLTTransformerTest {
                                                        <datePicker></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
                     "givenXml" to """
                                                        <datePicker/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING" size="0"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
                     "givenXml" to """
                                                        <datePicker size="0"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATETIMEPICKER TRANSFORMATIONS ******************************************************/
@@ -351,7 +351,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--dateTimePicker element was removed-->
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
                                                         
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
@@ -359,7 +359,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--dateTimePicker element was removed-->
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
                                                         
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
@@ -367,7 +367,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--dateTimePicker element was removed-->
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
                                                         
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
@@ -375,7 +375,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--dateTimePicker element was removed-->
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
                                                         
                                                     """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
@@ -383,7 +383,7 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker size="0"></dateTimePicker>
                                                    """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--dateTimePicker element was removed-->
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
                                                         
                                                     """.trimIndent().trimMargin().trim()),
 

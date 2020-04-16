@@ -28,28 +28,28 @@
 
     <xsl:template match="textInput/node()"/>
     <xsl:template match="datePicker">
-        <!-- ATTENTION: the manual action needed comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
              whether markup needs manual a manual action or not -->
         <xsl:comment>manual action needed</xsl:comment>
         <xsl:comment>datePicker element was removed</xsl:comment>
     </xsl:template>
 
     <xsl:template match="dateTimePicker">
-        <!-- ATTENTION: the manual action needed comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
              whether markup needs manual a manual action or not -->
         <xsl:comment>manual action needed</xsl:comment>
         <xsl:comment>dateTimePicker element was removed</xsl:comment>
     </xsl:template>
 
     <xsl:template match="calendar">
-        <!-- ATTENTION: the manual action needed comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
              whether markup needs manual a manual action or not -->
         <xsl:comment>manual action needed</xsl:comment>
         <xsl:comment>calendar element was removed</xsl:comment>
     </xsl:template>
 
     <xsl:template match="checkbox">
-        <!-- ATTENTION: the manual action needed comment is explicitly defined in XSLTUpgradeHandler and is used to determine
+        <!-- ATTENTION: the 'manual action needed' comment is explicitly defined in XSLTUpgradeHandler and is used to determine
              whether markup needs manual a manual action or not -->
         <xsl:comment>manual action needed</xsl:comment>
         <xsl:text disable-output-escaping="yes">&lt;!--use choice instead of checkbox: </xsl:text>

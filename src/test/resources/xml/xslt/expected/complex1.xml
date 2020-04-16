@@ -1,18 +1,18 @@
 <italic>VALUE</italic>
 <video src="src"/>
-        <!-- text element was replaced with label--><label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende ${result.size()} Resultate vorschlagen:</label><automaticUpgraded/>
+        <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende ${result.size()} Resultate vorschlagen:</label>
 <button value="a" name="b">Text</button>
 <carousel>
 <block foreach="$lawyer in $result">
      <headline>{{$lawyer.name}}</headline>
-     <!-- text element was replaced with label--><label>${lawyer.address}</label><automaticUpgraded/>
-     <!-- text element was replaced with label--><label/><automaticUpgraded/>
-     <!-- textInput element was replaced with text--><text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/><automaticUpgraded/>
+     <label>${lawyer.address}</label>
+     <label/>
+     <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
      <items>
           <item>Telefon: ${lawyer.phone}</item>
           <item>Email: ${lawyer.email}</item>
      </items>
-     <!-- text element was replaced with label--><label>Tätigkeitsgebiete</label><automaticUpgraded/>
+     <label>Tätigkeitsgebiete</label>
      <items>
           <item>abc</item>
           <item>
@@ -26,12 +26,11 @@
      <items>
           <item foreach="$topic in $lawyer.topics">$topic</item>
      </items>
-     <!-- text element was replaced with label--><label>Sprachen</label><automaticUpgraded/>
+     <label>Sprachen</label>
      <items>
           <item foreach="$type in $lawyer.languages">$type</item>
      </items>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
      <automaticUpgraded/>
 </block>
 </carousel>
@@ -41,8 +40,7 @@
 <block>
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
-<!--Checkbox element was commented out-->
-<!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
 <automaticUpgraded/>
 <headline>${lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
@@ -52,34 +50,27 @@
           <reelValue valueType="digit" value="3"/>
      </reel>
 </slotmachine>
-<!--Checkbox element was commented out-->
-<!-- before migration: <checkbox name="a" value="b">Text</checkbox> -->
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
 <automaticUpgraded/>
 </block>
 <block>
 <form>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="hello" value="world"/> -->
-     <automaticUpgraded/>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="hello" value="world"/> -->
-     <automaticUpgraded/>
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
+
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
+
 </form>
 <block>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="hello" value="world"/> -->
-     <automaticUpgraded/>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="hello" value="world"/> -->
-     <automaticUpgraded/>
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
+
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
+
 </block>
 <block>
-     <!--Checkbox element was commented out-->
-     <!-- before migration: <checkbox name="hello" value="world"/> -->
+     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
      <automaticUpgraded/>
      <block>
-          <!--Checkbox element was commented out-->
-          <!-- before migration: <checkbox name="hello" value="world"/> -->
+          <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
           <automaticUpgraded/>
      </block>
 </block>
@@ -87,25 +78,21 @@
      <table>
           <row>
                <col>
-                    <!--Checkbox element was commented out-->
-                    <!-- before migration: <checkbox name="hello" value="world"/> -->
+                    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
                     <automaticUpgraded/>
                </col>
                <col>
-                    <!--Checkbox element was commented out-->
-                    <!-- before migration: <checkbox name="hello" value="world"/> -->
+                    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
                     <automaticUpgraded/>
                </col>
           </row>
           <row>
                <col>
-                    <!--Checkbox element was commented out-->
-                    <!-- before migration: <checkbox name="hello" value="world"/> -->
+                    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
                     <automaticUpgraded/>
                </col>
                <col>
-                    <!--Checkbox element was commented out-->
-                    <!-- before migration: <checkbox name="hello" value="world"/> -->
+                    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
                     <automaticUpgraded/>
                </col>
           </row>

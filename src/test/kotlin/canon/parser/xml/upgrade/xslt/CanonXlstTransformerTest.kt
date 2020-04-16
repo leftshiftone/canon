@@ -139,20 +139,20 @@ internal class XSLTTransformerTest {
 </block>"""
         val exptected="""<italic>VALUE</italic>
 <video src="src"/>
-<!-- text element was replaced with label--><label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</label><automaticUpgraded/>
-<!-- text element was replaced with label--><label>    </label><automaticUpgraded/>
+<label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende {result.size()} Resultate vorschlagen:</label>
+<label>    </label>
 <button value="a" name="b">Text</button>
 <carousel>
 <block foreach="lawyer in result">
     <headline>{{lawyer.name}}</headline>
-    <!-- text element was replaced with label--><label>{lawyer.address}</label><automaticUpgraded/>
-    <!-- text element was replaced with label--><label/><automaticUpgraded/>
-    <!-- textInput element was replaced with text--><text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/><automaticUpgraded/>
+    <label>{lawyer.address}</label>
+    <label/>
+    <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
     <items>
         <item>Telefon: {lawyer.phone}</item>
         <item>Email: {lawyer.email}</item>
     </items>
-    <!-- text element was replaced with label--><label>Tätigkeitsgebiete</label><automaticUpgraded/>
+    <label>Tätigkeitsgebiete</label>
     <items>
         <item>abc</item>
         <item>
@@ -166,12 +166,11 @@ internal class XSLTTransformerTest {
     <items>
         <item foreach="topic in lawyer.topics">topic</item>
     </items>
-    <!-- text element was replaced with label--><label>Sprachen</label><automaticUpgraded/>
+    <label>Sprachen</label>
     <items>
         <item foreach="type in lawyer.languages">type</item>
     </items>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
 </block>
 </carousel>
 <image src="a" width="100" height="100" alt="b"/>
@@ -180,8 +179,7 @@ internal class XSLTTransformerTest {
 <block>
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
-<!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
 <headline>{lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
 <slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
@@ -190,50 +188,39 @@ internal class XSLTTransformerTest {
         <reelValue valueType="digit" value="3"/>
     </reel>
 </slotmachine>
-<!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="a" value="b">Text</checkbox> --><automaticUpgraded/>
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
 </block>
 <block>
 <form>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
 </form>
 <block>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
 </block>
 <block>
-    <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
     <block>
-        <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+        <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
     </block>
 </block>
 <form>
     <table>
         <row>
             <col>
-                <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
             </col>
             <col>
-                <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
             </col>
         </row>
         <row>
             <col>
-                <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="hello" value="world"/> --><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
             </col>
             <col>
-                <!--Checkbox element was commented out-->
-            <!-- before migration: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox> --><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>-->
             </col>
         </row>
     </table>
@@ -253,45 +240,36 @@ internal class XSLTTransformerTest {
                     "givenXml" to """                   <text>text</text>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label-->
+                                                        
                                                         <label>text</label>
-                                                        <automaticUpgraded/>
+                                                        
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Simple text tag is transformed to a label and empty spaces are kept",
                 "givenXml" to """                       <text>  </text>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label-->
                                                         <label>  </label>
-                                                        <automaticUpgraded/>
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc">text</text>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label-->
                                                         <label id="abc">text</label>
-                                                        <automaticUpgraded/>
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id, class and if and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc" class=".cs" if="(aaa)">text</text>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
-                                                        <automaticUpgraded/>
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Text tag with attribute id, class, if , name and value is transformed to a label",
                     "givenXml" to """
                                                        <text id="abc" name="textname" class=".cs" if="(aaa)">text</text>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label-->
-                                                        <!--attribute name of element text was removed when converting it to label-->
                                                         <label id="abc" class=".cs" if="(aaa)">text</label>
-                                                        <automaticUpgraded/>
                                                 """.trimIndent().trimMargin().trim()),
             /*****************************************CALENDAR TRANSFORMATIONS ******************************************************/
             mapOf("name" to "Calendar tag without attributes is removed_1",
@@ -299,40 +277,35 @@ internal class XSLTTransformerTest {
                                                        <calendar></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag without attributes is removed_2",
                     "givenXml" to """
                                                        <calendar/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id, class and name is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass" name="testName"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and name removed",
                     "givenXml" to """
                                                        <calendar id="testId" name="testName"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "Calendar tag with attribute id and class is removed",
                     "givenXml" to """
                                                        <calendar id="testId" class="testClass"></calendar>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- Calendar element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--calendar element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATEPICKER TRANSFORMATIONS ******************************************************/
@@ -341,40 +314,35 @@ internal class XSLTTransformerTest {
                                                        <datePicker></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag without attributes is removed_2",
                     "givenXml" to """
                                                        <datePicker/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source and size is removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING" size="0"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute source removed",
                     "givenXml" to """
                                                        <datePicker src="SOME ICAL STRING"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DatePicker tag with attribute size is removed",
                     "givenXml" to """
                                                        <datePicker size="0"></datePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!--datePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--datePicker element was removed-->
                                                 """.trimIndent().trimMargin().trim()),
 
             /*****************************************DATETIMEPICKER TRANSFORMATIONS ******************************************************/
@@ -383,40 +351,40 @@ internal class XSLTTransformerTest {
                                                        <dateTimePicker></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
+                                                        
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag without attributes is removed_2",
                     "givenXml" to """
                                                        <dateTimePicker/>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
+                                                        
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source and size is removed",
                     "givenXml" to """
                                                        <dateTimePicker src="SOME ICAL STRING" size="0"></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
+                                                        
                                                 """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute source removed",
                     "givenXml" to """
                                                        <dateTimePicker src="SOME ICAL STRING"></dateTimePicker>
                                                  """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
+                                                        
                                                     """.trimIndent().trimMargin().trim()),
             mapOf("name" to "DateTimePicker tag with attribute size is removed",
                     "givenXml" to """
                                                        <dateTimePicker size="0"></dateTimePicker>
                                                    """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- dateTimePicker element was removed-->
-                                                        <automaticUpgraded/>
+                                                        <!--manual action needed--><!--dateTimePicker element was removed-->
+                                                        
                                                     """.trimIndent().trimMargin().trim()),
 
             /*****************************************TEXTINPUT TRANSFORMATIONS ******************************************************/
@@ -426,16 +394,16 @@ internal class XSLTTransformerTest {
                                                        <textInput id="abc"/>
                                                     """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- textInput element was replaced with text-->
+                                                        
                                                         <text id="abc"/>
-                                                        <automaticUpgraded/>
+                                                        
                                                     """.trimIndent().trimMargin().trim()),
             mapOf("name" to "TextInput tag with attributes name, placeholder, regex, value, required and class is transformed to a text",
                     "givenXml" to """
                                                        <textInput name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                     """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- textInput element was replaced with text-->
+                                                        
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
                                                         <automaticUpgraded/>
                                                     """.trimIndent()),

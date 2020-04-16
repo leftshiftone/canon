@@ -31,7 +31,6 @@
           <item foreach="$type in $lawyer.languages">$type</item>
      </items>
      <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
-     <automaticUpgraded/>
 </block>
 </carousel>
 <image src="a" width="100" height="100" alt="b"/>
@@ -41,7 +40,6 @@
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
 <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
-<automaticUpgraded/>
 <headline>${lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
 <slider value="3" min="1" max="10" step="1" name="{{$foo}}"/>
@@ -51,7 +49,6 @@
      </reel>
 </slotmachine>
 <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox> -->
-<automaticUpgraded/>
 </block>
 <block>
 <form>
@@ -68,10 +65,8 @@
 </block>
 <block>
      <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-     <automaticUpgraded/>
      <block>
           <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-          <automaticUpgraded/>
      </block>
 </block>
 <form>
@@ -79,21 +74,17 @@
           <row>
                <col>
                     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-                    <automaticUpgraded/>
                </col>
                <col>
                     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-                    <automaticUpgraded/>
                </col>
           </row>
           <row>
                <col>
                     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-                    <automaticUpgraded/>
                </col>
                <col>
                     <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/> -->
-                    <automaticUpgraded/>
                </col>
           </row>
      </table>

@@ -57,7 +57,6 @@
             <xsl:apply-templates select="@*|node()" />
         </xsl:copy>
         <xsl:text disable-output-escaping="yes">--&gt;</xsl:text>
-        <automaticUpgraded/>
     </xsl:template>
 
 </xsl:stylesheet>

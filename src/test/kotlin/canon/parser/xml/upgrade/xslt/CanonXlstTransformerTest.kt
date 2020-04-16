@@ -170,7 +170,7 @@ internal class XSLTTransformerTest {
     <items>
         <item foreach="type in lawyer.languages">type</item>
     </items>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 </block>
 </carousel>
 <image src="a" width="100" height="100" alt="b"/>
@@ -179,7 +179,7 @@ internal class XSLTTransformerTest {
 <block>
 <image src="a" width="100" height="100" alt="b"/>
 <link value="a">b</link>
-<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 <headline>{lawyer.name}</headline>
 <textarea name="ta" value="abc" cols="1" rows="1"/>
 <slider value="3" min="1" max="10" step="1" name="{{foo}}"/>
@@ -188,39 +188,39 @@ internal class XSLTTransformerTest {
         <reelValue valueType="digit" value="3"/>
     </reel>
 </slotmachine>
-<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>--><automaticUpgraded/>
+<!--manual action needed--><!--use choice instead of checkbox: <checkbox name="a" value="b">Text</checkbox>-->
 </block>
 <block>
 <form>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
 </form>
 <block>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
 </block>
 <block>
-    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+    <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
     <block>
-        <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+        <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
     </block>
 </block>
 <form>
     <table>
         <row>
             <col>
-                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
             <col>
-                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
         </row>
         <row>
             <col>
-                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>--><automaticUpgraded/>
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
             </col>
             <col>
-                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="hello" value="world"/>-->
+                <!--manual action needed--><!--use choice instead of checkbox: <checkbox name="ingredients" class="checkbox" id="checkbox" value="ananas" checked="true">Ananas</checkbox>-->
             </col>
         </row>
     </table>
@@ -405,7 +405,7 @@ internal class XSLTTransformerTest {
                     "expectedTransformation" to """
                                                         
                                                         <text name="textInput" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
-                                                        <automaticUpgraded/>
+                                                        
                                                     """.trimIndent()),
             /*****************************************ATREUS EXPRESSION TRANSFORMATIONS ******************************************************/
             mapOf("name" to "atreus expression with single quotes can me migrated",
@@ -413,14 +413,14 @@ internal class XSLTTransformerTest {
                                                        <text if="{{eq(${'$'}someContextVar,'2')}}">this is the text</text>
                                                     """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label--><label if="{{eq(${'$'}someContextVar,'2')}}">this is the text</label><automaticUpgraded/>
+                                                        <label if="{{eq(${'$'}someContextVar,'2')}}">this is the text</label>
                                                     """.trimIndent()),
             mapOf("name" to "atreus expression with double quotes can me migrated",
                     "givenXml" to """
                                                        <text if='{{eq(${'$'}someContextVar,"2")}}'>this is the text</text>
                                                     """.trimIndent().trimMargin().trim(),
                     "expectedTransformation" to """
-                                                        <!-- text element was replaced with label--><label if="{{eq(${'$'}someContextVar,&quot;2&quot;)}}">this is the text</label><automaticUpgraded/>
+                                                        <label if="{{eq(${'$'}someContextVar,&quot;2&quot;)}}">this is the text</label>
                                                     """.trimIndent()),
             mapOf("name" to "atreus expression with double quotes can me migrated",
                     "givenXml" to """
@@ -452,7 +452,7 @@ internal class XSLTTransformerTest {
                                                         <block if="{{or(isNull(${'$'}euCivic?), eq(${'$'}employmentPermission?, &quot;yes&quot;), and(eq(${'$'}euCivic?, &quot;no&quot;), isNull(${'$'}employmentPermission?) ) )}}" class="row no-gutters justify-content-center employment-permission">
                                                             <block class="col">
                                                                 <block class="row">
-                                                                    <!-- text element was replaced with label--><label class="bold uppercase">Deine Beschäftigungspapiere</label><automaticUpgraded/>
+                                                                    <label class="bold uppercase">Deine Beschäftigungspapiere</label>
                                                                 </block>
                                                                 <block class="row">
                                                                     <block class="col">
@@ -464,10 +464,10 @@ internal class XSLTTransformerTest {
                                                                 </block>
                                                                 <block class="row">
                                                                     <block class="col">
-                                                                        <!-- text element was replaced with label--><label>Datei hochladen</label><automaticUpgraded/>
+                                                                        <label>Datei hochladen</label>
                                                                     </block>
                                                                     <block if="{{eq(${'$'}isMobile, false)}}" class="col">
-                                                                        <!-- text element was replaced with label--><label>Foto machen</label><automaticUpgraded/>
+                                                                        <label>Foto machen</label>
                                                                     </block>
                                                                 </block>
                                                             </block>

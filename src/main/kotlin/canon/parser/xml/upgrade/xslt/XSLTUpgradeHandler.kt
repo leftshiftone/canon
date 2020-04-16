@@ -7,18 +7,23 @@ import canon.parser.xml.upgrade.xslt.XSLTTransformerConfiguration.Companion.isVa
 import org.slf4j.LoggerFactory
 
 
-class XSLTUpgradeHandler: CanonUpgradeHandler {
+class XSLTUpgradeHandler : CanonUpgradeHandler {
 
-    val log = LoggerFactory.getLogger(this::class.java)
-    val transformerConfig : List<XSLTTransformerConfiguration>
-    val UPGRADE_LOG_TRANSFORMER : XSLTTransformer?
-    val DEFAULT_VERSION ="1.9.0"
+    companion object {
+        @Suppress("unused")
+        const val MANUAL_ACTION_COMMENT = "<!--manual action needed-->"
+        const val DEFAULT_VERSION = "1.9.0"
+    }
+
+    private val log = LoggerFactory.getLogger(this::class.java)
+    private val transformerConfig: List<XSLTTransformerConfiguration>
+    private val upgradeLogTransformer: XSLTTransformer?
 
 
-    constructor(xsltSheets : List<String>) {
-        this.transformerConfig= xsltSheets.filter { isValidTransformerPath(it) }.map { sheet -> XSLTTransformerConfiguration(sheet) }.toList()
-        val zeroTransformer= this.transformerConfig.firstOrNull { it.version == SemanticVersion("0","0","0") }
-        UPGRADE_LOG_TRANSFORMER= zeroTransformer?.let { XSLTTransformer(it) }
+    constructor(xsltSheets: List<String>) {
+        this.transformerConfig = xsltSheets.filter { isValidTransformerPath(it) }.map { sheet -> XSLTTransformerConfiguration(sheet) }.toList()
+        val zeroTransformer = this.transformerConfig.firstOrNull { it.version == SemanticVersion("0", "0", "0") }
+        upgradeLogTransformer = zeroTransformer?.let { XSLTTransformer(it) }
     }
 
     constructor() : this(XSLTTransformSupport.getDefaultTransformers())
@@ -26,39 +31,39 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
     override fun getLatestVersion() = getCanonVersion()
 
     override fun isUpgradeRequired(version: String?): Boolean {
-        if(version==null) return true
+        if (version == null) return true
         log.debug("Check if there are transformations for version: $version")
         val requiredTransformations = retrieveAvailableTransformationsForAVersion(version)
         val numberOfRequiredTransformations = requiredTransformations.count()
         log.debug("$numberOfRequiredTransformations transformations were found for version $version")
-        return numberOfRequiredTransformations>0
+        return numberOfRequiredTransformations > 0
     }
 
-    override fun upgrade(rawXml : String?, rawXmlVersion: String?): String {
-        if(rawXml == null || !isUpgradeRequired(rawXmlVersion)) {
+    override fun upgrade(rawXml: String?, rawXmlVersion: String?): String {
+        if (rawXml == null || !isUpgradeRequired(rawXmlVersion)) {
             return rawXml ?: ""
         }
         val transformers = buildTransformers(getVersion(rawXmlVersion))
-        return transform(transformers,rawXml)
+        return transform(transformers, rawXml)
     }
 
-    override fun upgrade(utterance : Map<String, List<String>>?, rawXmlVersion: String?): Map<String, List<String>> {
-        if(utterance == null || !isUpgradeRequired(rawXmlVersion)){
+    override fun upgrade(utterance: Map<String, List<String>>?, rawXmlVersion: String?): Map<String, List<String>> {
+        if (utterance == null || !isUpgradeRequired(rawXmlVersion)) {
             return utterance ?: mapOf()
         }
-        return upgradeUtterance(utterance,getVersion(rawXmlVersion), mapOf())
+        return upgradeUtterance(utterance, getVersion(rawXmlVersion), mapOf())
     }
 
-    private fun getVersion(version : String?) = version ?: DEFAULT_VERSION
+    private fun getVersion(version: String?) = version ?: DEFAULT_VERSION
 
-    private fun upgradeUtterance(utterance : Map<String, List<String>>, rawXmlVersion: String, result:Map<String, List<String>>): Map<String, List<String>> {
+    private fun upgradeUtterance(utterance: Map<String, List<String>>, rawXmlVersion: String, result: Map<String, List<String>>): Map<String, List<String>> {
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                     .map { utteranceValue ->
                         transform(buildTransformers(rawXmlVersion), utteranceValue)
                     }.toList()
 
-            return upgradeUtterance(utterance.minus(utteranceEntry.key), rawXmlVersion ,result.plus(utteranceEntry.key to transformedListOfUtterances))
+            return upgradeUtterance(utterance.minus(utteranceEntry.key), rawXmlVersion, result.plus(utteranceEntry.key to transformedListOfUtterances))
         }
         return result
     }
@@ -74,24 +79,24 @@ class XSLTUpgradeHandler: CanonUpgradeHandler {
                 .toList()
     }
 
-    private fun retrieveAvailableTransformationsForAVersion(currentVersion: String):  List<XSLTTransformerConfiguration> {
+    private fun retrieveAvailableTransformationsForAVersion(currentVersion: String): List<XSLTTransformerConfiguration> {
         log.debug("Retrieve available transformations for version: $currentVersion")
         val curVersion = SemanticVersion(currentVersion)
-        val allAvailableTransformations=this.transformerConfig.map { config-> config.version }.toList()
+        val allAvailableTransformations = this.transformerConfig.map { config -> config.version }.toList()
         log.debug("AvailableTransformations : ${allAvailableTransformations.joinToString(",")}")
-        val transformationForGivenVersion= this.transformerConfig
-                .filter {it.version > curVersion}
+        val transformationForGivenVersion = this.transformerConfig
+                .filter { it.version > curVersion }
         log.debug("AvailableTransformations for $currentVersion : ${allAvailableTransformations.joinToString(",")}")
         return transformationForGivenVersion
 
     }
 
 
-    private fun transform(transformers : List<XSLTTransformer>, initialXml: String): String {
+    private fun transform(transformers: List<XSLTTransformer>, initialXml: String): String {
         return transformers.sortedByDescending { it.config.version }
                 .fold(initialXml) { xmlToUpgrade, it ->
-            it.execute(xmlToUpgrade)
-        }.let { UPGRADE_LOG_TRANSFORMER?.execute(it) ?: it }
+                    it.execute(xmlToUpgrade)
+                }.let { upgradeLogTransformer?.execute(it) ?: it }
     }
 
 

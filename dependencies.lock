@@ -1,18 +1,29 @@
 {
     "antlr": {
-        "org.antlr:antlr4": {
-            "locked": "4.7.2",
-            "requested": "4.7.2"
-        }
-    },
-    "apiDependenciesMetadata": {
-        "com.fasterxml.jackson.module:jackson-module-kotlin": {
-            "locked": "2.9.9",
-            "requested": "2.9.9"
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
-        "commons-codec:commons-codec": {
-            "locked": "1.5",
-            "requested": "1.5"
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -20,19 +31,127 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        }
+    },
+    "apiDependenciesMetadata": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.module:jackson-module-kotlin": {
+            "locked": "2.9.9",
+            "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "commons-codec:commons-codec": {
+            "locked": "1.5",
+            "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr4": {
+            "locked": "4.7.2",
             "requested": "4.7.2"
+        },
+        "org.antlr:antlr4-runtime": {
+            "locked": "4.7.2",
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -40,13 +159,57 @@
         }
     },
     "compile": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -54,19 +217,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -74,13 +275,57 @@
         }
     },
     "compileClasspath": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -88,19 +333,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -108,13 +391,57 @@
         }
     },
     "default": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -122,19 +449,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -142,13 +507,57 @@
         }
     },
     "implementationDependenciesMetadata": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -156,19 +565,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -182,30 +629,218 @@
         }
     },
     "jacocoAnt": {
+        "org.jacoco:org.jacoco.agent": {
+            "locked": "0.8.5",
+            "transitive": [
+                "org.jacoco:org.jacoco.ant"
+            ]
+        },
         "org.jacoco:org.jacoco.ant": {
             "locked": "0.8.5"
+        },
+        "org.jacoco:org.jacoco.core": {
+            "locked": "0.8.5",
+            "transitive": [
+                "org.jacoco:org.jacoco.ant",
+                "org.jacoco:org.jacoco.report"
+            ]
+        },
+        "org.jacoco:org.jacoco.report": {
+            "locked": "0.8.5",
+            "transitive": [
+                "org.jacoco:org.jacoco.ant"
+            ]
+        },
+        "org.ow2.asm:asm": {
+            "locked": "7.2",
+            "transitive": [
+                "org.jacoco:org.jacoco.core",
+                "org.ow2.asm:asm-commons",
+                "org.ow2.asm:asm-tree"
+            ]
+        },
+        "org.ow2.asm:asm-analysis": {
+            "locked": "7.2",
+            "transitive": [
+                "org.ow2.asm:asm-commons"
+            ]
+        },
+        "org.ow2.asm:asm-commons": {
+            "locked": "7.2",
+            "transitive": [
+                "org.jacoco:org.jacoco.core"
+            ]
+        },
+        "org.ow2.asm:asm-tree": {
+            "locked": "7.2",
+            "transitive": [
+                "org.jacoco:org.jacoco.core",
+                "org.ow2.asm:asm-analysis",
+                "org.ow2.asm:asm-commons"
+            ]
         }
     },
     "kotlinCompilerClasspath": {
+        "org.jetbrains.intellij.deps:trove4j": {
+            "locked": "1.0.20181211",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains.kotlin:kotlin-reflect": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-script-runtime": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable",
+                "org.jetbrains.kotlin:kotlin-reflect"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         }
     },
     "kotlinCompilerPluginClasspath": {
+        "org.jetbrains.kotlin:kotlin-reflect": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-common"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-script-runtime": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-scripting-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable",
+                "org.jetbrains.kotlin:kotlin-scripting-jvm"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-scripting-jvm": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-scripting-common",
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable",
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable",
+                "org.jetbrains.kotlin:kotlin-scripting-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core": {
+            "locked": "1.1.1",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-scripting-common",
+                "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable"
+            ]
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         }
     },
     "runtime": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -213,19 +848,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -233,13 +906,57 @@
         }
     },
     "runtimeClasspath": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
         },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -247,19 +964,57 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
             "requested": "3.0"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
@@ -267,17 +1022,129 @@
         }
     },
     "testApiDependenciesMetadata": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -285,7 +1152,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -295,21 +1165,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",
@@ -321,17 +1269,129 @@
         }
     },
     "testCompile": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -339,7 +1399,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -349,21 +1412,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",
@@ -375,17 +1516,129 @@
         }
     },
     "testCompileClasspath": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -393,7 +1646,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -403,21 +1659,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",
@@ -429,17 +1763,129 @@
         }
     },
     "testImplementationDependenciesMetadata": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -447,7 +1893,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -457,21 +1906,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",
@@ -483,17 +2010,129 @@
         }
     },
     "testRuntime": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -501,7 +2140,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -511,21 +2153,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",
@@ -537,17 +2257,129 @@
         }
     },
     "testRuntimeClasspath": {
+        "com.fasterxml.jackson.core:jackson-annotations": {
+            "locked": "2.9.0",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind",
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-core": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.core:jackson-databind"
+            ]
+        },
+        "com.fasterxml.jackson.core:jackson-databind": {
+            "locked": "2.9.9",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin"
+            ]
+        },
         "com.fasterxml.jackson.module:jackson-module-kotlin": {
             "locked": "2.9.9",
             "requested": "2.9.9"
+        },
+        "com.ibm.icu:icu4j": {
+            "locked": "61.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "com.vaadin.external.google:android-json": {
+            "locked": "0.0.20131108.vaadin1",
+            "transitive": [
+                "org.skyscreamer:jsonassert"
+            ]
         },
         "commons-codec:commons-codec": {
             "locked": "1.5",
             "requested": "1.5"
         },
+        "commons-collections:commons-collections": {
+            "locked": "3.2.1",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
+        "commons-lang:commons-lang": {
+            "locked": "2.4",
+            "transitive": [
+                "org.apache.velocity:velocity"
+            ]
+        },
         "io.mockk:mockk": {
             "locked": "1.9.3",
             "requested": "1.9.3"
+        },
+        "io.mockk:mockk-agent-api": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-common",
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "io.mockk:mockk-agent-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-common": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "io.mockk:mockk-dsl": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk-common",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "io.mockk:mockk-dsl-jvm": {
+            "locked": "1.9.3",
+            "transitive": [
+                "io.mockk:mockk"
+            ]
+        },
+        "net.bytebuddy:byte-buddy": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "net.bytebuddy:byte-buddy-agent": {
+            "locked": "1.9.10",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.abego.treelayout:org.abego.treelayout.core": {
+            "locked": "1.0.3",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:ST4": {
+            "locked": "4.1",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
+        "org.antlr:antlr-runtime": {
+            "locked": "3.5.2",
+            "transitive": [
+                "org.antlr:ST4",
+                "org.antlr:antlr4"
+            ]
         },
         "org.antlr:antlr4": {
             "locked": "4.7.2",
@@ -555,7 +2387,10 @@
         },
         "org.antlr:antlr4-runtime": {
             "locked": "4.7.2",
-            "requested": "4.7.2"
+            "requested": "4.7.2",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
         },
         "org.apache.commons:commons-lang3": {
             "locked": "3.0",
@@ -565,21 +2400,99 @@
             "locked": "1.7",
             "requested": "1.7"
         },
+        "org.apiguardian:apiguardian-api": {
+            "locked": "1.1.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.jupiter:junit-jupiter-engine",
+                "org.junit.platform:junit-platform-commons",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
         "org.assertj:assertj-core": {
             "locked": "3.11.1",
             "requested": "3.11.1"
         },
+        "org.glassfish:javax.json": {
+            "locked": "1.0.4",
+            "transitive": [
+                "org.antlr:antlr4"
+            ]
+        },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.3.41",
+            "transitive": [
+                "com.fasterxml.jackson.module:jackson-module-kotlin",
+                "io.mockk:mockk",
+                "io.mockk:mockk-dsl-jvm"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-reflect",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk7",
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-jdk7": {
+            "locked": "1.3.41",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
+            ]
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
             "requested": "1.3.41"
         },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        },
+        "org.junit.jupiter:junit-jupiter-api": {
+            "locked": "5.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
+        },
+        "org.junit.platform:junit-platform-commons": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
+        },
+        "org.junit.platform:junit-platform-engine": {
+            "locked": "1.5.1",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-engine"
+            ]
+        },
+        "org.objenesis:objenesis": {
+            "locked": "3.0.1",
+            "transitive": [
+                "io.mockk:mockk-agent-jvm"
+            ]
+        },
+        "org.opentest4j:opentest4j": {
+            "locked": "1.2.0",
+            "transitive": [
+                "org.junit.jupiter:junit-jupiter-api",
+                "org.junit.platform:junit-platform-engine"
+            ]
         },
         "org.skyscreamer:jsonassert": {
             "locked": "1.5.0",

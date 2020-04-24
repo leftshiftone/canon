@@ -539,6 +539,7 @@
     <xs:complexType name="singleChoiceType">
         <xs:choice minOccurs="0" maxOccurs="unbounded">
             <xs:element name="choice" type="choiceType" minOccurs="1" maxOccurs="unbounded"/>
+            <xs:element name="table" type="tableType" minOccurs="0" maxOccurs="1"/>
         </xs:choice>
         <xs:attribute name="name" type="name" use="required"/>
         <xs:attribute name="sieve" type="bool" default="true"/>

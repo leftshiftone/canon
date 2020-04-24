@@ -1,0 +1,17 @@
+<block>
+        <singleChoice name="test">
+            <table>
+                <row>
+                    <col>
+                        <choice name="a" selected="false">test</choice>
+                    </col>
+                    <col>
+                        <choice name="b" selected="false">test</choice>
+                    </col>
+                    <col>
+                        <choice name="c" selected="false">test</choice>
+                    </col>
+                </row>
+            </table>
+        </singleChoice>
+    </block>

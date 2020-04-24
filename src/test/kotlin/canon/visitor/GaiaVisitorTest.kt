@@ -116,6 +116,9 @@ class GaiaVisitorTest {
     fun choiceWithSieve5() = compare("choiceWithSieve5")
 
     @Test
+    fun singleChoice5() = compare("singleChoice5")
+
+    @Test
     fun complex1() = compare("complex1", mapOf(
             "result" to listOf(mapOf(
                     "name" to "Max Mustermann",

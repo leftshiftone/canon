@@ -126,6 +126,9 @@ class CanonXmlParserTest {
     fun singleChoice4() = parseXml(CanonXmlParser(),"/xml/singleChoice4.xml", false)
 
     @Test
+    fun singleChoice6() = parseXml(CanonXmlParser(),"/xml/singleChoice6.xml", true)
+
+    @Test
     fun choiceWithSieve1() = parseXml(CanonXmlParser(),"/xml/choiceWithSieve1.xml")
 
     @Test

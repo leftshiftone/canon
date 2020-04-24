@@ -1,0 +1,57 @@
+[ [ {
+  "elements" : [ {
+    "elements" : [ {
+      "elements" : [ {
+        "elements" : [ {
+          "elements" : [ {
+            "elements" : [ {
+              "elements" : [ {
+                "text" : "a",
+                "type" : "label"
+              } ],
+              "name" : "a",
+              "text" : "a",
+              "type" : "choice",
+              "selected" : false
+            } ],
+            "type" : "col"
+          }, {
+            "elements" : [ {
+              "elements" : [ {
+                "text" : "b",
+                "type" : "label"
+              } ],
+              "name" : "b",
+              "text" : "b",
+              "type" : "choice",
+              "selected" : false
+            } ],
+            "type" : "col"
+          }, {
+            "elements" : [ {
+              "elements" : [ {
+                "text" : "c",
+                "type" : "label"
+              } ],
+              "name" : "c",
+              "text" : "c",
+              "type" : "choice",
+              "selected" : false
+            } ],
+            "type" : "col"
+          } ],
+          "type" : "row"
+        } ],
+        "type" : "table"
+      } ],
+      "name" : "test",
+      "sieve" : true,
+      "type" : "singleChoice",
+      "required" : true
+    } ],
+    "type" : "block"
+  } ],
+  "index" : 0,
+  "type" : "container",
+  "timestamp" : 0
+} ] ]

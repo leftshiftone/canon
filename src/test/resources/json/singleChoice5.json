@@ -6,11 +6,11 @@
           "elements" : [ {
             "elements" : [ {
               "elements" : [ {
-                "text" : "a",
+                "text" : "test",
                 "type" : "label"
               } ],
               "name" : "a",
-              "text" : "a",
+              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],
@@ -18,11 +18,11 @@
           }, {
             "elements" : [ {
               "elements" : [ {
-                "text" : "b",
+                "text" : "test",
                 "type" : "label"
               } ],
               "name" : "b",
-              "text" : "b",
+              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],
@@ -30,11 +30,11 @@
           }, {
             "elements" : [ {
               "elements" : [ {
-                "text" : "c",
+                "text" : "test",
                 "type" : "label"
               } ],
               "name" : "c",
-              "text" : "c",
+              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],

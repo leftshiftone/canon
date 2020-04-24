@@ -83,7 +83,7 @@ asteriaCodeAnalytics {
     coverageExcludes = ["**/canon/api/**"]
 }
 
-afterEvaluate { project.tasks.postRelease.finalizedBy project.tasks.sendReleaseEmail }
+afterEvaluate { project.tasks.sendReleaseEmail.mustRunAfter project.tasks.postRelease }
 
 compileKotlin {
     kotlinOptions {

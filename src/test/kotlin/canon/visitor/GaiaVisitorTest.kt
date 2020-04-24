@@ -116,7 +116,7 @@ class GaiaVisitorTest {
     fun choiceWithSieve5() = compare("choiceWithSieve5")
 
     @Test
-    fun choiceWithSieve6() = compare("choiceWithSieve6")
+    fun singleChoice5() = compare("singleChoice5")
 
     @Test
     fun complex1() = compare("complex1", mapOf(

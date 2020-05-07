@@ -6,14 +6,14 @@
     </form>
     <block>
         <selection countdownInSec="2" name="name">
-            <block name="blockA">
+            <item id="itemA">
                 <label>asdöfl</label>
-            </block>
-            <block name="blockB">
+            </item>
+            <item id="itemB">
                 <label>asdöfl</label>
-            </block>
-            <block name="blockC">
+            </item>
+            <item id="itemC">
                 <label>asdöfl</label>
-            </block>
+            </item>
         </selection>
     </block>

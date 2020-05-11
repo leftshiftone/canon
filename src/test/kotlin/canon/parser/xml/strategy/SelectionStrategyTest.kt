@@ -12,7 +12,9 @@ class SelectionStrategyTest {
     @Test
     fun testParse() {
         val xml = "<selection id='testId' class='testClass' name='testName' countdownInSec='12'>" +
+                "<items>" +
                 "<item id='a' class='b'></item>" +
+                "</items>" +
                 "</selection>"
         val parsed = SelectionStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 

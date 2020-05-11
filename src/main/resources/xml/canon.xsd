@@ -396,7 +396,7 @@
 
     <xs:complexType name="selectionType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
-            <xs:element type="itemType" name="item"/>
+            <xs:element type="itemsType" name="items"/>
         </xs:choice>
         <xs:attribute name="name" type="name"/>
         <xs:attribute type="xs:integer" name="countdownInSec"/>

@@ -38,7 +38,7 @@
     </xs:complexType>
 
     <xs:complexType name="itemType" mixed="true">
-        <xs:choice minOccurs="0">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
             <xs:element type="itemsType" name="items"/>
             <xs:element type="videoType" name="video"/>
             <xs:element type="headlineType" name="headline"/>

@@ -1,0 +1,122 @@
+<form id="mcd-personality-test" class="{{nth($themes, mod($progress, $themesCount))}} psychotest">
+     <label class="progress">{{div($progress, $maxProgress)}}</label>
+     <selection countdownInSec="0" name="psychotest">
+          <items id="p1" class="p1">
+               <item id="p11">
+                    <headline>Bei der Arbeit bin ich:</headline>
+               </item>
+               <item id="p12" class="psycho-row">
+                    <block id="p13" class="psycho-col left">
+                         <label>Zielstrebig</label>
+                    </block>
+                    <block id="p14" class="psycho-col">
+                         <label>Kooperativ</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p2" class="p2">
+               <item id="p21">
+                    <headline>Bei der Arbeit bin ich:</headline>
+               </item>
+               <item id="p22" class="psycho-row">
+                    <block id="p23" class="psycho-col left">
+                         <label>Tüchtig</label>
+                    </block>
+                    <block id="p24" class="psycho-col">
+                         <label>Freundlich</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p3" class="p3">
+               <item id="p31">
+                    <headline>Bei der Arbeit bin ich:</headline>
+               </item>
+               <item id="p32" class="psycho-row">
+                    <block id="p33" class="psycho-col left">
+                         <label>Verantwortungsbewusst</label>
+                    </block>
+                    <block id="p34" class="psycho-col">
+                         <label>Hilfsbereit</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p4" class="p4">
+               <item id="p41">
+                    <headline>Bei der Arbeit bin ich:</headline>
+               </item>
+               <item id="p42" class="psycho-row">
+                    <block id="p43" class="psycho-col left">
+                         <label>Schnell</label>
+                    </block>
+                    <block id="p44" class="psycho-col">
+                         <label>Genau</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p5" class="p5">
+               <item id="p51">
+                    <headline>Bei der Arbeit fällt es mir leicht:</headline>
+               </item>
+               <item id="p52" class="psycho-row">
+                    <block id="p53" class="psycho-col left">
+                         <label>Anweisungen zu geben</label>
+                    </block>
+                    <block id="p54" class="psycho-col">
+                         <label>Anweisungen zu befolgen</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p6" class="p6">
+               <item id="p61">
+                    <headline>Bei der Arbeit versuche ich:</headline>
+               </item>
+               <item id="p62" class="psycho-row">
+                    <block id="p63" class="psycho-col left">
+                         <label>Chancen zu nutzen</label>
+                    </block>
+                    <block id="p64" class="psycho-col">
+                         <label>Fehler zu vermeiden</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p7" class="p7">
+               <item id="p71">
+                    <headline>Ich kann besser:</headline>
+               </item>
+               <item id="p72" class="psycho-row">
+                    <block id="p73" class="psycho-col left">
+                         <label>Von anderen lernen</label>
+                    </block>
+                    <block id="p74" class="psycho-col">
+                         <label>Durch Übung lernen</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p8" class="p8">
+               <item id="p81">
+                    <headline>Ich bin eher:</headline>
+               </item>
+               <item id="p82" class="psycho-row">
+                    <block id="p83" class="psycho-col left">
+                         <label>Gesprächig</label>
+                    </block>
+                    <block id="p84" class="psycho-col">
+                         <label>Ruhig</label>
+                    </block>
+               </item>
+          </items>
+          <items id="p9" class="p9">
+               <item id="p91">
+                    <headline>Bei der Arbeit ist mir wichtig:</headline>
+               </item>
+               <item id="p92" class="psycho-row">
+                    <block id="p93" class="psycho-col left">
+                         <label>Anerkennung</label>
+                    </block>
+                    <block id="p94" class="psycho-col">
+                         <label>Sorgfalt</label>
+                    </block>
+               </item>
+          </items>
+     </selection>
+</form>

@@ -36,10 +36,6 @@ buildscript {
     }
 }
 
-repositories {
-    jcenter()
-}
-
 apply plugin: "antlr"
 apply plugin: "kotlin"
 apply plugin: "org.jetbrains.dokka"
@@ -81,6 +77,10 @@ asteriaCodeAnalytics {
     sonarProperties = ["sonar.test.inclusions": "**/*Test*/**"]
     xmlCoverageReportEnabled = true
     coverageExcludes = ["**/canon/api/**"]
+}
+
+repositories {
+    jcenter()
 }
 
 afterEvaluate { project.tasks.sendReleaseEmail.mustRunAfter project.tasks.postRelease }

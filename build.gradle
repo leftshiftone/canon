@@ -118,6 +118,10 @@ dependencies {
     testCompile "io.mockk:mockk:$mockkVersion"
     testCompile 'org.skyscreamer:jsonassert:1.5.0'
     testCompile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
+
+    //see: XSLTUpgradeHandlerTest
+    testRuntimeOnly('xalan:xalan:2.7.2')
+
 }
 
 test {

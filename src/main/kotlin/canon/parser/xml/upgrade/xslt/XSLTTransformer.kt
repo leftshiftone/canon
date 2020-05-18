@@ -11,21 +11,25 @@ import javax.xml.transform.stream.StreamSource
  *  This class transforms a XML String with a xslt file. The location of the xslt file will be determined by its configuration
  *  provided in the constructor
  */
-class XSLTTransformer (val config : XSLTTransformerConfiguration){
+class XSLTTransformer(val config: XSLTTransformerConfiguration) {
 
     private val log = LoggerFactory.getLogger(this::class.java)
-    val CLEAN_UP_XSLT= "/xml/xslt/transformers/cleanup/transform_cleanup.xslt"
+
+    companion object {
+        private const val CLEAN_UP_XSLT = "/xml/xslt/transformers/cleanup/transform_cleanup.xslt"
+        private val JDK8_DEFAULT_TRANSFORMER_FACTORY = "com.sun.org.apache.xalan.internal.xsltc.trax.TransformerFactoryImpl"
+    }
 
     fun execute(xml: String): String {
-        val markupXml= "<markup><container>$xml</container></markup>"
-        val transformedXML= applyXSLT(markupXml,config.transformerLocation)
-        val normalizedTransformedXML= applyXSLT(transformedXML,CLEAN_UP_XSLT)
+        val markupXml = "<markup><container>$xml</container></markup>"
+        val transformedXML = applyXSLT(markupXml, config.transformerLocation)
+        val normalizedTransformedXML = applyXSLT(transformedXML, CLEAN_UP_XSLT)
         log.debug("Transformed xml: \nfrom $markupXml \nto${normalizedTransformedXML}")
         return normalizedTransformedXML
     }
 
     private fun applyXSLT(xml: String, xslt: String): String {
-        val factory = TransformerFactory.newInstance()
+        val factory = TransformerFactory.newInstance(JDK8_DEFAULT_TRANSFORMER_FACTORY, Thread.currentThread().contextClassLoader)
         log.debug("Loading xslt transform file  $xslt")
         val streamSource = StreamSource(XSLTTransformer::class.java.getResourceAsStream("$xslt"))
         val transformer = factory.newTransformer(streamSource)
@@ -36,6 +40,4 @@ class XSLTTransformer (val config : XSLTTransformerConfiguration){
         log.debug("Transformed xml: \nfrom $xml \nto${transformedXML}")
         return transformedXML.toString()
     }
-
-
 }

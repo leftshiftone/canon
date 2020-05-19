@@ -2501,6 +2501,40 @@
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
             "requested": "1.7.30"
+        },
+        "xalan:serializer": {
+            "locked": "2.7.2",
+            "transitive": [
+                "xalan:xalan"
+            ]
+        },
+        "xalan:xalan": {
+            "locked": "2.7.2",
+            "requested": "2.7.2"
+        },
+        "xml-apis:xml-apis": {
+            "locked": "1.3.04",
+            "transitive": [
+                "xalan:serializer"
+            ]
+        }
+    },
+    "testRuntimeOnlyDependenciesMetadata": {
+        "xalan:serializer": {
+            "locked": "2.7.2",
+            "transitive": [
+                "xalan:xalan"
+            ]
+        },
+        "xalan:xalan": {
+            "locked": "2.7.2",
+            "requested": "2.7.2"
+        },
+        "xml-apis:xml-apis": {
+            "locked": "1.3.04",
+            "transitive": [
+                "xalan:serializer"
+            ]
         }
     }
 }

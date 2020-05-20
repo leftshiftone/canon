@@ -396,12 +396,54 @@
 
     <xs:complexType name="selectionType">
         <xs:choice maxOccurs="unbounded" minOccurs="0">
-            <xs:element type="itemsType" name="items"/>
+            <xs:element type="selectionItemType" name="selectionItem"/>
         </xs:choice>
         <xs:attribute name="name" type="name"/>
         <xs:attribute type="xs:integer" name="countdownInSec"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+    </xs:complexType>
+
+    <xs:complexType name="selectionItemType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="selectionContentType" name="selectionContent"/>
+        </xs:choice>
+        <xs:attribute name="name" type="name" use="required"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="foreach"/>
+        <xs:attribute type="xs:string" name="if"/>
+    </xs:complexType>
+
+    <xs:complexType name="selectionContentType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="headlineType" name="headline"/>
+            <xs:element type="labelType" name="label"/>
+            <xs:element type="boldType" name="bold"/>
+            <xs:element type="italicType" name="italic"/>
+            <xs:element type="selectableType" name="selectable"/>
+        </xs:choice>
+        <xs:attribute name="name" type="name" use="required"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
+    </xs:complexType>
+
+    <xs:complexType name="selectableType">
+        <xs:choice maxOccurs="unbounded" minOccurs="0">
+            <xs:element type="videoType" name="video"/>
+            <xs:element type="headlineType" name="headline"/>
+            <xs:element type="labelType" name="label"/>
+            <xs:element type="itemsType" name="items"/>
+            <xs:element type="textType" name="text"/>
+            <xs:element type="imageType" name="image"/>
+            <xs:element type="linkType" name="link"/>
+            <xs:element type="boldType" name="bold"/>
+            <xs:element type="italicType" name="italic"/>
+        </xs:choice>
+        <xs:attribute name="name" type="name"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
 
     <xs:complexType name="linkType">

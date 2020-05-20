@@ -8,21 +8,20 @@
     </xsl:template>
 
     <xsl:template match="selection/block">
-        <items>
+        <selectionItem>
             <xsl:apply-templates select="@*|node()"/>
-        </items>
+        </selectionItem>
     </xsl:template>
 
     <xsl:template match="selection/block/block">
-        <item>
+        <selectionContent>
             <xsl:apply-templates select="@*|node()"/>
-        </item>
+        </selectionContent>
     </xsl:template>
 
-    <xsl:template match="block/@name">
-        <xsl:attribute name="id">
-            <xsl:value-of select="."/>
-        </xsl:attribute>
+    <xsl:template match="selection/block/block/block">
+        <selectable>
+            <xsl:apply-templates select="@*|node()"/>
+        </selectable>
     </xsl:template>
-
 </xsl:stylesheet>

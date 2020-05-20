@@ -319,19 +319,19 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 <selection countdownInSec="0" name="psychotest">
-                                    <items id="p1" class="p1">
-                                        <item id="p11">
+                                    <selectionItem name="p1" class="p1">
+                                        <selectionContent name="p11">
                                             <headline>Bei der Arbeit bin ich:</headline>
-                                        </item>
-                                        <item id="p12" class="psycho-row">
-                                            <block id="p13" class="psycho-col left">
+                                        </selectionContent>
+                                        <selectionContent name="p12" class="psycho-row">
+                                            <selectable name="p13" class="psycho-col left">
                                                 <label>Zielstrebig</label>
-                                            </block>
-                                            <block id="p14" class="psycho-col">
+                                            </selectable>
+                                            <selectable name="p14" class="psycho-col">
                                                 <label>Kooperativ</label>
-                                            </block>
-                                        </item>
-                                    </items>
+                                            </selectable>
+                                        </selectionContent>
+                                    </selectionItem>
                                 </selection>
 
 
@@ -365,19 +365,19 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 <selection countdownInSec="0" name="psychotest">
-                                    <items id="p1" class="p1">
-                                        <item id="p11">
+                                    <selectionItem name="p1" class="p1">
+                                        <selectionContent name="p11">
                                             <headline>Bei der Arbeit bin ich:</headline>
-                                        </item>
-                                        <item id="p12" class="psycho-row">
-                                            <block id="p13" class="psycho-col left">
+                                        </selectionContent>
+                                        <selectionContent name="p12" class="psycho-row">
+                                            <selectable name="p13" class="psycho-col left">
                                                 <label>Zielstrebig</label>
-                                            </block>
-                                            <block id="p14" class="psycho-col">
+                                            </selectable>
+                                            <selectable name="p14" class="psycho-col">
                                                 <label>Kooperativ</label>
-                                            </block>
-                                        </item>
-                                    </items>
+                                            </selectable>
+                                        </selectionContent>
+                                    </selectionItem>
                                 </selection>
 
 

@@ -73,7 +73,6 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
             "row" -> RowStrategy()
             "selection" -> SelectionStrategy()
             "selectionItem" -> SelectionItemStrategy()
-            "selectionContent" -> SelectionContentStrategy()
             "selectable" -> SelectableStrategy()
             "singleChoice" -> SingleChoiceStrategy()
             "slider" -> SliderStrategy()

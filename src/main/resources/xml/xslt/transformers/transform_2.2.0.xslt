@@ -13,15 +13,23 @@
         </selectionItem>
     </xsl:template>
 
-    <xsl:template match="selection/block/block">
-        <selectionContent>
-            <xsl:apply-templates select="@*|node()"/>
-        </selectionContent>
-    </xsl:template>
 
     <xsl:template match="selection/block/block/block">
         <selectable>
             <xsl:apply-templates select="@*|node()"/>
         </selectable>
     </xsl:template>
+
+    <xsl:template match="selection/block/@name">
+        <xsl:attribute name="id">
+            <xsl:value-of select="."/>
+        </xsl:attribute>
+    </xsl:template>
+
+    <xsl:template match="selection/block/block/@name">
+        <xsl:attribute name="id">
+            <xsl:value-of select="."/>
+        </xsl:attribute>
+    </xsl:template>
+
 </xsl:stylesheet>

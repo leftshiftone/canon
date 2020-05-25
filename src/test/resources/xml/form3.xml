@@ -6,35 +6,35 @@
 </form>
 <block>
     <selection countdownInSec="2" name="name">
-        <selectionItem name="itemA">
-            <selectionContent name="contentA">
+        <selectionItem id="itemA">
+            <block id="contentA">
                 <selectable name="leftA">
                     <label>asdöfl</label>
                 </selectable>
                 <selectable name="rightA">
                     <label>asdöfl</label>
                 </selectable>
-            </selectionContent>
+            </block>
         </selectionItem>
-        <selectionItem name="itemB">
-            <selectionContent name="contentB">
+        <selectionItem id="itemB">
+            <block id="contentB">
                 <selectable id="leftB">
                     <label>asdöfl</label>
                 </selectable>
                 <selectable name="rightB">
                     <label>asdöfl</label>
                 </selectable>
-            </selectionContent>
+            </block>
         </selectionItem>
-        <selectionItem name="itemC">
-            <selectionContent name="contentC">
+        <selectionItem id="itemC">
+            <block id="contentC">
                 <selectable name="leftC">
                     <label>asdöfl</label>
                 </selectable>
                 <selectable name="rightC">
                     <label>asdöfl</label>
                 </selectable>
-            </selectionContent>
+            </block>
         </selectionItem>
     </selection>
 </block>

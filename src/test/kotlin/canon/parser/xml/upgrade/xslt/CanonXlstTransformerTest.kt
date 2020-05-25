@@ -517,7 +517,7 @@ internal class XSLTTransformerTest {
                     "expectedTransformation" to """
                                                         <selection>
                                                             <selectionItem>
-                                                                <selectionContent>text</selectionContent>
+                                                                <block>text</block>
                                                             </selectionItem>
                                                         </selection>
                                                 """.trimIndent().trimMargin().trim()),
@@ -534,9 +534,9 @@ internal class XSLTTransformerTest {
                     "expectedTransformation" to """
                                                         <selection>
                                                             <selectionItem>
-                                                                <selectionContent>
+                                                                <block>
                                                                     <selectable>text</selectable>
-                                                                </selectionContent>
+                                                                </block>
                                                             </selectionItem>
                                                         </selection>
                                                 """.trimIndent().trimMargin().trim())

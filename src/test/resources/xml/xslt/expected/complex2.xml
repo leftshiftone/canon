@@ -1,122 +1,122 @@
 <form id="mcd-personality-test" class="{{nth($themes, mod($progress, $themesCount))}} psychotest">
      <label class="progress">{{div($progress, $maxProgress)}}</label>
      <selection countdownInSec="0" name="psychotest">
-          <selectionItem name="p1" class="p1">
-               <selectionContent name="p11">
+          <selectionItem id="p1" class="p1">
+               <block id="p11">
                     <headline>Bei der Arbeit bin ich:</headline>
-               </selectionContent>
-               <selectionContent name="p12" class="psycho-row">
+               </block>
+               <block id="p12" class="psycho-row">
                     <selectable name="p13" class="psycho-col left">
                          <label>Zielstrebig</label>
                     </selectable>
                     <selectable name="p14" class="psycho-col">
                          <label>Kooperativ</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p2" class="p2">
-               <selectionContent name="p21">
+          <selectionItem id="p2" class="p2">
+               <block id="p21">
                     <headline>Bei der Arbeit bin ich:</headline>
-               </selectionContent>
-               <selectionContent name="p22" class="psycho-row">
+               </block>
+               <block id="p22" class="psycho-row">
                     <selectable name="p23" class="psycho-col left">
                          <label>Tüchtig</label>
                     </selectable>
                     <selectable name="p24" class="psycho-col">
                          <label>Freundlich</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p3" class="p3">
-               <selectionContent name="p31">
+          <selectionItem id="p3" class="p3">
+               <block id="p31">
                     <headline>Bei der Arbeit bin ich:</headline>
-               </selectionContent>
-               <selectionContent name="p32" class="psycho-row">
+               </block>
+               <block id="p32" class="psycho-row">
                     <selectable name="p33" class="psycho-col left">
                          <label>Verantwortungsbewusst</label>
                     </selectable>
                     <selectable name="p34" class="psycho-col">
                          <label>Hilfsbereit</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p4" class="p4">
-               <selectionContent name="p41">
+          <selectionItem id="p4" class="p4">
+               <block id="p41">
                     <headline>Bei der Arbeit bin ich:</headline>
-               </selectionContent>
-               <selectionContent name="p42" class="psycho-row">
+               </block>
+               <block id="p42" class="psycho-row">
                     <selectable name="p43" class="psycho-col left">
                          <label>Schnell</label>
                     </selectable>
                     <selectable name="p44" class="psycho-col">
                          <label>Genau</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p5" class="p5">
-               <selectionContent name="p51">
+          <selectionItem id="p5" class="p5">
+               <block id="p51">
                     <headline>Bei der Arbeit fällt es mir leicht:</headline>
-               </selectionContent>
-               <selectionContent name="p52" class="psycho-row">
+               </block>
+               <block id="p52" class="psycho-row">
                     <selectable name="p53" class="psycho-col left">
                          <label>Anweisungen zu geben</label>
                     </selectable>
                     <selectable name="p54" class="psycho-col">
                          <label>Anweisungen zu befolgen</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p6" class="p6">
-               <selectionContent name="p61">
+          <selectionItem id="p6" class="p6">
+               <block id="p61">
                     <headline>Bei der Arbeit versuche ich:</headline>
-               </selectionContent>
-               <selectionContent name="p62" class="psycho-row">
+               </block>
+               <block id="p62" class="psycho-row">
                     <selectable name="p63" class="psycho-col left">
                          <label>Chancen zu nutzen</label>
                     </selectable>
                     <selectable name="p64" class="psycho-col">
                          <label>Fehler zu vermeiden</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p7" class="p7">
-               <selectionContent name="p71">
+          <selectionItem id="p7" class="p7">
+               <block id="p71">
                     <headline>Ich kann besser:</headline>
-               </selectionContent>
-               <selectionContent name="p72" class="psycho-row">
+               </block>
+               <block id="p72" class="psycho-row">
                     <selectable name="p73" class="psycho-col left">
                          <label>Von anderen lernen</label>
                     </selectable>
                     <selectable name="p74" class="psycho-col">
                          <label>Durch Übung lernen</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p8" class="p8">
-               <selectionContent name="p81">
+          <selectionItem id="p8" class="p8">
+               <block id="p81">
                     <headline>Ich bin eher:</headline>
-               </selectionContent>
-               <selectionContent name="p82" class="psycho-row">
+               </block>
+               <block id="p82" class="psycho-row">
                     <selectable name="p83" class="psycho-col left">
                          <label>Gesprächig</label>
                     </selectable>
                     <selectable name="p84" class="psycho-col">
                          <label>Ruhig</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
-          <selectionItem name="p9" class="p9">
-               <selectionContent name="p91">
+          <selectionItem id="p9" class="p9">
+               <block id="p91">
                     <headline>Bei der Arbeit ist mir wichtig:</headline>
-               </selectionContent>
-               <selectionContent name="p92" class="psycho-row">
+               </block>
+               <block id="p92" class="psycho-row">
                     <selectable name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </selectable>
                     <selectable name="p94" class="psycho-col">
                          <label>Sorgfalt</label>
                     </selectable>
-               </selectionContent>
+               </block>
           </selectionItem>
      </selection>
 </form>

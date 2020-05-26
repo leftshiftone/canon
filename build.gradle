@@ -145,9 +145,6 @@ tasks.withType(Test) { testTask ->
     testTask.beforeTest { descriptor ->
         logger.lifecycle(descriptor.toString())
     }
-    testTask.afterTest { descriptor, result ->
-        println "\n$descriptor.className [$descriptor.classDisplayName] > $descriptor.name [$descriptor.displayName]: $result.resultType"
-    }
 }
 
 task createProperties(dependsOn: processResources) {

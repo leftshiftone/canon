@@ -11,25 +11,26 @@ import org.junit.jupiter.api.TestFactory
 internal class XSLTUpgradeHandlerTest {
     private val testTransformerDir = "/xml/xslt/testtransformers/"
 
-    val DEFAULT_TRANSFORMERS= getDefaultTransformers()
-    val TEST_TRANSFORMERS= getDefaultTransformers().plus(XSLTTransformSupport.getResourceFiles(testTransformerDir).map { testTransformerDir.plus(it) })
+    val DEFAULT_TRANSFORMERS = getDefaultTransformers()
+    val TEST_TRANSFORMERS = getDefaultTransformers().plus(XSLTTransformSupport.getResourceFiles(testTransformerDir).map { testTransformerDir.plus(it) })
 
 
     @Test
-    fun  `A null version requires an upgrade`(){
+    fun `A null version requires an upgrade`() {
         val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired(null)).isTrue()
     }
+
     @Test
-    fun  `No version specified in isUpgradeRequired method is true`(){
+    fun `No version specified in isUpgradeRequired method is true`() {
         val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
         assertThat(classUnderTest.isUpgradeRequired()).isTrue()
     }
 
     @TestFactory
     @Disabled("This test is temp ignored until version 2.0.0 is released")
-    fun  `given a the current version, a transformation is not needed`() = listOf(
-            mapOf("name" to "specifiedTransformerPath","transformerPath" to "/xml/xslt/transformers")
+    fun `given a the current version, a transformation is not needed`() = listOf(
+            mapOf("name" to "specifiedTransformerPath", "transformerPath" to "/xml/xslt/transformers")
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} transformer Path: [${it["transformerPath"]}]") {
             val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
@@ -39,9 +40,9 @@ internal class XSLTUpgradeHandlerTest {
 
 
     @Test
-    fun  `given a folder with one xslt newer than the current version, the transformerIterator has one transformation`() {
-            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-            assertThat(classUnderTest.buildTransformers("1.9.0")).isNotNull()
+    fun `given a folder with one xslt newer than the current version, the transformerIterator has one transformation`() {
+        val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
+        assertThat(classUnderTest.buildTransformers("1.9.0")).isNotNull()
 
     }
 
@@ -67,16 +68,14 @@ internal class XSLTUpgradeHandlerTest {
             assertThat(transformerList).isNotNull()
             assertThat(transformerList).size().isEqualTo(1)
             assertThat(transformerList).element(0).extracting { it.config.version }.isEqualTo(SemanticVersion("2.2.0"))
-
-
     }
 
     @TestFactory
     fun `Transform a XML with multiple sequential transformers`() = listOf(
             mapOf(
-                "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0 but no changes must be made",
-                "version" to "0.9.0",
-                "rawXml" to """
+                    "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0 but no changes must be made",
+                    "version" to "0.9.0",
+                    "rawXml" to """
 
 
                                 <carousel>
@@ -87,7 +86,7 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 """.trimMargin().trim(),
-                "expectedTransformedXml" to """
+                    "expectedTransformedXml" to """
 
 
                                 <carousel>
@@ -139,9 +138,9 @@ internal class XSLTUpgradeHandlerTest {
                                 """.trimMargin().trim()
             ),
             mapOf(
-                "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0",
-                "version" to "0.9.0",
-                "rawXml" to """
+                    "name" to "Transform XML through transformers: 1.0.0 , 1.3.0, 1.5.0 and 2.0.0",
+                    "version" to "0.9.0",
+                    "rawXml" to """
 
 
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
@@ -158,7 +157,7 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 """.trimMargin().trim(),
-                "expectedTransformedXml" to """
+                    "expectedTransformedXml" to """
 
 
                                 <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -398,8 +397,6 @@ internal class XSLTUpgradeHandlerTest {
     }
 
 
-
-
     @TestFactory
     fun `Transform a list of utterances with multiple sequential transformers`() = listOf(
             mapOf(
@@ -414,7 +411,7 @@ internal class XSLTUpgradeHandlerTest {
                                 </carousel>
 
                                 """.trimMargin().trim(),
-                     """
+                            """
 
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
@@ -429,7 +426,7 @@ internal class XSLTUpgradeHandlerTest {
                                 </carousel>
 
                                 """.trimMargin().trim(),
-                    """
+                            """
 
                                 <text id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</text>
                                 <carousel>
@@ -494,8 +491,8 @@ internal class XSLTUpgradeHandlerTest {
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>, it["version"] as String)
-            transformedXml.get("de")!!.forEachIndexed {i, utterance ->
+            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String, List<String>>, it["version"] as String)
+            transformedXml.get("de")!!.forEachIndexed { i, utterance ->
                 assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get("de")!!.get(i).replace("\\s".toRegex(), ""))
             }
         }
@@ -533,7 +530,7 @@ internal class XSLTUpgradeHandlerTest {
 
                                         """.trimMargin().trim()),
 
-                            "en" to listOf("""
+                                    "en" to listOf("""
 
                                         <carousel>
                                             <block foreach="">
@@ -542,7 +539,7 @@ internal class XSLTUpgradeHandlerTest {
                                         </carousel>
 
                                         """.trimMargin().trim(),
-                                    """
+                                            """
 
                                         <text id="123">Based on the Input we can suggest following results:</text>
                                         <carousel>
@@ -558,7 +555,7 @@ internal class XSLTUpgradeHandlerTest {
 
                                         """.trimMargin().trim())),
 
-                            "expectedUtterance" to mapOf("de" to listOf("""
+                    "expectedUtterance" to mapOf("de" to listOf("""
 
 
                                         <carousel>
@@ -569,7 +566,7 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                         """.trimMargin().trim(),
-                                    """
+                            """
 
 
                                         <label id="123">Basierend auf Ihren Angaben können wir Ihnen folgende  Resultate vorschlagen:</label>
@@ -587,7 +584,7 @@ internal class XSLTUpgradeHandlerTest {
 
                                         """.trimMargin().trim()),
 
-                                    "en" to listOf("""
+                            "en" to listOf("""
 
 
                                                 <carousel>
@@ -598,7 +595,7 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                                 """.trimMargin().trim(),
-                                                    """
+                                    """
 
 
                                                 <label id="123">Based on the Input we can suggest following results:</label>
@@ -615,7 +612,7 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                                 """.trimMargin().trim())
-                            )
+                    )
             ),
 
             mapOf(
@@ -627,9 +624,9 @@ internal class XSLTUpgradeHandlerTest {
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["utterance"]}]") {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String,List<String>>?, it["version"] as String)
+            val transformedXml = classUnderTest.upgrade(it["utterance"] as Map<String, List<String>>?, it["version"] as String)
 
-            transformedXml.entries.forEach {utteranceEntry ->
+            transformedXml.entries.forEach { utteranceEntry ->
                 utteranceEntry.value.forEachIndexed { index, utterance ->
                     assertThat(utterance.replace("\\s".toRegex(), "")).isEqualTo((it["expectedUtterance"] as Map<String, List<String>>).get(utteranceEntry.key)!!.get(index).replace("\\s".toRegex(), ""))
                 }
@@ -637,4 +634,16 @@ internal class XSLTUpgradeHandlerTest {
         }
     }
 
+    /**
+     * INFO: This test will fail if instead of the default [TransformerFactory] the xalan one is used (which is a testRuntime dependency)
+     * see: build.gradle
+     */
+    @Test
+    fun `is not empty eventhough xalan is on the classpath`() {
+        val classUnderTest = XSLTUpgradeHandler()
+        val map = mapOf("de" to listOf("<text>hallo welt \uD83D\uDC49</text>"))
+        val result = classUnderTest.upgrade(map, null)
+
+        assertThat(result["de"]?.first()).isNotBlank()
+    }
 }

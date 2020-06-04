@@ -20,16 +20,4 @@
         </selectable>
     </xsl:template>
 
-    <xsl:template match="selection/block/@name">
-        <xsl:attribute name="id">
-            <xsl:value-of select="."/>
-        </xsl:attribute>
-    </xsl:template>
-
-    <xsl:template match="selection/block/block/@name">
-        <xsl:attribute name="id">
-            <xsl:value-of select="."/>
-        </xsl:attribute>
-    </xsl:template>
-
 </xsl:stylesheet>

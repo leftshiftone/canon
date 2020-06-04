@@ -1,11 +1,11 @@
 <form id="mcd-personality-test" class="{{nth($themes, mod($progress, $themesCount))}} psychotest">
      <label class="progress">{{div($progress, $maxProgress)}}</label>
      <selection countdownInSec="0" name="psychotest">
-          <selectionItem id="p1" class="p1">
-               <block id="p11">
+          <selectionItem name="p1" class="p1">
+               <block name="p11">
                     <headline>Bei der Arbeit bin ich:</headline>
                </block>
-               <block id="p12" class="psycho-row">
+               <block name="p12" class="psycho-row">
                     <selectable name="p13" class="psycho-col left">
                          <label>Zielstrebig</label>
                     </selectable>
@@ -14,11 +14,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p2" class="p2">
-               <block id="p21">
+          <selectionItem name="p2" class="p2">
+               <block name="p21">
                     <headline>Bei der Arbeit bin ich:</headline>
                </block>
-               <block id="p22" class="psycho-row">
+               <block name="p22" class="psycho-row">
                     <selectable name="p23" class="psycho-col left">
                          <label>Tüchtig</label>
                     </selectable>
@@ -27,11 +27,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p3" class="p3">
-               <block id="p31">
+          <selectionItem name="p3" class="p3">
+               <block name="p31">
                     <headline>Bei der Arbeit bin ich:</headline>
                </block>
-               <block id="p32" class="psycho-row">
+               <block name="p32" class="psycho-row">
                     <selectable name="p33" class="psycho-col left">
                          <label>Verantwortungsbewusst</label>
                     </selectable>
@@ -40,11 +40,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p4" class="p4">
-               <block id="p41">
+          <selectionItem name="p4" class="p4">
+               <block name="p41">
                     <headline>Bei der Arbeit bin ich:</headline>
                </block>
-               <block id="p42" class="psycho-row">
+               <block name="p42" class="psycho-row">
                     <selectable name="p43" class="psycho-col left">
                          <label>Schnell</label>
                     </selectable>
@@ -53,11 +53,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p5" class="p5">
-               <block id="p51">
+          <selectionItem name="p5" class="p5">
+               <block name="p51">
                     <headline>Bei der Arbeit fällt es mir leicht:</headline>
                </block>
-               <block id="p52" class="psycho-row">
+               <block name="p52" class="psycho-row">
                     <selectable name="p53" class="psycho-col left">
                          <label>Anweisungen zu geben</label>
                     </selectable>
@@ -66,11 +66,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p6" class="p6">
-               <block id="p61">
+          <selectionItem name="p6" class="p6">
+               <block name="p61">
                     <headline>Bei der Arbeit versuche ich:</headline>
                </block>
-               <block id="p62" class="psycho-row">
+               <block name="p62" class="psycho-row">
                     <selectable name="p63" class="psycho-col left">
                          <label>Chancen zu nutzen</label>
                     </selectable>
@@ -79,11 +79,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p7" class="p7">
-               <block id="p71">
+          <selectionItem name="p7" class="p7">
+               <block name="p71">
                     <headline>Ich kann besser:</headline>
                </block>
-               <block id="p72" class="psycho-row">
+               <block name="p72" class="psycho-row">
                     <selectable name="p73" class="psycho-col left">
                          <label>Von anderen lernen</label>
                     </selectable>
@@ -92,11 +92,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p8" class="p8">
-               <block id="p81">
+          <selectionItem name="p8" class="p8">
+               <block name="p81">
                     <headline>Ich bin eher:</headline>
                </block>
-               <block id="p82" class="psycho-row">
+               <block name="p82" class="psycho-row">
                     <selectable name="p83" class="psycho-col left">
                          <label>Gesprächig</label>
                     </selectable>
@@ -105,11 +105,11 @@
                     </selectable>
                </block>
           </selectionItem>
-          <selectionItem id="p9" class="p9">
-               <block id="p91">
+          <selectionItem name="p9" class="p9">
+               <block name="p91">
                     <headline>Bei der Arbeit ist mir wichtig:</headline>
                </block>
-               <block id="p92" class="psycho-row">
+               <block name="p92" class="psycho-row">
                     <selectable name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </selectable>

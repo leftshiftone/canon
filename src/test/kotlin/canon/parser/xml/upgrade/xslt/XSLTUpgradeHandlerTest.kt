@@ -319,11 +319,11 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 <selection countdownInSec="0" name="psychotest">
-                                    <selectionItem id="p1" class="p1">
-                                        <block id="p11">
+                                    <selectionItem name="p1" class="p1">
+                                        <block name="p11">
                                             <headline>Bei der Arbeit bin ich:</headline>
                                         </block>
-                                        <block id="p12" class="psycho-row">
+                                        <block name="p12" class="psycho-row">
                                             <selectable name="p13" class="psycho-col left">
                                                 <label>Zielstrebig</label>
                                             </selectable>
@@ -365,11 +365,11 @@ internal class XSLTUpgradeHandlerTest {
 
 
                                 <selection countdownInSec="0" name="psychotest">
-                                    <selectionItem id="p1" class="p1">
-                                        <block id="p11">
+                                    <selectionItem name="p1" class="p1">
+                                        <block name="p11">
                                             <headline>Bei der Arbeit bin ich:</headline>
                                         </block>
-                                        <block id="p12" class="psycho-row">
+                                        <block name="p12" class="psycho-row">
                                             <selectable name="p13" class="psycho-col left">
                                                 <label>Zielstrebig</label>
                                             </selectable>

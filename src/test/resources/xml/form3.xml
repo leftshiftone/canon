@@ -6,7 +6,7 @@
 </form>
 <block>
     <selection countdownInSec="2" name="name">
-        <selectionItem id="itemA">
+        <selectionItem name="itemA">
             <block id="contentA">
                 <selectable name="leftA">
                     <label>asdöfl</label>
@@ -16,7 +16,7 @@
                 </selectable>
             </block>
         </selectionItem>
-        <selectionItem id="itemB">
+        <selectionItem name="itemB">
             <block id="contentB">
                 <selectable id="leftB">
                     <label>asdöfl</label>
@@ -26,7 +26,7 @@
                 </selectable>
             </block>
         </selectionItem>
-        <selectionItem id="itemC">
+        <selectionItem name="itemC">
             <block id="contentC">
                 <selectable name="leftC">
                     <label>asdöfl</label>

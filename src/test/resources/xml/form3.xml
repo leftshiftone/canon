@@ -18,7 +18,7 @@
         </selectionItem>
         <selectionItem name="itemB">
             <block id="contentB">
-                <selectable id="leftB">
+                <selectable name="leftB">
                     <label>asdöfl</label>
                 </selectable>
                 <selectable name="rightB">

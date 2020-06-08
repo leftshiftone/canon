@@ -47,29 +47,27 @@ internal class XSLTUpgradeHandlerTest {
     }
 
     @Test
-    fun `given a folder with 4 newer xslt files than the current version, the transformerIterator contains all of them and in ASC order`() {
-        val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-        val transformerList = classUnderTest.buildTransformers("0.9.0")
-        assertThat(transformerList).isNotNull()
-        assertThat(transformerList).size().isEqualTo(4)
-        assertThat(transformerList).extracting("config").extracting("version")
-                .contains(
-                        SemanticVersion("1.0.0")
-                        , SemanticVersion("1.3.0")
-                        , SemanticVersion("1.5.0")
-                        , SemanticVersion("2.0.0")
-                )
+    fun  `given a folder with 4 newer xslt files than the current version, the transformerIterator contains all of them and in ASC order`() {
+            val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
+            val transformerList = classUnderTest.buildTransformers("1.0.0")
+            assertThat(transformerList).isNotNull()
+            assertThat(transformerList).size().isEqualTo(4)
+            assertThat(transformerList).extracting("config").extracting("version")
+                    .contains(
+                             SemanticVersion("1.3.0")
+                            ,SemanticVersion("1.5.0")
+                            ,SemanticVersion("2.0.0")
+                            ,SemanticVersion("2.2.0")
+                    )
     }
 
     @Test
-    fun `given a folder with one older xslt files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
-        val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-        val transformerList = classUnderTest.buildTransformers("1.6.0")
-        assertThat(transformerList).isNotNull()
-        assertThat(transformerList).size().isEqualTo(1)
-        assertThat(transformerList).element(0).extracting { it.config.version }.isEqualTo(SemanticVersion("2.0.0"))
-
-
+    fun  `given a folder with one older xslt files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
+            val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
+            val transformerList = classUnderTest.buildTransformers("2.0.0")
+            assertThat(transformerList).isNotNull()
+            assertThat(transformerList).size().isEqualTo(1)
+            assertThat(transformerList).element(0).extracting { it.config.version }.isEqualTo(SemanticVersion("2.2.0"))
     }
 
     @TestFactory
@@ -288,6 +286,98 @@ internal class XSLTUpgradeHandlerTest {
                                         <textC>C</textC>
                                     </block>
                                 </carousel>
+
+
+                                """.trimMargin().trim()
+            ),
+            mapOf(
+                    "name" to "Transform XML through transformers: 2.0.0, 2.2.0",
+                    "version" to "1.9.0",
+                    "rawXml" to """
+
+
+                                <selection countdownInSec="0" name="psychotest">
+                                    <block name="p1" class="p1">
+                                        <block name="p11">
+                                            <headline>Bei der Arbeit bin ich:</headline>
+                                        </block>
+                                        <block name="p12" class="psycho-row">
+                                            <block name="p13" class="psycho-col left">
+                                                <label>Zielstrebig</label>
+                                            </block>
+                                            <block name="p14" class="psycho-col">
+                                                <label>Kooperativ</label>
+                                            </block>
+                                        </block>
+                                    </block>
+                                </selection>
+
+
+                                """.trimMargin().trim(),
+                    "expectedTransformedXml" to """
+
+
+                                <selection countdownInSec="0" name="psychotest">
+                                    <selectionItem name="p1" class="p1">
+                                        <block name="p11">
+                                            <headline>Bei der Arbeit bin ich:</headline>
+                                        </block>
+                                        <block name="p12" class="psycho-row">
+                                            <selectable name="p13" class="psycho-col left">
+                                                <label>Zielstrebig</label>
+                                            </selectable>
+                                            <selectable name="p14" class="psycho-col">
+                                                <label>Kooperativ</label>
+                                            </selectable>
+                                        </block>
+                                    </selectionItem>
+                                </selection>
+
+
+                                """.trimMargin().trim()
+            ),
+            mapOf(
+                    "name" to "Transform XML through transformers: 2.2.0",
+                    "version" to "2.0.0",
+                    "rawXml" to """
+
+
+                                <selection countdownInSec="0" name="psychotest">
+                                    <block name="p1" class="p1">
+                                        <block name="p11">
+                                            <headline>Bei der Arbeit bin ich:</headline>
+                                        </block>
+                                        <block name="p12" class="psycho-row">
+                                            <block name="p13" class="psycho-col left">
+                                                <label>Zielstrebig</label>
+                                            </block>
+                                            <block name="p14" class="psycho-col">
+                                                <label>Kooperativ</label>
+                                            </block>
+                                        </block>
+                                    </block>
+                                </selection>
+
+
+                                """.trimMargin().trim(),
+                    "expectedTransformedXml" to """
+
+
+                                <selection countdownInSec="0" name="psychotest">
+                                    <selectionItem name="p1" class="p1">
+                                        <block name="p11">
+                                            <headline>Bei der Arbeit bin ich:</headline>
+                                        </block>
+                                        <block name="p12" class="psycho-row">
+                                            <selectable name="p13" class="psycho-col left">
+                                                <label>Zielstrebig</label>
+                                            </selectable>
+                                            <selectable name="p14" class="psycho-col">
+                                                <label>Kooperativ</label>
+                                            </selectable>
+                                        </block>
+                                    </selectionItem>
+                                </selection>
 
 
                                 """.trimMargin().trim()

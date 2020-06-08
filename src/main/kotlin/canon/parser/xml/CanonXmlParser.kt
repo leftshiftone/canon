@@ -72,6 +72,8 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
             "reelValue" -> ReelValueStrategy()
             "row" -> RowStrategy()
             "selection" -> SelectionStrategy()
+            "selectionItem" -> SelectionItemStrategy()
+            "selectable" -> SelectableStrategy()
             "singleChoice" -> SingleChoiceStrategy()
             "slider" -> SliderStrategy()
             "slotmachine" -> SlotMachineStrategy()

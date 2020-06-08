@@ -13,6 +13,8 @@ internal class XSLTTransformerTest {
 
     val WHITE_SPACE_REGEX= "\\s".toRegex()
     val TRANSFORMER_2_0_0 = XSLTTransformer(XSLTTransformerConfiguration(("/xml/xslt/transformers/transform_2.0.0.xslt")))
+    val TRANSFORMER_2_2_0 = XSLTTransformer(XSLTTransformerConfiguration(("/xml/xslt/transformers/transform_2.2.0.xslt")))
+
 
     private fun transformFromFileSystem(transformer: XSLTTransformer, pathToXMLToTransform: String, pathToExpectedXML: String, expectSuccess: Boolean = true) {
         try {
@@ -44,7 +46,10 @@ internal class XSLTTransformerTest {
 
 
     @Test
-    fun complexXmlIsParsed() = transformFromFileSystem(TRANSFORMER_2_0_0, "/xml/xslt/complex1.xml","/xml/xslt/expected/complex1.xml")
+    fun complexXmlIsParsed() {
+        transformFromFileSystem(TRANSFORMER_2_0_0, "/xml/xslt/complex1.xml","/xml/xslt/expected/complex1.xml")
+        transformFromFileSystem(TRANSFORMER_2_2_0, "/xml/xslt/complex2.xml","/xml/xslt/expected/complex2.xml")
+    }
 
     @Test
     fun `Transform keeps the format`(){
@@ -233,7 +238,7 @@ internal class XSLTTransformerTest {
     }
 
     @TestFactory
-    fun `Transform XML with XSLT`() = listOf(
+    fun `Transform XML with XSLT 2_0_0`() = listOf(
             /*****************************************TEXT TRANSFORMATIONS ******************************************************/
 
             mapOf("name" to "Simple text tag is transformed to a label",
@@ -480,6 +485,67 @@ internal class XSLTTransformerTest {
         }
     }
 
+
+    @TestFactory
+    fun `Transform XML with XSLT 2_2_0`() = listOf(
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <block>text</block>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <block>text</block>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>text</block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>text</selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>
+                                                                <block>text</block>
+                                                            </block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>
+                                                                <block>text</block>
+                                                            </selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>
+                                                                <block>
+                                                                    <block>text</block>
+                                                                </block>
+                                                            </block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>
+                                                                <block>
+                                                                    <selectable>text</selectable>
+                                                                </block>
+                                                            </selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim())
+    ).map {
+        DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {
+
+            transformString(TRANSFORMER_2_2_0, it["givenXml"] as String, it["expectedTransformation"] as String)
+        }
+    }
 
     @Test
     fun parallelTest() {

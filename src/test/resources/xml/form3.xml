@@ -3,17 +3,38 @@
         <text name="text" placeholder="type here..." regex="" value="foo" required="true" class="text"/>
         <phone name="phone" placeholder="type here..." required="true" class="phone"/>
         <upload name="phone" accept=".docx, .img" maxSize="2"/>
-    </form>
-    <block>
-        <selection countdownInSec="2" name="name">
-            <block name="blockA">
-                <label>asdöfl</label>
+</form>
+<block>
+    <selection countdownInSec="2" name="name">
+        <selectionItem name="itemA">
+            <block id="contentA">
+                <selectable name="leftA">
+                    <label>asdöfl</label>
+                </selectable>
+                <selectable name="rightA">
+                    <label>asdöfl</label>
+                </selectable>
             </block>
-            <block name="blockB">
-                <label>asdöfl</label>
+        </selectionItem>
+        <selectionItem name="itemB">
+            <block id="contentB">
+                <selectable name="leftB">
+                    <label>asdöfl</label>
+                </selectable>
+                <selectable name="rightB">
+                    <label>asdöfl</label>
+                </selectable>
             </block>
-            <block name="blockC">
-                <label>asdöfl</label>
+        </selectionItem>
+        <selectionItem name="itemC">
+            <block id="contentC">
+                <selectable name="leftC">
+                    <label>asdöfl</label>
+                </selectable>
+                <selectable name="rightC">
+                    <label>asdöfl</label>
+                </selectable>
             </block>
-        </selection>
-    </block>
+        </selectionItem>
+    </selection>
+</block>

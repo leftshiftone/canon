@@ -20,9 +20,11 @@
               "elements" : [ {
                 "text" : "test",
                 "type" : "label"
-              } ],
+              },{
+                "src" : "http://example.com/picture.jpg",
+                "type" : "image"
+              }],
               "name" : "b",
-              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],
@@ -31,10 +33,10 @@
             "elements" : [ {
               "elements" : [ {
                 "text" : "test",
+                "class" : "labelClass",
                 "type" : "label"
               } ],
               "name" : "c",
-              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],

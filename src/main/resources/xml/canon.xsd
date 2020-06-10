@@ -584,6 +584,7 @@
             <xs:element type="boldType" name="bold"/>
             <xs:element type="italicType" name="italic"/>
             <xs:element type="xs:string" name="break"/>
+            <xs:element type="blockType" name="block"/>
         </xs:choice>
         <xs:attribute name="selected" type="xs:string" default="false"/>
         <xs:attribute name="name" type="name" use="required"/>

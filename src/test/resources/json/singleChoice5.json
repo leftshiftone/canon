@@ -18,11 +18,17 @@
           }, {
             "elements" : [ {
               "elements" : [ {
-                "text" : "test",
-                "type" : "label"
+                "type" : "block",
+                "elements": []
               },{
                 "src" : "http://example.com/picture.jpg",
                 "type" : "image"
+              },{
+                "text" : "bold text",
+                "type" : "bold"
+              },{
+                "text" : "italic text",
+                "type" : "italic"
               }],
               "name" : "b",
               "type" : "choice",

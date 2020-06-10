@@ -24,6 +24,20 @@ class ChoiceStrategyTest {
         assertThat(parsed.selected).isEqualTo("true")
     }
 
+    @Test
+    fun testParseInvalidCombination() {
+        val xml = "<choice id='testId' class='testClass' name='choiceName' selected='true'>testText " +
+                "<label>label text</label></choice>"
+        val parsed = ChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+
+        assertThat(parsed).isNotNull
+        assertThat(parsed.id).isEqualTo("testId")
+        assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.name).isEqualTo("choiceName")
+        assertThat(parsed.text).isNull()
+        assertThat(parsed.selected).isEqualTo("true")
+    }
+
 
     @Test
     fun testParseWithChildren() {

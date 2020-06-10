@@ -577,15 +577,19 @@
         <xs:attribute name="class" type="xs:string"/>
     </xs:complexType>
 
-    <xs:complexType name="choiceType">
-        <xs:simpleContent>
-            <xs:extension base="xs:string">
-                <xs:attribute name="selected" type="xs:string" default="false"/>
-                <xs:attribute name="name" type="name" use="required"/>
-                <xs:attribute name="class" type="xs:string"/>
-                <xs:attribute type="xs:string" name="foreach"/>
-            </xs:extension>
-        </xs:simpleContent>
+    <xs:complexType name="choiceType" mixed="true">
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+            <xs:element type="labelType" name="label"/>
+            <xs:element type="imageType" name="image"/>
+            <xs:element type="boldType" name="bold"/>
+            <xs:element type="italicType" name="italic"/>
+            <xs:element type="xs:string" name="break"/>
+            <xs:element type="viewBlockType" name="block"/>
+        </xs:choice>
+        <xs:attribute name="selected" type="xs:string" default="false"/>
+        <xs:attribute name="name" type="name" use="required"/>
+        <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute type="xs:string" name="foreach"/>
     </xs:complexType>
 
     <xs:complexType name="markupType" mixed="true">

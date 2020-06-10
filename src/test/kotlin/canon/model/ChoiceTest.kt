@@ -1,5 +1,6 @@
 package canon.model
 
+import canon.api.IRenderable
 import canon.support.TestEvaluator
 import org.junit.jupiter.api.Test
 import org.assertj.core.api.Assertions.assertThat
@@ -13,7 +14,33 @@ class ChoiceTest {
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
         assertThat(mapped.size).isEqualTo(5)
-        assertThat(mapped.get("text")).isEqualTo("testText")
-        assertThat(mapped.get("selected")).isEqualTo(false)
+        assertThat(mapped["text"]).isEqualTo("testText")
+        assertThat(mapped["selected"]).isEqualTo(false)
+    }
+
+    @Test
+    fun testChoiceMappingWithLabel() {
+        val mapped = Choice(id = "testId", `class` = "testClass", name ="choiceName", selected = "false", text = null,
+                renderables = listOf<IRenderable>(Label(id = "labelId",`class` = "LabelClass", text = "labelText")))
+                .toMap(HashMap(), TestEvaluator())
+
+        assertThat(mapped.size).isEqualTo(4)
+        assertThat(mapped["text"]).isNull()
+        assertThat(mapped["selected"]).isEqualTo(false)
+    }
+
+    @Test
+    fun testChoiceMappingWithOtherElements() {
+        val mapped = Choice(id = "testId", `class` = "testClass", name ="choiceName", selected = "false", text = null,
+                renderables = listOf<IRenderable>(
+                        Bold(id = null, `class` = null, text = "boldText"),
+                        Italic(id = null, `class` = null, text = "italicText"),
+                        Block(id = null, `class` = null, name = "block", renderables = arrayListOf())))
+                .toMap(HashMap(), TestEvaluator())
+
+        assertThat(mapped.size).isEqualTo(4)
+        assertThat(mapped["text"]).isNull()
+        assertThat(mapped["selected"]).isEqualTo(false)
+
     }
 }

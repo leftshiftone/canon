@@ -13,6 +13,16 @@ open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
         val name = node.attrAsText("name")
         val selected = node.attrAsText("selected", "false")
 
-        return Choice(id, `class`, name, node.textContent, selected, factory(node))
+        var onlyText = true
+
+        for(i in 0 until node.childNodes.length)
+            if(node.childNodes.item(i).nodeName != "#text" && node.childNodes.item(i).nodeName != "#comment")
+                onlyText = false
+
+        return if (onlyText) {
+            Choice(id, `class`, name, node.textContent, selected, factory(node))
+        } else {
+            Choice(id, `class`, name, null, selected, factory(node))
+        }
     }
 }

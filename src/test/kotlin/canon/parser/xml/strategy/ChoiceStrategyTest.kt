@@ -1,10 +1,7 @@
 package canon.parser.xml.strategy
 
 import canon.extension.toNode
-import canon.model.Block
-import canon.model.Bold
-import canon.model.Italic
-import canon.model.Label
+import canon.model.*
 import canon.parser.xml.CanonXmlParser
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
@@ -36,6 +33,22 @@ class ChoiceStrategyTest {
         assertThat(parsed.name).isEqualTo("choiceName")
         assertThat(parsed.text).isNull()
         assertThat(parsed.selected).isEqualTo("true")
+    }
+
+    @Test
+    fun testParseComment() {
+        val xml = "<choice id='testId' class='testClass' name='choiceName' selected='true'><!-- I need a break -->" +
+                "<break /></choice>"
+        val parsed = ChoiceStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
+
+        assertThat(parsed).isNotNull
+        assertThat(parsed.id).isEqualTo("testId")
+        assertThat(parsed.`class`).isEqualTo("testClass")
+        assertThat(parsed.name).isEqualTo("choiceName")
+        assertThat(parsed.text).isNull()
+        assertThat(parsed.selected).isEqualTo("true")
+
+        assertThat((parsed.renderables!![0] as Break).id).isBlank()
     }
 
 

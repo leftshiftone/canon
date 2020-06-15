@@ -18,11 +18,19 @@
           }, {
             "elements" : [ {
               "elements" : [ {
-                "text" : "test",
-                "type" : "label"
-              } ],
+                "type" : "block",
+                "elements": []
+              },{
+                "src" : "http://example.com/picture.jpg",
+                "type" : "image"
+              },{
+                "text" : "bold text",
+                "type" : "bold"
+              },{
+                "text" : "italic text",
+                "type" : "italic"
+              }],
               "name" : "b",
-              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],
@@ -31,10 +39,10 @@
             "elements" : [ {
               "elements" : [ {
                 "text" : "test",
+                "class" : "labelClass",
                 "type" : "label"
               } ],
               "name" : "c",
-              "text" : "test",
               "type" : "choice",
               "selected" : false
             } ],

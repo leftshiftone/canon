@@ -6,10 +6,15 @@
                         <choice name="a" selected="false">test</choice>
                     </col>
                     <col>
-                        <choice name="b" selected="false">test</choice>
+                        <choice name="b" selected="false">
+                            <block></block>
+                            <image src="http://example.com/picture.jpg" />
+                            <bold>bold text</bold>
+                            <italic>italic text</italic>
+                        </choice>
                     </col>
                     <col>
-                        <choice name="c" selected="false">test</choice>
+                        <choice name="c" selected="false"><label class="labelClass">test</label></choice>
                     </col>
                 </row>
             </table>

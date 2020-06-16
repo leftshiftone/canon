@@ -113,10 +113,26 @@
                     <selectable name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </selectable>
-                    <selectable name="p94" class="psycho-col">
+                    <selectable name="result" class="psycho-col">
                          <label>Sorgfalt</label>
                     </selectable>
                </block>
+          </selectionItem>
+          <selectionItem name="hamOrCheese">
+               <selectable name="result">
+                    <image src="ham.jpg" width="100" height="100"/><label>Ham</label>
+               </selectable>
+               <selectable name="result">
+                    <image src="cheese.jpg" width="100" height="100"/><label>Cheese</label>
+               </selectable>
+          </selectionItem>
+          <selectionItem name="wineOrBeer">
+               <selectable name="result">
+                    <image src="wine.jpg" width="100" height="100"/><label>Wine</label>
+               </selectable>
+               <selectable name="result">
+                    <image src="beer.jpg" width="100" height="100"/><label>Beer</label>
+               </selectable>
           </selectionItem>
      </selection>
 </form>

@@ -14,10 +14,50 @@
     </xsl:template>
 
 
+    <xsl:template match="selection/block/block">
+        <xsl:if test="not(block)">
+            <xsl:choose>
+                <xsl:when test="label | image">
+                    <xsl:choose>
+                        <xsl:when test="@name">
+                            <selectable>
+                                <xsl:apply-templates select="@*|node()"/>
+                            </selectable>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <selectable name="result">
+                                <xsl:apply-templates select="@*|node()"/>
+                            </selectable>
+                        </xsl:otherwise>
+                    </xsl:choose>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:copy>
+                        <xsl:apply-templates select="@*|node()"/>
+                    </xsl:copy>
+                </xsl:otherwise>
+            </xsl:choose>
+        </xsl:if>
+        <xsl:if test="block">
+            <xsl:copy>
+                <xsl:apply-templates select="@*|node()"/>
+            </xsl:copy>
+        </xsl:if>
+    </xsl:template>
+
     <xsl:template match="selection/block/block/block">
-        <selectable>
-            <xsl:apply-templates select="@*|node()"/>
-        </selectable>
+        <xsl:choose>
+            <xsl:when test="@name">
+                <selectable>
+                    <xsl:apply-templates select="@*|node()"/>
+                </selectable>
+            </xsl:when>
+            <xsl:otherwise>
+                <selectable name="result">
+                    <xsl:apply-templates select="@*|node()"/>
+                </selectable>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>

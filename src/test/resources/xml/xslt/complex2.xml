@@ -113,9 +113,25 @@
                     <block name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </block>
-                    <block name="p94" class="psycho-col">
+                    <block class="psycho-col">
                          <label>Sorgfalt</label>
                     </block>
+               </block>
+          </block>
+          <block name="hamOrCheese">
+               <block>
+                    <image src="ham.jpg" width="100" height="100"/><label>Ham</label>
+               </block>
+               <block>
+                    <image src="cheese.jpg" width="100" height="100"/><label>Cheese</label>
+               </block>
+          </block>
+          <block name="wineOrBeer">
+               <block>
+                    <image src="wine.jpg" width="100" height="100"/><label>Wine</label>
+               </block>
+               <block>
+                    <image src="beer.jpg" width="100" height="100"/><label>Beer</label>
                </block>
           </block>
      </selection>

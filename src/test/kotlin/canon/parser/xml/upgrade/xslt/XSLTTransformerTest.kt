@@ -525,8 +525,38 @@ internal class XSLTTransformerTest {
                     "givenXml" to """
                                                         <selection>
                                                             <block>
+                                                                <block><label>text</label></block>
+                                                            </block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>
+                                                                <selectable name="result"><label>text</label></selectable>
+                                                            </selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>
+                                                                <block><image/></block>
+                                                            </block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>
+                                                                <selectable name="result"><image/></selectable>
+                                                            </selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>
                                                                 <block>
-                                                                    <block>text</block>
+                                                                    <block><label>text</label></block>
                                                                 </block>
                                                             </block>
                                                         </selection>
@@ -535,11 +565,31 @@ internal class XSLTTransformerTest {
                                                         <selection>
                                                             <selectionItem>
                                                                 <block>
-                                                                    <selectable>text</selectable>
+                                                                    <selectable><label>text</label></selectable>
+                                                                </block>
+                                                            </selectionItem>
+                                                        </selection>
+                                                """.trimIndent().trimMargin().trim()),
+            mapOf("name" to "Simple text tag is transformed to a label",
+                    "givenXml" to """
+                                                        <selection>
+                                                            <block>
+                                                                <block>
+                                                                    <block><image/></block>
+                                                                </block>
+                                                            </block>
+                                                        </selection>
+                                                 """.trimIndent().trimMargin().trim(),
+                    "expectedTransformation" to """
+                                                        <selection>
+                                                            <selectionItem>
+                                                                <block>
+                                                                    <selectable><image/></selectable>
                                                                 </block>
                                                             </selectionItem>
                                                         </selection>
                                                 """.trimIndent().trimMargin().trim())
+
     ).map {
         DynamicTest.dynamicTest("Name: ${it["name"]} given XML: [${it["givenXml"]}] -> ${it["expectedTransformation"]}") {
 

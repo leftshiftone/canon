@@ -113,7 +113,7 @@
                     <block name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </block>
-                    <block name="p94" class="psycho-col">
+                    <block class="psycho-col">
                          <label>Sorgfalt</label>
                     </block>
                </block>

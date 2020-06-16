@@ -46,9 +46,18 @@
     </xsl:template>
 
     <xsl:template match="selection/block/block/block">
-        <selectable>
-            <xsl:apply-templates select="@*|node()"/>
-        </selectable>
+        <xsl:choose>
+            <xsl:when test="@name">
+                <selectable>
+                    <xsl:apply-templates select="@*|node()"/>
+                </selectable>
+            </xsl:when>
+            <xsl:otherwise>
+                <selectable name="result">
+                    <xsl:apply-templates select="@*|node()"/>
+                </selectable>
+            </xsl:otherwise>
+        </xsl:choose>
     </xsl:template>
 
 </xsl:stylesheet>

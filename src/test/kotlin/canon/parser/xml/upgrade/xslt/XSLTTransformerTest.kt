@@ -565,7 +565,7 @@ internal class XSLTTransformerTest {
                                                         <selection>
                                                             <selectionItem>
                                                                 <block>
-                                                                    <selectable><label>text</label></selectable>
+                                                                    <selectable name="result"><label>text</label></selectable>
                                                                 </block>
                                                             </selectionItem>
                                                         </selection>
@@ -584,7 +584,7 @@ internal class XSLTTransformerTest {
                                                         <selection>
                                                             <selectionItem>
                                                                 <block>
-                                                                    <selectable><image/></selectable>
+                                                                    <selectable name="result"><image/></selectable>
                                                                 </block>
                                                             </selectionItem>
                                                         </selection>

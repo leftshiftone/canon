@@ -113,7 +113,7 @@
                     <selectable name="p93" class="psycho-col left">
                          <label>Anerkennung</label>
                     </selectable>
-                    <selectable name="p94" class="psycho-col">
+                    <selectable name="result" class="psycho-col">
                          <label>Sorgfalt</label>
                     </selectable>
                </block>

@@ -105,10 +105,6 @@ dependencies {
     compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
     compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
     compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
-
-    compile "com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9"
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
-    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
     compile "org.apache.commons:commons-lang3:3.0"
     compile "commons-codec:commons-codec:1.5"
     compile "org.slf4j:slf4j-api:1.7.30"

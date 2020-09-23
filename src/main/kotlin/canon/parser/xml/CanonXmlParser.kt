@@ -7,6 +7,7 @@ import canon.model.If
 import canon.parser.xml.strategy.*
 import canon.parser.xml.upgrade.CanonUpgradeHandler
 import canon.parser.xml.upgrade.xslt.XSLTUpgradeHandler
+import canon.parser.xml.validation.CanonXmlValidator
 import canon.parser.xml.validation.XmlValidation
 import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
@@ -28,16 +29,13 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
             val builder = DocumentBuilderFactory.newInstance()
             builder.newDocumentBuilder()
         }!!
-        // XMLValidator is not thread safe but resource intensive instances
-        private val VALIDATOR =  ThreadLocal.withInitial {
-            XmlValidator(CanonXmlParser::class.java.getResourceAsStream("/xml/canon.xsd"))
-        }
 
         @JvmStatic
         fun getDocumentBuilder() = DOCUMENT_BUILDER.get()!!
 
         @JvmStatic
-        fun getValidator() = VALIDATOR.get()!!
+        private val validator =  CanonXmlValidator()
+
     }
 
     private fun resolveStrategy(key: String): AbstractParseStrategy<IRenderable> {
@@ -111,7 +109,7 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
     private fun parse(str: String, validate: Boolean = true): List<IRenderable> {
         var xml = "<markup><container>$str</container></markup>"
         if (validate) {
-            val validation = getValidator().validate(xml)
+            val validation = validator.validate(xml)
             if (validation is XmlValidation.Failure) throw CanonException(validation.getMessage())
         }
         try {

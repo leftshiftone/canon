@@ -7,24 +7,25 @@ import org.assertj.core.api.Assertions.fail
 import org.junit.jupiter.api.Test
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 
 class XmlValidatorTest {
 
     @Test
     fun parallelTest() {
-        var testFailed=false;
         val barrier = CountDownLatch(1)
         val endBarrier = CountDownLatch(25)
         val validator = CanonXmlValidator()
+        val errorCounter= AtomicInteger(0)
         (0..24).forEach {
             Thread {
                 try{
                     barrier.await(10, TimeUnit.SECONDS)
                     println("Thread-${it} starting execution")
-                    validator.validate("<block></block>")
+                    val validation = validator.validate("<markup><container><block></block></container></markup>")
+                    if(validation is XmlValidation.Failure) errorCounter.incrementAndGet()
                 } catch (ex: Exception){
-                    testFailed=true;
-                    println("===>Exception was thrown ${ex.message}")
+                    errorCounter.incrementAndGet()
                 }
                 finally {
                     endBarrier.countDown()
@@ -33,7 +34,7 @@ class XmlValidatorTest {
         }
         barrier.countDown()
         endBarrier.await(60, TimeUnit.SECONDS)
-        assertThat(testFailed).isFalse()
+        assertThat(errorCounter.get()).isEqualTo(0)
     }
 
     @Test

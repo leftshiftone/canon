@@ -45,7 +45,7 @@ class CanonXmlParserTest {
     fun text2() = parseXml(CanonXmlParser(),"/xml/label2.xml")
 
     @Test
-    fun table1() = parseXml(CanonXmlParser(),"/xml/table1.xml")
+    fun table1() = parseXml(CanonXmlParser(),"/xml/table1.xml", true)
 
     @Test
     fun table2() = parseXml(CanonXmlParser(),"/xml/table2.xml", false)

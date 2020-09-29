@@ -4,7 +4,7 @@
                 <col><button value="test">test</button></col>
                 <col><label>h1</label></col>
             </row>
-            <row>
+            <row id="abc" class="def">
                 <col><button value="text">text</button></col>
                 <col><label>h1</label></col>
             </row>

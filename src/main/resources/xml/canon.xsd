@@ -76,7 +76,8 @@
         <xs:sequence minOccurs="1" maxOccurs="unbounded">
             <xs:element type="colType" name="col"/>
         </xs:sequence>
-        <xs:attribute name="class"/>
+        <xs:attribute type="xs:string" name="id"/>
+        <xs:attribute type="xs:string" name="class"/>
     </xs:complexType>
 
     <xs:complexType name="colType" mixed="true">

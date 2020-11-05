@@ -1,0 +1,3 @@
+<form>
+    <upload accept="pdf,docs" name="up" maxSize="10" maxCompressSize="10" required="true">text</upload>
+</form>

@@ -1,0 +1,17 @@
+[ [ {
+  "elements" : [ {
+    "elements" : [ {
+      "maxCompressSize" : 10.0,
+      "name" : "up",
+      "maxSize" : 10.0,
+      "text" : "text",
+      "type" : "upload",
+      "required" : true,
+      "accept" : "pdf,docs"
+    } ],
+    "type" : "form"
+  } ],
+  "index" : 0,
+  "type" : "container",
+  "timestamp" : 0
+} ] ]

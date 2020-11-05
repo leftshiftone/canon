@@ -151,6 +151,9 @@ class GaiaVisitorTest {
     @Test
     fun textInput1() = compare("text1", mapOf(), false)
 
+    @Test
+    fun upload1() = compare("upload1")
+
     private class TestEvaluator() : IEvaluator {
 
         override fun evaluate(expression: String, context: Map<String, Any>): String {

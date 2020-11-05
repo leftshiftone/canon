@@ -10,7 +10,7 @@ class UploadStrategyTest {
     @Test
     fun testParse() {
         val xml = "<upload id='testId' class='testClass' accept='jpeg, png' name='testName' " +
-                "maxSize='5.0' maxCompressSize='1.0'>test</upload>"
+                "maxSize='5.0' maxCompressSize='1.0' required='true'>test</upload>"
         val parsed = UploadStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
 
         assertThat(parsed).isNotNull()
@@ -20,6 +20,7 @@ class UploadStrategyTest {
         assertThat(parsed.name).isEqualTo("testName")
         assertThat(parsed.maxSize).isEqualTo(5.0)
         assertThat(parsed.maxCompressSize).isEqualTo(1.0)
+        assertThat(parsed.required).isTrue()
     }
 
 }

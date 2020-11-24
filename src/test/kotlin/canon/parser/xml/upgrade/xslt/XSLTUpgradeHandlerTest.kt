@@ -42,14 +42,14 @@ internal class XSLTUpgradeHandlerTest {
     @Test
     fun `given a folder with one xslt newer than the current version, the transformerIterator has one transformation`() {
         val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-        assertThat(classUnderTest.buildTransformers("1.9.0")).isNotNull()
+        assertThat(classUnderTest.transformersForVersion("1.9.0")).isNotNull()
 
     }
 
     @Test
     fun  `given a folder with 4 newer xslt files than the current version, the transformerIterator contains all of them and in ASC order`() {
             val classUnderTest = XSLTUpgradeHandler(TEST_TRANSFORMERS)
-            val transformerList = classUnderTest.buildTransformers("1.0.0")
+            val transformerList = classUnderTest.transformersForVersion("1.0.0")
             assertThat(transformerList).isNotNull()
             assertThat(transformerList).size().isEqualTo(4)
             assertThat(transformerList).extracting("config").extracting("version")
@@ -64,7 +64,7 @@ internal class XSLTUpgradeHandlerTest {
     @Test
     fun  `given a folder with one older xslt files and one newer than the current version, the transformerIterator contains just the newer and in ASC order`() {
             val classUnderTest = XSLTUpgradeHandler(DEFAULT_TRANSFORMERS)
-            val transformerList = classUnderTest.buildTransformers("2.0.0")
+            val transformerList = classUnderTest.transformersForVersion("2.0.0")
             assertThat(transformerList).isNotNull()
             assertThat(transformerList).size().isEqualTo(1)
             assertThat(transformerList).element(0).extracting { it.config.version }.isEqualTo(SemanticVersion("2.2.0"))

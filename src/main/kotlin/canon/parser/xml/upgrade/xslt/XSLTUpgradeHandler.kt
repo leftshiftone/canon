@@ -44,7 +44,7 @@ class XSLTUpgradeHandler : CanonUpgradeHandler {
         if (rawXml == null || !isUpgradeRequired(rawXmlVersion)) {
             return rawXml ?: ""
         }
-        val transformers = transformerCache.transformersForVersion(getVersion(rawXmlVersion))
+        val transformers = transformersForVersion(getVersion(rawXmlVersion))
         return transform(transformers, rawXml)
     }
 
@@ -58,7 +58,7 @@ class XSLTUpgradeHandler : CanonUpgradeHandler {
     private fun getVersion(version: String?) = version ?: DEFAULT_VERSION
 
     private fun upgradeUtterance(utterance: Map<String, List<String>>, rawXmlVersion: String, result: Map<String, List<String>>): Map<String, List<String>> {
-        val transformers = transformerCache.transformersForVersion(rawXmlVersion)
+        val transformers = transformersForVersion(rawXmlVersion)
         utterance.entries.map { utteranceEntry ->
             val transformedListOfUtterances = utteranceEntry.value
                 .map { utteranceValue -> transform(transformers, utteranceValue) }
@@ -75,6 +75,10 @@ class XSLTUpgradeHandler : CanonUpgradeHandler {
                 .fold(initialXml) { xmlToUpgrade, it ->
                     it.execute(xmlToUpgrade)
                 }.let { upgradeLogTransformer?.execute(it) ?: it }
+    }
+
+    fun transformersForVersion(version: String): List<XSLTTransformer> {
+        return transformerCache.transformersForVersion(version)
     }
 
 }

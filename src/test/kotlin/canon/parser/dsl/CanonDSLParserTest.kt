@@ -432,7 +432,7 @@ class CanonDSLParserTest {
 
     @Test fun testUpload() {
         CanonDSLParser.parse {
-            upload("id", "class", "accept", "name", "text", 10.0, 10.0)
+            upload("id", "class", "accept", "name", "text", 10.0, 10.0, false)
         }.forEach {
             Assertions.assertTrue(it is Upload)
         }

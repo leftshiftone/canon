@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class UploadStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Upload("id", "class", "accept", "name", "text", 10.0, 10.0), UploadStrategy()))
+    fun testParse() = assertTrue(testStrategy(Upload("id", "class", "accept", "name", "text", 10.0, 10.0, null), UploadStrategy()))
 }

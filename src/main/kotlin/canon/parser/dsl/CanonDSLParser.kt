@@ -194,8 +194,8 @@ class CanonDSLParser {
             add(Trigger(id, `class`, name, text))
         }
 
-        fun upload(id: String?, `class`: String?, accept: String?, name: String?, text: String?, maxSize: Double?, maxCompressSize: Double?) {
-            add(Upload(id, `class`, accept, name, text, maxSize, maxCompressSize))
+        fun upload(id: String?, `class`: String?, accept: String?, name: String?, text: String?, maxSize: Double?, maxCompressSize: Double?, required: Boolean?) {
+            add(Upload(id, `class`, accept, name, text, maxSize, maxCompressSize, required))
         }
 
         fun video(id: String?, `class`: String?, src: String?) {

@@ -99,6 +99,7 @@ compileTestKotlin {
 }
 
 dependencies {
+    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     antlr "org.antlr:antlr4:4.7.2"
 
     compile "org.antlr:antlr4-runtime:4.7.2"

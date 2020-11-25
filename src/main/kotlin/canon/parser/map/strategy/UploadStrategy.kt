@@ -11,6 +11,7 @@ class UploadStrategy : AbstractParseStrategy<Upload>() {
                 map["name"]?.toString(),
                 map["text"]?.toString(),
                 map["maxSize"] as Double?,
-                map["maxCompressSize"] as Double?)
+                map["maxCompressSize"] as Double?,
+                map["required"] as Boolean?)
     }
 }

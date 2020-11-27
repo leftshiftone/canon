@@ -17,6 +17,7 @@ class CanonMapParserTest {
                         "text" to "Hier steht ein Text"))
         renderableList.add(mapOf(
                 "type" to "block",
+                "name" to "",
                 "elements" to listOf<Map<String, Any>>( mapOf(
                         "type" to "button",
                         "text" to "Button A",
@@ -33,6 +34,8 @@ class CanonMapParserTest {
         assertTrue(parsedRenderables[1] is Block)
         assertTrue((parsedRenderables[1] as Block).renderables?.get(0) is Button)
         assertTrue((parsedRenderables[1] as Block).renderables?.get(1) is Button)
+        assertEquals(null, (parsedRenderables[1] as Block).name)
+        assertEquals(null, (parsedRenderables[1] as Block).`class`)
     }
 
     @Test fun testBasket() = testParser(Basket::class)

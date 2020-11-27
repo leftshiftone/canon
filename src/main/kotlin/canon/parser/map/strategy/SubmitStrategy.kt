@@ -5,9 +5,9 @@ import canon.model.Submit
 
 class SubmitStrategy : AbstractParseStrategy<Submit>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Submit {
-        return Submit(map["id"]?.toString(),
-                map["class"]?.toString(),
-                map["text"]?.toString(),
-                map["name"]?.toString())
+        return Submit(map["id"]?.toString()?.ifEmpty { null },
+                map["class"]?.toString()?.ifEmpty { null },
+                map["text"]?.toString()?.ifEmpty { null },
+                map["name"]?.toString()?.ifEmpty { null })
     }
 }

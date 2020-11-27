@@ -5,7 +5,7 @@ import canon.model.If
 
 class IfStrategy : AbstractParseStrategy<If>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): If {
-        return If(map["expression"]?.toString(),
+        return If(map["expression"]?.toString()?.ifEmpty { null },
                 map["renderable"] as IRenderable?)
     }
 }

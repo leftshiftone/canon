@@ -5,8 +5,8 @@ import canon.model.Video
 
 class VideoStrategy : AbstractParseStrategy<Video>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Video {
-        return Video(map["id"]?.toString(),
-                map["class"]?.toString(),
-                map["src"]?.toString())
+        return Video(map["id"]?.toString()?.ifEmpty { null },
+                map["class"]?.toString()?.ifEmpty { null },
+                map["src"]?.toString()?.ifEmpty { null })
     }
 }

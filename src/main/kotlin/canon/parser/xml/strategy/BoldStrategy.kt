@@ -8,8 +8,8 @@ import org.w3c.dom.Node
 open class BoldStrategy : AbstractParseStrategy<Bold>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Bold {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
 
         return Bold(id, `class`, node.textContent)
     }

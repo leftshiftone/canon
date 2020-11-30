@@ -8,10 +8,10 @@ import org.w3c.dom.Node
 open class TriggerStrategy : AbstractParseStrategy<Trigger>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Trigger {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
-        val name = node.attrAsText("name")
-        val text = node.attrAsText("text")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
+        val name = node.attrAsText("name").ifEmpty { null }
+        val text = node.attrAsText("text").ifEmpty { null }
 
         return Trigger(id, `class`, name, text)
     }

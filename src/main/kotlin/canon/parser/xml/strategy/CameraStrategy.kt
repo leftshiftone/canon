@@ -10,9 +10,9 @@ import org.w3c.dom.Node
 open class CameraStrategy : AbstractParseStrategy<Camera>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Camera {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
-        val name = node.attrAsText("name")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
+        val name = node.attrAsText("name").ifEmpty { null }
         val required = node.attrAsBoolean("required", false)
         val maxCompressSize = node.attrAsDouble("maxCompressSize", 0.0)
 

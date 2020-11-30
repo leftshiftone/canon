@@ -9,13 +9,13 @@ import org.w3c.dom.Node
 open class SpinnerStrategy : AbstractParseStrategy<Spinner>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Spinner {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
         val min = node.attrAsDouble("min", 0.0)
         val max = node.attrAsDouble("max", 10.0)
         val step = node.attrAsDouble("step", 1.0)
         val value = node.attrAsDouble("value", 1.0)
-        val name = node.attrAsText("name")
+        val name = node.attrAsText("name").ifEmpty { null }
 
         return Spinner(id, `class`, min, max, step, value, name)
     }

@@ -9,8 +9,8 @@ import org.w3c.dom.Node
 open class ItemsStrategy : AbstractParseStrategy<Items>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Items {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
         val ordered = node.attrAsBoolean("ordered", false)
         
         return Items(id, `class`, ordered, factory(node))

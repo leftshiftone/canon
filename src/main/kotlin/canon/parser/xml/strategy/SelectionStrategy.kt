@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 open class SelectionStrategy : AbstractParseStrategy<Selection>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Selection {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
-        val name = node.attrAsText("name")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
+        val name = node.attrAsText("name").ifEmpty { null }
         val countdownInSec = if (node.attrAsText("countdownInSec").isEmpty()) 0
         else node.attrAsText("countdownInSec").toInt()
 

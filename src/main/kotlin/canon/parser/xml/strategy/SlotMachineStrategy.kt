@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 open class SlotMachineStrategy : AbstractParseStrategy<SlotMachine>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SlotMachine {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
-        val name = node.attrAsText("name")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
+        val name = node.attrAsText("name").ifEmpty { null }
 
         return SlotMachine(id, `class`, name, factory(node))
     }

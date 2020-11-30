@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Choice {
-        val id = node.attrAsText("id")
-        val `class` = node.attrAsText("class")
-        val name = node.attrAsText("name")
+        val id = node.attrAsText("id").ifEmpty { null }
+        val `class` = node.attrAsText("class").ifEmpty { null }
+        val name = node.attrAsText("name").ifEmpty { null }
         val selected = node.attrAsText("selected", "false")
 
         var onlyText = true

@@ -9,12 +9,12 @@ import org.w3c.dom.Node
 open class EmailStrategy : AbstractParseStrategy<Email>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Email {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val placeholder = node.attrAsText("placeholder").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", false)
-        val name = node.attrAsText("name").ifEmpty { null }
-        val value = node.attrAsText("value").ifEmpty { null }
+        val name = node.attrAsText("name")
+        val value = node.attrAsText("value")
 
         return Email(id, `class`, placeholder, required, name, value)
     }

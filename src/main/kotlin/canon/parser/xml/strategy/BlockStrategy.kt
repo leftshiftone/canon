@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 open class BlockStrategy : AbstractParseStrategy<Block>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Block {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val name = node.attrAsText("name").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val name = node.attrAsText("name")
 
         return Block(id, `class`, name, factory(node))
     }

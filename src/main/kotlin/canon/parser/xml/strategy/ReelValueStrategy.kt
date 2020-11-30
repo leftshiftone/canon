@@ -8,10 +8,10 @@ import org.w3c.dom.Node
 open class ReelValueStrategy : AbstractParseStrategy<ReelValue>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): ReelValue {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val value = node.attrAsText("value").ifEmpty { null }
-        val valueType = node.attrAsText("valueType").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val value = node.attrAsText("value")
+        val valueType = node.attrAsText("valueType")
 
         return ReelValue(id, `class`, value, valueType)
     }

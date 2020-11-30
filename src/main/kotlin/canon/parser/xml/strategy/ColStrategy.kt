@@ -8,8 +8,8 @@ import org.w3c.dom.Node
 open class ColStrategy : AbstractParseStrategy<Col>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Col {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
 
         return Col(id, `class`, factory(node))
     }

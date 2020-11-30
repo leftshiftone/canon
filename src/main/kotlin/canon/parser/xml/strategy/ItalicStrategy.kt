@@ -8,8 +8,8 @@ import org.w3c.dom.Node
 open class ItalicStrategy : AbstractParseStrategy<Italic>() {
     
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Italic {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
 
         return Italic(id, `class`, node.textContent)
     }

@@ -8,9 +8,9 @@ import org.w3c.dom.Node
 open class OverlayStrategy : AbstractParseStrategy<Overlay>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Overlay {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val trigger = node.attrAsText("trigger").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val trigger = node.attrAsText("trigger")
 
         return Overlay(id, `class`, trigger, factory(node))
     }

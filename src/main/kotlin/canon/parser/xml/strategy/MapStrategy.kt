@@ -10,21 +10,21 @@ import org.w3c.dom.Node
 open class MapStrategy : AbstractParseStrategy<Map>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Map {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val name = node.attrAsText("name").ifEmpty { null }
-        val src = node.attrAsText("src").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val name = node.attrAsText("name")
+        val src = node.attrAsText("src")
         val mapType = node.attrAsText("mapType", "osm")
         val centerLng = node.attrAsText("centerLng", "0.0")
         val centerLat = node.attrAsText("centerLat", "0.0")
-        val markerIcon = node.attrAsText("markerIcon").ifEmpty { null }
-        val selectedMarkerIcon = node.attrAsText("selectedMarkerIcon").ifEmpty { null }
-        val routeStartIcon = node.attrAsText("routeStartIcon").ifEmpty { null }
-        val routeEndIcon = node.attrAsText("routeEndIcon").ifEmpty { null }
-        val routePoints = node.attrAsText("routePoints").ifEmpty { null }
+        val markerIcon = node.attrAsText("markerIcon")
+        val selectedMarkerIcon = node.attrAsText("selectedMarkerIcon")
+        val routeStartIcon = node.attrAsText("routeStartIcon")
+        val routeEndIcon = node.attrAsText("routeEndIcon")
+        val routePoints = node.attrAsText("routePoints")
         val centerBrowserLocation = node.attrAsBoolean("centerBrowserLocation", false)
         val required = node.attrAsBoolean("required", false)
-        val zoom = node.attrAsText("zoom", "8").ifEmpty { null }
+        val zoom = node.attrAsText("zoom", "8")
         val maxSelections = node.attrAsInt("maxSelections", 3)
 
         return Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routeStartIcon, routeEndIcon, routePoints,

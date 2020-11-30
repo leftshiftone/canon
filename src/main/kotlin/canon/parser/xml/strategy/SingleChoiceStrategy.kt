@@ -9,9 +9,9 @@ import org.w3c.dom.Node
 open class SingleChoiceStrategy : AbstractParseStrategy<SingleChoice>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): SingleChoice {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val name = node.attrAsText("name").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val name = node.attrAsText("name")
         val sieve = node.attrAsBoolean("sieve", true)
         val required = node.attrAsBoolean("required", true)
 

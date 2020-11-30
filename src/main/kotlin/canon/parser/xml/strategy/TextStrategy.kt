@@ -9,13 +9,13 @@ import org.w3c.dom.Node
 open class TextStrategy : AbstractParseStrategy<Text>() {
 
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Text {
-        val id = node.attrAsText("id").ifEmpty { null }
-        val `class` = node.attrAsText("class").ifEmpty { null }
-        val regex = node.attrAsText("regex").ifEmpty { null }
-        val placeholder = node.attrAsText("placeholder").ifEmpty { null }
+        val id = node.attrAsText("id")
+        val `class` = node.attrAsText("class")
+        val regex = node.attrAsText("regex")
+        val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", true)
-        val name = node.attrAsText("name").ifEmpty { null }
-        val value = node.attrAsText("value").ifEmpty { null }
+        val name = node.attrAsText("name")
+        val value = node.attrAsText("value")
 
         return Text(id, `class`, regex, placeholder, required, name, value)
     }

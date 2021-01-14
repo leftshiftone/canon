@@ -9,7 +9,6 @@ import canon.parser.xml.upgrade.CanonUpgradeHandler
 import canon.parser.xml.upgrade.xslt.XSLTUpgradeHandler
 import canon.parser.xml.validation.CanonXmlValidator
 import canon.parser.xml.validation.XmlValidation
-import canon.parser.xml.validation.XmlValidator
 import org.w3c.dom.NamedNodeMap
 import org.w3c.dom.Node
 import org.w3c.dom.NodeList
@@ -66,6 +65,7 @@ open class CanonXmlParser(val canonUpgradeHandler: CanonUpgradeHandler = XSLTUpg
             "overlay" -> OverlayStrategy()
             "overlays" -> OverlaysStrategy()
             "phone" -> PhoneStrategy()
+            "rating" -> RatingStrategy()
             "reel" -> ReelStrategy()
             "reelValue" -> ReelValueStrategy()
             "row" -> RowStrategy()

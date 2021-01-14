@@ -7,5 +7,5 @@ internal fun <T: IRenderable> testStrategy(renderable: T, strategy: AbstractPars
     val map = renderable.toMap(HashMap(), TestEvaluator())
     val mappedRenderable = strategy.parse(map) { emptyList()}
 
-    return renderable.equals(mappedRenderable)
+    return renderable == mappedRenderable
 }

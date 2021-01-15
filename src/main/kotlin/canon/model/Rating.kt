@@ -5,7 +5,7 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Rating(private val enabled: String?,
+data class Rating(val enabled: String?,
                   @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables) {
 
     override fun toString() = "Rating(enabled=$enabled) { ${renderables?.map { it.toString() }}"

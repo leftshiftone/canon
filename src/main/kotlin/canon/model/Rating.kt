@@ -15,7 +15,7 @@ data class Rating(val enabled: String?,
         if (enabled != null && enabled.isNotBlank()) {
             val evaluatedEnabled = evaluator.evaluate(enabled, context);
             if (evaluatedEnabled == "true" || evaluatedEnabled == "false")
-                map["enabled"] = evaluator.evaluate(enabled, context).toBoolean()
+                map["enabled"] = evaluatedEnabled.toBoolean()
         }
         return map
     }

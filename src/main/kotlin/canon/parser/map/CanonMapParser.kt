@@ -41,6 +41,7 @@ class CanonMapParser {
                 "overlay"           -> OverlayStrategy().parse(map, factory)
                 "overlays"          -> OverlaysStrategy().parse(map, factory)
                 "phone"             -> PhoneStrategy().parse(map, factory)
+                "rating"            -> RatingStrategy().parse(map, factory)
                 "reel"              -> ReelStrategy().parse(map, factory)
                 "reelValue"         -> ReelValueStrategy().parse(map, factory)
                 "row"               -> RowStrategy().parse(map, factory)

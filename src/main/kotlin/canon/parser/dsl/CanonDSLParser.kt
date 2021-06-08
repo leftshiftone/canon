@@ -105,9 +105,10 @@ class CanonDSLParser {
         fun map(id: String?, `class`: String?, name: String?, src: String?, mapType: String?, centerLng: String?,
                 centerLat: String?, markerIcon: String?, selectedMarkerIcon: String?, routeStartIcon: String?,
                 routeEndIcon: String?, routePoints: String?, centerBrowserLocation: Boolean?, required: Boolean?,
-                zoom: String?, maxSelections: Int?) {
+                zoom: String?, maxSelections: Int?, zoomByRadius:  Int?) {
             add(Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon,
-                    routeStartIcon, routeEndIcon, routePoints, centerBrowserLocation, required, zoom, maxSelections))
+                    routeStartIcon, routeEndIcon, routePoints, centerBrowserLocation, required, zoom, maxSelections,
+                    zoomByRadius))
         }
 
         fun multipleChoice(id: String?, `class`: String?, name: String?, sieve: Boolean?, required: Boolean?, config: (CanonDSL.() -> Unit)?) {

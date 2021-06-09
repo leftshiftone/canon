@@ -24,7 +24,7 @@ class Base64Test {
 
     @Test
     fun testEncodeUTF8StringNull() {
-        assertThatThrownBy { Base64.encodeUTF8String(null) }.isExactlyInstanceOf(NullPointerException::class.java)
+        assertThatThrownBy { Base64.encodeUTF8String(null) }.isInstanceOf(NullPointerException::class.java)
     }
 
     @Test

@@ -20,6 +20,7 @@ buildscript {
         mockkVersion = "1.9.3"
     }
     repositories {
+        mavenLocal() // todo: remove
         mavenCentral()
         jcenter()
     }
@@ -95,6 +96,7 @@ asteriaCodeAnalytics {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 afterEvaluate { project.tasks.sendReleaseEmail.mustRunAfter project.tasks.postRelease }

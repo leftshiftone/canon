@@ -20,17 +20,16 @@ buildscript {
         mockkVersion = "1.9.3"
     }
     repositories {
-        mavenLocal() // todo: remove
         mavenCentral()
         jcenter()
     }
     dependencies {
-        classpath "one.leftshift.asteria:asteria-code-analytics:latest.release"
-        classpath "one.leftshift.asteria:asteria-dependency:latest.release"
-        classpath "one.leftshift.asteria:asteria-email:latest.release"
-        classpath "one.leftshift.asteria:asteria-publish:latest.release"
-        classpath "one.leftshift.asteria:asteria-report:latest.release"
-        classpath "one.leftshift.asteria:asteria-version:latest.release"
+        classpath "one.leftshift.asteria:asteria-code-analytics:4.0.2"
+        classpath "one.leftshift.asteria:asteria-dependency:4.0.2"
+        classpath "one.leftshift.asteria:asteria-email:4.0.2"
+        classpath "one.leftshift.asteria:asteria-publish:4.0.2"
+        classpath "one.leftshift.asteria:asteria-report:4.0.2"
+        classpath "one.leftshift.asteria:asteria-version:4.0.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
         classpath "org.jetbrains.kotlin:kotlin-allopen:$kotlinVersion"
         classpath "org.jetbrains.dokka:dokka-gradle-plugin:0.9.17"

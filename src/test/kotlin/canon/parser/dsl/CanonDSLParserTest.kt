@@ -221,7 +221,7 @@ class CanonDSLParserTest {
             map("id", "class", "name", "src", "mapType", "centerLng",
                     "centerLat", "markerIcon", "selectedMarkerIcon",
                     "routeStartIcon", "routeEndIcon", "routePoints",
-                    true, true, "zoom", 1, 35)
+                    true, true, "zoom", 1, "35")
         }.forEach {
             Assertions.assertTrue(it is Map)
         }

@@ -20,7 +20,7 @@ data class Map(@JsonIgnore override val id: String?,
                val required: Boolean?,
                val zoom: String?,
                val maxSelections: Int?,
-               val zoomByRadius: Int?) : IRenderable, IClassAware {
+               val zoomByRadius: String?) : IRenderable, IClassAware {
 
     override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
         return visitor.empty()
@@ -42,7 +42,7 @@ data class Map(@JsonIgnore override val id: String?,
         builder.put("required", required)
         builder.put("zoom", zoom, 8) {evaluator.evaluate(it, context).toIntOrNull()?:8}
         builder.put("maxSelections", maxSelections)
-        builder.put("zoomByRadius", zoomByRadius)
+        builder.put("zoomByRadius", zoomByRadius, -1) {evaluator.evaluate(it, context).toIntOrNull()?:-1}
 
         return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }

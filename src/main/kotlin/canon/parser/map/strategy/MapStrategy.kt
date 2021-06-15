@@ -20,7 +20,7 @@ class MapStrategy : AbstractParseStrategy<canon.model.Map>() {
                 map["required"]?.toString()?.ifEmpty { null }?.toBoolean(),
                 map["zoom"]?.toString()?.ifEmpty { null },
                 map["maxSelections"]?.toString()?.ifEmpty { null }?.toInt(),
-                map["zoomByRadius"]?.toString()?.ifEmpty { null }?.toInt()
+                map["zoomByRadius"]?.toString()?.ifEmpty { null }
         )
     }
 }

@@ -26,7 +26,7 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
         val required = node.attrAsBoolean("required", false)
         val zoom = node.attrAsText("zoom", "8")
         val maxSelections = node.attrAsInt("maxSelections", 3)
-        val zoomByRadius = node.attrAsInt("zoomByRadius", 0)
+        val zoomByRadius = node.attrAsText("zoomByRadius")
         return Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routeStartIcon, routeEndIcon, routePoints,
                 centerBrowserLocation, required, zoom, maxSelections, zoomByRadius)
     }

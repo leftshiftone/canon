@@ -12,6 +12,6 @@ class MapStrategyTest {
                 Map("id", "class", "name", "src", "mapType", "10.0",
                         "10.0", "markerIcon", "selectedMarkerIcon",
                         "routeStartIcon", "routeEndIcon", "routePoints",
-                        true, true, "8", 10, 35),
+                        true, true, "8", 10, "35"),
                 MapStrategy()))
 }

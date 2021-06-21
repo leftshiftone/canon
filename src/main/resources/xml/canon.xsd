@@ -115,6 +115,7 @@
         <xs:attribute type="bool" name="centerBrowserLocation"/>
         <xs:attribute type="bool" name="required"/>
         <xs:attribute type="xs:integer" name="maxSelections" default="1"/>
+        <xs:attribute type="xs:string" name="zoomByRadius"/>
         <xs:attribute type="xs:string" name="zoom" default="8" />
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>

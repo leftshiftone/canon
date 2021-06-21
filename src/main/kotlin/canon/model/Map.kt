@@ -19,7 +19,8 @@ data class Map(@JsonIgnore override val id: String?,
                val centerBrowserLocation: Boolean?,
                val required: Boolean?,
                val zoom: String?,
-               val maxSelections: Int?) : IRenderable, IClassAware {
+               val maxSelections: Int?,
+               val zoomByRadius: String?) : IRenderable, IClassAware {
 
     override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
         return visitor.empty()
@@ -41,12 +42,13 @@ data class Map(@JsonIgnore override val id: String?,
         builder.put("required", required)
         builder.put("zoom", zoom, 8) {evaluator.evaluate(it, context).toIntOrNull()?:8}
         builder.put("maxSelections", maxSelections)
+        builder.put("zoomByRadius", zoomByRadius, -1) {evaluator.evaluate(it, context).toIntOrNull()?:-1}
 
         return builder.toMap().plus(toIdAndClassMap(context, evaluator))
     }
 
     override fun toString(): String {
-        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, markerIcon=$markerIcon, selectedMarkerIcon=$selectedMarkerIcon, routeStartIcon=$routeStartIcon, routeEndIcon=$routeEndIcon, routePoints=$routePoints, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections)}"
+        return "Map(name=$name, src=$src, mapType=$mapType, centerLng=$centerLng, centerLat=$centerLat, markerIcon=$markerIcon, selectedMarkerIcon=$selectedMarkerIcon, routeStartIcon=$routeStartIcon, routeEndIcon=$routeEndIcon, routePoints=$routePoints, centerBrowserLocation=$centerBrowserLocation, required=$required, zoom=$zoom, maxSelections=$maxSelections, zoomByRadius=$zoomByRadius)}"
     }
 
 }

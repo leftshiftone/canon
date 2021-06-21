@@ -9,7 +9,8 @@
     "centerLat" : 0.0,
     "type" : "map",
     "required" : false,
-    "maxSelections" : 3
+    "maxSelections" : 3,
+    "zoomByRadius": 35
   } ],
   "index" : 0,
   "type" : "container",

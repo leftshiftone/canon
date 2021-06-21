@@ -14,9 +14,9 @@ class MapTest {
                 markerIcon = "static/icons/icon01.svg", selectedMarkerIcon = "static/icons/icon02.svg",
                 routeStartIcon = "static/icons/start.png", routeEndIcon = "static/icons/end.png",
                 routePoints = "45.3,46.8;45.8,44.7", centerBrowserLocation = false, required = true,
-                zoom = "12", maxSelections = 1).toMap(HashMap(), TestEvaluator())
+                zoom = "12", maxSelections = 1, zoomByRadius = "35").toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(16)
+        assertThat(mapped.size).isEqualTo(17)
         assertThat(mapped["name"]).isEqualTo("testName")
         assertThat(mapped["src"]).isEqualTo("testSrc")
         assertThat(mapped["mapType"]).isEqualTo("type")
@@ -31,6 +31,7 @@ class MapTest {
         assertThat(mapped["required"]).isEqualTo(true)
         assertThat(mapped["zoom"]).isEqualTo(12)
         assertThat(mapped["maxSelections"]).isEqualTo(1)
+        assertThat(mapped["zoomByRadius"]).isEqualTo(35)
     }
 
     @Test
@@ -40,9 +41,9 @@ class MapTest {
                 markerIcon = "static/icons/icon01.svg", selectedMarkerIcon = "static/icons/icon02.svg",
                 routeStartIcon = "static/icons/start.png", routeEndIcon = "static/icons/end.png",
                 routePoints = "45.3,46.8;45.8,44.7", centerBrowserLocation = false, required = true,
-                zoom = "test", maxSelections = 1).toMap(HashMap(), TestEvaluator())
+                zoom = "test", maxSelections = 1, zoomByRadius = "35").toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(16)
+        assertThat(mapped.size).isEqualTo(17)
         assertThat(mapped["centerLng"]).isEqualTo(0.0)
         assertThat(mapped["centerLat"]).isEqualTo(0.0)
         assertThat(mapped["zoom"]).isEqualTo(8)

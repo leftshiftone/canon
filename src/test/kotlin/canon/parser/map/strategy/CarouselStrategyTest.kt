@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class CarouselStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Carousel("id", "class", "text", "name", true, emptyList()), CarouselStrategy()))
+    fun testParse() = assertTrue(testStrategy(Carousel("id", "class", "ariaLabel", "text", "name", true, emptyList()), CarouselStrategy()))
 }

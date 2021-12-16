@@ -9,10 +9,10 @@ class ContainerTest {
 
     @Test
     fun testContainerMapping() {
-        val mapped = Container("testId", "testClass", "testName",
+        val mapped = Container("testId", "testClass", "testAriaLabel", "testName",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(3)
+        assertThat(mapped.size).isEqualTo(4)
         assertThat(mapped["name"]).isEqualTo("testName")
     }
 }

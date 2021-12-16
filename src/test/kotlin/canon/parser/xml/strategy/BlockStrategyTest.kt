@@ -10,12 +10,13 @@ class BlockStrategyTest {
 
     @Test
     fun testParse() {
-        val xml = "<block id='testId' class='testClass' name='testBlock'><bold id='a' class='b'>text</bold></block>"
+        val xml = "<block id='testId' ariaLabel='testAriaLabel' class='testClass' name='testBlock'><bold id='a' class='b'>text</bold></block>"
 
         val parsed = BlockStrategy().parse(xml.toNode(), CanonXmlParser()::toRenderables)
         assertNotNull(parsed)
         assertEquals("testId", parsed.id)
         assertEquals("testClass", parsed.`class`)
+        assertEquals("testAriaLabel", parsed.ariaLabel)
         assertEquals("testBlock", parsed.name)
     }
 }

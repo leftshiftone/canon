@@ -8,8 +8,8 @@ class BreakTest {
 
     @Test
     fun testBreakMapping() {
-        val mapped = Break("testId", "testClass").toMap(HashMap(), TestEvaluator())
+        val mapped = Break("testId", "testClass", "testAriaLabel").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(2, mapped.size)
+        assertEquals(3, mapped.size)
     }
 }

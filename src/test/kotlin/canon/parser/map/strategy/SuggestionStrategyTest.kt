@@ -8,5 +8,5 @@ import org.junit.jupiter.api.Test
 class SuggestionStrategyTest {
 
     @Test
-    fun parseTest() = assertTrue(testStrategy(Suggestion("id", "class", "text", "name", Base64.encodeUTF8String("value")), SuggestionStrategy()))
+    fun parseTest() = assertTrue(testStrategy(Suggestion("id", "class", "ariaLabel", "text", "name", Base64.encodeUTF8String("value")), SuggestionStrategy()))
 }

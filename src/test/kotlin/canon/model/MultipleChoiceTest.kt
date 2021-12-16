@@ -9,10 +9,10 @@ class MultipleChoiceTest {
 
     @Test
     fun testMultipleChoiceMapping() {
-        val mapped = MultipleChoice("testId", "testClass", "testName", false, true,
+        val mapped = MultipleChoice("testId", "testClass", "testAriaLabel", "testName", false, true,
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(5)
+        assertThat(mapped.size).isEqualTo(6)
         assertThat(mapped["name"]).isEqualTo("testName")
         assertThat(mapped["sieve"]).isEqualTo(false)
     }

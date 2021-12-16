@@ -10,9 +10,10 @@ open class SuggestionStrategy : AbstractParseStrategy<Suggestion>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Suggestion {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
-        return Suggestion(id, `class`, node.textContent, name, value)
+        return Suggestion(id, `class`, ariaLabel, node.textContent, name, value)
     }
 }

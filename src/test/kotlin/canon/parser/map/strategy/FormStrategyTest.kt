@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class FormStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Form("id", "class", "name", emptyList()), FormStrategy()))
+    fun testParse() = assertTrue(testStrategy(Form("id", "class", "ariaLabel", "name", emptyList()), FormStrategy()))
 }

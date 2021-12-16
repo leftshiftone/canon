@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class TriggerStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Trigger("id", "class", "name", "text"), TriggerStrategy()))
+    fun testParse() = assertTrue(testStrategy(Trigger("id", "class", "ariaLabel", "name", "text"), TriggerStrategy()))
 }

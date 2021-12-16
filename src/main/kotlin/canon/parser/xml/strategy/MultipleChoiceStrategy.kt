@@ -11,10 +11,11 @@ open class MultipleChoiceStrategy : AbstractParseStrategy<MultipleChoice>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): MultipleChoice {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val sieve = node.attrAsBoolean("sieve", true)
         val required = node.attrAsBoolean("required", true)
 
-        return MultipleChoice(id, `class`, name, sieve, required, factory(node))
+        return MultipleChoice(id, `class`, ariaLabel, name, sieve, required, factory(node))
     }
 }

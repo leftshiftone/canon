@@ -10,7 +10,8 @@ open class ItalicStrategy : AbstractParseStrategy<Italic>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Italic {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
 
-        return Italic(id, `class`, node.textContent)
+        return Italic(id, `class`, ariaLabel, node.textContent)
     }
 }

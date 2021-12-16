@@ -9,10 +9,10 @@ class SlotMachineTest {
 
     @Test
     fun testSlotMachineMapping() {
-        val mapped = SlotMachine("testId", "testClass", "testName",
+        val mapped = SlotMachine("testId", "testClass", "testAriaLabel", "testName",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testName", mapped.get("name"))
+        assertEquals(4, mapped.size)
+        assertEquals("testName", mapped["name"])
     }
 }

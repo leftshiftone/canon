@@ -9,9 +9,9 @@ class ItalicTest {
 
     @Test
     fun testItalicMapping() {
-        val mapped = Italic("testId", "testClass", "testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Italic("testId", "testClass", "testAriaLabel", "testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testText", mapped.get("text"))
+        assertEquals(4, mapped.size)
+        assertEquals("testText", mapped["text"])
     }
 }

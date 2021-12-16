@@ -9,7 +9,7 @@ class MapStrategyTest {
     @Test
     fun testParse() = assertTrue(
             testStrategy(
-                Map("id", "class", "name", "src", "mapType", "10.0",
+                Map("id", "class", "ariaLabel", "name", "src", "mapType", "10.0",
                         "10.0", "markerIcon", "selectedMarkerIcon",
                         "routeStartIcon", "routeEndIcon", "routePoints",
                         true, true, "8", 10, "35"),

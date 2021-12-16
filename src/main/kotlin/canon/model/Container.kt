@@ -6,10 +6,13 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Container(@JsonIgnore override val id: String?,
-                     @JsonIgnore override val `class`: String?,
-                     val name: String?,
-                     @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware, IEnrichable {
+data class Container(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    val name: String?,
+    @JsonIgnore val renderables: List<IRenderable>?
+) : AbstractStackable(renderables), IClassAware, IEnrichable {
 
     private val enrichedData = mutableMapOf<String, Any>()
 

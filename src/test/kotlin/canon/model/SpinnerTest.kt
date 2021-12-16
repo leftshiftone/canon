@@ -9,14 +9,14 @@ class SpinnerTest {
 
     @Test
     fun testSpinnerMapping() {
-        val mapped = Spinner("testId", "testClass", 1.0, 101.0, 1.0, 25.0,
+        val mapped = Spinner("testId", "testClass", "testAriaLabel", 1.0, 101.0, 1.0, 25.0,
                 "testName").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(7, mapped.size)
-        assertEquals(1.0, mapped.get("min"))
-        assertEquals(101.0, mapped.get("max"))
-        assertEquals(1.0, mapped.get("step"))
-        assertEquals(25.0, mapped.get("value"))
-        assertEquals("testName", mapped.get("name"))
+        assertEquals(8, mapped.size)
+        assertEquals(1.0, mapped["min"])
+        assertEquals(101.0, mapped["max"])
+        assertEquals(1.0, mapped["step"])
+        assertEquals(25.0, mapped["value"])
+        assertEquals("testName", mapped["name"])
     }
 }

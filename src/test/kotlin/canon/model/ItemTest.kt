@@ -9,8 +9,8 @@ class ItemTest {
 
     @Test
     fun testItemMapping() {
-        val mapped = Item("testId", "testClass", ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = Item("testId", "testClass", "testAriaLabel", ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(2, mapped.size)
+        assertEquals(3, mapped.size)
     }
 }

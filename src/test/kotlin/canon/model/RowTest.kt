@@ -9,8 +9,8 @@ class RowTest {
 
     @Test
     fun testRowMapping() {
-        val mapped = Row("testId", "testClass", ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = Row("testId", "testAriaLabel", "testClass", ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(2, mapped.size)
+        assertEquals(3, mapped.size)
     }
 }

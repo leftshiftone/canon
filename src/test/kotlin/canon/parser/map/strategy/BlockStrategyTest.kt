@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class BlockStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Block("id", "class", "name", emptyList()), BlockStrategy()))
+    fun testParse() = assertTrue(testStrategy(Block("id", "class", "ariaLabel", "name", emptyList()), BlockStrategy()))
 }

@@ -6,7 +6,7 @@ import canon.model.Items
 class ItemsAST(val items:List<AbstractAST>) : AbstractAST() {
 
     override fun toRenderable(): List<IRenderable> {
-        return listOf(Items("", "", false, items.flatMap { it.toRenderable() }))
+        return listOf(Items("",  "", "", false, items.flatMap { it.toRenderable() }))
     }
 
 }

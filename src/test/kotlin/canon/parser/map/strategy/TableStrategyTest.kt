@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class TableStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Table("id", "class", "name", emptyList()), TableStrategy()))
+    fun testParse() = assertTrue(testStrategy(Table("id", "class", "ariaLabel", "name", emptyList()), TableStrategy()))
 }

@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class ImageStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Image("id", "class", "src", "width", "height", "alt"), ImageStrategy()))
+    fun testParse() = assertTrue(testStrategy(Image("id", "class", "ariaLabel", "src", "width", "height", "alt"), ImageStrategy()))
 }

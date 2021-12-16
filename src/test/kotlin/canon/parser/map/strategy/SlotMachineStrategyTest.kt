@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class SlotMachineStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(SlotMachine("id", "class", "name", emptyList()), SlotMachineStrategy()))
+    fun testParse() = assertTrue(testStrategy(SlotMachine("id", "class", "ariaLabel", "name", emptyList()), SlotMachineStrategy()))
 }

@@ -10,8 +10,8 @@ class ForeachTest {
     @Test
     fun testForeachMapping() {
 
-        val foreach = Foreach("\$event in \$result", Block("testId", "testClass",
-                "testName", ArrayList()))
+        val foreach = Foreach("\$event in \$result", Block("testId", "testClass", "testAriaLabel",
+            "testName", ArrayList()))
 
         assertNotNull(foreach)
         assertEquals(1, foreach.renderables.size)

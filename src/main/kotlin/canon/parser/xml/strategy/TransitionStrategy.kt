@@ -10,10 +10,11 @@ open class TransitionStrategy : AbstractParseStrategy<Transition>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Transition {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val direction = node.attrAsText("direction")
         val wrapped = node.attrAsText("wrapped")
 
-        return Transition(id, `class`, name, direction, wrapped, factory(node))
+        return Transition(id, `class`, ariaLabel, name, direction, wrapped, factory(node))
     }
 }

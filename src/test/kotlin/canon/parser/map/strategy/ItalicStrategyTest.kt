@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class ItalicStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Italic("id", "class", "text"), ItalicStrategy()))
+    fun testParse() = assertTrue(testStrategy(Italic("id", "class", "ariaLabel", "text"), ItalicStrategy()))
 }

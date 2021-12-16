@@ -6,7 +6,7 @@ import canon.model.Block
 class TagAST(val list:List<AbstractAST>) : AbstractAST() {
 
     override fun toRenderable(): List<IRenderable> {
-        return listOf(Block("", "", "", list.flatMap { it.toRenderable() }))
+        return listOf(Block("", "", "", "", list.flatMap { it.toRenderable() }))
     }
 
 }

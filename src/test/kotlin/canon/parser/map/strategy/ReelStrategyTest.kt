@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class ReelStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Reel("id", "class", "name", emptyList()), ReelStrategy()))
+    fun testParse() = assertTrue(testStrategy(Reel("id", "class", "ariaLabel", "name", emptyList()), ReelStrategy()))
 }

@@ -11,6 +11,7 @@ open class ButtonStrategy : AbstractParseStrategy<Button>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Button {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
@@ -21,9 +22,9 @@ open class ButtonStrategy : AbstractParseStrategy<Button>() {
                 onlyText = false
 
         return if(onlyText) {
-            Button(id, `class`, node.textContent, name, Base64.encode(mapOf("payload" to value)), ArrayList())
+            Button(id, `class`, ariaLabel, node.textContent, name, Base64.encode(mapOf("payload" to value)), ArrayList())
         } else {
-            Button(id, `class`, null, name, Base64.encode(mapOf("payload" to value)), factory(node))
+            Button(id, `class`, ariaLabel, null, name, Base64.encode(mapOf("payload" to value)), factory(node))
         }
     }
 }

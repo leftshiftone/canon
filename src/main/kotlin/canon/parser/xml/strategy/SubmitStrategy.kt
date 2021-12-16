@@ -10,8 +10,9 @@ open class SubmitStrategy : AbstractParseStrategy<Submit>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Submit {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
 
-        return Submit(id, `class`, node.textContent, name)
+        return Submit(id, `class`, ariaLabel, node.textContent, name)
     }
 }

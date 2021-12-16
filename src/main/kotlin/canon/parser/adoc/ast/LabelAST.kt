@@ -6,7 +6,7 @@ import canon.model.Label
 class LabelAST(val text:String) : AbstractAST() {
 
     override fun toRenderable(): List<IRenderable> {
-        return listOf(Label("", "", text))
+        return listOf(Label("", "", "", text))
     }
 
 }

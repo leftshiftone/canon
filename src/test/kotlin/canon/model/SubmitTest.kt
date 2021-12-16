@@ -9,10 +9,10 @@ class SubmitTest {
 
     @Test
     fun testSubmitMapping() {
-        val mapped = Submit("testId", "testClass", "testText", "testName").toMap(HashMap(), TestEvaluator())
+        val mapped = Submit("testId", "testClass", "testAriaLabel", "testText", "testName").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
-        assertEquals("testText", mapped.get("text"))
-        assertEquals("testName", mapped.get("name"))
+        assertEquals(5, mapped.size)
+        assertEquals("testText", mapped["text"])
+        assertEquals("testName", mapped["name"])
     }
 }

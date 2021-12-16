@@ -9,13 +9,13 @@ class ImageTest {
 
     @Test
     fun testImageMapping() {
-        val mapped = Image("testId", "testClass", "testSrc",
+        val mapped = Image("testId", "testClass", "testAriaLabel", "testSrc",
                 "100", "100", "testAlt").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(6, mapped.size)
-        assertEquals("testSrc", mapped.get("src"))
-        assertEquals("100", mapped.get("width"))
-        assertEquals("100", mapped.get("height"))
-        assertEquals("testAlt", mapped.get("alt"))
+        assertEquals(7, mapped.size)
+        assertEquals("testSrc", mapped["src"])
+        assertEquals("100", mapped["width"])
+        assertEquals("100", mapped["height"])
+        assertEquals("testAlt", mapped["alt"])
     }
 }

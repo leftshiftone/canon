@@ -10,6 +10,7 @@
         <xs:attribute name="name" type="name" use="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:boolean" name="required" default="false"/>
         <xs:attribute type="xs:decimal" name="maxCompressSize" default="0" />
     </xs:complexType>
@@ -26,6 +27,7 @@
         </xs:attribute>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="itemsType" mixed="true">
@@ -35,6 +37,7 @@
         <xs:attribute type="bool" name="ordered" default="false"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
 
@@ -67,6 +70,7 @@
         <xs:attribute type="xs:string" name="if"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="tableType" mixed="true">
@@ -75,6 +79,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="rowType" mixed="true">
@@ -83,6 +88,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="colType" mixed="true">
@@ -91,6 +97,7 @@
         <xs:attribute type="xs:string" name="if"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="mapType">
@@ -119,6 +126,7 @@
         <xs:attribute type="xs:string" name="zoom" default="8" />
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="buttonType" mixed="true">
@@ -135,6 +143,7 @@
         <xs:attribute name="name" type="name"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="reelType">
@@ -143,6 +152,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute name="name" type="name" use="required"/>
     </xs:complexType>
 
@@ -151,6 +161,7 @@
         <xs:attribute type="xs:string" name="value"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="slotMachineType">
@@ -159,6 +170,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="overlaysType">
@@ -167,6 +179,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
 
@@ -178,6 +191,7 @@
         <xs:attribute name="trigger" type="name" use="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="triggerType">
@@ -186,6 +200,7 @@
                 <xs:attribute name="name" type="name" use="required"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -197,6 +212,7 @@
                 <xs:attribute name="name" type="name"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -207,6 +223,7 @@
                 <xs:attribute name="name" type="name"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -248,6 +265,7 @@
         <xs:attribute name="name" type="name"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="textType">
@@ -258,6 +276,7 @@
         <xs:attribute type="xs:boolean" name="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="textareaType">
@@ -268,6 +287,7 @@
         <xs:attribute type="xs:string" name="value"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:boolean" name="required"/>
     </xs:complexType>
 
@@ -278,6 +298,7 @@
         <xs:attribute type="xs:boolean" name="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="emailType">
@@ -287,6 +308,7 @@
         <xs:attribute type="xs:boolean" name="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="blockType">
@@ -325,6 +347,7 @@
         </xs:choice>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="foreach"/>
         <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
@@ -340,6 +363,7 @@
         </xs:choice>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="foreach"/>
         <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
@@ -378,6 +402,7 @@
         </xs:choice>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="foreach"/>
         <xs:attribute type="xs:string" name="if"/>
         <xs:attribute type="name" name="name"/>
@@ -392,6 +417,7 @@
         <xs:attribute type="xs:integer" name="countdownInSec"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="selectionItemType">
@@ -409,6 +435,7 @@
         </xs:choice>
         <xs:attribute type="name" name="name" use="required"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="foreach"/>
         <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
@@ -426,6 +453,7 @@
         <xs:attribute name="name" type="name" use="required"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="if"/>
     </xs:complexType>
 
@@ -436,6 +464,7 @@
                 <xs:attribute type="xs:string" name="if"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -445,6 +474,7 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
                 <xs:attribute type="xs:string" name="if"/>
             </xs:extension>
         </xs:simpleContent>
@@ -455,6 +485,7 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -464,6 +495,7 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -473,6 +505,7 @@
             <xs:extension base="xs:string">
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -483,6 +516,7 @@
                 <xs:attribute type="xs:string" name="src" use="required"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -496,6 +530,7 @@
                 <xs:attribute type="xs:string" name="alt"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
             </xs:extension>
         </xs:simpleContent>
     </xs:complexType>
@@ -508,6 +543,7 @@
                 <xs:attribute name="name" type="name" use="required"/>
                 <xs:attribute type="xs:string" name="id"/>
                 <xs:attribute type="xs:string" name="class"/>
+                <xs:attribute type="xs:string" name="ariaLabel"/>
                 <xs:attribute type="xs:decimal" name="maxCompressSize" default="0"/>
                 <xs:attribute type="xs:boolean" name="required" default="false"/>
             </xs:extension>
@@ -521,6 +557,7 @@
         <xs:attribute type="xs:decimal" name="min"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="values"/>
         <xs:attribute name="name" type="name" use="required"/>
     </xs:complexType>
@@ -532,6 +569,7 @@
         <xs:attribute type="xs:decimal" name="min"/>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute name="name" type="name" use="required"/>
     </xs:complexType>
 
@@ -541,6 +579,7 @@
         </xs:sequence>
         <xs:attribute type="xs:string" name="id"/>
         <xs:attribute type="xs:string" name="class"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="singleChoiceType">
@@ -552,6 +591,7 @@
         <xs:attribute name="sieve" type="bool" default="true"/>
         <xs:attribute name="required" type="bool" default="false"/>
         <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="id"/>
     </xs:complexType>
 
@@ -563,7 +603,9 @@
         <xs:attribute name="name" type="name" use="required"/>
         <xs:attribute name="sieve" type="bool" default="true"/>
         <xs:attribute name="required" type="bool" default="false"/>
+        <xs:attribute name="id" type="xs:string"/>
         <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
     </xs:complexType>
 
     <xs:complexType name="choiceType" mixed="true">
@@ -577,7 +619,9 @@
         </xs:choice>
         <xs:attribute name="selected" type="xs:string" default="false"/>
         <xs:attribute name="name" type="name" use="required"/>
+        <xs:attribute name="id" type="xs:string"/>
         <xs:attribute name="class" type="xs:string"/>
+        <xs:attribute type="xs:string" name="ariaLabel"/>
         <xs:attribute type="xs:string" name="foreach"/>
     </xs:complexType>
 

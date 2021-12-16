@@ -10,8 +10,9 @@ open class LinkStrategy : AbstractParseStrategy<Link>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Link {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val value = node.attrAsText("value")
 
-        return Link(id, `class`, value, node.textContent)
+        return Link(id, `class`, ariaLabel, value, node.textContent)
     }
 }

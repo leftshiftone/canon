@@ -9,17 +9,17 @@ class LabelTest {
 
     @Test
     fun testLabelMapping() {
-        val mapped = Label("testId", "testClass", "testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Label("testId", "testClass", "testAriaLabel", "testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testText", mapped.get("text"))
+        assertEquals(4, mapped.size)
+        assertEquals("testText", mapped["text"])
     }
 
     @Test
     fun `mapping with expression`() {
-        val mapped = Label("testId", "testClass", "{{\$foo}}").toMap(HashMap(), TestEvaluator())
+        val mapped = Label("testId", "testClass", "testAriaLabel", "{{\$foo}}").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("\$foo", mapped["text"])
     }
 }

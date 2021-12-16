@@ -1,0 +1,4 @@
+<block ariaLabel="my label">
+    <label ariaLabel="my label">label</label>
+    <submit>senden</submit>
+</block>

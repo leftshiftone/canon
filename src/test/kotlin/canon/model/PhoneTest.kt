@@ -9,14 +9,14 @@ class PhoneTest {
 
     @Test
     fun testPhoneMapping() {
-        val mapped = Phone("testId", "testClass", "placeHolder", false,
+        val mapped = Phone("testId", "testClass", "testAriaLabel", "placeHolder", false,
                 "testName", "testValue").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(6, mapped.size)
-        assertEquals("placeHolder", mapped.get("placeholder"))
-        assertEquals(false, mapped.get("required"))
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testValue", mapped.get("value"))
+        assertEquals(7, mapped.size)
+        assertEquals("placeHolder", mapped["placeholder"])
+        assertEquals(false, mapped["required"])
+        assertEquals("testName", mapped["name"])
+        assertEquals("testValue", mapped["value"])
 
     }
 }

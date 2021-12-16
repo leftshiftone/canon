@@ -9,10 +9,10 @@ class OverlaysTest {
 
     @Test
     fun testOverlayMapping() {
-        val mapped = Overlays("testId", "testClass", "testTrigger",
+        val mapped = Overlays("testId", "testClass", "testAriaLabel", "testTrigger",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testTrigger", mapped.get("trigger"))
+        assertEquals(4, mapped.size)
+        assertEquals("testTrigger", mapped["trigger"])
     }
 }

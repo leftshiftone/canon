@@ -6,10 +6,13 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Link(@JsonIgnore override val id: String?,
-                @JsonIgnore override val `class`: String?,
-                val value: String?,
-                val text: String?) : IRenderable, IClassAware {
+data class Link(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    val value: String?,
+    val text: String?
+) : IRenderable, IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -18,7 +21,7 @@ data class Link(@JsonIgnore override val id: String?,
         if (value != null && value.isNotBlank())
             map["value"] = evaluator.evaluate(value, context)
 
-        return map.plus(toIdAndClassMap(context, evaluator))
+        return map.plus(toIdAndClassAndAriaLabelMap(context, evaluator))
     }
 
     override fun toString() = "Link(value=$value, text=$text)"

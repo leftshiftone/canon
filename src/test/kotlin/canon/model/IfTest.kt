@@ -9,7 +9,7 @@ class IfTest {
 
     @Test
     fun `test if with true`() {
-        val renderable = If("{{true}}", Label(null, null, "label"))
+        val renderable = If("{{true}}", Label(null, null, null,"label"))
 
         val mapped = renderable.accept(GaiaVisitor(mapOf(), TestEvaluator()), TestEvaluator())
         assertEquals(1, mapped.size)
@@ -18,7 +18,7 @@ class IfTest {
 
     @Test
     fun `test if with false`() {
-        val renderable = If("{{false}}", Label(null, null, "label"))
+        val renderable = If("{{false}}", Label(null, null, null,"label"))
 
         val mapped = renderable.accept(GaiaVisitor(mapOf(), TestEvaluator()), TestEvaluator())
         assertEquals(0, mapped.size)

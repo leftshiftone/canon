@@ -9,10 +9,10 @@ class CameraTest {
 
     @Test
     fun testCameraMapping() {
-        val mapped = Camera("testId", "testClass", "testName",
+        val mapped = Camera("testId", "testClass", "testAriaLabel", "testName",
                 true, 1.0, ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(5, mapped.size)
+        assertEquals(6, mapped.size)
         assertEquals(true, mapped.get("required"))
         assertEquals(1.0, mapped.get("maxCompressSize"))
         assertEquals("testName", mapped.get("name"))

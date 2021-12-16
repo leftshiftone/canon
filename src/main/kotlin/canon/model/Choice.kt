@@ -7,12 +7,15 @@ import canon.api.KMap
 import canon.support.MapBuilder
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Choice(@JsonIgnore override val id: String?,
-                  @JsonIgnore override val `class`: String?,
-                  val name: String?,
-                  val text: String?,
-                  val selected: String?,
-                  @JsonIgnore val renderables: List<IRenderable>?) : AbstractStackable(renderables), IClassAware {
+data class Choice(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    val name: String?,
+    val text: String?,
+    val selected: String?,
+    @JsonIgnore val renderables: List<IRenderable>?
+) : AbstractStackable(renderables), IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val builder = MapBuilder()
@@ -23,9 +26,10 @@ data class Choice(@JsonIgnore override val id: String?,
         if (!selected.isNullOrBlank())
             builder.put("selected", selected) { evaluator.evaluate(selected, context).toBoolean() }
 
-        return builder.toMap().plus(toIdAndClassMap(context, evaluator))
+        return builder.toMap().plus(toIdAndClassAndAriaLabelMap(context, evaluator))
     }
 
-    override fun toString() = "Choice(name=$name, text=$text, selected=$selected) { ${renderables?.map { it.toString() }}"
+    override fun toString() =
+        "Choice(name=$name, text=$text, selected=$selected) { ${renderables?.map { it.toString() }}"
 
 }

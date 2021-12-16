@@ -11,9 +11,10 @@ open class BasketStrategy : AbstractParseStrategy<Basket>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Basket {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val required = node.attrAsBoolean("required", false)
 
-        return Basket(id, `class`, name, required, factory(node))
+        return Basket(id, `class`, ariaLabel, name, required, factory(node))
     }
 }

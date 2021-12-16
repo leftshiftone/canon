@@ -9,9 +9,9 @@ class HeadlineTest {
 
     @Test
     fun testHeadlineMapping() {
-        val mapped = Headline("testId", "testClass", "testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Headline("testId", "testClass", "testAriaLabel", "testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("testText", mapped.get("text"))
     }
 }

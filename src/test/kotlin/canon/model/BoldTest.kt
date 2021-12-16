@@ -8,9 +8,9 @@ class BoldTest {
 
     @Test
     fun testBoldMapping() {
-        val mapped = Bold("testId", "testClass", "testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Bold("testId", "testClass", "testAriaLabel", "testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("testText", mapped.get("text"))
     }
 }

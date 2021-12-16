@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class SingleChoiceStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(SingleChoice("id", "class", "name", true, true, emptyList()), SingleChoiceStrategy()))
+    fun testParse() = assertTrue(testStrategy(SingleChoice("id", "class", "ariaLabel", "name", true, true, emptyList()), SingleChoiceStrategy()))
 }

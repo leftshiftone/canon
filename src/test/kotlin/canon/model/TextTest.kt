@@ -9,13 +9,13 @@ class TextTest {
 
     @Test
     fun testTextMapping() {
-        val mapped = Text("testId", "testClass", ".*", "testPlaceholder",
+        val mapped = Text("testId", "testClass", "testAriaLabel", ".*", "testPlaceholder",
                 true, "testName", "testValue").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(7, mapped.size)
-        assertEquals("testPlaceholder", mapped.get("placeholder"))
-        assertEquals(true, mapped.get("required"))
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testValue", mapped.get("value"))
+        assertEquals(8, mapped.size)
+        assertEquals("testPlaceholder", mapped["placeholder"])
+        assertEquals(true, mapped["required"])
+        assertEquals("testName", mapped["name"])
+        assertEquals("testValue", mapped["value"])
     }
 }

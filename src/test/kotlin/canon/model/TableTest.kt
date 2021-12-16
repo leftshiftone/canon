@@ -9,10 +9,10 @@ class TableTest {
 
     @Test
     fun testTableMapping() {
-        val mapped = Table("testId", "testClass", "testName",
+        val mapped = Table("testId", "testClass", "testAriaLabel", "testName",
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testName", mapped.get("name"))
+        assertEquals(4, mapped.size)
+        assertEquals("testName", mapped["name"])
     }
 }

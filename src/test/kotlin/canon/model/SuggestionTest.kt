@@ -11,12 +11,12 @@ class SuggestionTest {
 
     @Test
     fun testSuggestionMapping() {
-        val mapped = Suggestion("testId", "testClass", "testText", "testName",
+        val mapped = Suggestion("testId", "testClass", "testAriaLabel", "testText", "testName",
                 Base64.encode(mapOf("payload" to "testValue"))).toMap(HashMap(), TestEvaluator())
         
-        assertEquals(5, mapped.size)
-        assertEquals("testText", mapped.get("text"))
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("eyJwYXlsb2FkIjoidGVzdFZhbHVlIn0=", mapped.get("value"))
+        assertEquals(6, mapped.size)
+        assertEquals("testText", mapped["text"])
+        assertEquals("testName", mapped["name"])
+        assertEquals("eyJwYXlsb2FkIjoidGVzdFZhbHVlIn0=", mapped["value"])
     }
 }

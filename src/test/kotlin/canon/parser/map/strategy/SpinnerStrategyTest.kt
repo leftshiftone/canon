@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class SpinnerStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Spinner("id", "class", 1.0, 10.0, 1.0, 5.0, "name"), SpinnerStrategy()))
+    fun testParse() = assertTrue(testStrategy(Spinner("id", "class", "ariaLabel", 1.0, 10.0, 1.0, 5.0, "name"), SpinnerStrategy()))
 }

@@ -9,10 +9,10 @@ class CodeReaderTest {
 
     @Test
     fun testCodeReaderMapping() {
-        val mapped = CodeReader("testId", "testClass", "testName", "testFormat")
+        val mapped = CodeReader("testId", "testClass", "testAriaLabel", "testName", "testFormat")
                 .toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
+        assertEquals(5, mapped.size)
         assertEquals("testName", mapped.get("name"))
         assertEquals("testFormat", mapped.get("format"))
     }

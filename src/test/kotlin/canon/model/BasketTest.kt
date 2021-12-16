@@ -8,10 +8,10 @@ class BasketTest {
 
     @Test
     fun testBasketMapping() {
-        val basket = Basket("testId", "block", "testName", true, ArrayList())
+        val basket = Basket("testId", "block", "testAriaLabel", "testName", true, ArrayList())
 
         val mapped = basket.toMap(HashMap(), TestEvaluator())
-        assertEquals(4, mapped.size)
+        assertEquals(5, mapped.size)
         assertEquals("testName", mapped.get("name"))
     }
 }

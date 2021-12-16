@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class BreakStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Break("id", "class"), BreakStrategy()))
+    fun testParse() = assertTrue(testStrategy(Break("id", "class",  "ariaLabel"), BreakStrategy()))
 }

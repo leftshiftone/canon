@@ -10,10 +10,10 @@ class ReelTest {
 
     @Test
     fun testReelMapping() {
-        val mapped = Reel("testId", "testClass", "testName",
-                ArrayList<IRenderable>()).toMap(HashMap(), TestEvaluator())
+        val mapped = Reel("testId", "testClass", "testAriaLabel", "testName",
+                ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testName", mapped.get("name"))
+        assertEquals(4, mapped.size)
+        assertEquals("testName", mapped["name"])
     }
 }

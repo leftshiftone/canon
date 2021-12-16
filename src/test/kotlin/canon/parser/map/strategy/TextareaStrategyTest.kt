@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class TextareaStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Textarea("id", "class", "placeholder", "name", "value", true, 2, 3), TextareaStrategy()))
+    fun testParse() = assertTrue(testStrategy(Textarea("id", "class", "ariaLabel", "placeholder", "name", "value", true, 2, 3), TextareaStrategy()))
 }

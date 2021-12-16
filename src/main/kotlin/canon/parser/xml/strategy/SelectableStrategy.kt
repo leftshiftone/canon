@@ -10,8 +10,9 @@ open class SelectableStrategy : AbstractParseStrategy<Selectable>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Selectable {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
 
-        return Selectable(id, `class`, name, factory(node))
+        return Selectable(id, `class`, ariaLabel, name, factory(node))
     }
 }

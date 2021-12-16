@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class BoldStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Bold("id", "class", "text"), BoldStrategy()))
+    fun testParse() = assertTrue(testStrategy(Bold("id", "class",  "ariaLabel","text"), BoldStrategy()))
 }

@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class TextStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Text("id", "class", "regex", "placeholder", true, "name", "value"), TextStrategy()))
+    fun testParse() = assertTrue(testStrategy(Text("id", "class", "ariaLabel", "regex", "placeholder", true, "name", "value"), TextStrategy()))
 }

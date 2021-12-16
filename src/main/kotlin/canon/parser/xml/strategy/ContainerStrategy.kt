@@ -10,8 +10,9 @@ open class ContainerStrategy : AbstractParseStrategy<Container>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Container {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
 
-        return Container(id, `class`, name, factory(node))
+        return Container(id, `class`, ariaLabel, name, factory(node))
     }
 }

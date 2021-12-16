@@ -9,11 +9,11 @@ class SelectionTest {
 
     @Test
     fun testSelectionMapping() {
-        val mapped = Selection("testId", "testClass", "testName", 12,
+        val mapped = Selection("testId", "testClass", "testAriaLabel", "testName", 12,
                 ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
-        assertEquals("testName", mapped.get("name"))
-        assertEquals(12, mapped.get("countdownInSec"))
+        assertEquals(5, mapped.size)
+        assertEquals("testName", mapped["name"])
+        assertEquals(12, mapped["countdownInSec"])
     }
 }

@@ -9,9 +9,9 @@ class ItemsTest {
 
     @Test
     fun testItemsMapping() {
-        val mapped = Items("testId", "testClass", true, ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = Items("testId", "testClass", "testAriaLabel", true, ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals(true, mapped.get("ordered"))
+        assertEquals(4, mapped.size)
+        assertEquals(true, mapped["ordered"])
     }
 }

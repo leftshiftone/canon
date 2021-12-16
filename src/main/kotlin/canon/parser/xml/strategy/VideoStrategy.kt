@@ -10,8 +10,9 @@ open class VideoStrategy : AbstractParseStrategy<Video>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Video {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val src = node.attrAsText("src")
 
-        return Video(id, `class`, src)
+        return Video(id, `class`, ariaLabel, src)
     }
 }

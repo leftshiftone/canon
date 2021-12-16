@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class SelectionItemStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(SelectionItem("id", "class", "name", emptyList()), SelectionItemStrategy()))
+    fun testParse() = assertTrue(testStrategy(SelectionItem("id", "class", "ariaLabel", "name", emptyList()), SelectionItemStrategy()))
 }

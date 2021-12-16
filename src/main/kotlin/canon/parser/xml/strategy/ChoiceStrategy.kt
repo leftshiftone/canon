@@ -10,6 +10,7 @@ open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Choice {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val selected = node.attrAsText("selected", "false")
 
@@ -20,9 +21,9 @@ open class ChoiceStrategy : AbstractParseStrategy<Choice>() {
                 onlyText = false
 
         return if (onlyText) {
-            Choice(id, `class`, name, node.textContent, selected, factory(node))
+            Choice(id, `class`, ariaLabel, name, node.textContent, selected, factory(node))
         } else {
-            Choice(id, `class`, name, null, selected, factory(node))
+            Choice(id, `class`, ariaLabel, name, null, selected, factory(node))
         }
     }
 }

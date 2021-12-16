@@ -12,11 +12,12 @@ open class CameraStrategy : AbstractParseStrategy<Camera>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Camera {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val required = node.attrAsBoolean("required", false)
         val maxCompressSize = node.attrAsDouble("maxCompressSize", 0.0)
 
-        return Camera(id, `class`, name, required, maxCompressSize, factory(node))
+        return Camera(id, `class`, ariaLabel, name, required, maxCompressSize, factory(node))
     }
 
 }

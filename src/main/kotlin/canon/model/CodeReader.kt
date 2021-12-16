@@ -6,10 +6,13 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class CodeReader(@JsonIgnore override val id: String?,
-                      @JsonIgnore override val `class`: String?,
-                      val name: String?,
-                      val format: String?) : IRenderable, IClassAware {
+data class CodeReader(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    val name: String?,
+    val format: String?
+) : IRenderable, IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -18,7 +21,7 @@ data class CodeReader(@JsonIgnore override val id: String?,
         if (format != null && format.isNotBlank())
             map["format"] = format
 
-        return map + toIdAndClassMap(context, evaluator)
+        return map + toIdAndClassAndAriaLabelMap(context, evaluator)
     }
 
     override fun toString() = "CodeReader(name=$name, format=$format)"

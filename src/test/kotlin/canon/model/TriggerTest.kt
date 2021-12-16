@@ -9,10 +9,10 @@ class TriggerTest {
 
     @Test
     fun testTriggerMapping() {
-        val mapped = Trigger("testId", "testClass", "testName","testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Trigger("testId", "testClass", "testAriaLabel", "testName","testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testText", mapped.get("text"))
+        assertEquals(5, mapped.size)
+        assertEquals("testName", mapped["name"])
+        assertEquals("testText", mapped["text"])
     }
 }

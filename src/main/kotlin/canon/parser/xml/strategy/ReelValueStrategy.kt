@@ -10,9 +10,10 @@ open class ReelValueStrategy : AbstractParseStrategy<ReelValue>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): ReelValue {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val value = node.attrAsText("value")
         val valueType = node.attrAsText("valueType")
 
-        return ReelValue(id, `class`, value, valueType)
+        return ReelValue(id, `class`, ariaLabel, value, valueType)
     }
 }

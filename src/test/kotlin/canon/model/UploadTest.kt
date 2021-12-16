@@ -9,15 +9,15 @@ class UploadTest {
 
     @Test
     fun testUploadMapping() {
-        val mapped = Upload("testId", "testClass", "jpg, png","testName",
+        val mapped = Upload("testId", "testClass", "testAriaLabel", "jpg, png","testName",
                 "testText", 5.0, 1.0, true).toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(8)
-        assertThat(mapped.get("accept")).isEqualTo("jpg, png")
-        assertThat(mapped.get("name")).isEqualTo("testName")
-        assertThat(mapped.get("text")).isEqualTo("testText")
-        assertThat(mapped.get("maxSize")).isEqualTo(5.0)
-        assertThat(mapped.get("maxCompressSize")).isEqualTo(1.0)
-        assertThat(mapped.get("required")).isEqualTo(true)
+        assertThat(mapped.size).isEqualTo(9)
+        assertThat(mapped["accept"]).isEqualTo("jpg, png")
+        assertThat(mapped["name"]).isEqualTo("testName")
+        assertThat(mapped["text"]).isEqualTo("testText")
+        assertThat(mapped["maxSize"]).isEqualTo(5.0)
+        assertThat(mapped["maxCompressSize"]).isEqualTo(1.0)
+        assertThat(mapped["required"]).isEqualTo(true)
     }
 }

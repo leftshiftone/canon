@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class EmailStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Email("id", "class", "placeholder", true, "name", "value"), EmailStrategy()))
+    fun testParse() = assertTrue(testStrategy(Email("id", "class", "ariaLabel", "placeholder", true, "name", "value"), EmailStrategy()))
 }

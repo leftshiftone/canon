@@ -7,10 +7,12 @@ import canon.api.IVisitor
 import com.fasterxml.jackson.annotation.JsonIgnore
 
 
-data class If(@JsonIgnore val expression: String?,
-              @JsonIgnore val renderable: IRenderable?) : IRenderable, IStackable {
+data class If(
+    @JsonIgnore val expression: String?,
+    @JsonIgnore val renderable: IRenderable?
+) : IRenderable, IStackable {
 
-    override fun <R>accept(visitor: IVisitor<R>, evaluator: IEvaluator):R {
+    override fun <R> accept(visitor: IVisitor<R>, evaluator: IEvaluator): R {
         if (expression.isNullOrBlank())
             return visitor.empty()
         val evaluation = evaluator.evaluate(expression.trim(), visitor.getContext()).toBoolean()

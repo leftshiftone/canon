@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class BasketStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Basket("id", "class", "name", true, emptyList()), BasketStrategy()))
+    fun testParse() = assertTrue(testStrategy(Basket("id", "class", "ariaLabel", "name", true, emptyList()), BasketStrategy()))
 }

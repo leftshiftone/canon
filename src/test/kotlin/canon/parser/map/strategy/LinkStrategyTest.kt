@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class LinkStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Link("id", "class", "value", "text"), LinkStrategy()))
+    fun testParse() = assertTrue(testStrategy(Link("id", "class", "ariaLabel", "value", "text"), LinkStrategy()))
 }

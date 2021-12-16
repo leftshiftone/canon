@@ -9,9 +9,9 @@ class FormTest {
 
     @Test
     fun testFormMapping() {
-        val mapped = Form("testId", "testClass", "testName", ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = Form("testId", "testClass", "testAriaLabel", "testName", ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("testName", mapped.get("name"))
     }
 }

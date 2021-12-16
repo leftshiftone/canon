@@ -49,6 +49,9 @@ class GaiaVisitorTest {
     fun block2() = compare("block2")
 
     @Test
+    fun blockWithAriaLabel() = compare("blockWithAriaLabel")
+
+    @Test
     fun label1() = compare("label1")
 
     @Test

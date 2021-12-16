@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class VideoStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Video("id", "class", "src"), VideoStrategy()))
+    fun testParse() = assertTrue(testStrategy(Video("id", "class", "ariaLabel", "src"), VideoStrategy()))
 }

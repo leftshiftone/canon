@@ -6,12 +6,15 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class MultipleChoice(@JsonIgnore override val id: String?,
-                          @JsonIgnore override val `class`: String?,
-                          override val name: String?,
-                          override val sieve: Boolean?,
-                          override val required: Boolean?,
-                          @JsonIgnore override val renderables: List<IRenderable>?) : SieveAwareChoiceContainer(id, `class`, name, sieve, required, renderables), IClassAware {
+data class MultipleChoice(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    override val name: String?,
+    override val sieve: Boolean?,
+    override val required: Boolean?,
+    @JsonIgnore override val renderables: List<IRenderable>?
+) : SieveAwareChoiceContainer(id, `class`, ariaLabel, name, sieve, required, renderables), IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -22,7 +25,7 @@ data class MultipleChoice(@JsonIgnore override val id: String?,
         if (required != null)
             map["required"] = required
 
-        return toIdAndClassMap(context, evaluator) + map
+        return toIdAndClassAndAriaLabelMap(context, evaluator) + map
     }
 
     override fun toString() = "MultipleChoice(name=$name, sieve=$sieve, required=$required)"

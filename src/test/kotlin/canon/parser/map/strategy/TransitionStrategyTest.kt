@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class TransitionStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Transition("id", "class", "name", "direction", "wrapped", emptyList()), TransitionStrategy()))
+    fun testParse() = assertTrue(testStrategy(Transition("id", "class", "ariaLabel", "name", "direction", "wrapped", emptyList()), TransitionStrategy()))
 }

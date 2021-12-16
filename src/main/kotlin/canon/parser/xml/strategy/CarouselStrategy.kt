@@ -11,11 +11,12 @@ open class CarouselStrategy : AbstractParseStrategy<Carousel>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Carousel {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val text = node.attrAsText("text")
         val name = node.attrAsText("name")
         val selected = node.attrAsBoolean("selected", false)
 
-        return Carousel(id, `class`, text, name, selected, factory(node))
+        return Carousel(id, `class`, ariaLabel, text, name, selected, factory(node))
     }
 
 }

@@ -8,5 +8,5 @@ import org.junit.jupiter.api.Test
 class ButtonStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Button("id", "class", "text", "name", Base64.encodeUTF8String("value"), emptyList()), ButtonStrategy()))
+    fun testParse() = assertTrue(testStrategy(Button("id", "class", "ariaLabel", "text", "name", Base64.encodeUTF8String("value"), emptyList()), ButtonStrategy()))
 }

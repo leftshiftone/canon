@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class PhoneStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Phone("id", "class", "placeholder", true, "name", "value"), PhoneStrategy()))
+    fun testParse() = assertTrue(testStrategy(Phone("id", "class", "ariaLabel", "placeholder", true, "name", "value"), PhoneStrategy()))
 }

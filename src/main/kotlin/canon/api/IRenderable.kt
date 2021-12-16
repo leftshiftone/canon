@@ -21,7 +21,7 @@ interface IRenderable : IVisitable {
     @JvmDefault
     fun toMap(context: Map<String, Any>, evaluator: IEvaluator): Map<String, Any> {
         val map = convertValue(this)
-        return if (this is IClassAware) map.plus(this.toIdAndClassMap(context, evaluator)) else map
+        return if (this is IClassAware) map.plus(this.toIdAndClassAndAriaLabelMap(context, evaluator)) else map
     }
 
     @JvmDefault

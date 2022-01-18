@@ -148,7 +148,7 @@ class CanonDSLParserTest {
 
     @Test fun testHeadline() {
         CanonDSLParser.parse {
-            headline("id", "class", "ariaLabel", "text")
+            headline("id", "class", "ariaLabel", "text", "1")
         }.forEach {
             Assertions.assertTrue(it is Headline)
         }

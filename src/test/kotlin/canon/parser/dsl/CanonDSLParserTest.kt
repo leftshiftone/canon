@@ -289,7 +289,7 @@ class CanonDSLParserTest {
 
     @Test fun testRow() {
         CanonDSLParser.parse {
-            row("id", "class", "ariaLabel",) {
+            row("id", "class", "ariaLabel") {
                 row(null, null, null, null)
             }
         }.forEach {

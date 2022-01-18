@@ -11,7 +11,7 @@ data class Basket(
     @JsonIgnore override val ariaLabel: String?,
     val name: String?,
     val required: Boolean?,
-    @JsonIgnore val renderables: List<IRenderable>?,
+    @JsonIgnore val renderables: List<IRenderable>?
 ) : AbstractStackable(renderables), IClassAware {
 
     override fun toString() = "Basket(name=$name) { ${renderables?.map { it.toString() }}"

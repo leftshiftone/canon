@@ -8,7 +8,7 @@ data class Headline(
     @JsonIgnore override val `class`: String?,
     @JsonIgnore override val ariaLabel: String?,
     val text: String?,
-    val level: String?,
+    val level: String?
 ) : IRenderable, IClassAware, ILabelAware {
 
     override fun label(): String? {

@@ -128,6 +128,7 @@ dependencies {
     testCompile "org.assertj:assertj-core:3.11.1"
     testCompile "io.mockk:mockk:$mockkVersion"
     testCompile 'org.skyscreamer:jsonassert:1.5.0'
+    testCompile 'ch.qos.logback:logback-classic:1.2.10'
     testCompile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 
     //see: XSLTUpgradeHandlerTest

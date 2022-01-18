@@ -8,6 +8,7 @@ import org.junit.jupiter.api.TestFactory
 import java.nio.charset.StandardCharsets
 import java.util.concurrent.CountDownLatch
 import java.util.concurrent.TimeUnit
+import java.util.concurrent.atomic.AtomicInteger
 
 internal class XSLTTransformerTest {
 
@@ -601,12 +602,14 @@ internal class XSLTTransformerTest {
     fun parallelTest() {
         val barrier = CountDownLatch(1)
         val endBarrier = CountDownLatch(25)
-        (0..24).forEach {
+        val successCount = AtomicInteger(0)
+        (1..25).forEach {
             Thread {
                 try{
                     barrier.await(10, TimeUnit.SECONDS)
                     println("Thread-${it} starting execution")
                     transformFromFileSystem(TRANSFORMER_2_0_0,"/xml/xslt/complex1.xml","/xml/xslt/expected/complex1.xml")
+                    successCount.incrementAndGet()
                 } finally {
                     endBarrier.countDown()
                 }
@@ -614,5 +617,6 @@ internal class XSLTTransformerTest {
         }
         barrier.countDown()
         endBarrier.await(60, TimeUnit.SECONDS)
+        Assertions.assertThat(successCount).hasValue(25)
     }
 }

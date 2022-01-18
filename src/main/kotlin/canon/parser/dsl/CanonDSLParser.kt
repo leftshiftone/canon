@@ -70,8 +70,8 @@ class CanonDSLParser {
             add(Form(id, `class`, ariaLabel, name, CanonDSL().apply(config ?: {})))
         }
 
-        fun headline(id: String?, `class`: String?, ariaLabel: String?, text: String?) {
-            add(Headline(id, `class`, ariaLabel, text))
+        fun headline(id: String?, `class`: String?, ariaLabel: String?, text: String?, level: String?) {
+            add(Headline(id, `class`, ariaLabel, text, level))
         }
 
         fun `if`(expression: String?, renderable: IRenderable?) {

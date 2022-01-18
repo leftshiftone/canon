@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class HeadlineStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Headline("id", "class", "ariaLabel", "text"), HeadlineStrategy()))
+    fun testParse() = assertTrue(testStrategy(Headline("id", "class", "ariaLabel", "text", "1"), HeadlineStrategy()))
 }

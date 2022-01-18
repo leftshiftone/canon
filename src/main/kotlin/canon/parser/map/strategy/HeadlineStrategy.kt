@@ -8,6 +8,8 @@ class HeadlineStrategy : AbstractParseStrategy<Headline>() {
         return Headline(map["id"]?.toString()?.ifEmpty { null },
             map["class"]?.toString()?.ifEmpty { null },
             map["ariaLabel"]?.toString()?.ifEmpty { null },
-            map["text"]?.toString()?.ifEmpty { null })
+            map["text"]?.toString()?.ifEmpty { null },
+            map["level"]?.toString()?.ifEmpty { null }
+        )
     }
 }

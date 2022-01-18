@@ -43,6 +43,12 @@ class GaiaVisitorTest {
     fun basket1() = compare("basket1")
 
     @Test
+    fun headline() = compare("headline")
+
+    @Test
+    fun headline1() = compare("headline1")
+
+    @Test
     fun block1() = compare("block1")
 
     @Test

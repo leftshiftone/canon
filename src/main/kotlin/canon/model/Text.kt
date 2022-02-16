@@ -15,7 +15,7 @@ data class Text(
     val placeholder: String?,
     val required: Boolean?,
     val name: String?,
-    val value: String?,
+    val value: String?
 ) : IRenderable, IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {

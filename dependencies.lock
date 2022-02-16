@@ -1077,6 +1077,16 @@
         }
     },
     "testApiDependenciesMetadata": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1320,10 +1330,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testCompile": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1567,10 +1590,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testCompileClasspath": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1814,10 +1850,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testImplementationDependenciesMetadata": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2061,10 +2110,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testRuntime": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2308,10 +2370,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testRuntimeClasspath": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2555,7 +2630,10 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         },
         "xalan:serializer": {
             "locked": "2.7.2",

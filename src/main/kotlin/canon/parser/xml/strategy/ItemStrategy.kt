@@ -10,7 +10,8 @@ open class ItemStrategy : AbstractParseStrategy<Item>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Item {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
 
-        return Item(id, `class`, factory(node))
+        return Item(id, `class`, ariaLabel, factory(node))
     }
 }

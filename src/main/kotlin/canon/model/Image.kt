@@ -6,11 +6,15 @@ import canon.api.IRenderable
 import canon.api.KMap
 import com.fasterxml.jackson.annotation.JsonIgnore
 
-data class Image(@JsonIgnore override val id: String?, @JsonIgnore override val `class`: String?,
-                 val src: String?,
-                 val width: String?,
-                 val height: String?,
-                 val alt: String?) : IRenderable, IClassAware {
+data class Image(
+    @JsonIgnore override val id: String?,
+    @JsonIgnore override val `class`: String?,
+    @JsonIgnore override val ariaLabel: String?,
+    val src: String?,
+    val width: String?,
+    val height: String?,
+    val alt: String?
+) : IRenderable, IClassAware {
 
     override fun toMap(context: KMap<String, Any>, evaluator: IEvaluator): KMap<String, Any> {
         val map = HashMap<String, Any>()
@@ -23,7 +27,7 @@ data class Image(@JsonIgnore override val id: String?, @JsonIgnore override val 
         if (alt != null && alt.isNotBlank())
             map.put("alt", alt)
 
-        return map.plus(toIdAndClassMap(context, evaluator))
+        return map.plus(toIdAndClassAndAriaLabelMap(context, evaluator))
     }
 
     override fun toString() = "Image(src=$src, width=$width, height=$height, alt=$alt)"

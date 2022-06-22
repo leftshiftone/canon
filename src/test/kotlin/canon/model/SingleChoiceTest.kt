@@ -9,10 +9,10 @@ class SingleChoiceTest {
 
     @Test
     fun testSingleChoiceMapping() {
-        val mapped = SingleChoice("testId", "testClass", "testName", false, true,
+        val mapped = SingleChoice("testId", "testClass", "testAriaLabel", "testName", false, true,
                 renderables = ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertThat(mapped.size).isEqualTo(5)
+        assertThat(mapped.size).isEqualTo(6)
         assertThat(mapped["name"]).isEqualTo("testName")
         assertThat(mapped["sieve"]).isEqualTo(false)
         assertThat(mapped["required"]).isEqualTo(true)

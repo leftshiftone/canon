@@ -12,6 +12,7 @@ open class TextareaStrategy : AbstractParseStrategy<Textarea>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Textarea {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val placeholder = node.attrAsText("placeholder")
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
@@ -19,6 +20,6 @@ open class TextareaStrategy : AbstractParseStrategy<Textarea>() {
         val rows = node.attrAsInt("rows", 10)
         val cols = node.attrAsInt("cols", 40)
 
-        return Textarea(id, `class`, placeholder, name, value, required, rows, cols)
+        return Textarea(id, `class`, ariaLabel, placeholder, name, value, required, rows, cols)
     }
 }

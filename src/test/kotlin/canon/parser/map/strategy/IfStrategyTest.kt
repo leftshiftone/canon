@@ -8,7 +8,7 @@ class IfStrategyTest {
 
     @Test
     fun testParse() {
-        val map = mapOf<String, Any>("expression" to "expression", "renderable" to Break(null, null))
+        val map = mapOf<String, Any>("expression" to "expression", "renderable" to Break(null, null, null))
         val mappedIf = IfStrategy().parse(map) { emptyList() }
 
         assertEquals(map["expression"], mappedIf.expression)

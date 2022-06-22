@@ -9,9 +9,9 @@ class VideoTest {
 
     @Test
     fun testVideoMapping() {
-        val mapped = Video("testId", "testClass", "testSrc").toMap(HashMap(), TestEvaluator())
+        val mapped = Video("testId", "testClass", "testAriaLabel", "testSrc").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(3, mapped.size)
-        assertEquals("testSrc", mapped.get("src"))
+        assertEquals(4, mapped.size)
+        assertEquals("testSrc", mapped["src"])
     }
 }

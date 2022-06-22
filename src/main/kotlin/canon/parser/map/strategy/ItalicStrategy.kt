@@ -6,7 +6,8 @@ import canon.model.Italic
 class ItalicStrategy : AbstractParseStrategy<Italic>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Italic {
         return Italic(map["id"]?.toString()?.ifEmpty { null },
-                map["class"]?.toString()?.ifEmpty { null },
-                map["text"]?.toString()?.ifEmpty { null })
+            map["class"]?.toString()?.ifEmpty { null },
+            map["ariaLabel"]?.toString()?.ifEmpty { null },
+            map["text"]?.toString()?.ifEmpty { null })
     }
 }

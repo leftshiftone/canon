@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class ContainerStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Container("id", "class", "name", emptyList()), ContainerStrategy()))
+    fun testParse() = assertTrue(testStrategy(Container("id", "class", "ariaLabel", "name", emptyList()), ContainerStrategy()))
 }

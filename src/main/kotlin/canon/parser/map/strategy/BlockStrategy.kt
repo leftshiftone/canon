@@ -5,9 +5,12 @@ import canon.model.Block
 
 class BlockStrategy : AbstractParseStrategy<Block>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Block {
-        return Block(map["id"]?.toString()?.ifEmpty { null },
-                map["class"]?.toString()?.ifEmpty { null },
-                map["name"]?.toString()?.ifEmpty { null },
-                factory(map))
+        return Block(
+            map["id"]?.toString()?.ifEmpty { null },
+            map["class"]?.toString()?.ifEmpty { null },
+            map["ariaLabel"]?.toString()?.ifEmpty { null },
+            map["name"]?.toString()?.ifEmpty { null },
+            factory(map)
+        )
     }
 }

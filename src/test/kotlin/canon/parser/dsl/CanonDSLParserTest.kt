@@ -9,8 +9,8 @@ class CanonDSLParserTest {
 
     @Test fun testBasket() {
         CanonDSLParser.parse {
-            basket("id", "class", "name", true) {
-                basket(null, null, null, null, null)
+            basket("id", "class", "ariaLabel", "name", true) {
+                basket(null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Basket)
@@ -20,8 +20,8 @@ class CanonDSLParserTest {
 
     @Test fun testBlock() {
         CanonDSLParser.parse {
-            block("id", "class", "name") {
-                block(null, null, null, null)
+            block("id", "class", "ariaLabel", "name") {
+                block(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Block)
@@ -31,7 +31,7 @@ class CanonDSLParserTest {
 
     @Test fun testBold() {
         CanonDSLParser.parse {
-            bold("id", "class", "text")
+            bold("id", "class", "ariaLabel", "text")
         }.forEach {
             Assertions.assertTrue(it is Bold)
         }
@@ -39,7 +39,7 @@ class CanonDSLParserTest {
 
     @Test fun testBreak() {
         CanonDSLParser.parse {
-            `break`("id", "class")
+            `break`("id", "ariaLabel", "class")
         }.forEach {
             Assertions.assertTrue(it is Break)
         }
@@ -47,8 +47,8 @@ class CanonDSLParserTest {
 
     @Test fun testButton() {
         CanonDSLParser.parse {
-            button("id", "class", "text", "name", "value") {
-                button(null, null, null, null, null, null)
+            button("id", "class", "ariaLabel", "text", "name", "value") {
+                button(null, null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Button)
@@ -58,8 +58,8 @@ class CanonDSLParserTest {
 
     @Test fun testCamera() {
         CanonDSLParser.parse {
-            camera("id", "class", "name", true, 1.0) {
-                camera(null, null, null, null, null, null)
+            camera("id", "class", "ariaLabel", "name", true, 1.0) {
+                camera(null, null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Camera)
@@ -69,8 +69,8 @@ class CanonDSLParserTest {
 
     @Test fun testCarousel() {
         CanonDSLParser.parse {
-            carousel("id", "class", "text", "name", true) {
-                carousel(null, null, null, null, null, null)
+            carousel("id", "class", "ariaLabel", "text", "name", true) {
+                carousel(null, null, null,null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Carousel)
@@ -80,8 +80,8 @@ class CanonDSLParserTest {
 
     @Test fun testChoice() {
         CanonDSLParser.parse {
-            choice("id", "class", "name", "text", "selected") {
-                choice(null, null, null, null, null, null)
+            choice("id", "class", "ariaLabel", "name", "text", "selected") {
+                choice(null, null, null,  null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Choice)
@@ -91,7 +91,7 @@ class CanonDSLParserTest {
 
     @Test fun testCodeReader() {
         CanonDSLParser.parse {
-            codeReader("id", "class", "name", "format")
+            codeReader("id", "class", "ariaLabel", "name", "format")
         }.forEach {
             Assertions.assertTrue(it is CodeReader)
         }
@@ -99,8 +99,8 @@ class CanonDSLParserTest {
 
     @Test fun testCol() {
         CanonDSLParser.parse {
-            col("id", "class") {
-                col(null, null, null)
+            col("id", "class", "ariaLabel") {
+                col(null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Col)
@@ -110,8 +110,8 @@ class CanonDSLParserTest {
 
     @Test fun testContainer() {
         CanonDSLParser.parse {
-            container("id", "class", "name") {
-                container(null, null, null, null)
+            container("id", "class", "ariaLabel", "name") {
+                container(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Container)
@@ -121,7 +121,7 @@ class CanonDSLParserTest {
 
     @Test fun testEmail() {
         CanonDSLParser.parse {
-            email("id", "class", "placeholder", true, "name", "value")
+            email("id", "class", "ariaLabel", "placeholder", true, "name", "value")
         }.forEach {
             Assertions.assertTrue(it is Email)
         }
@@ -137,8 +137,8 @@ class CanonDSLParserTest {
 
     @Test fun testForm() {
         CanonDSLParser.parse {
-            form("id", "class", "name") {
-                form(null, null, null, null)
+            form("id", "class", "ariaLabel", "name") {
+                form(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Form)
@@ -148,7 +148,7 @@ class CanonDSLParserTest {
 
     @Test fun testHeadline() {
         CanonDSLParser.parse {
-            headline("id", "class", "text")
+            headline("id", "class", "ariaLabel", "text", "1")
         }.forEach {
             Assertions.assertTrue(it is Headline)
         }
@@ -164,7 +164,7 @@ class CanonDSLParserTest {
 
     @Test fun testImage() {
         CanonDSLParser.parse {
-            image("id", "class", "src", "width", "height","alt")
+            image("id", "class", "ariaLabel", "src", "width", "height","alt")
         }.forEach {
             Assertions.assertTrue(it is Image)
         }
@@ -172,7 +172,7 @@ class CanonDSLParserTest {
 
     @Test fun testItalic() {
         CanonDSLParser.parse {
-            italic("id", "class", "text")
+            italic("id", "class", "ariaLabel", "text")
         }.forEach {
             Assertions.assertTrue(it is Italic)
         }
@@ -180,8 +180,8 @@ class CanonDSLParserTest {
 
     @Test fun testItem() {
         CanonDSLParser.parse {
-            item("id", "class") {
-                item(null, null, null)
+            item("id", "class", "ariaLabel") {
+                item(null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Item)
@@ -191,8 +191,8 @@ class CanonDSLParserTest {
 
     @Test fun testItems() {
         CanonDSLParser.parse {
-            items("id", "class", false) {
-                items(null, null, null, null)
+            items("id", "class", "ariaLabel", false) {
+                items(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Items)
@@ -202,7 +202,7 @@ class CanonDSLParserTest {
 
     @Test fun testLabel() {
         CanonDSLParser.parse {
-            label("id", "class", "text")
+            label("id", "class", "ariaLabel", "text")
         }.forEach {
             Assertions.assertTrue(it is Label)
         }
@@ -210,7 +210,7 @@ class CanonDSLParserTest {
 
     @Test fun testLink() {
         CanonDSLParser.parse {
-            link("id", "class", "value", "text")
+            link("id", "class", "ariaLabel", "value", "text")
         }.forEach {
             Assertions.assertTrue(it is Link)
         }
@@ -218,10 +218,10 @@ class CanonDSLParserTest {
 
     @Test fun testMap() {
         CanonDSLParser.parse {
-            map("id", "class", "name", "src", "mapType", "centerLng",
+            map("id", "class", "ariaLabel", "name", "src", "mapType", "centerLng",
                     "centerLat", "markerIcon", "selectedMarkerIcon",
                     "routeStartIcon", "routeEndIcon", "routePoints",
-                    true, true, "zoom", 1)
+                    true, true, "zoom", 1, "35")
         }.forEach {
             Assertions.assertTrue(it is Map)
         }
@@ -229,8 +229,8 @@ class CanonDSLParserTest {
 
     @Test fun testMultipleChoice() {
         CanonDSLParser.parse {
-            multipleChoice("id", "class", "name", true, true) {
-                multipleChoice(null, null, null, null, null, null)
+            multipleChoice("id", "class", "ariaLabel", "name", true, true) {
+                multipleChoice(null, null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is MultipleChoice)
@@ -240,8 +240,8 @@ class CanonDSLParserTest {
 
     @Test fun testOverlay() {
         CanonDSLParser.parse {
-            overlay("id", "class", "trigger") {
-                overlay(null, null, null, null)
+            overlay("id", "class", "ariaLabel", "trigger") {
+                overlay(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Overlay)
@@ -251,8 +251,8 @@ class CanonDSLParserTest {
 
     @Test fun testOverlays() {
         CanonDSLParser.parse {
-            overlays("id", "class", "trigger") {
-                overlays(null, null, null, null)
+            overlays("id", "class", "ariaLabel", "trigger") {
+                overlays(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Overlays)
@@ -262,7 +262,7 @@ class CanonDSLParserTest {
 
     @Test fun testPhone() {
         CanonDSLParser.parse {
-            phone("id", "class", "placeholder", true, "name", "value")
+            phone("id", "class", "ariaLabel", "placeholder", true, "name", "value")
         }.forEach {
             Assertions.assertTrue(it is Phone)
         }
@@ -270,8 +270,8 @@ class CanonDSLParserTest {
 
     @Test fun testReel() {
         CanonDSLParser.parse {
-            reel("id", "class", "name") {
-                reel(null, null, null, null)
+            reel("id", "class", "ariaLabel", "name") {
+                reel(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Reel)
@@ -281,7 +281,7 @@ class CanonDSLParserTest {
 
     @Test fun testReelValue() {
         CanonDSLParser.parse {
-            reelValue("id", "class", "value", "valueType")
+            reelValue("id", "class", "ariaLabel", "value", "valueType")
         }.forEach {
             Assertions.assertTrue(it is ReelValue)
         }
@@ -289,8 +289,8 @@ class CanonDSLParserTest {
 
     @Test fun testRow() {
         CanonDSLParser.parse {
-            row("id", "class") {
-                row(null, null, null)
+            row("id", "class", "ariaLabel") {
+                row(null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Row)
@@ -299,8 +299,8 @@ class CanonDSLParserTest {
 
     @Test fun testSelectable() {
         CanonDSLParser.parse {
-            selectable("id", "class", "name") {
-                selectable(null, null, null, null)
+            selectable("id", "class", "ariaLabel", "name") {
+                selectable(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Selectable)
@@ -310,8 +310,8 @@ class CanonDSLParserTest {
 
     @Test fun testSelection() {
         CanonDSLParser.parse {
-            selection("id", "class", "name", 1) {
-                selection(null, null, null, null, null)
+            selection("id", "class", "ariaLabel", "name", 1) {
+                selection(null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Selection)
@@ -321,8 +321,8 @@ class CanonDSLParserTest {
 
     @Test fun testSelectionItem() {
         CanonDSLParser.parse {
-            selectionItem("id", "class", "name") {
-                selectionItem(null, null, null, null)
+            selectionItem("id", "class", "ariaLabel", "name") {
+                selectionItem(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is SelectionItem)
@@ -332,8 +332,8 @@ class CanonDSLParserTest {
 
     @Test fun testSingleChoice() {
         CanonDSLParser.parse {
-            singleChoice("id", "class", "name", true, true) {
-                singleChoice(null, null, null, null, null, null)
+            singleChoice("id", "class", "ariaLabel", "name", true, true) {
+                singleChoice(null, null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is SingleChoice)
@@ -343,7 +343,7 @@ class CanonDSLParserTest {
 
     @Test fun testSlider() {
         CanonDSLParser.parse {
-            slider("id", "class", 1.0, 10.0, 1.0, 5.0, "name", "values")
+            slider("id", "class", "ariaLabel", 1.0, 10.0, 1.0, 5.0, "name", "values")
         }.forEach {
             Assertions.assertTrue(it is Slider)
         }
@@ -351,8 +351,8 @@ class CanonDSLParserTest {
 
     @Test fun testSlotMachine() {
         CanonDSLParser.parse {
-            slotMachine("id", "class", "name") {
-                slotMachine(null, null, null, null)
+            slotMachine("id", "class", "ariaLabel", "name") {
+                slotMachine(null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is SlotMachine)
@@ -362,7 +362,7 @@ class CanonDSLParserTest {
 
     @Test fun testSpinner() {
         CanonDSLParser.parse {
-            spinner("id", "class", 1.0, 10.0, 1.0, 5.0, "name")
+            spinner("id", "class", "ariaLabel", 1.0, 10.0, 1.0, 5.0, "name")
         }.forEach {
             Assertions.assertTrue(it is Spinner)
         }
@@ -370,7 +370,7 @@ class CanonDSLParserTest {
 
     @Test fun testSubmit() {
         CanonDSLParser.parse {
-            submit("id", "class", "text", "name")
+            submit("id", "class", "ariaLabel", "text", "name")
         }.forEach {
             Assertions.assertTrue(it is Submit)
         }
@@ -378,7 +378,7 @@ class CanonDSLParserTest {
 
     @Test fun testSuggestion() {
         CanonDSLParser.parse {
-            suggestion("id", "class", "text", "name", "value")
+            suggestion("id", "class", "ariaLabel", "text", "name", "value")
         }.forEach {
             Assertions.assertTrue(it is Suggestion)
         }
@@ -386,8 +386,8 @@ class CanonDSLParserTest {
 
     @Test fun testTable() {
         CanonDSLParser.parse {
-            table("id", "class", "name") {
-                table(null, null, null, null)
+            table("id", "class", "ariaLabel", "name") {
+                table(null, null, null,  null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Table)
@@ -397,7 +397,7 @@ class CanonDSLParserTest {
 
     @Test fun testText() {
         CanonDSLParser.parse {
-            text("id", "class", "regex", "placeholder", true, "name", "value")
+            text("id", "class", "ariaLabel", "regex", "placeholder", true, "name", "value")
         }.forEach {
             Assertions.assertTrue(it is Text)
         }
@@ -405,7 +405,7 @@ class CanonDSLParserTest {
 
     @Test fun testTextarea() {
         CanonDSLParser.parse {
-            textarea("id", "class","placeholder", "name", "value", true, 1,1)
+            textarea("id", "class", "ariaLabel","placeholder", "name", "value", true, 1,1)
         }.forEach {
             Assertions.assertTrue(it is Textarea)
         }
@@ -413,8 +413,8 @@ class CanonDSLParserTest {
 
     @Test fun testTransition() {
         CanonDSLParser.parse {
-            transition("id", "class", "name", "direction", "wrapped") {
-                transition(null, null, null, null, null, null)
+            transition("id", "class", "ariaLabel", "name", "direction", "wrapped") {
+                transition(null, null, null, null, null, null, null)
             }
         }.forEach {
             Assertions.assertTrue(it is Transition)
@@ -424,7 +424,7 @@ class CanonDSLParserTest {
 
     @Test fun testTrigger() {
         CanonDSLParser.parse {
-            trigger("id", "class", "name", "text")
+            trigger("id", "class", "ariaLabel",  "name", "text")
         }.forEach {
             Assertions.assertTrue(it is Trigger)
         }
@@ -432,7 +432,7 @@ class CanonDSLParserTest {
 
     @Test fun testUpload() {
         CanonDSLParser.parse {
-            upload("id", "class", "accept", "name", "text", 10.0, 10.0, false)
+            upload("id", "class", "ariaLabel", "accept", "name", "text", 10.0, 10.0, false)
         }.forEach {
             Assertions.assertTrue(it is Upload)
         }
@@ -440,7 +440,7 @@ class CanonDSLParserTest {
 
     @Test fun testVideo() {
         CanonDSLParser.parse {
-            video("id", "class", "src")
+            video("id", "class", "ariaLabel", "src")
         }.forEach {
             Assertions.assertTrue(it is Video)
         }

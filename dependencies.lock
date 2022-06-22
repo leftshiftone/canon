@@ -118,7 +118,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -145,7 +145,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -234,7 +234,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -261,7 +261,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -342,14 +342,6 @@
             "locked": "3.0",
             "requested": "3.0"
         },
-        "org.apiguardian:apiguardian-api": {
-            "locked": "1.0.0",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.jupiter:junit-jupiter-params",
-                "org.junit.platform:junit-platform-commons"
-            ]
-        },
         "org.glassfish:javax.json": {
             "locked": "1.0.4",
             "transitive": [
@@ -358,7 +350,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -385,41 +377,12 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
             "transitive": [
                 "org.jetbrains.kotlin:kotlin-stdlib"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
-        "org.junit.jupiter:junit-jupiter-api": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-params"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.platform:junit-platform-commons": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api"
-            ]
-        },
-        "org.opentest4j:opentest4j": {
-            "locked": "1.1.1",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api"
             ]
         },
         "org.slf4j:slf4j-api": {
@@ -495,16 +458,6 @@
             "locked": "3.0",
             "requested": "3.0"
         },
-        "org.apiguardian:apiguardian-api": {
-            "locked": "1.0.0",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params",
-                "org.junit.platform:junit-platform-commons",
-                "org.junit.platform:junit-platform-engine"
-            ]
-        },
         "org.glassfish:javax.json": {
             "locked": "1.0.4",
             "transitive": [
@@ -513,7 +466,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -540,56 +493,12 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
             "transitive": [
                 "org.jetbrains.kotlin:kotlin-stdlib"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
-        "org.junit.jupiter:junit-jupiter-api": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-engine": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.platform:junit-platform-commons": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.platform:junit-platform-engine"
-            ]
-        },
-        "org.junit.platform:junit-platform-engine": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-engine"
-            ]
-        },
-        "org.opentest4j:opentest4j": {
-            "locked": "1.1.1",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.platform:junit-platform-engine"
             ]
         },
         "org.slf4j:slf4j-api": {
@@ -665,14 +574,6 @@
             "locked": "3.0",
             "requested": "3.0"
         },
-        "org.apiguardian:apiguardian-api": {
-            "locked": "1.0.0",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.jupiter:junit-jupiter-params",
-                "org.junit.platform:junit-platform-commons"
-            ]
-        },
         "org.glassfish:javax.json": {
             "locked": "1.0.4",
             "transitive": [
@@ -681,7 +582,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -708,41 +609,12 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
             "transitive": [
                 "org.jetbrains.kotlin:kotlin-stdlib"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
-        "org.junit.jupiter:junit-jupiter-api": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-params"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.platform:junit-platform-commons": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api"
-            ]
-        },
-        "org.opentest4j:opentest4j": {
-            "locked": "1.1.1",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api"
             ]
         },
         "org.slf4j:slf4j-api": {
@@ -817,7 +689,7 @@
         },
         "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
@@ -873,7 +745,7 @@
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-embeddable": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable": {
             "locked": "1.3.41",
@@ -908,6 +780,61 @@
             "transitive": [
                 "org.jetbrains.kotlin:kotlin-scripting-common",
                 "org.jetbrains.kotlin:kotlin-scripting-compiler-impl-embeddable"
+            ]
+        },
+        "org.jetbrains:annotations": {
+            "locked": "13.0",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
+            ]
+        }
+    },
+    "kotlinKlibCommonizerClasspath": {
+        "org.jetbrains.intellij.deps:trove4j": {
+            "locked": "1.0.20181211",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-compiler-embeddable": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-daemon-embeddable": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable": {
+            "locked": "1.4.32"
+        },
+        "org.jetbrains.kotlin:kotlin-reflect": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-script-runtime": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-compiler-embeddable",
+                "org.jetbrains.kotlin:kotlin-klib-commonizer-embeddable",
+                "org.jetbrains.kotlin:kotlin-reflect"
+            ]
+        },
+        "org.jetbrains.kotlin:kotlin-stdlib-common": {
+            "locked": "1.4.32",
+            "transitive": [
+                "org.jetbrains.kotlin:kotlin-stdlib"
             ]
         },
         "org.jetbrains:annotations": {
@@ -993,7 +920,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -1020,7 +947,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -1101,16 +1028,6 @@
             "locked": "3.0",
             "requested": "3.0"
         },
-        "org.apiguardian:apiguardian-api": {
-            "locked": "1.0.0",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params",
-                "org.junit.platform:junit-platform-commons",
-                "org.junit.platform:junit-platform-engine"
-            ]
-        },
         "org.glassfish:javax.json": {
             "locked": "1.0.4",
             "transitive": [
@@ -1119,7 +1036,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin"
             ]
@@ -1146,56 +1063,12 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
             "transitive": [
                 "org.jetbrains.kotlin:kotlin-stdlib"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
-        "org.junit.jupiter:junit-jupiter-api": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-engine": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.platform:junit-platform-commons": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.platform:junit-platform-engine"
-            ]
-        },
-        "org.junit.platform:junit-platform-engine": {
-            "locked": "1.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-engine"
-            ]
-        },
-        "org.opentest4j:opentest4j": {
-            "locked": "1.1.1",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter-api",
-                "org.junit.platform:junit-platform-engine"
             ]
         },
         "org.slf4j:slf4j-api": {
@@ -1204,6 +1077,16 @@
         }
     },
     "testApiDependenciesMetadata": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1368,7 +1251,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -1397,7 +1280,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -1447,10 +1330,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testCompile": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1615,7 +1511,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -1644,7 +1540,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -1694,10 +1590,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testCompileClasspath": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -1846,7 +1755,6 @@
             "transitive": [
                 "org.junit.jupiter:junit-jupiter-api",
                 "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params",
                 "org.junit.platform:junit-platform-commons",
                 "org.junit.platform:junit-platform-engine"
             ]
@@ -1863,7 +1771,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -1892,7 +1800,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -1900,27 +1808,15 @@
                 "org.jetbrains.kotlin:kotlin-stdlib"
             ]
         },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
         "org.junit.jupiter:junit-jupiter-api": {
             "locked": "5.5.1",
             "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params"
+                "org.junit.jupiter:junit-jupiter-engine"
             ]
         },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
         },
         "org.junit.platform:junit-platform-commons": {
             "locked": "1.5.1",
@@ -1954,10 +1850,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testImplementationDependenciesMetadata": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2106,7 +2015,6 @@
             "transitive": [
                 "org.junit.jupiter:junit-jupiter-api",
                 "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params",
                 "org.junit.platform:junit-platform-commons",
                 "org.junit.platform:junit-platform-engine"
             ]
@@ -2123,7 +2031,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -2152,7 +2060,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -2160,27 +2068,15 @@
                 "org.jetbrains.kotlin:kotlin-stdlib"
             ]
         },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
         "org.junit.jupiter:junit-jupiter-api": {
             "locked": "5.5.1",
             "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params"
+                "org.junit.jupiter:junit-jupiter-engine"
             ]
         },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
             "requested": "5.5.1"
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
         },
         "org.junit.platform:junit-platform-commons": {
             "locked": "1.5.1",
@@ -2214,10 +2110,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testRuntime": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2382,7 +2291,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -2411,7 +2320,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -2461,10 +2370,23 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         }
     },
     "testRuntimeClasspath": {
+        "ch.qos.logback:logback-classic": {
+            "locked": "1.2.10",
+            "requested": "1.2.10"
+        },
+        "ch.qos.logback:logback-core": {
+            "locked": "1.2.10",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
+        },
         "com.fasterxml.jackson.core:jackson-annotations": {
             "locked": "2.9.0",
             "transitive": [
@@ -2613,7 +2535,6 @@
             "transitive": [
                 "org.junit.jupiter:junit-jupiter-api",
                 "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params",
                 "org.junit.platform:junit-platform-commons",
                 "org.junit.platform:junit-platform-engine"
             ]
@@ -2630,7 +2551,7 @@
         },
         "org.jetbrains.kotlin:kotlin-reflect": {
             "locked": "1.3.41",
-            "requested": "1.3.41",
+            "requested": "1.4.32",
             "transitive": [
                 "com.fasterxml.jackson.module:jackson-module-kotlin",
                 "io.mockk:mockk",
@@ -2659,7 +2580,7 @@
         },
         "org.jetbrains.kotlin:kotlin-stdlib-jdk8": {
             "locked": "1.3.41",
-            "requested": "1.3.41"
+            "requested": "1.4.32"
         },
         "org.jetbrains:annotations": {
             "locked": "13.0",
@@ -2667,30 +2588,15 @@
                 "org.jetbrains.kotlin:kotlin-stdlib"
             ]
         },
-        "org.junit.jupiter:junit-jupiter": {
-            "locked": "5.4.2",
-            "requested": "5.4.2"
-        },
         "org.junit.jupiter:junit-jupiter-api": {
             "locked": "5.5.1",
             "transitive": [
-                "org.junit.jupiter:junit-jupiter",
-                "org.junit.jupiter:junit-jupiter-engine",
-                "org.junit.jupiter:junit-jupiter-params"
+                "org.junit.jupiter:junit-jupiter-engine"
             ]
         },
         "org.junit.jupiter:junit-jupiter-engine": {
             "locked": "5.5.1",
-            "requested": "5.5.1",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
-        },
-        "org.junit.jupiter:junit-jupiter-params": {
-            "locked": "5.4.2",
-            "transitive": [
-                "org.junit.jupiter:junit-jupiter"
-            ]
+            "requested": "5.5.1"
         },
         "org.junit.platform:junit-platform-commons": {
             "locked": "1.5.1",
@@ -2724,7 +2630,10 @@
         },
         "org.slf4j:slf4j-api": {
             "locked": "1.7.30",
-            "requested": "1.7.30"
+            "requested": "1.7.30",
+            "transitive": [
+                "ch.qos.logback:logback-classic"
+            ]
         },
         "xalan:serializer": {
             "locked": "2.7.2",

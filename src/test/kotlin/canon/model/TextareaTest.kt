@@ -9,15 +9,15 @@ class TextareaTest {
 
     @Test
     fun testTextareaMapping() {
-        val mapped = Textarea("testId", "testClass", "placeHolder", "testName",
+        val mapped = Textarea("testId", "testClass", "testAriaLabel", "placeHolder", "testName",
                 "testValue", false, 10, 9).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(8, mapped.size)
-        assertEquals("placeHolder", mapped.get("placeholder"))
-        assertEquals("testName", mapped.get("name"))
-        assertEquals("testValue", mapped.get("value"))
-        assertEquals(false, mapped.get("required"))
-        assertEquals(10, mapped.get("rows"))
-        assertEquals(9, mapped.get("cols"))
+        assertEquals(9, mapped.size)
+        assertEquals("placeHolder", mapped["placeholder"])
+        assertEquals("testName", mapped["name"])
+        assertEquals("testValue", mapped["value"])
+        assertEquals(false, mapped["required"])
+        assertEquals(10, mapped["rows"])
+        assertEquals(9, mapped["cols"])
     }
 }

@@ -12,6 +12,7 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Map {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val src = node.attrAsText("src")
         val mapType = node.attrAsText("mapType", "osm")
@@ -26,8 +27,8 @@ open class MapStrategy : AbstractParseStrategy<Map>() {
         val required = node.attrAsBoolean("required", false)
         val zoom = node.attrAsText("zoom", "8")
         val maxSelections = node.attrAsInt("maxSelections", 3)
-
-        return Map(id, `class`, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routeStartIcon, routeEndIcon, routePoints,
-                centerBrowserLocation, required, zoom, maxSelections)
+        val zoomByRadius = node.attrAsText("zoomByRadius")
+        return Map(id, `class`, ariaLabel, name, src, mapType, centerLng, centerLat, markerIcon, selectedMarkerIcon, routeStartIcon, routeEndIcon, routePoints,
+                centerBrowserLocation, required, zoom, maxSelections, zoomByRadius)
     }
 }

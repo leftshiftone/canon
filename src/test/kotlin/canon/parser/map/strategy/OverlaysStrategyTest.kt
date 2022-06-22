@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class OverlaysStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Overlays("id", "class", "trigger", emptyList()), OverlaysStrategy()))
+    fun testParse() = assertTrue(testStrategy(Overlays("id", "class", "ariaLabel", "trigger", emptyList()), OverlaysStrategy()))
 }

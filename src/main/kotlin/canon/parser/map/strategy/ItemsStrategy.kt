@@ -5,9 +5,12 @@ import canon.model.Items
 
 class ItemsStrategy : AbstractParseStrategy<Items>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Items {
-        return Items(map["id"]?.toString()?.ifEmpty { null },
-                map["class"]?.toString()?.ifEmpty { null },
-                map["ordered"]?.toString()?.ifEmpty { null }?.toBoolean(),
-                factory(map))
+        return Items(
+            map["id"]?.toString()?.ifEmpty { null },
+            map["class"]?.toString()?.ifEmpty { null },
+            map["ariaLabel"]?.toString()?.ifEmpty { null },
+            map["ordered"]?.toString()?.ifEmpty { null }?.toBoolean(),
+            factory(map)
+        )
     }
 }

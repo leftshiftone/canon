@@ -10,8 +10,10 @@ open class HeadlineStrategy : AbstractParseStrategy<Headline>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Headline {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
+        val level = node.attrAsText("level")
 
-        return Headline(id, `class`, node.textContent)
+        return Headline(id, `class`, ariaLabel, node.textContent, level)
     }
 
 }

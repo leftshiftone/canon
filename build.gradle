@@ -20,6 +20,7 @@ buildscript {
         mockkVersion = "1.9.3"
     }
     repositories {
+        mavenCentral()
         jcenter()
     }
     dependencies {
@@ -94,6 +95,7 @@ asteriaCodeAnalytics {
 
 repositories {
     jcenter()
+    mavenCentral()
 }
 
 afterEvaluate { project.tasks.sendReleaseEmail.mustRunAfter project.tasks.postRelease }
@@ -112,7 +114,6 @@ compileTestKotlin {
 }
 
 dependencies {
-    implementation 'org.junit.jupiter:junit-jupiter:5.4.2'
     antlr "org.antlr:antlr4:4.7.2"
 
     compile "org.antlr:antlr4-runtime:4.7.2"
@@ -127,6 +128,7 @@ dependencies {
     testCompile "org.assertj:assertj-core:3.11.1"
     testCompile "io.mockk:mockk:$mockkVersion"
     testCompile 'org.skyscreamer:jsonassert:1.5.0'
+    testCompile 'ch.qos.logback:logback-classic:1.2.10'
     testCompile group: 'org.apache.velocity', name: 'velocity', version: '1.7'
 
     //see: XSLTUpgradeHandlerTest

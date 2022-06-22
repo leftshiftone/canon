@@ -8,10 +8,10 @@ class BlockTest {
 
     @Test
     fun testBlockMapping() {
-        val block = Block("testId", "block", "testName", ArrayList())
+        val block = Block("testId", "block", "testAriaLabel", "testName", ArrayList())
 
         val mapped = block.toMap(HashMap(), TestEvaluator())
-        assertEquals(3, mapped.size)
+        assertEquals(4, mapped.size)
         assertEquals("testName", mapped.get("name"))
     }
 }

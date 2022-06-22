@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class MultipleChoiceStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(MultipleChoice("id", "class", "name", true, true, emptyList()), MultipleChoiceStrategy()))
+    fun testParse() = assertTrue(testStrategy(MultipleChoice("id", "class", "ariaLabel", "name", true, true, emptyList()), MultipleChoiceStrategy()))
 }

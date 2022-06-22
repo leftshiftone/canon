@@ -10,10 +10,11 @@ open class CodeReaderStrategy : AbstractParseStrategy<CodeReader>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): CodeReader {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val format = node.attrAsText("format")
 
-        return CodeReader(id, `class`, name, format)
+        return CodeReader(id, `class`, ariaLabel, name, format)
     }
 
 }

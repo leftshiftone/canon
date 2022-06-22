@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class CameraStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(Camera("id", "class", "name", true, 10.0, emptyList()), CameraStrategy()))
+    fun testParse() = assertTrue(testStrategy(Camera("id", "class", "ariaLabel", "name", true, 10.0, emptyList()), CameraStrategy()))
 }

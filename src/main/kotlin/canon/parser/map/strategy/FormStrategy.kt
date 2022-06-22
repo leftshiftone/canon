@@ -5,9 +5,12 @@ import canon.model.Form
 
 class FormStrategy : AbstractParseStrategy<Form>() {
     override fun parse(map: Map<String, Any>, factory: (Map<String, Any>) -> List<IRenderable>): Form {
-        return Form(map["id"]?.toString()?.ifEmpty { null },
-                map["class"]?.toString()?.ifEmpty { null },
-                map["name"]?.toString()?.ifEmpty { null },
-                factory(map))
+        return Form(
+            map["id"]?.toString()?.ifEmpty { null },
+            map["class"]?.toString()?.ifEmpty { null },
+            map["ariaLabel"]?.toString()?.ifEmpty { null },
+            map["name"]?.toString()?.ifEmpty { null },
+            factory(map)
+        )
     }
 }

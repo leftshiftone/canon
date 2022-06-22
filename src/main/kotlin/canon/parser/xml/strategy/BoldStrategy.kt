@@ -10,8 +10,9 @@ open class BoldStrategy : AbstractParseStrategy<Bold>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Bold {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
 
-        return Bold(id, `class`, node.textContent)
+        return Bold(id, `class`, ariaLabel, node.textContent)
     }
 
 }

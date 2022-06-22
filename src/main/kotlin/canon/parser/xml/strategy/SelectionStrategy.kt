@@ -10,10 +10,11 @@ open class SelectionStrategy : AbstractParseStrategy<Selection>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Selection {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val name = node.attrAsText("name")
         val countdownInSec = if (node.attrAsText("countdownInSec").isEmpty()) 0
         else node.attrAsText("countdownInSec").toInt()
 
-        return Selection(id, `class`, name, countdownInSec, factory(node))
+        return Selection(id, `class`, ariaLabel, name, countdownInSec, factory(node))
     }
 }

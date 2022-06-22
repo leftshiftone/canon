@@ -7,5 +7,5 @@ import org.junit.jupiter.api.Test
 class CodeReaderStrategyTest {
 
     @Test
-    fun testParse() = assertTrue(testStrategy(CodeReader("id", "class", "name", "format"), CodeReaderStrategy()))
+    fun testParse() = assertTrue(testStrategy(CodeReader("id", "class", "ariaLabel", "name", "format"), CodeReaderStrategy()))
 }

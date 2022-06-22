@@ -9,8 +9,8 @@ class ColTest {
 
     @Test
     fun testColMapping() {
-        val mapped = Col("testId", "testClass", ArrayList()).toMap(HashMap(), TestEvaluator())
+        val mapped = Col("testId", "testAriaLabel", "testClass", ArrayList()).toMap(HashMap(), TestEvaluator())
 
-        assertEquals(2, mapped.size)
+        assertEquals(3, mapped.size)
     }
 }

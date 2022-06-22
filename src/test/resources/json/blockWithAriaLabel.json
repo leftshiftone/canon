@@ -1,0 +1,26 @@
+[
+  [
+    {
+      "elements": [
+        {
+          "elements": [
+            {
+              "text": "label",
+              "type": "label",
+              "ariaLabel": "my label"
+            },
+            {
+              "text": "senden",
+              "type": "submit"
+            }
+          ],
+          "ariaLabel": "my label",
+          "type": "block"
+        }
+      ],
+      "index": 0,
+      "type": "container",
+      "timestamp": 0
+    }
+  ]
+]

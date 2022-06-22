@@ -10,10 +10,10 @@ class LinkTest {
 
     @Test
     fun testLinkMapping() {
-        val mapped = Link("testId", "testClass", "testValue", "testText").toMap(HashMap(), TestEvaluator())
+        val mapped = Link("testId", "testClass", "testAriaLabel", "testValue", "testText").toMap(HashMap(), TestEvaluator())
 
-        assertEquals(4, mapped.size)
-        assertEquals("testValue", mapped.get("value"))
-        assertEquals("testText", mapped.get("text"))
+        assertEquals(5, mapped.size)
+        assertEquals("testValue", mapped["value"])
+        assertEquals("testText", mapped["text"])
     }
 }

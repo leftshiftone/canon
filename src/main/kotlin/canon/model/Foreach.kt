@@ -12,6 +12,7 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
 
     @JsonIgnore
     private val target: String
+
     @JsonIgnore
     private val source: String
 
@@ -41,17 +42,17 @@ data class Foreach(val forEachStmt: String?, val renderable: IRenderable?) : IRe
     }
 
     override fun <R> accept(visitor: IVisitor<R>, evaluator: IEvaluator): R {
-        val obj:Any? = Maps.getDeep(visitor.getContext(), source)
+        val obj: Any? = Maps.getDeep(visitor.getContext(), source)
         if (obj == null)
             return visitor.empty()
         val iterator = Iterators.toIterator(obj)
 
         return iterator.asSequence().toList()
-                .flatMap {
-                    val nested = visitor.getContext().toMutableMap()
-                    nested.put(target, it)
-                    renderables.map { e -> visitor.wrap(nested).visitRenderable(e) }
-                }.fold(visitor.empty()) { acc, r -> visitor.merge(acc, r) }
+            .flatMap {
+                val nested = visitor.getContext().toMutableMap()
+                nested.put(target, it)
+                renderables.map { e -> visitor.wrap(nested).visitRenderable(e) }
+            }.fold(visitor.empty()) { acc, r -> visitor.merge(acc, r) }
     }
 
     override fun getType() = "foreach"

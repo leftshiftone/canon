@@ -11,12 +11,13 @@ open class TextStrategy : AbstractParseStrategy<Text>() {
     override fun parse(node: Node, factory: (Node) -> List<IRenderable>): Text {
         val id = node.attrAsText("id")
         val `class` = node.attrAsText("class")
+        val ariaLabel = node.attrAsText("ariaLabel")
         val regex = node.attrAsText("regex")
         val placeholder = node.attrAsText("placeholder")
         val required = node.attrAsBoolean("required", true)
         val name = node.attrAsText("name")
         val value = node.attrAsText("value")
 
-        return Text(id, `class`, regex, placeholder, required, name, value)
+        return Text(id, `class`, ariaLabel, regex, placeholder, required, name, value)
     }
 }

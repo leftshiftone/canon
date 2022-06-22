@@ -21,3 +21,5 @@
 
 # sdkman
 .sdkmanrc
+#asdf
+.tool-versions
